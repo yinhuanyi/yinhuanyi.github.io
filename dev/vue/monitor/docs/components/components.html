@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>子组件开发 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.ef2ae1d4.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/65.5ee94aae.js" as="script"><link rel="prefetch" href="/assets/js/10.256d2d9e.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.b17181c3.js"><link rel="prefetch" href="/assets/js/103.f8859f28.js"><link rel="prefetch" href="/assets/js/104.9fab75ef.js"><link rel="prefetch" href="/assets/js/105.25712a6b.js"><link rel="prefetch" href="/assets/js/106.321faf0e.js"><link rel="prefetch" href="/assets/js/107.edbc3950.js"><link rel="prefetch" href="/assets/js/108.0922d38e.js"><link rel="prefetch" href="/assets/js/109.451e04b9.js"><link rel="prefetch" href="/assets/js/11.452c26e6.js"><link rel="prefetch" href="/assets/js/110.f7745add.js"><link rel="prefetch" href="/assets/js/111.82f49a62.js"><link rel="prefetch" href="/assets/js/112.3eca9556.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.a1ffa028.js"><link rel="prefetch" href="/assets/js/115.3ebc5b5f.js"><link rel="prefetch" href="/assets/js/116.68f73bc2.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.691d7c30.js"><link rel="prefetch" href="/assets/js/119.b9e4d8c9.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.033a7ce9.js"><link rel="prefetch" href="/assets/js/121.4e17b9cc.js"><link rel="prefetch" href="/assets/js/122.f6342712.js"><link rel="prefetch" href="/assets/js/123.3cc58446.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.e7ca9035.js"><link rel="prefetch" href="/assets/js/126.95b05ce9.js"><link rel="prefetch" href="/assets/js/127.914d6fb9.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.acd254e3.js"><link rel="prefetch" href="/assets/js/13.742bd49b.js"><link rel="prefetch" href="/assets/js/130.56b0744c.js"><link rel="prefetch" href="/assets/js/131.4ef95683.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.566bd1f7.js"><link rel="prefetch" href="/assets/js/134.a93be345.js"><link rel="prefetch" href="/assets/js/135.a79f211c.js"><link rel="prefetch" href="/assets/js/136.2a6f9b42.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.624fc52f.js"><link rel="prefetch" href="/assets/js/139.ca7fb473.js"><link rel="prefetch" href="/assets/js/14.5e9f76b2.js"><link rel="prefetch" href="/assets/js/140.696be263.js"><link rel="prefetch" href="/assets/js/141.bb08404f.js"><link rel="prefetch" href="/assets/js/142.b99f910e.js"><link rel="prefetch" href="/assets/js/143.c4bd878c.js"><link rel="prefetch" href="/assets/js/144.21df22c7.js"><link rel="prefetch" href="/assets/js/145.7027e2a4.js"><link rel="prefetch" href="/assets/js/146.2ee3be79.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.19e9eaee.js"><link rel="prefetch" href="/assets/js/149.c6118e48.js"><link rel="prefetch" href="/assets/js/15.6f107f59.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.3aa4d6ef.js"><link rel="prefetch" href="/assets/js/153.882d8a36.js"><link rel="prefetch" href="/assets/js/154.f0ab3594.js"><link rel="prefetch" href="/assets/js/155.e2ee68b1.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.ece42361.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.b5706a52.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.86946675.js"><link rel="prefetch" href="/assets/js/161.68382dc7.js"><link rel="prefetch" href="/assets/js/162.db9c0697.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.c51b79ba.js"><link rel="prefetch" href="/assets/js/166.a5599c72.js"><link rel="prefetch" href="/assets/js/167.d93d6d09.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.c5fbab48.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.e5dde466.js"><link rel="prefetch" href="/assets/js/171.897a5989.js"><link rel="prefetch" href="/assets/js/172.a3fa92f8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.c3e01b8b.js"><link rel="prefetch" href="/assets/js/175.a3cdba2f.js"><link rel="prefetch" href="/assets/js/176.d72805d0.js"><link rel="prefetch" href="/assets/js/177.ebbd2633.js"><link rel="prefetch" href="/assets/js/178.2a27768f.js"><link rel="prefetch" href="/assets/js/179.9286be73.js"><link rel="prefetch" href="/assets/js/18.4ee3074e.js"><link rel="prefetch" href="/assets/js/180.f18cbd55.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.08ce6859.js"><link rel="prefetch" href="/assets/js/183.1dc25b0f.js"><link rel="prefetch" href="/assets/js/184.3c961f5c.js"><link rel="prefetch" href="/assets/js/185.f9f79dff.js"><link rel="prefetch" href="/assets/js/186.28f91be3.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.5df2da19.js"><link rel="prefetch" href="/assets/js/189.a794c794.js"><link rel="prefetch" href="/assets/js/19.118ab13e.js"><link rel="prefetch" href="/assets/js/190.7cdec2de.js"><link rel="prefetch" href="/assets/js/191.0297e6cf.js"><link rel="prefetch" href="/assets/js/192.697228d1.js"><link rel="prefetch" href="/assets/js/193.5cb8d43d.js"><link rel="prefetch" href="/assets/js/194.04976a6f.js"><link rel="prefetch" href="/assets/js/195.8d606920.js"><link rel="prefetch" href="/assets/js/196.c37afe55.js"><link rel="prefetch" href="/assets/js/197.2c6d1226.js"><link rel="prefetch" href="/assets/js/198.038c24f2.js"><link rel="prefetch" href="/assets/js/199.ae91bccb.js"><link rel="prefetch" href="/assets/js/20.eb4595e8.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.f1d6cf9b.js"><link rel="prefetch" href="/assets/js/202.2ea1d1b9.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.da0a6eb7.js"><link rel="prefetch" href="/assets/js/205.3a31f1d9.js"><link rel="prefetch" href="/assets/js/206.29121567.js"><link rel="prefetch" href="/assets/js/207.2d8fe84f.js"><link rel="prefetch" href="/assets/js/208.2b32fee1.js"><link rel="prefetch" href="/assets/js/209.b95ecdfa.js"><link rel="prefetch" href="/assets/js/21.11c481e1.js"><link rel="prefetch" href="/assets/js/210.b71de55d.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.356048bc.js"><link rel="prefetch" href="/assets/js/215.80bd52a8.js"><link rel="prefetch" href="/assets/js/216.a693de49.js"><link rel="prefetch" href="/assets/js/217.d3f0cb2d.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.4fc65310.js"><link rel="prefetch" href="/assets/js/22.09e52363.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.37a9bc26.js"><link rel="prefetch" href="/assets/js/222.14c4ce9a.js"><link rel="prefetch" href="/assets/js/223.79200d95.js"><link rel="prefetch" href="/assets/js/224.b633ba46.js"><link rel="prefetch" href="/assets/js/225.eb4316ed.js"><link rel="prefetch" href="/assets/js/226.f5def5b6.js"><link rel="prefetch" href="/assets/js/227.a30097c7.js"><link rel="prefetch" href="/assets/js/228.08ddff61.js"><link rel="prefetch" href="/assets/js/229.cdf68885.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.26d4f9a9.js"><link rel="prefetch" href="/assets/js/231.23da383d.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.dcbeedc1.js"><link rel="prefetch" href="/assets/js/234.cedc03a0.js"><link rel="prefetch" href="/assets/js/235.6b91d63a.js"><link rel="prefetch" href="/assets/js/236.082930c3.js"><link rel="prefetch" href="/assets/js/237.71a0d31d.js"><link rel="prefetch" href="/assets/js/238.3b347296.js"><link rel="prefetch" href="/assets/js/239.199b5800.js"><link rel="prefetch" href="/assets/js/24.1a0ec854.js"><link rel="prefetch" href="/assets/js/240.5e7fe51a.js"><link rel="prefetch" href="/assets/js/241.fdccefb6.js"><link rel="prefetch" href="/assets/js/242.1a263fef.js"><link rel="prefetch" href="/assets/js/243.9b76c980.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.0ca047be.js"><link rel="prefetch" href="/assets/js/246.f492f6e3.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.dfdf517b.js"><link rel="prefetch" href="/assets/js/249.f3abb8d4.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.6ac4cc3a.js"><link rel="prefetch" href="/assets/js/251.6b64e464.js"><link rel="prefetch" href="/assets/js/252.ee2fa61e.js"><link rel="prefetch" href="/assets/js/253.ff810602.js"><link rel="prefetch" href="/assets/js/254.0bde9601.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.5bcd6250.js"><link rel="prefetch" href="/assets/js/257.c7b560b0.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.4e700996.js"><link rel="prefetch" href="/assets/js/26.bbfde0f8.js"><link rel="prefetch" href="/assets/js/260.f4becfcc.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.43d14785.js"><link rel="prefetch" href="/assets/js/263.b69c03ad.js"><link rel="prefetch" href="/assets/js/264.dbc22129.js"><link rel="prefetch" href="/assets/js/265.b5cb48f6.js"><link rel="prefetch" href="/assets/js/266.34356500.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.ff5ce018.js"><link rel="prefetch" href="/assets/js/27.9675606e.js"><link rel="prefetch" href="/assets/js/270.ef200fe2.js"><link rel="prefetch" href="/assets/js/271.4ac62df5.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.a3a9c76d.js"><link rel="prefetch" href="/assets/js/275.85c008bc.js"><link rel="prefetch" href="/assets/js/276.ca9b96a1.js"><link rel="prefetch" href="/assets/js/277.ccecfc0f.js"><link rel="prefetch" href="/assets/js/278.c342c4bb.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.01207ecc.js"><link rel="prefetch" href="/assets/js/280.4a8eddcd.js"><link rel="prefetch" href="/assets/js/281.b3bdd051.js"><link rel="prefetch" href="/assets/js/282.291be060.js"><link rel="prefetch" href="/assets/js/283.7065411b.js"><link rel="prefetch" href="/assets/js/284.e93a4e73.js"><link rel="prefetch" href="/assets/js/285.009d797f.js"><link rel="prefetch" href="/assets/js/286.ec26c975.js"><link rel="prefetch" href="/assets/js/287.448073e1.js"><link rel="prefetch" href="/assets/js/288.4207e20b.js"><link rel="prefetch" href="/assets/js/289.53bc96e2.js"><link rel="prefetch" href="/assets/js/29.281eb37f.js"><link rel="prefetch" href="/assets/js/290.30a4fd5c.js"><link rel="prefetch" href="/assets/js/291.2c87a450.js"><link rel="prefetch" href="/assets/js/292.7391f420.js"><link rel="prefetch" href="/assets/js/293.e2c07d98.js"><link rel="prefetch" href="/assets/js/294.69a39f91.js"><link rel="prefetch" href="/assets/js/295.c625045b.js"><link rel="prefetch" href="/assets/js/296.34d89b4e.js"><link rel="prefetch" href="/assets/js/297.064983a6.js"><link rel="prefetch" href="/assets/js/298.023e5d86.js"><link rel="prefetch" href="/assets/js/299.e220fd12.js"><link rel="prefetch" href="/assets/js/3.0616cd46.js"><link rel="prefetch" href="/assets/js/30.e39632a0.js"><link rel="prefetch" href="/assets/js/300.28529b60.js"><link rel="prefetch" href="/assets/js/301.d1438c52.js"><link rel="prefetch" href="/assets/js/302.49a73ebb.js"><link rel="prefetch" href="/assets/js/303.1d69c976.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.3dc675ac.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.5833b544.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.08f0d836.js"><link rel="prefetch" href="/assets/js/313.5519c581.js"><link rel="prefetch" href="/assets/js/314.89323fa8.js"><link rel="prefetch" href="/assets/js/315.5c7d3885.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.e2d7a191.js"><link rel="prefetch" href="/assets/js/318.fc1ea4dc.js"><link rel="prefetch" href="/assets/js/319.4b4eaa24.js"><link rel="prefetch" href="/assets/js/32.6f8f7735.js"><link rel="prefetch" href="/assets/js/320.26cadf73.js"><link rel="prefetch" href="/assets/js/321.da66552d.js"><link rel="prefetch" href="/assets/js/322.d1b7e27b.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.1bed89f2.js"><link rel="prefetch" href="/assets/js/325.74a10b7f.js"><link rel="prefetch" href="/assets/js/326.6733614c.js"><link rel="prefetch" href="/assets/js/327.2ddf9fe2.js"><link rel="prefetch" href="/assets/js/328.79dc0b15.js"><link rel="prefetch" href="/assets/js/329.d39f716c.js"><link rel="prefetch" href="/assets/js/33.c1604104.js"><link rel="prefetch" href="/assets/js/330.32c96058.js"><link rel="prefetch" href="/assets/js/331.405b6757.js"><link rel="prefetch" href="/assets/js/332.537134ee.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.f4f1e806.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.360d22f4.js"><link rel="prefetch" href="/assets/js/337.95c52f93.js"><link rel="prefetch" href="/assets/js/338.824f01ee.js"><link rel="prefetch" href="/assets/js/339.8e0c18d7.js"><link rel="prefetch" href="/assets/js/34.61042921.js"><link rel="prefetch" href="/assets/js/340.a666422a.js"><link rel="prefetch" href="/assets/js/341.8061f90b.js"><link rel="prefetch" href="/assets/js/342.5ecffedd.js"><link rel="prefetch" href="/assets/js/343.d67c1d54.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.87c72db5.js"><link rel="prefetch" href="/assets/js/346.2796487d.js"><link rel="prefetch" href="/assets/js/347.57b5c6a5.js"><link rel="prefetch" href="/assets/js/348.0cffac81.js"><link rel="prefetch" href="/assets/js/349.8e908833.js"><link rel="prefetch" href="/assets/js/35.1d574a74.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.2ffd5646.js"><link rel="prefetch" href="/assets/js/353.4ffbf66f.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.21de33fa.js"><link rel="prefetch" href="/assets/js/356.3d20f95a.js"><link rel="prefetch" href="/assets/js/357.2612cca5.js"><link rel="prefetch" href="/assets/js/358.7cce50cb.js"><link rel="prefetch" href="/assets/js/359.c23b92e5.js"><link rel="prefetch" href="/assets/js/36.66b33e93.js"><link rel="prefetch" href="/assets/js/360.6e33c30f.js"><link rel="prefetch" href="/assets/js/361.6db53217.js"><link rel="prefetch" href="/assets/js/362.28e15494.js"><link rel="prefetch" href="/assets/js/363.5316eb9a.js"><link rel="prefetch" href="/assets/js/364.ae04b75f.js"><link rel="prefetch" href="/assets/js/365.64c1e88f.js"><link rel="prefetch" href="/assets/js/366.066b98bd.js"><link rel="prefetch" href="/assets/js/367.06e05293.js"><link rel="prefetch" href="/assets/js/368.82209659.js"><link rel="prefetch" href="/assets/js/369.d687a4ee.js"><link rel="prefetch" href="/assets/js/37.18a4caf1.js"><link rel="prefetch" href="/assets/js/370.02d4e333.js"><link rel="prefetch" href="/assets/js/371.9e35695d.js"><link rel="prefetch" href="/assets/js/372.de59ddf8.js"><link rel="prefetch" href="/assets/js/373.7cfca530.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.07a95ecc.js"><link rel="prefetch" href="/assets/js/376.0859df9f.js"><link rel="prefetch" href="/assets/js/377.241c4721.js"><link rel="prefetch" href="/assets/js/378.a2d485d0.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c7cc8ff1.js"><link rel="prefetch" href="/assets/js/380.886e2c5c.js"><link rel="prefetch" href="/assets/js/381.514ea971.js"><link rel="prefetch" href="/assets/js/382.9bd440e8.js"><link rel="prefetch" href="/assets/js/383.cda3a324.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.3ebff401.js"><link rel="prefetch" href="/assets/js/386.7125d75d.js"><link rel="prefetch" href="/assets/js/387.472cd823.js"><link rel="prefetch" href="/assets/js/388.235ad655.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.c156642a.js"><link rel="prefetch" href="/assets/js/390.b25b016f.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.86acebaf.js"><link rel="prefetch" href="/assets/js/393.f5e26c18.js"><link rel="prefetch" href="/assets/js/394.ceb6bc2c.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.ee8abf24.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.d83e363b.js"><link rel="prefetch" href="/assets/js/399.a800f7df.js"><link rel="prefetch" href="/assets/js/4.ff0d0983.js"><link rel="prefetch" href="/assets/js/40.d21ba833.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.04724ff3.js"><link rel="prefetch" href="/assets/js/402.e2a01c0d.js"><link rel="prefetch" href="/assets/js/403.4c059b3b.js"><link rel="prefetch" href="/assets/js/404.0b33c4fc.js"><link rel="prefetch" href="/assets/js/405.31f9f4d4.js"><link rel="prefetch" href="/assets/js/406.0ea31eb3.js"><link rel="prefetch" href="/assets/js/407.f8aeaf6a.js"><link rel="prefetch" href="/assets/js/408.e31d8e6d.js"><link rel="prefetch" href="/assets/js/409.527b15a8.js"><link rel="prefetch" href="/assets/js/41.e327929c.js"><link rel="prefetch" href="/assets/js/410.ab3891e5.js"><link rel="prefetch" href="/assets/js/411.cabd9e6f.js"><link rel="prefetch" href="/assets/js/412.c00feda1.js"><link rel="prefetch" href="/assets/js/413.da9d8d0d.js"><link rel="prefetch" href="/assets/js/414.86e019be.js"><link rel="prefetch" href="/assets/js/415.024f200c.js"><link rel="prefetch" href="/assets/js/416.7a7f201a.js"><link rel="prefetch" href="/assets/js/417.9039f0f5.js"><link rel="prefetch" href="/assets/js/418.d0af7314.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.766a1ebb.js"><link rel="prefetch" href="/assets/js/420.e143149b.js"><link rel="prefetch" href="/assets/js/421.ce227e9b.js"><link rel="prefetch" href="/assets/js/422.5af358c3.js"><link rel="prefetch" href="/assets/js/423.b72620fc.js"><link rel="prefetch" href="/assets/js/424.0fffeb28.js"><link rel="prefetch" href="/assets/js/425.40613664.js"><link rel="prefetch" href="/assets/js/426.2e22eebf.js"><link rel="prefetch" href="/assets/js/427.a553f7d4.js"><link rel="prefetch" href="/assets/js/428.76aab144.js"><link rel="prefetch" href="/assets/js/429.3f7541a4.js"><link rel="prefetch" href="/assets/js/43.bd29747c.js"><link rel="prefetch" href="/assets/js/430.499095ce.js"><link rel="prefetch" href="/assets/js/431.8ab3c62f.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.048e0058.js"><link rel="prefetch" href="/assets/js/435.b7f62b08.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.91febbb0.js"><link rel="prefetch" href="/assets/js/439.3bdc32c2.js"><link rel="prefetch" href="/assets/js/44.159635cf.js"><link rel="prefetch" href="/assets/js/440.4c502b0c.js"><link rel="prefetch" href="/assets/js/441.f720ea4c.js"><link rel="prefetch" href="/assets/js/442.a0317b88.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.991c700e.js"><link rel="prefetch" href="/assets/js/445.eebf3c94.js"><link rel="prefetch" href="/assets/js/446.baf1e6b5.js"><link rel="prefetch" href="/assets/js/447.36441c47.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.e543e021.js"><link rel="prefetch" href="/assets/js/452.23d29581.js"><link rel="prefetch" href="/assets/js/453.4cefab78.js"><link rel="prefetch" href="/assets/js/454.505893ff.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.34067054.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.9f72dafe.js"><link rel="prefetch" href="/assets/js/459.298e4e26.js"><link rel="prefetch" href="/assets/js/46.54e218d9.js"><link rel="prefetch" href="/assets/js/460.875ebcb2.js"><link rel="prefetch" href="/assets/js/461.2e995131.js"><link rel="prefetch" href="/assets/js/462.93690745.js"><link rel="prefetch" href="/assets/js/463.c13b2bec.js"><link rel="prefetch" href="/assets/js/464.bf750fb8.js"><link rel="prefetch" href="/assets/js/465.81c60d5d.js"><link rel="prefetch" href="/assets/js/466.a61d596e.js"><link rel="prefetch" href="/assets/js/467.3842176d.js"><link rel="prefetch" href="/assets/js/468.63c7bcdd.js"><link rel="prefetch" href="/assets/js/469.75d9181a.js"><link rel="prefetch" href="/assets/js/47.f17d1df2.js"><link rel="prefetch" href="/assets/js/470.e5676a3b.js"><link rel="prefetch" href="/assets/js/471.6277f541.js"><link rel="prefetch" href="/assets/js/472.125e562f.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.92a7814b.js"><link rel="prefetch" href="/assets/js/475.783a6e1b.js"><link rel="prefetch" href="/assets/js/476.13ab38fd.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.4dfe6494.js"><link rel="prefetch" href="/assets/js/479.4c41ba37.js"><link rel="prefetch" href="/assets/js/48.7e42f465.js"><link rel="prefetch" href="/assets/js/480.fc824c74.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.0f102a04.js"><link rel="prefetch" href="/assets/js/484.4717857e.js"><link rel="prefetch" href="/assets/js/485.a935adb5.js"><link rel="prefetch" href="/assets/js/486.6984e85f.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.a95486d4.js"><link rel="prefetch" href="/assets/js/49.f67f18f2.js"><link rel="prefetch" href="/assets/js/490.b3795263.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.fb97316c.js"><link rel="prefetch" href="/assets/js/493.fbd42d21.js"><link rel="prefetch" href="/assets/js/494.d49dbddc.js"><link rel="prefetch" href="/assets/js/495.960d7a7a.js"><link rel="prefetch" href="/assets/js/496.067e2f8a.js"><link rel="prefetch" href="/assets/js/497.8892200d.js"><link rel="prefetch" href="/assets/js/498.f370eeef.js"><link rel="prefetch" href="/assets/js/499.9a73037b.js"><link rel="prefetch" href="/assets/js/5.abc9632b.js"><link rel="prefetch" href="/assets/js/50.f653d3eb.js"><link rel="prefetch" href="/assets/js/500.3908db61.js"><link rel="prefetch" href="/assets/js/501.268d26f2.js"><link rel="prefetch" href="/assets/js/502.a0b06ceb.js"><link rel="prefetch" href="/assets/js/503.e58b9748.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.148ab5d9.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.60ef697c.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.6b74fe01.js"><link rel="prefetch" href="/assets/js/514.1ee3b99e.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.e29023be.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.ce2bd6da.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.017b325c.js"><link rel="prefetch" href="/assets/js/521.58a6306c.js"><link rel="prefetch" href="/assets/js/522.a40f2287.js"><link rel="prefetch" href="/assets/js/523.edb81dd7.js"><link rel="prefetch" href="/assets/js/524.16258545.js"><link rel="prefetch" href="/assets/js/525.4bcc1c02.js"><link rel="prefetch" href="/assets/js/526.c355d6fc.js"><link rel="prefetch" href="/assets/js/527.7c3b7161.js"><link rel="prefetch" href="/assets/js/528.ac47d7da.js"><link rel="prefetch" href="/assets/js/529.3e5e6bc0.js"><link rel="prefetch" href="/assets/js/53.d65bef48.js"><link rel="prefetch" href="/assets/js/530.13d1b1c6.js"><link rel="prefetch" href="/assets/js/531.04e2e897.js"><link rel="prefetch" href="/assets/js/532.533d810f.js"><link rel="prefetch" href="/assets/js/533.2bd83146.js"><link rel="prefetch" href="/assets/js/534.cd16ff61.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.7824cd53.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.911cc914.js"><link rel="prefetch" href="/assets/js/539.2de30ddc.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.1046697c.js"><link rel="prefetch" href="/assets/js/542.ef1092c7.js"><link rel="prefetch" href="/assets/js/543.54235171.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.6983d416.js"><link rel="prefetch" href="/assets/js/546.98a57513.js"><link rel="prefetch" href="/assets/js/547.8c0ea7a4.js"><link rel="prefetch" href="/assets/js/548.b2e5147f.js"><link rel="prefetch" href="/assets/js/549.110d8ccc.js"><link rel="prefetch" href="/assets/js/55.994be3d0.js"><link rel="prefetch" href="/assets/js/550.b30b0650.js"><link rel="prefetch" href="/assets/js/551.4038a02e.js"><link rel="prefetch" href="/assets/js/552.4ce5afbb.js"><link rel="prefetch" href="/assets/js/553.6156a64c.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.5e22fac0.js"><link rel="prefetch" href="/assets/js/556.e37be811.js"><link rel="prefetch" href="/assets/js/557.9ef5c296.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.78e2830c.js"><link rel="prefetch" href="/assets/js/56.a07a348f.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.4b1b4b8c.js"><link rel="prefetch" href="/assets/js/562.6ff741ad.js"><link rel="prefetch" href="/assets/js/563.10fe6323.js"><link rel="prefetch" href="/assets/js/564.23bc7ae3.js"><link rel="prefetch" href="/assets/js/565.99045d53.js"><link rel="prefetch" href="/assets/js/566.e0e8a181.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.cc37a022.js"><link rel="prefetch" href="/assets/js/569.0b2d095f.js"><link rel="prefetch" href="/assets/js/57.d8914610.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.8e5c59b6.js"><link rel="prefetch" href="/assets/js/572.5a60007c.js"><link rel="prefetch" href="/assets/js/573.f0e2a0f5.js"><link rel="prefetch" href="/assets/js/574.fffad53b.js"><link rel="prefetch" href="/assets/js/575.4297f78b.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.3824ee1c.js"><link rel="prefetch" href="/assets/js/58.02da9451.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.21bed6e7.js"><link rel="prefetch" href="/assets/js/582.c94227c4.js"><link rel="prefetch" href="/assets/js/583.f0611b7e.js"><link rel="prefetch" href="/assets/js/584.809f0bbb.js"><link rel="prefetch" href="/assets/js/585.ed41b413.js"><link rel="prefetch" href="/assets/js/586.957fe496.js"><link rel="prefetch" href="/assets/js/587.ff5d8d3c.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.275b0293.js"><link rel="prefetch" href="/assets/js/590.6ee9e42d.js"><link rel="prefetch" href="/assets/js/591.d2c873ee.js"><link rel="prefetch" href="/assets/js/592.63d5541c.js"><link rel="prefetch" href="/assets/js/593.1b5910fa.js"><link rel="prefetch" href="/assets/js/594.a9e7a407.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.93454a11.js"><link rel="prefetch" href="/assets/js/597.e92d65a6.js"><link rel="prefetch" href="/assets/js/598.05057c9f.js"><link rel="prefetch" href="/assets/js/599.534ff18f.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.222db31a.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.3d7ae82f.js"><link rel="prefetch" href="/assets/js/604.f3055453.js"><link rel="prefetch" href="/assets/js/605.af0c8252.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.974b78f2.js"><link rel="prefetch" href="/assets/js/608.26462e83.js"><link rel="prefetch" href="/assets/js/609.dd27e631.js"><link rel="prefetch" href="/assets/js/61.eaf63186.js"><link rel="prefetch" href="/assets/js/610.000c1e9d.js"><link rel="prefetch" href="/assets/js/611.44ff14d4.js"><link rel="prefetch" href="/assets/js/612.5b4036a0.js"><link rel="prefetch" href="/assets/js/613.3b71b5a2.js"><link rel="prefetch" href="/assets/js/614.28925cbf.js"><link rel="prefetch" href="/assets/js/615.a9e93388.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.31662991.js"><link rel="prefetch" href="/assets/js/618.6d9dcf9c.js"><link rel="prefetch" href="/assets/js/619.d2833531.js"><link rel="prefetch" href="/assets/js/62.7460f830.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.8109ad4e.js"><link rel="prefetch" href="/assets/js/622.06a5babf.js"><link rel="prefetch" href="/assets/js/623.ccf364a6.js"><link rel="prefetch" href="/assets/js/624.18209fc2.js"><link rel="prefetch" href="/assets/js/625.eb3f309d.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.af3ee1ec.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.18441910.js"><link rel="prefetch" href="/assets/js/630.f8552446.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.ca268728.js"><link rel="prefetch" href="/assets/js/633.e5bcf026.js"><link rel="prefetch" href="/assets/js/634.8ec52643.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.eb23b5c5.js"><link rel="prefetch" href="/assets/js/637.eee47171.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.9bcd2f77.js"><link rel="prefetch" href="/assets/js/640.a02db32d.js"><link rel="prefetch" href="/assets/js/641.25990053.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.becf6b9f.js"><link rel="prefetch" href="/assets/js/644.ac752ef6.js"><link rel="prefetch" href="/assets/js/645.cf92857c.js"><link rel="prefetch" href="/assets/js/646.d4646b84.js"><link rel="prefetch" href="/assets/js/647.b1895af0.js"><link rel="prefetch" href="/assets/js/648.c26381da.js"><link rel="prefetch" href="/assets/js/649.c0818833.js"><link rel="prefetch" href="/assets/js/650.8d4d92d6.js"><link rel="prefetch" href="/assets/js/651.4ff5f780.js"><link rel="prefetch" href="/assets/js/66.f1b27e87.js"><link rel="prefetch" href="/assets/js/67.47082498.js"><link rel="prefetch" href="/assets/js/68.502aa70c.js"><link rel="prefetch" href="/assets/js/69.9a3a9a86.js"><link rel="prefetch" href="/assets/js/70.1a8828f1.js"><link rel="prefetch" href="/assets/js/71.d32d3acb.js"><link rel="prefetch" href="/assets/js/72.0d13e6d5.js"><link rel="prefetch" href="/assets/js/73.be72ee5e.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.1450e671.js"><link rel="prefetch" href="/assets/js/76.f41837bd.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.e5277cab.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.d33b4c24.js"><link rel="prefetch" href="/assets/js/81.e3349db5.js"><link rel="prefetch" href="/assets/js/82.304e56e7.js"><link rel="prefetch" href="/assets/js/83.886030fc.js"><link rel="prefetch" href="/assets/js/84.3d1dd526.js"><link rel="prefetch" href="/assets/js/85.9f2d1ef1.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.0d02b425.js"><link rel="prefetch" href="/assets/js/88.8e3d0899.js"><link rel="prefetch" href="/assets/js/89.414af620.js"><link rel="prefetch" href="/assets/js/9.5a6081e3.js"><link rel="prefetch" href="/assets/js/90.e20539a2.js"><link rel="prefetch" href="/assets/js/91.e9e57bd4.js"><link rel="prefetch" href="/assets/js/92.9b5cf84f.js"><link rel="prefetch" href="/assets/js/93.366136f2.js"><link rel="prefetch" href="/assets/js/94.524b1442.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.eb5ca57b.js"><link rel="prefetch" href="/assets/js/97.912c0f6a.js"><link rel="prefetch" href="/assets/js/98.825483b2.js"><link rel="prefetch" href="/assets/js/99.ae4d5edd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/vue/monitor/docs/begin/begin.html" class="sidebar-link">Echarts入门</a></li><li><a href="/dev/vue/monitor/docs/config/config.html" class="sidebar-link">整体项目配置</a></li><li><a href="/dev/vue/monitor/docs/components/components.html" aria-current="page" class="active sidebar-link">子组件开发</a></li><li><a href="/dev/vue/monitor/docs/rebuild/rebuild.html" class="sidebar-link">组件重构</a></li><li><a href="/dev/vue/monitor/docs/api/api.html" class="sidebar-link">请求封装与API对接</a></li><li><a href="/dev/vue/monitor/docs/element-admin/element-admin.html" class="sidebar-link">element admin的修改</a></li><li><a href="/dev/vue/monitor/docs/django/django.html" class="sidebar-link">Django后台支持</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>子组件开发</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">子组件开发</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2021/7/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-在components目录中-创建组件-且在home-vue中引入这些组件"><a href="#一-在components目录中-创建组件-且在home-vue中引入这些组件" class="header-anchor">#</a> 一：在components目录中，创建组件，且在Home.vue中引入这些组件</h2> <h3 id="一-在components目录中创建组件分类"><a href="#一-在components目录中创建组件分类" class="header-anchor">#</a> （一）在components目录中创建组件分类</h3> <p><img src="/assets/img/2021-01-1410.42.00.69e592dd.png" alt="Alt text"></p> <ul><li>创建TopView、SalesView、BottomView、MapView四个目录，内部的index.vue格式如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div&gt;Top View&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>在Home.vue中引入这个4个组件， 在<code>&lt;script&gt;标签</code>内导入组件，将组件设置为Home.vue组件的子组件，如果不给子组件取名，那么默认的子组件名称是 <code>驼峰改小写，加横线连接</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;home&quot;&gt;
+    &lt;!-- 在vue的语法中，引用组件，需要将驼峰的组件名改为小写，且用横线连接 --&gt;
+    &lt;top-view /&gt;
+    &lt;sales-view /&gt;
+    &lt;bottom-view /&gt;
+    &lt;map-view /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+// 导入组件
+import TopView from '../components/TopView'
+import SalesView from '../components/SalesView'
+import BottomView from '../components/BottomView'
+import MapView from '../components/MapView'
+
+export default {
+  name: 'Home',
+  // 加入到Home.vue的子组件中，如果不给子组件取名字，那么默认的名字就是&lt;top-view /&gt;
+  components: {
+    TopView,
+    SalesView,
+    BottomView,
+    MapView
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+  /* 这里的样式会作用到template中 */
+  .home {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: #eee;
+    box-sizing: border-box;
+  }
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><ul><li>此时页面的展示情况如下</li></ul> <p><img src="/assets/img/2021-01-1411.01.16.12335d68.png" alt="Alt text"></p> <h3 id="二-小结此时项目的建设思路-非常重要"><a href="#二-小结此时项目的建设思路-非常重要" class="header-anchor">#</a> （二）小结此时项目的建设思路(非常重要)</h3> <ul><li><p>1：在main.js中，创建一个Vue实例，在Vue实例中，引用了整个项目的<code>router</code>路由，render方法，将App这个页面组件渲染成一个虚拟Dom树，基于mount方法将这个虚拟Dom树挂载到index.html页面的id为app的节点上。</p></li> <li><p>2：在App.vue这个组件中，有一个渲染入口<code>&lt;router-view /&gt;</code>，所有需要被渲染展示的组件都会在这里展示</p></li> <li><p>3：在router组件中(router/index.js)，配置了项目的路由规则，指定了<code>url</code> 与 <code>component</code>的对应关系，当访问url的时候，就会渲染对应的component，然后将这个component展示在router组件的<code>&lt;router-view /&gt;</code>标签中</p></li> <li><p>4：在Home.vue组件中，引入了4个子组件，并且将这个四个子组件显示在Home的template模板中</p></li></ul> <h2 id="二-子组件开发"><a href="#二-子组件开发" class="header-anchor">#</a> 二：子组件开发</h2> <h3 id="一-topview组件开发"><a href="#一-topview组件开发" class="header-anchor">#</a> （一）TopView组件开发</h3> <ul><li>首先在plugins/element.js中引入<code>Card, Row, Col</code>组件，element.js内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import { Card, Row, Col } from 'element-ui'
+
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>将<code>Card, Row, Col</code>组件引入到TopView/index.vue中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;top-view&quot;&gt;
+    &lt;!-- gutter指的是每个col的间隔 --&gt;
+    &lt;el-row :gutter=&quot;20&quot;&gt;
+      &lt;!-- span指的是每个col占6格 --&gt;
+      &lt;el-col :span=&quot;6&quot;&gt;
+        &lt;!-- padding是让文字的周围具有20的边距 --&gt;
+        &lt;el-card shadow=&quot;hover&quot; :body-style=&quot;{padding: 20}&quot;&gt;
+          鼠标悬浮时显示
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+      &lt;el-col :span=&quot;6&quot;&gt;
+        &lt;el-card shadow=&quot;hover&quot;&gt;
+          鼠标悬浮时显示
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+      &lt;el-col :span=&quot;6&quot;&gt;
+        &lt;el-card shadow=&quot;hover&quot;&gt;
+          鼠标悬浮时显示
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+      &lt;el-col :span=&quot;6&quot;&gt;
+        &lt;el-card shadow=&quot;hover&quot;&gt;
+          鼠标悬浮时显示
+        &lt;/el-card&gt;
+      &lt;/el-col&gt;
+    &lt;/el-row&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><ul><li>此时TopView是这样的</li></ul> <p><img src="/assets/img/2021-01-1512.45.20.c4b10a0a.png" alt="Alt text"></p> <ul><li>再在components目录下，创建一个CommonCard/index.vue组件，用于展示内部的内容。在这个组件中设置了slot插槽，目的是让引用了CommonCard组件的父组件，可以基于插槽给CommonCard子组件添加Dom结构或设置样式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;common-card&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;{{title}}&lt;/div&gt;
+    &lt;div class=&quot;value&quot;&gt;{{value}}&lt;/div&gt;
+    &lt;div class=&quot;chart&quot;&gt;
+      &lt;!-- 插槽显不显示、怎样显示是由父组件来控制的，而插槽在哪里显示就由子组件来进行控制  --&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;total&quot;&gt;
+      &lt;!-- 设置一个name为footer的插槽，可以在父组件中给插槽设置样式  --&gt;
+      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+  export default {
+    // 接收父组件传递的数据
+    props: {
+      title: String,
+      value: String
+    }
+  }
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+  .title{
+    font-size: 12px;
+    color: #999;
+  }
+  .value{
+    font-size: 25px;
+    color: #000;
+    margin-top: 5px;
+    letter-spacing: 1px;
+  }
+  .chart{
+    height: 50px;
+    background-color: red;
+  }
+  .line{
+    margin: 10px 0;
+    border-top: 1px solid #eee;
+  }
+  .total{
+    font-size: 12px;
+    color: #666;
+  }
+
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><ul><li>由于这个<code>CommonCard</code>组件是一个公共组件，因此可以基于mixin的思想把组件抽象出来，如果有其他组件需要用到这个<code>CommonCard</code>组件，直接继承就好。因此在src目录下创建一个mixins目录，在mixins目录下创建commonCardMixin.js，内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 导入组件
+import CommonCard from '../components/CommonCard'
+
+// 将这个CommonCard封装到mixin中
+export default {
+  components: {
+    CommonCard
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>在TotalSalese/index.vue中，基于mixin引入CommonCard组件，并且给子组件传递数据。这里诠释了Vue的基本开发思想：<code>在父组件中使用子组件的思想为 一导入(在script标签内导入)，二应用(在export default中应用)，三使用(在template标签中使用)</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;!-- 3：使用mixin中的common-card组件 --&gt;
+  &lt;!-- title和value是给子组件传递的数据 --&gt;
+  &lt;common-card title=&quot;累计销售额&quot; value=&quot;$ 1999&quot;&gt;
+    &lt;!-- 给子组件的slot通用插槽添加数据 --&gt;
+    &lt;template&gt;
+      &lt;div class=&quot;compare&quot;&gt;&lt;/div&gt;
+    &lt;/template&gt;
+    &lt;!--  指定给子组件的footer插槽，添加数据  --&gt;
+    &lt;template v-slot:footer&gt;
+      &lt;div&gt;
+        &lt;span&gt;昨日销售额：&lt;/span&gt;
+        &lt;span class=&quot;money&quot;&gt;$ 300&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/common-card&gt;
+
+&lt;/template&gt;
+
+&lt;script&gt;
+  // 1：导入mixin
+  import commonCardMixin from '../../mixins/commonCardMixin'
+  // 2：应用mixin
+  export default {
+      mixins: [commonCardMixin]
+  }
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+  .compare{
+    background: yellow;
+    height: 50%;
+    font-size: 12px;
+  }
+
+  .money{
+    margin-left: 5px;
+    color: black;
+    font-weight: 700;
+  }
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><ul><li>同时在TotalOrder、TodayUsers、TotalUsers这三个组件中，也导入mixin</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+   &lt;!-- 使用--&gt;
+  &lt;common-card /&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+// 导入
+import commonCardMixin from '@/mixins/commonCardMixin'
+
+export default {
+  // 应用
+  mixins: [commonCardMixin]
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>此时页面效果如下</li></ul> <p><img src="/assets/img/2021-01-164.08.11.34f96705.png" alt="Alt text"></p> <h3 id="二-继续完善totalsales组件开发"><a href="#二-继续完善totalsales组件开发" class="header-anchor">#</a> （二）继续完善TotalSales组件开发</h3> <ul><li>发现在footer这个slot template模板中，div标签是多余的，因此删除掉，删除掉后，内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;template v-slot:footer&gt;
+      &lt;span&gt;昨日销售额：&lt;/span&gt;
+      &lt;span class=&quot;money&quot;&gt;$ 300&lt;/span&gt;
+    &lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>继续完善TotalSales/index.vue这个父组件：在chart这个slot里面，添加数据</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;!-- 使用mixin中的common-card组件 --&gt;
+  &lt;!-- title和value是给子组件传递的数据 --&gt;
+  &lt;common-card title=&quot;累计销售额&quot; value=&quot;$ 1999&quot;&gt;
+    &lt;!-- 在chart这个slot里面，添加数据 --&gt;
+    &lt;template&gt;
+      &lt;div class=&quot;compare-wrapper&quot;&gt;
+        &lt;div class=&quot;compare&quot;&gt;
+          &lt;span&gt;日同比&lt;/span&gt;
+          &lt;span class=&quot;emphasis&quot;&gt;7.33%&lt;/span&gt;
+          &lt;div class=&quot;increase&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;compare&quot;&gt;
+          &lt;span&gt;月同比&lt;/span&gt;
+          &lt;span class=&quot;emphasis&quot;&gt;7.33%&lt;/span&gt;
+          &lt;div class=&quot;decrease&quot; /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+    &lt;!--  指定给子组件的footer插槽，添加数据  --&gt;
+    &lt;template v-slot:footer&gt;
+      &lt;span&gt;昨日销售额：&lt;/span&gt;
+      &lt;span class=&quot;emphasis&quot;&gt;$ 300&lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/common-card&gt;
+
+&lt;/template&gt;
+
+&lt;script&gt;
+  // 导入mixin
+  import commonCardMixin from '../../mixins/commonCardMixin'
+  // 应用mixin
+  export default {
+      mixins: [commonCardMixin]
+  }
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+  .compare-wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .compare{
+      // background: yellow;
+      // height: 50%;
+      display: flex;
+      align-content: center;
+      font-size: 12px;
+      margin-top: 3px;
+      color: #666;
+    }
+  }
+
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><ul><li>在TotalSales/index.vue这个父组件这个父组件中，slot插槽中的样式可以通用，比如说class=emphasis，那么可以将样式写在CommonCard/index.vue这个子组件中，CommonCard/index.vue内容如下，红色和绿色三角形是通过CSS样式实现的</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;common-card&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;{{title}}&lt;/div&gt;
+    &lt;div class=&quot;value&quot;&gt;{{value}}&lt;/div&gt;
+    &lt;div class=&quot;chart&quot;&gt;
+      &lt;!-- 插槽显不显示、怎样显示是由父组件来控制的，而插槽在哪里显示就由子组件来进行控制  --&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;line&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;total&quot;&gt;
+      &lt;!-- 设置一个name为footer的插槽，可以在父组件中给插槽设置样式  --&gt;
+      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+  export default {
+    // 接收父组件传递的数据
+    props: {
+      title: String,
+      value: String
+    }
+  }
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+  .title{
+    font-size: 12px;
+    color: #999;
+  }
+  .value{
+    font-size: 25px;
+    color: #000;
+    margin-top: 5px;
+    letter-spacing: 1px;
+  }
+  .chart{
+    height: 50px;
+    //background-color: red;
+  }
+  .line{
+    margin: 10px 0;
+    border-top: 1px solid #eee;
+  }
+  .total{
+    font-size: 12px;
+    color: #666;
+  }
+
+&lt;/style&gt;
+
+&lt;!--不加scoped的样式可以被全局引用--&gt;
+&lt;style lang=&quot;scss&quot;&gt;
+  //  这是数字加粗的样式
+  .emphasis{
+    margin-left: 5px;
+    color: black;
+    font-weight: 700;
+  }
+  //  这是红色三角形的样式
+  .increase{
+    width: 0;
+    height: 0;
+    border-width: 3px;
+    border-color: transparent transparent red transparent;
+    border-style: solid;
+    margin: 5px 0 0 5px;
+  }
+  //  这是绿色三角形的样式
+  .decrease{
+    width: 0;
+    height: 0;
+    border-width: 3px;
+    border-color: green transparent transparent transparent;
+    border-style: solid;
+    margin: 5px 0 0 5px;
+  }
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><ul><li>代码开发到这里完成的效果如下</li></ul> <p><img src="/assets/img/2021-01-1712.19.30.c66eaa11.png" alt="Alt text"></p> <h3 id="三-继续完善totalorder组件开发"><a href="#三-继续完善totalorder组件开发" class="header-anchor">#</a> （三）继续完善TotalOrder组件开发</h3> <ul><li><p>思考：TotalOrder组件与TotalSales组件不同的是，在TotalOrder组件中第三行和第四行合并为了一个图表，因此这里开始引入echarts绘图</p></li> <li><p>在默认的slot template中，创建一个id，由于挂载echarts图表，在mounted( )函数中，将图表进行绘制，但是在开发过程中发现echarts使用的是5.0.0版本，main.js中之前<code>import Echarts from 'echarts'</code>无法引入<code>cnpm</code>安装的echarts库，因此先修改main.js引入echarts的方式，main.js内容如下</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import './plugins/element.js'
+// 导入Echarts
+// import Echarts from 'echarts'
+
+Vue.config.productionTip = false
+// 将Echarts组件捆绑到Vue的原型中，以后就需要使用到Echarts的地方就不需要重复导入了
+// Vue.prototype.$echarts = Echarts
+// 使用require引入echarts
+Vue.prototype.$echarts = require('echarts')
+
+new Vue({
+  // 将router注册到根组件
+  router,
+  // 这是ES6中箭头函数的写法，意思是生成一个 VNode节点，render 函数得到这个 VNode 节点之后, 返回给 Vue.js 的 mount 函数，渲染成真实 DOM 节点，并挂载到根节点上。
+  render: h =### h(App)
+  // 这里是基于mount函数将渲染的真实DOM节点挂载到app这个节点上
+}).$mount('#app')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><ul><li>开发TotalOrder/index.vue组件，内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;!-- 累计订单 --&gt;
+  &lt;common-card title=&quot;累计订单量&quot; value=&quot;278424&quot;&gt;
+    &lt;template&gt;
+      &lt;!-- 这里是挂载一张图, 绑定style属性的宽高是100% --&gt;
+      &lt;div id=&quot;total-orders-chart&quot; :style=&quot;{ width: '100%', height: '100%' }&quot; /&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:footer&gt;
+      &lt;span&gt;昨日订单量&lt;/span&gt;
+      &lt;span class=&quot;emphasis&quot;&gt;$ 349&lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/common-card&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import commonCardMixin from '@/mixins/commonCardMixin'
+
+export default {
+  mixins: [commonCardMixin],
+  // 一个钩子函数，一般在初始化页面完成后，再对dom节点进行相关操作
+  mounted () {
+    const chartDom = document.getElementById('total-orders-chart')
+    // 这里需要理解js的原型链
+    // 在echarts的初始化时，可以传递三个参数，第一个是挂载点(dom节点)，第二个是主题('light'或'dark')，第三个是图类型('svg')
+    const chart = this.$echarts.init(chartDom)
+    chart.setOption({
+      xAxis: {
+        // 默认情况下，type是line，展示出来是直线, 所以改为category
+        type: 'category',
+        // 让X轴隐藏
+        show: false,
+        // 默认情况下，图的两边会有间距，因此设置false
+        boundaryGap: false
+      },
+      yAxis: {
+        // 不展示y轴
+        show: false
+      },
+      series: [{
+        // 类型是折线图
+        type: 'line',
+        // 指定数据，这里可以使用dataset替换
+        data: [532, 240, 124, 290, 149, 267, 243, 154, 255, 249],
+        // 让折线图显示区域面积
+        areaStyle: {
+          color: 'purple'
+        },
+        // 让折线图平滑显示
+        smooth: true,
+        // 让折线图线条宽度看不见，只看见面积
+        lineStyle: {
+          width: 0
+        },
+        // 让数据点隐藏
+        itemStyle: {
+          opacity: 0
+        }
+      }],
+      // 设置图表在div中的绝对定位
+      grid: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+      }
+    })
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br></div></div><ul><li>最后效果如下</li></ul> <p><img src="/assets/img/2021-01-1712.48.53.919e855c.png" alt="Alt text"></p> <h3 id="四-继续完善totalorder组件开发"><a href="#四-继续完善totalorder组件开发" class="header-anchor">#</a> （四）继续完善TotalOrder组件开发</h3> <ul><li><p>思考：TodayUsers组件与TotalOrder组件不同的是，中间的图从折线图变为了柱状图</p></li> <li><p>修改TotalOrder/index.vue组件</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;common-card  title=&quot;今日交易用户数&quot; value=&quot;7,346&quot;&gt;
+    &lt;template&gt;
+      &lt;!-- 这里是挂载一张图, 绑定style属性的宽高是100% --&gt;
+      &lt;div id=&quot;today-users-chart&quot; :style=&quot;{ width: '100%', height: '100%' }&quot; /&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:footer&gt;
+      &lt;span&gt;订单成功率&lt;/span&gt;
+      &lt;span class=&quot;emphasis&quot;&gt;78%&lt;/span&gt;
+    &lt;/template&gt;
+  &lt;/common-card&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import commonCardMixin from '@/mixins/commonCardMixin'
+
+export default {
+  mixins: [commonCardMixin],
+  mounted () {
+    const chartDom = document.getElementById('today-users-chart')
+    const chart = this.$echarts.init(chartDom)
+    chart.setOption({
+      color: ['green'],
+      xAxis: {
+        show: false,
+        data: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00']
+      },
+      yAxis: {
+        show: false
+      },
+      series: [{
+        // 类型是折线图
+        type: 'bar',
+        // 指定数据，这里可以使用dataset替换
+        data: [532, 240, 124, 290, 149, 267, 243, 154, 255, 249],
+        barWidth: '60%'
+      }],
+      // 设置图表在div中的绝对定位
+      grid: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+      }
+    })
+  }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><ul><li>最终效果如下</li></ul> <p><img src="/assets/img/2021-01-1712.48.25.4234db19.png" alt="Alt text"></p> <h3 id="五-继续完善totalusers组件开发"><a href="#五-继续完善totalusers组件开发" class="header-anchor">#</a> （五）继续完善TotalUsers组件开发</h3> <ul><li>TotalUsers/index.vue内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;common-card title=&quot;累计销售额&quot; value=&quot;$ 1999&quot;&gt;
+    &lt;template&gt;
+      &lt;div id=&quot;total-users-chart&quot; :style=&quot;{ width: '100%', height: '100%' }&quot; /&gt;
+    &lt;/template&gt;
+    &lt;template v-slot:footer&gt;
+      &lt;div class=&quot;total-users-footer&quot;&gt;
+        &lt;span&gt;日同比&lt;/span&gt;
+        &lt;span class=&quot;emphasis&quot;&gt;1.87%&lt;/span&gt;
+        &lt;div class=&quot;increase&quot;&gt;&lt;/div&gt;
+        &lt;span class=&quot;month&quot;&gt;月同比&lt;/span&gt;
+        &lt;span class=&quot;emphasis&quot;&gt;2.87%&lt;/span&gt;
+        &lt;div class=&quot;decrease&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/common-card&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import commonCardMixin from '@/mixins/commonCardMixin'
+
+export default {
+  mixins: [commonCardMixin],
+  mounted () {
+    const chartDom = document.getElementById('total-users-chart')
+    const chart = this.$echarts.init(chartDom)
+    chart.setOption({
+      // 这里是让X轴显示数值，也就是柱状图倒过来
+      xAxis: {
+        type: 'value',
+        show: false
+      },
+      // 这里是让Y轴显示类别
+      yAxis: {
+        show: false,
+        type: 'category'
+      },
+      series: [
+        {
+          // 将两个柱状绘制在一起，可以让stack取同样的名字
+          stack: '总量',
+          type: 'bar',
+          // 第一个柱的数值
+          data: [100],
+          // 宽度
+          barWidth: 10,
+          itemStyle: {
+            color: 'blue'
+          }
+        },
+        {
+          // 将两个柱状绘制在一起，可以让stack取同样的名字
+          stack: '总量',
+          type: 'bar',
+          // 第二个柱的数值
+          data: [250],
+          barWidth: 10,
+          itemStyle: {
+            color: 'green'
+          }
+        },
+        {
+          // 这个图形是自定义系列
+          type: 'custom',
+          // 让箭头的数值与第一个柱保持一致
+          data: [100],
+          stack: '总量',
+          // 返回图形
+          renderItem: (params, api) =### {
+            // 获取data数组中的第一个元素
+            const value = api.value(0)
+            // 获取到X轴的位置
+            const endPoint = api.coord([value, 0])
+            // 把图返回
+            return {
+              type: 'group',
+              position: endPoint,
+              // children属性可以绘制多个图形在一起
+              children: [
+                {
+                  type: 'path',
+                  shape: {
+                    // svg的data路径
+                    d: 'M171.15136 341.00224l684.02176 0-342.016 341.99552L171.15136 341.00224z',
+                    // 图标的坐标位置
+                    x: -5,
+                    y: -15,
+                    // 图标的宽高
+                    width: 10,
+                    height: 10,
+                    // 让图形自动填充
+                    layout: 'cover'
+                  },
+                  // 设置图标的样式
+                  style: {
+                    fill: 'red'
+                  }
+                },
+                {
+                  type: 'path',
+                  shape: {
+                    d: 'M830.687738 603.071182c0 9.614985-3.933589 17.949814-11.799744 25.007557-7.867178 7.05672-17.222243 10.56052-28.065196 10.512425L232.716714 638.591163c-10.789741 0-20.144806-3.5038-28.064172-10.512425-7.919367-7.009647-11.852956-15.344476-11.799744-25.007557 0.053212-9.660011 3.986801-17.996886 11.799744-25.00551l279.05253-248.641917c7.867178-7.009647 17.22122-10.513448 28.065196-10.513448 10.842952 0 20.196994 3.504824 28.064172 10.513448l279.05253 248.641917C826.754149 585.074296 830.687738 593.411171 830.687738 603.071182z',
+                    x: -5,
+                    y: 5,
+                    width: 10,
+                    height: 10,
+                    layout: 'cover'
+                  },
+                  style: {
+                    fill: 'red'
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      grid: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+      }
+    })
+  }
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+  .total-users-footer {
+    display: flex;
+    align-items: center;
+    .month {
+      margin-left: 10px;
+    }
+  }
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br></div></div><ul><li>效果如下</li></ul> <p><img src="data:image/png;base64,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" alt="Alt text"></p></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/vue/monitor/docs/config/config.html" class="prev">
+            整体项目配置
+          </a></span> <span class="next"><a href="/dev/vue/monitor/docs/rebuild/rebuild.html">
+            组件重构
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#一-在components目录中-创建组件-且在home-vue中引入这些组件" class="sidebar-link reco-side-一-在components目录中-创建组件-且在home-vue中引入这些组件" data-v-cb1513f6>一：在components目录中，创建组件，且在Home.vue中引入这些组件</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#一-在components目录中创建组件分类" class="sidebar-link reco-side-一-在components目录中创建组件分类" data-v-cb1513f6>（一）在components目录中创建组件分类</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#二-小结此时项目的建设思路-非常重要" class="sidebar-link reco-side-二-小结此时项目的建设思路-非常重要" data-v-cb1513f6>（二）小结此时项目的建设思路(非常重要)</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#二-子组件开发" class="sidebar-link reco-side-二-子组件开发" data-v-cb1513f6>二：子组件开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#一-topview组件开发" class="sidebar-link reco-side-一-topview组件开发" data-v-cb1513f6>（一）TopView组件开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#二-继续完善totalsales组件开发" class="sidebar-link reco-side-二-继续完善totalsales组件开发" data-v-cb1513f6>（二）继续完善TotalSales组件开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#三-继续完善totalorder组件开发" class="sidebar-link reco-side-三-继续完善totalorder组件开发" data-v-cb1513f6>（三）继续完善TotalOrder组件开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#四-继续完善totalorder组件开发" class="sidebar-link reco-side-四-继续完善totalorder组件开发" data-v-cb1513f6>（四）继续完善TotalOrder组件开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/monitor/docs/components/components.html#五-继续完善totalusers组件开发" class="sidebar-link reco-side-五-继续完善totalusers组件开发" data-v-cb1513f6>（五）继续完善TotalUsers组件开发</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.ef2ae1d4.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/65.5ee94aae.js" defer></script>
+  </body>
+</html>

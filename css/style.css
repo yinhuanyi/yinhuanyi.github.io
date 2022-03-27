@@ -1,0 +1,24 @@
+/*!* 在页面中使用css选择器选择 *!*/
+/*#app .navbar .home-link .site-name:before {*/
+/*    display: inline-block;*/
+/*    content: '';*/
+/*    width: 3rem;*/
+/*    height: 2.4rem;*/
+/*    background: url("../img/logo.png") no-repeat;*/
+/*    background-size: 100% 100%;*/
+/*    vertical-align: middle;*/
+/*}*/
+
+/* 让全文搜索高亮显示 */
+/*.search-box .suggestion a .suggestion-row .suggestion-content .highlight {*/
+/*    color: red;*/
+/*}*/
+
+code {
+    color: red;
+}
+
+.suggestions .highlight{
+    color: red;
+    font-weight: bold;
+}

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Golang 并发编程(goroutine、channel、并发安全和锁) | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.ef2ae1d4.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/142.b99f910e.js" as="script"><link rel="prefetch" href="/assets/js/10.256d2d9e.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.b17181c3.js"><link rel="prefetch" href="/assets/js/103.f8859f28.js"><link rel="prefetch" href="/assets/js/104.9fab75ef.js"><link rel="prefetch" href="/assets/js/105.25712a6b.js"><link rel="prefetch" href="/assets/js/106.321faf0e.js"><link rel="prefetch" href="/assets/js/107.edbc3950.js"><link rel="prefetch" href="/assets/js/108.0922d38e.js"><link rel="prefetch" href="/assets/js/109.451e04b9.js"><link rel="prefetch" href="/assets/js/11.452c26e6.js"><link rel="prefetch" href="/assets/js/110.f7745add.js"><link rel="prefetch" href="/assets/js/111.82f49a62.js"><link rel="prefetch" href="/assets/js/112.3eca9556.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.a1ffa028.js"><link rel="prefetch" href="/assets/js/115.3ebc5b5f.js"><link rel="prefetch" href="/assets/js/116.68f73bc2.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.691d7c30.js"><link rel="prefetch" href="/assets/js/119.b9e4d8c9.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.033a7ce9.js"><link rel="prefetch" href="/assets/js/121.4e17b9cc.js"><link rel="prefetch" href="/assets/js/122.f6342712.js"><link rel="prefetch" href="/assets/js/123.3cc58446.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.e7ca9035.js"><link rel="prefetch" href="/assets/js/126.95b05ce9.js"><link rel="prefetch" href="/assets/js/127.914d6fb9.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.acd254e3.js"><link rel="prefetch" href="/assets/js/13.742bd49b.js"><link rel="prefetch" href="/assets/js/130.56b0744c.js"><link rel="prefetch" href="/assets/js/131.4ef95683.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.566bd1f7.js"><link rel="prefetch" href="/assets/js/134.a93be345.js"><link rel="prefetch" href="/assets/js/135.a79f211c.js"><link rel="prefetch" href="/assets/js/136.2a6f9b42.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.624fc52f.js"><link rel="prefetch" href="/assets/js/139.ca7fb473.js"><link rel="prefetch" href="/assets/js/14.5e9f76b2.js"><link rel="prefetch" href="/assets/js/140.696be263.js"><link rel="prefetch" href="/assets/js/141.bb08404f.js"><link rel="prefetch" href="/assets/js/143.c4bd878c.js"><link rel="prefetch" href="/assets/js/144.21df22c7.js"><link rel="prefetch" href="/assets/js/145.7027e2a4.js"><link rel="prefetch" href="/assets/js/146.2ee3be79.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.19e9eaee.js"><link rel="prefetch" href="/assets/js/149.c6118e48.js"><link rel="prefetch" href="/assets/js/15.6f107f59.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.3aa4d6ef.js"><link rel="prefetch" href="/assets/js/153.882d8a36.js"><link rel="prefetch" href="/assets/js/154.f0ab3594.js"><link rel="prefetch" href="/assets/js/155.e2ee68b1.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.ece42361.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.b5706a52.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.86946675.js"><link rel="prefetch" href="/assets/js/161.68382dc7.js"><link rel="prefetch" href="/assets/js/162.db9c0697.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.c51b79ba.js"><link rel="prefetch" href="/assets/js/166.a5599c72.js"><link rel="prefetch" href="/assets/js/167.d93d6d09.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.c5fbab48.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.e5dde466.js"><link rel="prefetch" href="/assets/js/171.897a5989.js"><link rel="prefetch" href="/assets/js/172.a3fa92f8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.c3e01b8b.js"><link rel="prefetch" href="/assets/js/175.a3cdba2f.js"><link rel="prefetch" href="/assets/js/176.d72805d0.js"><link rel="prefetch" href="/assets/js/177.ebbd2633.js"><link rel="prefetch" href="/assets/js/178.2a27768f.js"><link rel="prefetch" href="/assets/js/179.9286be73.js"><link rel="prefetch" href="/assets/js/18.4ee3074e.js"><link rel="prefetch" href="/assets/js/180.f18cbd55.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.08ce6859.js"><link rel="prefetch" href="/assets/js/183.1dc25b0f.js"><link rel="prefetch" href="/assets/js/184.3c961f5c.js"><link rel="prefetch" href="/assets/js/185.f9f79dff.js"><link rel="prefetch" href="/assets/js/186.28f91be3.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.5df2da19.js"><link rel="prefetch" href="/assets/js/189.a794c794.js"><link rel="prefetch" href="/assets/js/19.118ab13e.js"><link rel="prefetch" href="/assets/js/190.7cdec2de.js"><link rel="prefetch" href="/assets/js/191.0297e6cf.js"><link rel="prefetch" href="/assets/js/192.697228d1.js"><link rel="prefetch" href="/assets/js/193.5cb8d43d.js"><link rel="prefetch" href="/assets/js/194.04976a6f.js"><link rel="prefetch" href="/assets/js/195.8d606920.js"><link rel="prefetch" href="/assets/js/196.c37afe55.js"><link rel="prefetch" href="/assets/js/197.2c6d1226.js"><link rel="prefetch" href="/assets/js/198.038c24f2.js"><link rel="prefetch" href="/assets/js/199.ae91bccb.js"><link rel="prefetch" href="/assets/js/20.eb4595e8.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.f1d6cf9b.js"><link rel="prefetch" href="/assets/js/202.2ea1d1b9.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.da0a6eb7.js"><link rel="prefetch" href="/assets/js/205.3a31f1d9.js"><link rel="prefetch" href="/assets/js/206.29121567.js"><link rel="prefetch" href="/assets/js/207.2d8fe84f.js"><link rel="prefetch" href="/assets/js/208.2b32fee1.js"><link rel="prefetch" href="/assets/js/209.b95ecdfa.js"><link rel="prefetch" href="/assets/js/21.11c481e1.js"><link rel="prefetch" href="/assets/js/210.b71de55d.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.356048bc.js"><link rel="prefetch" href="/assets/js/215.80bd52a8.js"><link rel="prefetch" href="/assets/js/216.a693de49.js"><link rel="prefetch" href="/assets/js/217.d3f0cb2d.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.4fc65310.js"><link rel="prefetch" href="/assets/js/22.09e52363.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.37a9bc26.js"><link rel="prefetch" href="/assets/js/222.14c4ce9a.js"><link rel="prefetch" href="/assets/js/223.79200d95.js"><link rel="prefetch" href="/assets/js/224.b633ba46.js"><link rel="prefetch" href="/assets/js/225.eb4316ed.js"><link rel="prefetch" href="/assets/js/226.f5def5b6.js"><link rel="prefetch" href="/assets/js/227.a30097c7.js"><link rel="prefetch" href="/assets/js/228.08ddff61.js"><link rel="prefetch" href="/assets/js/229.cdf68885.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.26d4f9a9.js"><link rel="prefetch" href="/assets/js/231.23da383d.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.dcbeedc1.js"><link rel="prefetch" href="/assets/js/234.cedc03a0.js"><link rel="prefetch" href="/assets/js/235.6b91d63a.js"><link rel="prefetch" href="/assets/js/236.082930c3.js"><link rel="prefetch" href="/assets/js/237.71a0d31d.js"><link rel="prefetch" href="/assets/js/238.3b347296.js"><link rel="prefetch" href="/assets/js/239.199b5800.js"><link rel="prefetch" href="/assets/js/24.1a0ec854.js"><link rel="prefetch" href="/assets/js/240.5e7fe51a.js"><link rel="prefetch" href="/assets/js/241.fdccefb6.js"><link rel="prefetch" href="/assets/js/242.1a263fef.js"><link rel="prefetch" href="/assets/js/243.9b76c980.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.0ca047be.js"><link rel="prefetch" href="/assets/js/246.f492f6e3.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.dfdf517b.js"><link rel="prefetch" href="/assets/js/249.f3abb8d4.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.6ac4cc3a.js"><link rel="prefetch" href="/assets/js/251.6b64e464.js"><link rel="prefetch" href="/assets/js/252.ee2fa61e.js"><link rel="prefetch" href="/assets/js/253.ff810602.js"><link rel="prefetch" href="/assets/js/254.0bde9601.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.5bcd6250.js"><link rel="prefetch" href="/assets/js/257.c7b560b0.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.4e700996.js"><link rel="prefetch" href="/assets/js/26.bbfde0f8.js"><link rel="prefetch" href="/assets/js/260.f4becfcc.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.43d14785.js"><link rel="prefetch" href="/assets/js/263.b69c03ad.js"><link rel="prefetch" href="/assets/js/264.dbc22129.js"><link rel="prefetch" href="/assets/js/265.b5cb48f6.js"><link rel="prefetch" href="/assets/js/266.34356500.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.ff5ce018.js"><link rel="prefetch" href="/assets/js/27.9675606e.js"><link rel="prefetch" href="/assets/js/270.ef200fe2.js"><link rel="prefetch" href="/assets/js/271.4ac62df5.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.a3a9c76d.js"><link rel="prefetch" href="/assets/js/275.85c008bc.js"><link rel="prefetch" href="/assets/js/276.ca9b96a1.js"><link rel="prefetch" href="/assets/js/277.ccecfc0f.js"><link rel="prefetch" href="/assets/js/278.c342c4bb.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.01207ecc.js"><link rel="prefetch" href="/assets/js/280.4a8eddcd.js"><link rel="prefetch" href="/assets/js/281.b3bdd051.js"><link rel="prefetch" href="/assets/js/282.291be060.js"><link rel="prefetch" href="/assets/js/283.7065411b.js"><link rel="prefetch" href="/assets/js/284.e93a4e73.js"><link rel="prefetch" href="/assets/js/285.009d797f.js"><link rel="prefetch" href="/assets/js/286.ec26c975.js"><link rel="prefetch" href="/assets/js/287.448073e1.js"><link rel="prefetch" href="/assets/js/288.4207e20b.js"><link rel="prefetch" href="/assets/js/289.53bc96e2.js"><link rel="prefetch" href="/assets/js/29.281eb37f.js"><link rel="prefetch" href="/assets/js/290.30a4fd5c.js"><link rel="prefetch" href="/assets/js/291.2c87a450.js"><link rel="prefetch" href="/assets/js/292.7391f420.js"><link rel="prefetch" href="/assets/js/293.e2c07d98.js"><link rel="prefetch" href="/assets/js/294.69a39f91.js"><link rel="prefetch" href="/assets/js/295.c625045b.js"><link rel="prefetch" href="/assets/js/296.34d89b4e.js"><link rel="prefetch" href="/assets/js/297.064983a6.js"><link rel="prefetch" href="/assets/js/298.023e5d86.js"><link rel="prefetch" href="/assets/js/299.e220fd12.js"><link rel="prefetch" href="/assets/js/3.0616cd46.js"><link rel="prefetch" href="/assets/js/30.e39632a0.js"><link rel="prefetch" href="/assets/js/300.28529b60.js"><link rel="prefetch" href="/assets/js/301.d1438c52.js"><link rel="prefetch" href="/assets/js/302.49a73ebb.js"><link rel="prefetch" href="/assets/js/303.1d69c976.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.3dc675ac.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.5833b544.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.08f0d836.js"><link rel="prefetch" href="/assets/js/313.5519c581.js"><link rel="prefetch" href="/assets/js/314.89323fa8.js"><link rel="prefetch" href="/assets/js/315.5c7d3885.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.e2d7a191.js"><link rel="prefetch" href="/assets/js/318.fc1ea4dc.js"><link rel="prefetch" href="/assets/js/319.4b4eaa24.js"><link rel="prefetch" href="/assets/js/32.6f8f7735.js"><link rel="prefetch" href="/assets/js/320.26cadf73.js"><link rel="prefetch" href="/assets/js/321.da66552d.js"><link rel="prefetch" href="/assets/js/322.d1b7e27b.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.1bed89f2.js"><link rel="prefetch" href="/assets/js/325.74a10b7f.js"><link rel="prefetch" href="/assets/js/326.6733614c.js"><link rel="prefetch" href="/assets/js/327.2ddf9fe2.js"><link rel="prefetch" href="/assets/js/328.79dc0b15.js"><link rel="prefetch" href="/assets/js/329.d39f716c.js"><link rel="prefetch" href="/assets/js/33.c1604104.js"><link rel="prefetch" href="/assets/js/330.32c96058.js"><link rel="prefetch" href="/assets/js/331.405b6757.js"><link rel="prefetch" href="/assets/js/332.537134ee.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.f4f1e806.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.360d22f4.js"><link rel="prefetch" href="/assets/js/337.95c52f93.js"><link rel="prefetch" href="/assets/js/338.824f01ee.js"><link rel="prefetch" href="/assets/js/339.8e0c18d7.js"><link rel="prefetch" href="/assets/js/34.61042921.js"><link rel="prefetch" href="/assets/js/340.a666422a.js"><link rel="prefetch" href="/assets/js/341.8061f90b.js"><link rel="prefetch" href="/assets/js/342.5ecffedd.js"><link rel="prefetch" href="/assets/js/343.d67c1d54.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.87c72db5.js"><link rel="prefetch" href="/assets/js/346.2796487d.js"><link rel="prefetch" href="/assets/js/347.57b5c6a5.js"><link rel="prefetch" href="/assets/js/348.0cffac81.js"><link rel="prefetch" href="/assets/js/349.8e908833.js"><link rel="prefetch" href="/assets/js/35.1d574a74.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.2ffd5646.js"><link rel="prefetch" href="/assets/js/353.4ffbf66f.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.21de33fa.js"><link rel="prefetch" href="/assets/js/356.3d20f95a.js"><link rel="prefetch" href="/assets/js/357.2612cca5.js"><link rel="prefetch" href="/assets/js/358.7cce50cb.js"><link rel="prefetch" href="/assets/js/359.c23b92e5.js"><link rel="prefetch" href="/assets/js/36.66b33e93.js"><link rel="prefetch" href="/assets/js/360.6e33c30f.js"><link rel="prefetch" href="/assets/js/361.6db53217.js"><link rel="prefetch" href="/assets/js/362.28e15494.js"><link rel="prefetch" href="/assets/js/363.5316eb9a.js"><link rel="prefetch" href="/assets/js/364.ae04b75f.js"><link rel="prefetch" href="/assets/js/365.64c1e88f.js"><link rel="prefetch" href="/assets/js/366.066b98bd.js"><link rel="prefetch" href="/assets/js/367.06e05293.js"><link rel="prefetch" href="/assets/js/368.82209659.js"><link rel="prefetch" href="/assets/js/369.d687a4ee.js"><link rel="prefetch" href="/assets/js/37.18a4caf1.js"><link rel="prefetch" href="/assets/js/370.02d4e333.js"><link rel="prefetch" href="/assets/js/371.9e35695d.js"><link rel="prefetch" href="/assets/js/372.de59ddf8.js"><link rel="prefetch" href="/assets/js/373.7cfca530.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.07a95ecc.js"><link rel="prefetch" href="/assets/js/376.0859df9f.js"><link rel="prefetch" href="/assets/js/377.241c4721.js"><link rel="prefetch" href="/assets/js/378.a2d485d0.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c7cc8ff1.js"><link rel="prefetch" href="/assets/js/380.886e2c5c.js"><link rel="prefetch" href="/assets/js/381.514ea971.js"><link rel="prefetch" href="/assets/js/382.9bd440e8.js"><link rel="prefetch" href="/assets/js/383.cda3a324.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.3ebff401.js"><link rel="prefetch" href="/assets/js/386.7125d75d.js"><link rel="prefetch" href="/assets/js/387.472cd823.js"><link rel="prefetch" href="/assets/js/388.235ad655.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.c156642a.js"><link rel="prefetch" href="/assets/js/390.b25b016f.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.86acebaf.js"><link rel="prefetch" href="/assets/js/393.f5e26c18.js"><link rel="prefetch" href="/assets/js/394.ceb6bc2c.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.ee8abf24.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.d83e363b.js"><link rel="prefetch" href="/assets/js/399.a800f7df.js"><link rel="prefetch" href="/assets/js/4.ff0d0983.js"><link rel="prefetch" href="/assets/js/40.d21ba833.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.04724ff3.js"><link rel="prefetch" href="/assets/js/402.e2a01c0d.js"><link rel="prefetch" href="/assets/js/403.4c059b3b.js"><link rel="prefetch" href="/assets/js/404.0b33c4fc.js"><link rel="prefetch" href="/assets/js/405.31f9f4d4.js"><link rel="prefetch" href="/assets/js/406.0ea31eb3.js"><link rel="prefetch" href="/assets/js/407.f8aeaf6a.js"><link rel="prefetch" href="/assets/js/408.e31d8e6d.js"><link rel="prefetch" href="/assets/js/409.527b15a8.js"><link rel="prefetch" href="/assets/js/41.e327929c.js"><link rel="prefetch" href="/assets/js/410.ab3891e5.js"><link rel="prefetch" href="/assets/js/411.cabd9e6f.js"><link rel="prefetch" href="/assets/js/412.c00feda1.js"><link rel="prefetch" href="/assets/js/413.da9d8d0d.js"><link rel="prefetch" href="/assets/js/414.86e019be.js"><link rel="prefetch" href="/assets/js/415.024f200c.js"><link rel="prefetch" href="/assets/js/416.7a7f201a.js"><link rel="prefetch" href="/assets/js/417.9039f0f5.js"><link rel="prefetch" href="/assets/js/418.d0af7314.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.766a1ebb.js"><link rel="prefetch" href="/assets/js/420.e143149b.js"><link rel="prefetch" href="/assets/js/421.ce227e9b.js"><link rel="prefetch" href="/assets/js/422.5af358c3.js"><link rel="prefetch" href="/assets/js/423.b72620fc.js"><link rel="prefetch" href="/assets/js/424.0fffeb28.js"><link rel="prefetch" href="/assets/js/425.40613664.js"><link rel="prefetch" href="/assets/js/426.2e22eebf.js"><link rel="prefetch" href="/assets/js/427.a553f7d4.js"><link rel="prefetch" href="/assets/js/428.76aab144.js"><link rel="prefetch" href="/assets/js/429.3f7541a4.js"><link rel="prefetch" href="/assets/js/43.bd29747c.js"><link rel="prefetch" href="/assets/js/430.499095ce.js"><link rel="prefetch" href="/assets/js/431.8ab3c62f.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.048e0058.js"><link rel="prefetch" href="/assets/js/435.b7f62b08.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.91febbb0.js"><link rel="prefetch" href="/assets/js/439.3bdc32c2.js"><link rel="prefetch" href="/assets/js/44.159635cf.js"><link rel="prefetch" href="/assets/js/440.4c502b0c.js"><link rel="prefetch" href="/assets/js/441.f720ea4c.js"><link rel="prefetch" href="/assets/js/442.a0317b88.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.991c700e.js"><link rel="prefetch" href="/assets/js/445.eebf3c94.js"><link rel="prefetch" href="/assets/js/446.baf1e6b5.js"><link rel="prefetch" href="/assets/js/447.36441c47.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.e543e021.js"><link rel="prefetch" href="/assets/js/452.23d29581.js"><link rel="prefetch" href="/assets/js/453.4cefab78.js"><link rel="prefetch" href="/assets/js/454.505893ff.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.34067054.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.9f72dafe.js"><link rel="prefetch" href="/assets/js/459.298e4e26.js"><link rel="prefetch" href="/assets/js/46.54e218d9.js"><link rel="prefetch" href="/assets/js/460.875ebcb2.js"><link rel="prefetch" href="/assets/js/461.2e995131.js"><link rel="prefetch" href="/assets/js/462.93690745.js"><link rel="prefetch" href="/assets/js/463.c13b2bec.js"><link rel="prefetch" href="/assets/js/464.bf750fb8.js"><link rel="prefetch" href="/assets/js/465.81c60d5d.js"><link rel="prefetch" href="/assets/js/466.a61d596e.js"><link rel="prefetch" href="/assets/js/467.3842176d.js"><link rel="prefetch" href="/assets/js/468.63c7bcdd.js"><link rel="prefetch" href="/assets/js/469.75d9181a.js"><link rel="prefetch" href="/assets/js/47.f17d1df2.js"><link rel="prefetch" href="/assets/js/470.e5676a3b.js"><link rel="prefetch" href="/assets/js/471.6277f541.js"><link rel="prefetch" href="/assets/js/472.125e562f.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.92a7814b.js"><link rel="prefetch" href="/assets/js/475.783a6e1b.js"><link rel="prefetch" href="/assets/js/476.13ab38fd.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.4dfe6494.js"><link rel="prefetch" href="/assets/js/479.4c41ba37.js"><link rel="prefetch" href="/assets/js/48.7e42f465.js"><link rel="prefetch" href="/assets/js/480.fc824c74.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.0f102a04.js"><link rel="prefetch" href="/assets/js/484.4717857e.js"><link rel="prefetch" href="/assets/js/485.a935adb5.js"><link rel="prefetch" href="/assets/js/486.6984e85f.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.a95486d4.js"><link rel="prefetch" href="/assets/js/49.f67f18f2.js"><link rel="prefetch" href="/assets/js/490.b3795263.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.fb97316c.js"><link rel="prefetch" href="/assets/js/493.fbd42d21.js"><link rel="prefetch" href="/assets/js/494.d49dbddc.js"><link rel="prefetch" href="/assets/js/495.960d7a7a.js"><link rel="prefetch" href="/assets/js/496.067e2f8a.js"><link rel="prefetch" href="/assets/js/497.8892200d.js"><link rel="prefetch" href="/assets/js/498.f370eeef.js"><link rel="prefetch" href="/assets/js/499.9a73037b.js"><link rel="prefetch" href="/assets/js/5.abc9632b.js"><link rel="prefetch" href="/assets/js/50.f653d3eb.js"><link rel="prefetch" href="/assets/js/500.3908db61.js"><link rel="prefetch" href="/assets/js/501.268d26f2.js"><link rel="prefetch" href="/assets/js/502.a0b06ceb.js"><link rel="prefetch" href="/assets/js/503.e58b9748.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.148ab5d9.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.60ef697c.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.6b74fe01.js"><link rel="prefetch" href="/assets/js/514.1ee3b99e.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.e29023be.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.ce2bd6da.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.017b325c.js"><link rel="prefetch" href="/assets/js/521.58a6306c.js"><link rel="prefetch" href="/assets/js/522.a40f2287.js"><link rel="prefetch" href="/assets/js/523.edb81dd7.js"><link rel="prefetch" href="/assets/js/524.16258545.js"><link rel="prefetch" href="/assets/js/525.4bcc1c02.js"><link rel="prefetch" href="/assets/js/526.c355d6fc.js"><link rel="prefetch" href="/assets/js/527.7c3b7161.js"><link rel="prefetch" href="/assets/js/528.ac47d7da.js"><link rel="prefetch" href="/assets/js/529.3e5e6bc0.js"><link rel="prefetch" href="/assets/js/53.d65bef48.js"><link rel="prefetch" href="/assets/js/530.13d1b1c6.js"><link rel="prefetch" href="/assets/js/531.04e2e897.js"><link rel="prefetch" href="/assets/js/532.533d810f.js"><link rel="prefetch" href="/assets/js/533.2bd83146.js"><link rel="prefetch" href="/assets/js/534.cd16ff61.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.7824cd53.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.911cc914.js"><link rel="prefetch" href="/assets/js/539.2de30ddc.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.1046697c.js"><link rel="prefetch" href="/assets/js/542.ef1092c7.js"><link rel="prefetch" href="/assets/js/543.54235171.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.6983d416.js"><link rel="prefetch" href="/assets/js/546.98a57513.js"><link rel="prefetch" href="/assets/js/547.8c0ea7a4.js"><link rel="prefetch" href="/assets/js/548.b2e5147f.js"><link rel="prefetch" href="/assets/js/549.110d8ccc.js"><link rel="prefetch" href="/assets/js/55.994be3d0.js"><link rel="prefetch" href="/assets/js/550.b30b0650.js"><link rel="prefetch" href="/assets/js/551.4038a02e.js"><link rel="prefetch" href="/assets/js/552.4ce5afbb.js"><link rel="prefetch" href="/assets/js/553.6156a64c.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.5e22fac0.js"><link rel="prefetch" href="/assets/js/556.e37be811.js"><link rel="prefetch" href="/assets/js/557.9ef5c296.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.78e2830c.js"><link rel="prefetch" href="/assets/js/56.a07a348f.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.4b1b4b8c.js"><link rel="prefetch" href="/assets/js/562.6ff741ad.js"><link rel="prefetch" href="/assets/js/563.10fe6323.js"><link rel="prefetch" href="/assets/js/564.23bc7ae3.js"><link rel="prefetch" href="/assets/js/565.99045d53.js"><link rel="prefetch" href="/assets/js/566.e0e8a181.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.cc37a022.js"><link rel="prefetch" href="/assets/js/569.0b2d095f.js"><link rel="prefetch" href="/assets/js/57.d8914610.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.8e5c59b6.js"><link rel="prefetch" href="/assets/js/572.5a60007c.js"><link rel="prefetch" href="/assets/js/573.f0e2a0f5.js"><link rel="prefetch" href="/assets/js/574.fffad53b.js"><link rel="prefetch" href="/assets/js/575.4297f78b.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.3824ee1c.js"><link rel="prefetch" href="/assets/js/58.02da9451.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.21bed6e7.js"><link rel="prefetch" href="/assets/js/582.c94227c4.js"><link rel="prefetch" href="/assets/js/583.f0611b7e.js"><link rel="prefetch" href="/assets/js/584.809f0bbb.js"><link rel="prefetch" href="/assets/js/585.ed41b413.js"><link rel="prefetch" href="/assets/js/586.957fe496.js"><link rel="prefetch" href="/assets/js/587.ff5d8d3c.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.275b0293.js"><link rel="prefetch" href="/assets/js/590.6ee9e42d.js"><link rel="prefetch" href="/assets/js/591.d2c873ee.js"><link rel="prefetch" href="/assets/js/592.63d5541c.js"><link rel="prefetch" href="/assets/js/593.1b5910fa.js"><link rel="prefetch" href="/assets/js/594.a9e7a407.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.93454a11.js"><link rel="prefetch" href="/assets/js/597.e92d65a6.js"><link rel="prefetch" href="/assets/js/598.05057c9f.js"><link rel="prefetch" href="/assets/js/599.534ff18f.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.222db31a.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.3d7ae82f.js"><link rel="prefetch" href="/assets/js/604.f3055453.js"><link rel="prefetch" href="/assets/js/605.af0c8252.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.974b78f2.js"><link rel="prefetch" href="/assets/js/608.26462e83.js"><link rel="prefetch" href="/assets/js/609.dd27e631.js"><link rel="prefetch" href="/assets/js/61.eaf63186.js"><link rel="prefetch" href="/assets/js/610.000c1e9d.js"><link rel="prefetch" href="/assets/js/611.44ff14d4.js"><link rel="prefetch" href="/assets/js/612.5b4036a0.js"><link rel="prefetch" href="/assets/js/613.3b71b5a2.js"><link rel="prefetch" href="/assets/js/614.28925cbf.js"><link rel="prefetch" href="/assets/js/615.a9e93388.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.31662991.js"><link rel="prefetch" href="/assets/js/618.6d9dcf9c.js"><link rel="prefetch" href="/assets/js/619.d2833531.js"><link rel="prefetch" href="/assets/js/62.7460f830.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.8109ad4e.js"><link rel="prefetch" href="/assets/js/622.06a5babf.js"><link rel="prefetch" href="/assets/js/623.ccf364a6.js"><link rel="prefetch" href="/assets/js/624.18209fc2.js"><link rel="prefetch" href="/assets/js/625.eb3f309d.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.af3ee1ec.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.18441910.js"><link rel="prefetch" href="/assets/js/630.f8552446.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.ca268728.js"><link rel="prefetch" href="/assets/js/633.e5bcf026.js"><link rel="prefetch" href="/assets/js/634.8ec52643.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.eb23b5c5.js"><link rel="prefetch" href="/assets/js/637.eee47171.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.9bcd2f77.js"><link rel="prefetch" href="/assets/js/640.a02db32d.js"><link rel="prefetch" href="/assets/js/641.25990053.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.becf6b9f.js"><link rel="prefetch" href="/assets/js/644.ac752ef6.js"><link rel="prefetch" href="/assets/js/645.cf92857c.js"><link rel="prefetch" href="/assets/js/646.d4646b84.js"><link rel="prefetch" href="/assets/js/647.b1895af0.js"><link rel="prefetch" href="/assets/js/648.c26381da.js"><link rel="prefetch" href="/assets/js/649.c0818833.js"><link rel="prefetch" href="/assets/js/65.5ee94aae.js"><link rel="prefetch" href="/assets/js/650.8d4d92d6.js"><link rel="prefetch" href="/assets/js/651.4ff5f780.js"><link rel="prefetch" href="/assets/js/66.f1b27e87.js"><link rel="prefetch" href="/assets/js/67.47082498.js"><link rel="prefetch" href="/assets/js/68.502aa70c.js"><link rel="prefetch" href="/assets/js/69.9a3a9a86.js"><link rel="prefetch" href="/assets/js/70.1a8828f1.js"><link rel="prefetch" href="/assets/js/71.d32d3acb.js"><link rel="prefetch" href="/assets/js/72.0d13e6d5.js"><link rel="prefetch" href="/assets/js/73.be72ee5e.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.1450e671.js"><link rel="prefetch" href="/assets/js/76.f41837bd.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.e5277cab.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.d33b4c24.js"><link rel="prefetch" href="/assets/js/81.e3349db5.js"><link rel="prefetch" href="/assets/js/82.304e56e7.js"><link rel="prefetch" href="/assets/js/83.886030fc.js"><link rel="prefetch" href="/assets/js/84.3d1dd526.js"><link rel="prefetch" href="/assets/js/85.9f2d1ef1.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.0d02b425.js"><link rel="prefetch" href="/assets/js/88.8e3d0899.js"><link rel="prefetch" href="/assets/js/89.414af620.js"><link rel="prefetch" href="/assets/js/9.5a6081e3.js"><link rel="prefetch" href="/assets/js/90.e20539a2.js"><link rel="prefetch" href="/assets/js/91.e9e57bd4.js"><link rel="prefetch" href="/assets/js/92.9b5cf84f.js"><link rel="prefetch" href="/assets/js/93.366136f2.js"><link rel="prefetch" href="/assets/js/94.524b1442.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.eb5ca57b.js"><link rel="prefetch" href="/assets/js/97.912c0f6a.js"><link rel="prefetch" href="/assets/js/98.825483b2.js"><link rel="prefetch" href="/assets/js/99.ae4d5edd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/golang/basic/docs/go-mod/go-mod.html" class="sidebar-link">Golang 使用 go mod 导入包</a></li><li><a href="/dev/golang/basic/docs/go-var/go-var.html" class="sidebar-link">Golang 变量、常量、fmt包的使用</a></li><li><a href="/dev/golang/basic/docs/go-type/go-type.html" class="sidebar-link">Golang 基本数据类型</a></li><li><a href="/dev/golang/basic/docs/go-cal/go-cal.html" class="sidebar-link">Golang 运算符</a></li><li><a href="/dev/golang/basic/docs/go-controller/go-controller.html" class="sidebar-link">Golang 流程控制语句</a></li><li><a href="/dev/golang/basic/docs/go-array/go-array.html" class="sidebar-link">Golang 数组</a></li><li><a href="/dev/golang/basic/docs/go-slice/go-slice.html" class="sidebar-link">Golang 切片</a></li><li><a href="/dev/golang/basic/docs/go-map/go-map.html" class="sidebar-link">Golang Map 映射</a></li><li><a href="/dev/golang/basic/docs/go-function/go-function.html" class="sidebar-link">Golang 函数</a></li><li><a href="/dev/golang/basic/docs/go-point/go-point.html" class="sidebar-link">Golang 指针、new和make函</a></li><li><a href="/dev/golang/basic/docs/go-struct/go-struct.html" class="sidebar-link">Golang 结构体</a></li><li><a href="/dev/golang/basic/docs/go-package/go-package.html" class="sidebar-link">Golang 包 和 init( )函数</a></li><li><a href="/dev/golang/basic/docs/go-interface/go-interface.html" class="sidebar-link">Golang 接口</a></li><li><a href="/dev/golang/basic/docs/go-reflect/go-reflect.html" class="sidebar-link">Golang 反射</a></li><li><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html" aria-current="page" class="active sidebar-link">Golang 并发编程(goroutine、channel、并发安全和锁)</a></li><li><a href="/dev/golang/basic/docs/go-network/go-network.html" class="sidebar-link">Golang 网络编程</a></li><li><a href="/dev/golang/basic/docs/go-test/go-test.html" class="sidebar-link">Golang 单元测试</a></li><li><a href="/dev/golang/basic/docs/go-slice-map-chan/go-slice-map-chan.html" class="sidebar-link">Golang slice、map、chan的异同</a></li><li><a href="/dev/golang/basic/docs/go-cmd/go-cmd.html" class="sidebar-link">Golang go命令、平台的交叉编译</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Golang 并发编程(goroutine、channel、并发安全和锁)</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">Golang 并发编程(goroutine、channel、并发安全和锁)</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2020/3/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><ul><li>并发是编程里面一个非常重要的概念，Go语言在语言层面天生支持并发，这也是Go语言流行的一个很重要的原因。<a href="https://www.zhihu.com/question/20862617" target="_blank" rel="noopener noreferrer">参考文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="一-并发基础"><a href="#一-并发基础" class="header-anchor">#</a> 一：并发基础</h2> <h3 id="一-并发与并行"><a href="#一-并发与并行" class="header-anchor">#</a> (一)：并发与并行</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>并发：同一时间段内执行多个任务（你在用微信和两个女朋友聊天）。
+
+并行：同一时刻执行多个任务（你和你朋友都在用微信和女朋友聊天）。
+
+Go语言的并发通过goroutine实现。goroutine类似于线程，属于用户态的线程，我们可以根据需要创建成千上万个goroutine并发工作。
+goroutine是由Go语言的运行时（runtime）调度完成，而线程是由操作系统调度完成，最终由内核级线程完成任务的执行操作。
+
+Go语言还提供channel在多个goroutine间进行通信。goroutine和channel是 Go 语言秉承的 CSP（Communicating Sequential Process）并发模式的重要实现基础。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="二-goroutine"><a href="#二-goroutine" class="header-anchor">#</a> (二)：Goroutine</h3> <ul><li>不同编程语言实现并发编程的思想</li></ul> <div class="language-tex line-numbers-mode"><pre class="language-tex"><code>	在java/c++中我们要实现并发编程的时候，我们通常需要自己维护一个线程池，并且需要自己去包装一个又一个的任务，同时需要自己去调度线程执行任务并维护上下文切换，这一切通常会耗费程序员大量的心智。那么能不能有一种机制，程序员只需要定义很多个任务，让系统去帮助我们把这些任务分配到CPU上实现并发执行呢？
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>Goroutine</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	Go语言中的goroutine就是这样一种机制，goroutine的概念类似于线程，但 goroutine是由Go的运行时（runtime）调度和管理的。Go程序会智能地将 goroutine 中的任务合理地分配给每个CPU。
+	Go语言之所以被称为现代化的编程语言，就是因为它在语言层面已经内置了调度和上下文切换的机制。
+	在Go语言编程中你不需要去自己写进程、线程、协程，你的技能包里只有一个技能–goroutine，当你需要让某个任务并发执行的时候，你只需要把这个任务包装成一个函数，开启一个goroutine去执行这个函数就可以了，就是这么简单粗暴。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="二-goroutine基础"><a href="#二-goroutine基础" class="header-anchor">#</a> 二：goroutine基础</h2> <h3 id="一-启动单个goroutine"><a href="#一-启动单个goroutine" class="header-anchor">#</a> (一)：启动单个goroutine</h3> <ul><li>启动goroutine的方式非常简单，只需要在调用的函数（普通函数和匿名函数）前面加上一个go关键字</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func hello() {
+	fmt.Println(&quot;Hello Goroutine!&quot;)
+}
+func main() {
+	go hello()
+	fmt.Println(&quot;main goroutine done!&quot;)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>分析</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>首先为什么会先打印main goroutine done!是因为我们在创建新的goroutine的时候需要花费一些时间，而此时main函数所在的goroutine是继续执行的，还没有等到hello()函数执行，main函数就停止了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="二-启动多个goroutine"><a href="#二-启动多个goroutine" class="header-anchor">#</a> (二)：启动多个goroutine</h3> <ul><li>在Go语言中实现并发就是这样简单，我们还可以启动多个goroutine。让我们再来一个例子： （这里使用了sync.WaitGroup来实现goroutine的同步）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var wg sync.WaitGroup
+
+func hello(i int) {
+	defer wg.Done() // goroutine结束就登记-1
+	fmt.Println(&quot;Hello Goroutine!&quot;, i)
+}
+
+
+func main() {
+
+	for i := 0; i &lt; 10; i++ {
+		wg.Add(1) // 启动一个goroutine就登记+1
+		go hello(i)
+	}
+
+	wg.Wait() // 等待所有登记的goroutine都结束
+	fmt.Println(&quot;main goroutine done!&quot;)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>分析</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	多次执行上面的代码，会发现每次打印的数字的顺序都不一致。这是因为10个goroutine是并发执行的，而goroutine的调度是随机的。但是也取决于当前操作系统的内核线程数，如果内核数较多，那么同一时刻运行的goroutine较多
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="三-goroutine原理"><a href="#三-goroutine原理" class="header-anchor">#</a> (三)：goroutine原理</h3> <ul><li>可增长的栈</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	OS线程（操作系统线程）一般都有固定的栈内存（通常为2MB）,一个goroutine的栈在其生命周期开始时只有很小的栈（典型情况下2KB），goroutine的栈不是固定的，他可以按需增大和缩小，goroutine的栈大小限制可以达到1GB，虽然极少会用到这么大。所以在Go语言中一次创建十万左右的goroutine也是可以的
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>goroutine调度(GPM调度)</li></ul> <p><img src="/assets/img/2021-08-054.17.47.31aa1282.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>GPM是Go语言运行时（runtime）层面的实现，是go语言自己实现的一套调度系统，区别于操作系统调度OS线程。
+
+	1：G很好理解，就是个goroutine的，里面除了存放本goroutine信息外 还有与所在P的绑定等信息。
+	2：P管理着一组goroutine队列，P里面会存储当前goroutine运行的上下文环境（函数指针，堆栈地址及地址边界），P会对自己管理的goroutine队列做一些调度（比如把占用CPU时间较长的goroutine暂停、运行后续的goroutine等等）当自己的队列消费完了就去全局队列里取，如果全局队列里也消费完了会去其他P的队列里抢任务。
+	3：M（machine）是Go运行时（runtime）对操作系统内核线程的虚拟， M与内核线程一般是一一映射的关系， 一个groutine最终是要放到M上执行的；
+
+
+P与M一般也是一一对应的。他们关系是： P管理着一组G挂载在M上运行。当一个G长久阻塞在一个M上时，runtime会新建一个M，阻塞G所在的P会把其他的G 挂载在新建的M上。当旧的G阻塞完成或者认为其已经死掉时 回收旧的M
+
+P的个数是通过runtime.GOMAXPROCS设定（最大256），Go1.5版本之后默认为物理线程数。 在并发量大的时候会增加一些P和M，但不会太多，切换太频繁的话得不偿失。
+
+单从线程调度讲，Go语言相比起其他语言的优势在于OS线程是由OS内核来调度的，goroutine则是由Go运行时（runtime）自己的调度器调度的，Python的coroutine是自己控制调度(所以难度大),这个调度器使用一个称为m:n调度的技术（复用/调度m个goroutine到n个OS线程）。 其一大特点是goroutine的调度是在用户态下完成的， 不涉及内核态与用户态之间的频繁切换，包括内存的分配与释放，都是在用户态维护着一块大的内存池， 不直接调用系统的malloc函数（除非内存池需要改变），成本比调度OS线程低很多。 另一方面充分利用了多核的硬件资源，近似的把若干goroutine均分在物理线程上， 再加上本身goroutine的超轻量，以上种种保证了go调度方面的性能
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="四-设置gomaxprocs的意义"><a href="#四-设置gomaxprocs的意义" class="header-anchor">#</a> (四)：设置GOMAXPROCS的意义</h3> <ul><li>介绍</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Go运行时的调度器使用GOMAXPROCS参数来确定需要使用多少个OS线程来同时执行Go代码。默认值是机器上的CPU核心数。例如在一个8核心的机器上，调度器会把Go代码同时调度到8个OS线程上（m:n调度中，Goroutine是m，GOMAXPROCS是的n, 将m个goroutine调度到n个OS线程上运行）。
+
+Go语言中可以通过runtime.GOMAXPROCS()函数设置当前程序并发时占用的CPU逻辑核心数。
+
+Go1.5版本之前，默认使用的是单核心执行。Go1.5版本之后，默认使用全部的CPU逻辑核心数。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>我们可以通过将任务分配到不同的CPU逻辑核心上实现并行的效果，这里举个例子</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func a() {
+	for i := 1; i &lt; 10; i++ {
+		fmt.Println(&quot;A:&quot;, i)
+	}
+}
+
+func b() {
+	for i := 1; i &lt; 10; i++ {
+		fmt.Println(&quot;B:&quot;, i)
+	}
+}
+
+func main() {
+	// 设置只使用1个核心
+	runtime.GOMAXPROCS(1)
+	go a()
+	go b()
+	time.Sleep(time.Second)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>输出分析: 只使用一个CPU核心，那么goroutine是线性运行的，因此打印的数字是连续的，而且先运行的是<code>go b()</code>这个函数，说明是函数压栈了<code>go b()</code>这个函数位于栈定，先被执行</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>B: 1
+B: 2
+B: 3
+B: 4
+B: 5
+B: 6
+B: 7
+B: 8
+B: 9
+A: 1
+A: 2
+A: 3
+A: 4
+A: 5
+A: 6
+A: 7
+A: 8
+A: 9
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>小结: Go语言中的操作系统线程和goroutine的关系：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：一个操作系统线程对应用户态多个goroutine。
+
+2：go程序可以同时使用多个操作系统线程，能够利用操作系统的多核优势。
+
+3：goroutine和OS线程是多对多的关系，即m:n。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="三-channel"><a href="#三-channel" class="header-anchor">#</a> 三：Channel</h2> <h3 id="一-并发带来利好的思考"><a href="#一-并发带来利好的思考" class="header-anchor">#</a> (一)：并发带来利好的思考</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：单纯地将函数并发执行是没有意义的。函数与函数间需要交换数据才能体现并发执行函数的意义。
+
+2：虽然可以使用共享内存进行数据交换，但是共享内存在不同的goroutine中容易发生竞态问题。为了保证数据交换的正确性，必须使用互斥量对内存进行加锁，这种做法势必造成性能问题。
+
+3：Go语言的并发模型是CSP（Communicating Sequential Processes），提倡通过通信共享内存而不是通过共享内存而实现通信。
+
+4：如果说goroutine是Go程序并发的执行体，channel就是它们之间的连接。channel是可以让一个goroutine发送特定值到另一个goroutine的通信机制。
+
+5：Go 语言中的通道（channel）是一种特殊的类型。通道像一个队列，总是遵循【先入先出】（First In First Out）的规则，保证收发数据的顺序。每一个通道都是一个具体类型的导管，也就是声明channel的时候需要为其指定元素类型。特别注意的是：没有goroutine存在的情况下，不能使用channel，否则会出现fatal error: all goroutines are asleep - deadlock!，一般情况下，channel操作是先读再写，如果channel的读写都是在goroutine中完成的，那么就没有写和读的顺序要求了
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="二-channel类型"><a href="#二-channel类型" class="header-anchor">#</a> (二)：channel类型</h3> <ul><li>channel是一种类型，一种引用类型(我们学过的引用类型还有：<strong>指针、Slice、Map、接口</strong>)。声明通道类型的格式如下：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var 变量 chan 元素类型
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>举几个例子：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var ch1 chan int   // 声明一个传递整型的通道
+var ch2 chan bool  // 声明一个传递布尔型的通道
+var ch3 chan []int // 声明一个传递int切片的通道
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="三-创建channel"><a href="#三-创建channel" class="header-anchor">#</a> (三)：创建channel</h3> <ul><li>通道是引用类型，通道类型的空值是nil</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var ch chan int
+fmt.Println(ch) // &lt;nil&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>声明的通道后需要使用make函数初始化之后才能使用(我们学过的使用make函数初始化的数据类型有切片和Map)，创建channel的格式如下：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>make(chan 元素类型, [缓冲大小])
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>channel的缓冲大小是可选的</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ch4 := make(chan int, 100) // 设置100个缓冲大小
+ch5 := make(chan bool)
+ch6 := make(chan []int)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="四-channel操作"><a href="#四-channel操作" class="header-anchor">#</a> (四)：channel操作</h3> <ul><li>通道有发送（send）、接收(receive）和关闭（close）三种操作， 发送和接收都使用<code>&lt;-</code>符号，上面这段代码能够通过编译，但是执行的时候会出现错误：<code>fatal error: all goroutines are asleep - deadlock!</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func recv(c chan int)  {
+	ret := &lt;- c
+	fmt.Printf(&quot;接收成功 %d\n&quot;, ret)
+}
+
+func main() {
+	ch := make(chan int)
+	ch &lt;- 10 // 把10发送到ch中
+	go recv(ch) // 启用goroutine从通道接收值
+	close(ch)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>goroutine deadlock 分析</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>为什么会出现deadlock错误呢？
+	因为我们使用ch := make(chan int)创建的是无缓冲的通道，无缓冲的通道只有在有人接收值的时候才能写入数据，如果没有接受者，写入就会被阻塞，因为main函数也是goroutine，在goroutine中向channel写入数据，无人接收，就会出现阻塞，导致goroutine deadlock问题
+
+上面的代码会阻塞在ch &lt;- 10这一行代码形成死锁，那如何解决这个问题呢？
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>第一种方法是<code>先使用goroutine接收，再写入数据</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func recv(c chan int)  {
+	ret := &lt;- c
+	fmt.Printf(&quot;接收成功 %d\n&quot;, ret)
+}
+
+func main() {
+	ch := make(chan int)
+	go recv(ch) // 启用goroutine从通道接收值
+	ch &lt;- 10 // 把10发送到ch中
+	close(ch)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>第二种方法是<code>读写都使用goroutine</code>，那么main函数就不会被阻塞，不会导致goroutine deadlock问题</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 读
+func recv(c &lt;- chan int)  {
+	ret := &lt;- c
+	fmt.Printf(&quot;接收成功 %d\n&quot;, ret)
+}
+
+// 写
+func send(c chan &lt;- int, num int)  {
+	c &lt;- num
+}
+
+func main() {
+
+	ch := make(chan int)
+	go send(ch, 10)
+	go recv(ch)
+
+	// 这里必须要等一下，goroutine启动需要一点时间
+	time.Sleep(1 * time.Second)
+	close(ch)
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><ul><li>关闭chan通道的时机【通道可以被垃圾回收机制回收，通道的关闭不是必须的】</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	关于关闭通道需要注意的事情是，只有在通知接收方goroutine所有的数据都发送完毕的时候才需要关闭通道。
+	通道是可以被垃圾回收机制回收的，它和关闭文件是不一样的，在结束操作之后关闭文件是必须要做的，但关闭通道不是必须的。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>关闭后的通道有以下特点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：对一个关闭的通道再发送值就会导致panic。
+
+2：关闭一个已经关闭的通道会导致panic。
+
+3：对一个关闭的通道进行接收会一直获取值直到通道为空。
+
+4：对一个关闭的并且没有值的通道执行接收操作会得到【对应类型】的零值。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="五-有缓存的通道"><a href="#五-有缓存的通道" class="header-anchor">#</a> (五)：有缓存的通道</h3> <ul><li>解决goroutine deadlock问题的方法，<strong><code>还有一种就是使用有缓冲区的通道</code></strong>。我们可以在使用make函数初始化通道的时候为其指定通道的容量，我们可以使用内置的len函数获取通道内元素的数量，使用cap函数获取通道的容量，虽然我们很少会这么做。例如：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 只要通道的容量大于零，那么该通道就是有缓冲的通道，通道的容量表示通道中能存放元素的数量。就像你小区的快递柜只有那么个多格子，格子满了就装不下了，就阻塞了，等到别人取走一个快递员就能往里面放一个。
+
+func main() {
+	ch := make(chan int, 1) // 创建一个容量为1的有缓冲区通道
+	ch &lt;- 10
+	fmt.Println(&quot;发送成功&quot;)
+	lengh := len(ch)   // 获取当前chan的元素个数
+	fmt.Println(lengh)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="六-for-range-从通道循环取值"><a href="#六-for-range-从通道循环取值" class="header-anchor">#</a> (六)：for range 从通道循环取值</h3> <ul><li>当向通道中发送完数据时，我们可以通过close函数来关闭通道。<code>当通道被关闭时，再往该通道发送值会引发panic</code>，从该通道取值的操作会先取完通道中的值，再然后取到的值一直都是对应类型的零值。那如何判断一个通道是否被关闭了呢？<code>当chan被关闭后，range 循环自动退出</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func main() {
+
+	// 下面例子中我们看到有两种方式在接收值的时候判断该通道是否被关闭，不过我们通常使用的是for range的方式。使用for range遍历通道，当通道被关闭的时候就会退出for range
+
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+	// 开启goroutine将0~100的数发送到ch1中
+	go func() {
+		for i := 0; i &lt; 100000; i++ {
+			ch1 &lt;- i
+		}
+		close(ch1) // 这里ch1必须要手动close，否则从ch1读取数据会被死锁
+	}()
+
+	// 开启goroutine从ch1中接收值，并将该值的平方发送到ch2中
+	go func() {
+		for {
+			i, ok := &lt;-ch1 // 通道关闭后再取值ok=false
+			if !ok {
+				break
+			}
+			ch2 &lt;- i * i
+		}
+		close(ch2)
+	}()
+
+	// 在主goroutine中从ch2中接收值打印
+	for i := range ch2 { // 通道关闭后会退出for range循环
+		fmt.Println(i)
+	}
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><h3 id="七-单向通道"><a href="#七-单向通道" class="header-anchor">#</a> (七)：单向通道</h3> <ul><li>有的时候我们会将<code>通道作为参数</code>在多个任务函数间传递，很多时候我们在不同的任务函数中使用通道都会对其进行限制，比如限制通道在函数中只能发送或只能接收。Go语言中提供了<code>单向通道</code>来处理这种情况。例如，我们把上面的例子改造如下：<strong>(&lt;- 在chan左边是读取，在右边是写入)</strong></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// out chan&lt;- int 表示：只能写入
+func counter(out chan&lt;- int) {
+	for i := 0; i &lt; 100; i++ {
+		out &lt;- i
+	}
+	close(out)
+}
+
+// out chan&lt;- int 表示：只能写入，in &lt;-chan int 表示：只能读取
+func squarer(out chan&lt;- int, in &lt;-chan int) {
+	for i := range in {
+		out &lt;- i * i
+	}
+	close(out)
+}
+
+// in &lt;-chan int 表示：只能读取
+func printer(in &lt;-chan int) {
+	for i := range in {
+		fmt.Println(i)
+	}
+}
+
+func main() {
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+
+	go counter(ch1)
+	go squarer(ch2, ch1)
+	printer(ch2)
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><ul><li>分析</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	chan&lt;- int是一个只写单向通道（只能对其写入int类型值），可以对其执行发送操作但是不能执行接收操作；
+	
+	&lt;-chan int是一个只读单向通道（只能从其读取int类型值），可以对其执行接收操作但是不能执行发送操作。
+	
+在函数传参及任何赋值操作中可以将双向通道转换为单向通道，但反过来是不可以的。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="八-channel异常总结"><a href="#八-channel异常总结" class="header-anchor">#</a> (八)：channel异常总结</h3> <p><img src="/assets/img/2021-06-021.42.02.dc588360.png" alt="Alt text"></p> <ul><li>当channel是有数据，<code>只要发送者先关闭channel，那么接受者会从channel里面将数据全部读取，直到channel中没有数据，接受者再读取返回的是chan的类型零值</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// receive 在channel关闭的情况下，依然可以获取数据，直到返回类型零值
+func receive(ch chan int) {
+	for {
+		select {
+		case ret := &lt;-ch:
+			fmt.Printf(&quot;ret = %#v\n&quot;, ret)
+			time.Sleep(time.Second)
+		}
+	}
+}
+
+// send 向channel中写入10个值，然后关闭
+func send(ch chan int)  {
+
+	i := 1
+	for {
+		ch &lt;- i
+		i ++
+		if i &gt; 10 {
+			close(ch)
+			break
+		}
+	}
+
+}
+
+func main() {
+
+	ch := make(chan int)
+
+	go receive(ch)
+	go send(ch)
+
+	select {}
+}
+
+
+输出结果：
+ret = 1
+ret = 2
+ret = 3
+ret = 4
+ret = 5
+ret = 6
+ret = 7
+ret = 8
+ret = 9
+ret = 10
+ret = 0
+ret = 0
+ret = 0
+ret = 0
+ret = 0
+ret = 0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br></div></div><h3 id="九-goroutine池实现"><a href="#九-goroutine池实现" class="header-anchor">#</a> (九)：Goroutine池实现</h3> <ul><li><p>goroutine池的作用：<strong>提高响应速度，减少创建协程的时间，更好的管理goroutine，定期回收</strong></p></li> <li><p>goroutine池实现思想：<strong>基于for循环将函数任务写入到EntryChannel，在Pool运行的时候，协程启动多个worker，并且同时从EntryChannel中读取任务写入到JobsChannel中，worker内部从JobsChannel中读取任务，并且执行</strong></p></li></ul> <p><img src="/assets/img/2021-08-063.14.35.6364dac2.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/* 有关Task任务相关定义及操作 */
+//定义任务Task类型,每一个任务Task都可以抽象成一个函数
+
+type Task struct {
+	f func() error //一个无参的函数类型
+}
+
+// NewTask Task构造函数，
+func NewTask(f func() error) *Task {
+	t := Task{
+		f: f,
+	}
+
+	return &amp;t
+}
+
+// Execute 执行Task任务的方法
+func (t *Task) Execute() {
+	_ = t.f() //调用任务所绑定的函数
+}
+
+/* 有关协程池的定义及操作 */
+//定义池类型
+
+type Pool struct {
+	// 对外接收Task的入口
+	EntryChannel chan *Task
+
+	// 协程池最大worker数量,限定Goroutine的个数
+	workerNum int
+
+	// 协程池内部的任务就绪队列, // 就绪队列是什么
+	JobsChannel chan *Task
+}
+
+// NewPool 创建一个协程池
+func NewPool(cap int) *Pool {
+	p := Pool{
+		EntryChannel: make(chan *Task),
+		workerNum:    cap,
+		JobsChannel:  make(chan *Task),
+	}
+
+	return &amp;p
+}
+
+// worker 协程池创建一个worker并且开始工作，worker的目的是获取task，并且执行
+func (p *Pool) worker(workId int) {
+	//worker不断的从JobsChannel内部任务队列中拿任务
+	for task := range p.JobsChannel {
+		//如果拿到任务,则执行task任务
+		task.Execute()
+		fmt.Println(&quot;worker ID &quot;, workId, &quot; 执行完毕任务&quot;)
+	}
+}
+
+// Run 让协程池Pool开始工作
+func (p *Pool) Run() {
+	// 首先根据协程池的worker数量限定,开启固定数量的Worker, 每一个Worker用一个Goroutine承载
+	for i := 1; i &lt;= p.workerNum; i++ {
+		go p.worker(i)
+	}
+
+	// 将entry中获取任务，写入到jobs中
+	for task := range p.EntryChannel {
+		p.JobsChannel &lt;- task
+	}
+
+	// 执行完毕需要关闭JobsChannel
+	close(p.JobsChannel)
+
+	// 执行完毕需要关闭EntryChannel
+	close(p.EntryChannel)
+}
+
+//主函数
+func main() {
+	// 创建一个任务函数
+	task := func() error {
+		fmt.Println(time.Now())
+		time.Sleep(1 * time.Second)
+		return nil
+	}
+
+	//创建一个Task
+	t := NewTask(task)
+
+	//创建一个协程池,最大开启个协程worker
+	p := NewPool(3)
+
+	//开一个协程 不断的向 Pool 输送打印一条时间的task任务
+	go func() { // 这里是不断写入任务
+		for {
+			p.EntryChannel &lt;- t
+		}
+	}()
+
+	//启动协程池p
+	p.Run()
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br></div></div><h2 id="四-select多路复用-主要作用在channel上"><a href="#四-select多路复用-主要作用在channel上" class="header-anchor">#</a> 四：select多路复用(主要作用在channel上)</h2> <h3 id="一-select与channel直接的关系"><a href="#一-select与channel直接的关系" class="header-anchor">#</a> (一)：select与channel直接的关系</h3> <ul><li><strong>在某些场景下我们需要同时从多个通道接收数据</strong>。通道在接收数据时，如果没有数据可以接收将会发生阻塞。你也许会写出如下代码使用遍历的方式来实现：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>for{
+    // 尝试从ch1接收值
+    data, ok := &lt;-ch1
+    // 尝试从ch2接收值
+    data, ok := &lt;-ch2
+    …
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>分析</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>上面的代码是死循环代码，不断阻塞的从通道获取数据，但是如果一直阻塞操作，会消耗CPU的计算时间。
+
+为了应对这种场景，Go内置了select关键字，可以同时响应多个通道的操作，类似于IO多路复用，注意：select不是死循环，任何一个case可以获取到值，都可以结束select
+
+
+select{
+    case &lt;-ch1:
+        ...
+    case data := &lt;-ch2:
+        ...
+    case ch3&lt;-data:
+        ...
+    default:
+        默认操作
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>select的使用：由输出结果</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func main() {
+
+	ch := make(chan int, 1)
+
+	for i := 0; i &lt; 10; i++ {
+		select {
+		
+		case x := &lt;-ch:
+			fmt.Printf(&quot;读取数据:%d\n&quot;, x)
+
+		case ch &lt;- i:
+			fmt.Printf(&quot;写入数据:%d\n&quot;, i)
+			
+		// 这里的default不会运行，只有channel阻塞情况下才会执行default
+		default:
+			fmt.Printf(&quot;default: %d\n&quot;, i)
+		}
+	}
+
+}
+
+
+// 输出结果：
+写入数据:0
+读取数据:0
+写入数据:2
+读取数据:2
+写入数据:4
+读取数据:4
+写入数据:6
+读取数据:6
+写入数据:8
+读取数据:8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><ul><li>这里会报错：fatal error: all goroutines are asleep - deadlock!，由于case从通道无法获取数据，main函数被阻塞了</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func main() {
+	ch := make(chan int, 1)
+
+	for i := 0; i &lt; 10; i++ {
+		select {
+		case x := &lt;-ch:
+			fmt.Println(x)
+		}
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>使用select语句能提高代码的可读性</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：可处理一个或多个channel的发送/接收操作。
+2：如果多个case同时满足，select会随机选择一个。
+3：对于没有case的select{}会报错， all goroutines are asleep - deadlock!
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="五-并发安全和锁-参考文档"><a href="#五-并发安全和锁-参考文档" class="header-anchor">#</a> 五：并发安全和锁 <a href="https://geektutu.com/post/hpg-mutex.html" target="_blank" rel="noopener noreferrer">参考文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h2> <h3 id="一-有时候在go代码中可能会存在多个goroutine同时操作一个资源-临界区"><a href="#一-有时候在go代码中可能会存在多个goroutine同时操作一个资源-临界区" class="header-anchor">#</a> (一)：有时候在Go代码中可能会存在多个goroutine同时操作一个资源（临界区）</h3> <ul><li>举个例子，在goroutine在并发情况下，输出结果为：<code>7031</code>，而且这个数字不确定的</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var x int64
+var wg sync.WaitGroup
+
+func add() {
+
+	defer wg.Done()  // goroutine结束就减一
+	for i := 0; i &lt; 5000; i++ {
+		x = x + 1
+	}
+
+}
+
+func main() {
+	//runtime.GOMAXPROCS(1)
+	wg.Add(2) // 启动一个goroutine就登记+1
+	go add()
+	go add()
+	wg.Wait()
+	fmt.Println(x)
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>在goroutine在串行运行下，输出：<code>10000</code>，这是数字是确定的</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var x int64
+var wg sync.WaitGroup
+
+func add() {
+
+	defer wg.Done()  // goroutine结束就减一
+	for i := 0; i &lt; 5000; i++ {
+		x = x + 1
+	}
+
+}
+
+func main() {
+	runtime.GOMAXPROCS(1)
+	wg.Add(2) // 启动一个goroutine就登记+1
+	go add()
+	go add()
+	wg.Wait()
+	fmt.Println(x)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="二-互斥锁sync-mutex解决临界资源访问-这里的sync-mutex完全互斥-隔离级别最高"><a href="#二-互斥锁sync-mutex解决临界资源访问-这里的sync-mutex完全互斥-隔离级别最高" class="header-anchor">#</a> (二)：互斥锁sync.Mutex解决临界资源访问，这里的sync.Mutex完全互斥 <strong>隔离级别最高</strong></h3> <ul><li>互斥锁是一种常用的控制共享资源访问的方法，它能够保证同时只有一个goroutine可以访问共享资源。Go语言中使用sync包的Mutex类型来实现互斥锁。 使用互斥锁来修复上面代码的问题：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+var x int64
+var wg sync.WaitGroup
+var lock sync.Mutex
+
+func add() {
+	for i := 0; i &lt; 5000; i++ {
+		lock.Lock() // 加锁
+		x = x + 1
+		lock.Unlock() // 解锁
+	}
+	wg.Done()
+}
+
+func main() {
+	wg.Add(2)
+	go add()
+	go add()
+	wg.Wait()
+	fmt.Println(x)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="三-读写互斥锁sync-rwmutex-读操作不会阻塞-适合读多写少情况下使用"><a href="#三-读写互斥锁sync-rwmutex-读操作不会阻塞-适合读多写少情况下使用" class="header-anchor">#</a> (三)：读写互斥锁sync.RWMutex，读操作不会阻塞(适合读多写少情况下使用)</h3> <ul><li>读写锁在Go语言中使用sync包中的RWMutex类型，<code>读写锁分为两种：读锁和写锁</code>。当一个<code>goroutine获取读锁之后</code>，其他的goroutine如果是获取读锁会继续获得锁，如果是获取写锁就会等待；当一个<code>goroutine获取写锁之后</code>，其他的goroutine无论是获取读锁还是写锁都会等待, <code>在读数据过程中，goroutine依然是并发的</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+var (
+	x      int64
+	wg     sync.WaitGroup
+	lock   sync.Mutex    // 申请全局互斥锁
+	rwlock sync.RWMutex  // 申请全局读写互斥锁
+
+)
+
+
+func write() {
+	lock.Lock()   // 加互斥锁
+	// rwlock.Lock() // 加写锁
+	x = x + 1
+	time.Sleep(10 * time.Millisecond)     // 假设写操作耗时10毫秒
+	// rwlock.Unlock()                       // 解写锁
+	lock.Unlock()                      // 解互斥锁
+	wg.Done()
+}
+
+func read() {
+	lock.Lock()                  // 加互斥锁
+	// rwlock.RLock()               // 加读锁
+	time.Sleep(time.Millisecond) // 假设读操作耗时1毫秒
+	// rwlock.RUnlock()             // 解读锁
+	lock.Unlock()                // 解互斥锁
+	wg.Done()
+}
+
+func main() {
+
+	start := time.Now()
+	for i := 0; i &lt; 10; i++ {
+		wg.Add(1)
+		go write()
+	}
+
+	for i := 0; i &lt; 1000; i++ {
+		wg.Add(1)
+		go read()
+	}
+
+	wg.Wait()
+	end := time.Now()
+
+	// 计算耗时 加读写锁耗时 111.788809ms
+	// 计算耗时 加互斥锁耗时 1.410702012s
+	fmt.Println(end.Sub(start))
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><h3 id="四-sync-waitgroup-实现并发任务同步-需要注意sync-waitgroup是一个结构体-作为参数传递的时候要传递指针"><a href="#四-sync-waitgroup-实现并发任务同步-需要注意sync-waitgroup是一个结构体-作为参数传递的时候要传递指针" class="header-anchor">#</a> <code>(四)：sync.WaitGroup:实现并发任务同步</code>(需要注意sync.WaitGroup是一个结构体，作为参数传递的时候要传递指针)</h3> <ul><li>在代码中生硬的使用time.Sleep肯定是不合适的，Go语言中可以使用sync.WaitGroup来实现并发任务的同步。 sync.WaitGroup有以下几个方法：</li></ul> <table><thead><tr><th style="text-align:center;">方法名</th> <th style="text-align:center;">功能</th></tr></thead> <tbody><tr><td style="text-align:center;">(wg * WaitGroup) Add(delta int)</td> <td style="text-align:center;">计数器+delta</td></tr> <tr><td style="text-align:center;">(wg *WaitGroup) Done()</td> <td style="text-align:center;">计数器-1</td></tr> <tr><td style="text-align:center;">(wg *WaitGroup) Wait()</td> <td style="text-align:center;">阻塞直到计数器变为0</td></tr></tbody></table> <ul><li><p>sync.WaitGroup使用思想：内部维护着一个计数器，计数器的值可以增加和减少。例如当我们启动了N 个并发任务时，就将计数器值增加N。每个任务完成时通过调用Done()方法将计数器减1。通过调用Wait()来等待并发任务执行完，当计数器值为0时，表示所有并发任务已经完成</p></li> <li><p>我们利用sync.WaitGroup将上面的代码优化一下：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var wg sync.WaitGroup
+
+func hello() {
+	defer wg.Done()
+	fmt.Println(&quot;Hello Goroutine!&quot;)
+}
+
+func main() {
+
+	wg.Add(1)
+	go hello()
+	wg.Wait()
+	fmt.Println(&quot;main goroutine done!&quot;)
+		
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="五-sync-once和init函数的区别-共同特点-只执行一次操作"><a href="#五-sync-once和init函数的区别-共同特点-只执行一次操作" class="header-anchor">#</a> <code>(五)：sync.Once和init函数的区别</code>(共同特点：只执行一次操作)</h3> <ul><li><p>sync.Once这个类型与init函数很像(<strong>init函数是导入包的时候，只执行一次</strong>)，不同的是 <strong>init 函数<code>是当所在的 package 首次被加载时执行，若迟迟未被使用，则既浪费了内存，又延长了程序加载时间</code></strong>，<strong>sync.Once <code>可以在代码的任意位置初始化和调用，因此可以延迟到使用时再执行，并发场景下是线程安全的, 一个针对只执行一次场景的解决方案</code></strong></p></li> <li><p>在多数情况下，<strong>sync.Once 被用于控制变量的初始化</strong>，这个变量的读写满足如下三个条件：</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：当且仅当第一次访问某个变量时，进行初始化（写）
+
+2：变量初始化过程中，所有读都被阻塞，直到初始化完成
+
+3：变量仅初始化一次，初始化完成后驻留在内存里，然后可以随意读了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>sync.Once只有一个Do方法，其签名如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 需要传递的参数是函数
+func (o *Once) Do(f func()) {}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>下面的例子，在多个goroutine中执行回调函数，但是只会执行一次，<code>init config 仅打印了一次，说明 sync.Once 中的初始化函数仅执行了一次</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 全局变量
+var (
+	once   sync.Once
+	config *Config
+)
+
+type Config struct {
+	Server string
+	Port   int64
+}
+
+func InitConfig() *Config {
+
+	once.Do(func() {
+		var err error
+		config = &amp;Config{Server: os.Getenv(&quot;SERVER_URL&quot;)}
+		config.Port, err = strconv.ParseInt(os.Getenv(&quot;PORT&quot;), 10, 0)
+		if err != nil {
+			config.Port = 8080 // default port
+		}
+		log.Println(&quot;init config&quot;)
+	})
+
+	return config
+
+}
+
+func main() {
+
+	// 虽然这里初始化了10次，但是只会执行一次
+	for i := 0; i &lt; 10; i++ {
+		go func() {
+			_ = InitConfig()
+		}()
+	}
+	time.Sleep(time.Second)
+
+}
+
+// 输出结果：2021/08/09 16:45:17 init config
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><ul><li>下面这个例子实现了<code>缓存单例</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var (
+	instance *CacheSingleton
+	once sync.Once
+)
+
+// CacheSingleton 全局缓存单例
+type CacheSingleton struct {
+	data map[string]int
+	lock sync.RWMutex
+}
+
+func GetInstance() *CacheSingleton {
+	once.Do(func() {
+		instance = &amp;CacheSingleton{
+			data: make(map[string]int),
+		}
+	})
+	return instance
+}
+
+func main() {
+	instance1 := GetInstance()
+	instance2 := GetInstance()
+	// 同一个实例
+	fmt.Println(instance1==instance2)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><ul><li>sync.Once 的原理</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：保证变量仅被初始化一次，需要有个标志来判断变量是否已初始化过，若没有则需要初始化。
+
+2：线程安全，支持并发，需要互斥锁来实现。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="六-sync-map-线程安全的map"><a href="#六-sync-map-线程安全的map" class="header-anchor">#</a> <code>(六)：sync.Map</code>(线程安全的map)</h3> <ul><li>map不是并发安全的，sync.Map类型提供了一个线程安全的map，且无需make初始化类型，就行Python一样使用</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var m = sync.Map{}
+
+func main() {
+
+	wg := sync.WaitGroup{}
+
+	for i := 0; i &lt; 20; i++ {
+
+		wg.Add(1)
+
+		go func(n int) {
+			key := strconv.Itoa(n)
+			// 写入
+			m.Store(key, n)
+			// 读取
+			value, _ := m.Load(key)
+			fmt.Printf(&quot;k=:%v,v:=%v\n&quot;, key, value)
+			wg.Done()
+		}(i)
+
+	}
+
+	wg.Wait()
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="七-原子操作"><a href="#七-原子操作" class="header-anchor">#</a> (七)：原子操作</h3> <ul><li><p>加锁是并发编程中实现同步的一种方法，一般有sync.Mutex互斥锁、sync.RWMutex读写锁，而这种锁机制的底层是基于原子操作实现的，一般直接通过CPU指令实现。Golang中原子操作由<code>sync/atomic</code>包提供</p></li> <li><p>1：读取操作</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func LoadInt32(addr *int32) (val int32)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint32(addr *uint32) (val uint32)
+func LoadUint64(addr *uint64) (val uint64)
+func LoadUintptr(addr *uintptr) (val uintptr)
+func LoadPointer(addr *unsafe.Pointer) (val unsafe.Pointer)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>2：写入操作</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func StoreInt32(addr *int32, val int32)
+func StoreInt64(addr *int64, val int64)
+func StoreUint32(addr *uint32, val uint32)
+func StoreUint64(addr *uint64, val uint64)
+func StoreUintptr(addr *uintptr, val uintptr)
+func StorePointer(addr *unsafe.Pointer, val unsafe.Pointer)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>-3：修改操作</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>func AddInt32(addr *int32, delta int32) (new int32)
+func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint32(addr *uint32, delta uint32) (new uint32)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func AddUintptr(addr *uintptr, delta uintptr) (new uintptr)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>4：交换操作</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func SwapInt32(addr *int32, new int32) (old int32)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint32(addr *uint32, new uint32) (old uint32)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func SwapUintptr(addr *uintptr, new uintptr) (old uintptr)
+func SwapPointer(addr *unsafe.Pointer, new unsafe.Pointer) (old unsafe.Pointer)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>5：比较并交换操作</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>func CompareAndSwapInt32(addr *int32, old, new int32) (swapped bool)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint32(addr *uint32, old, new uint32) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+func CompareAndSwapUintptr(addr *uintptr, old, new uintptr) (swapped bool)
+func CompareAndSwapPointer(addr *unsafe.Pointer, old, new unsafe.Pointer) (swapped bool)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>下面的例子，在并发操作过程中，多个goroutine修改一个count变量，对比不加锁、加互斥锁、原子操作 三种方式运行的结果和时间</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// Counter 计算器实现两个方法，
+type Counter interface {
+	Inc()
+	Load() int64
+}
+
+// CommonCounter 普通计数器
+type CommonCounter struct {
+	counter int64
+}
+
+// Inc 加一
+func (c *CommonCounter) Inc() {
+	c.counter++
+}
+
+// Load 返回计数器的数
+func (c *CommonCounter) Load() int64 {
+	return c.counter
+}
+
+// MutexCounter 互斥锁版
+type MutexCounter struct {
+	counter int64
+	lock    sync.Mutex
+}
+
+func (m *MutexCounter) Inc() {
+	m.lock.Lock()
+	defer m.lock.Unlock()
+	m.counter++
+}
+
+func (m *MutexCounter) Load() int64 {
+	m.lock.Lock()
+	defer m.lock.Unlock()
+	return m.counter
+}
+
+// AtomicCounter 原子操作版
+type AtomicCounter struct {
+	counter int64
+}
+
+// Inc 是加一的原子操作
+func (a *AtomicCounter) Inc() {
+	//
+	atomic.AddInt64(&amp;a.counter, 1)
+}
+
+
+func (a *AtomicCounter) Load() int64 {
+	return atomic.LoadInt64(&amp;a.counter)
+}
+
+func test(c Counter) {
+	var wg sync.WaitGroup
+	start := time.Now()
+
+
+	for i := 0; i &lt; 1000; i++ {
+		wg.Add(1)
+
+		go func() {
+			wg.Done()
+			c.Inc()
+
+		}()
+	}
+
+	wg.Wait()
+	end := time.Now()
+
+	fmt.Println(c.Load(), end.Sub(start))
+}
+
+func main() {
+	c1 := CommonCounter{} // 非并发安全
+	test(&amp;c1)
+
+	c2 := MutexCounter{} // 使用互斥锁实现并发安全
+	test(&amp;c2)
+
+	c3 := AtomicCounter{} // 并发安全且比互斥锁效率更高
+	test(&amp;c3)
+}
+
+
+
+
+
+输出结果：
+0 1.023ms  // 结果错误
+1000 1.0445ms
+1000 513.7µs
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br></div></div><ul><li>小结</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>原子操作可以直接操作CPU指令集，是锁实现的底层原理，但是除了某些特殊的底层应用，使用通道或者sync包的函数/类型实现同步更好
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/golang/basic/docs/go-reflect/go-reflect.html" class="prev">
+            Golang 反射
+          </a></span> <span class="next"><a href="/dev/golang/basic/docs/go-network/go-network.html">
+            Golang 网络编程
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-并发基础" class="sidebar-link reco-side-一-并发基础" data-v-cb1513f6>一：并发基础</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-并发与并行" class="sidebar-link reco-side-一-并发与并行" data-v-cb1513f6>(一)：并发与并行</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#二-goroutine" class="sidebar-link reco-side-二-goroutine" data-v-cb1513f6>(二)：Goroutine</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#二-goroutine基础" class="sidebar-link reco-side-二-goroutine基础" data-v-cb1513f6>二：goroutine基础</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-启动单个goroutine" class="sidebar-link reco-side-一-启动单个goroutine" data-v-cb1513f6>(一)：启动单个goroutine</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#二-启动多个goroutine" class="sidebar-link reco-side-二-启动多个goroutine" data-v-cb1513f6>(二)：启动多个goroutine</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#三-goroutine原理" class="sidebar-link reco-side-三-goroutine原理" data-v-cb1513f6>(三)：goroutine原理</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#四-设置gomaxprocs的意义" class="sidebar-link reco-side-四-设置gomaxprocs的意义" data-v-cb1513f6>(四)：设置GOMAXPROCS的意义</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#三-channel" class="sidebar-link reco-side-三-channel" data-v-cb1513f6>三：Channel</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-并发带来利好的思考" class="sidebar-link reco-side-一-并发带来利好的思考" data-v-cb1513f6>(一)：并发带来利好的思考</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#二-channel类型" class="sidebar-link reco-side-二-channel类型" data-v-cb1513f6>(二)：channel类型</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#三-创建channel" class="sidebar-link reco-side-三-创建channel" data-v-cb1513f6>(三)：创建channel</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#四-channel操作" class="sidebar-link reco-side-四-channel操作" data-v-cb1513f6>(四)：channel操作</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#五-有缓存的通道" class="sidebar-link reco-side-五-有缓存的通道" data-v-cb1513f6>(五)：有缓存的通道</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#六-for-range-从通道循环取值" class="sidebar-link reco-side-六-for-range-从通道循环取值" data-v-cb1513f6>(六)：for range 从通道循环取值</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#七-单向通道" class="sidebar-link reco-side-七-单向通道" data-v-cb1513f6>(七)：单向通道</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#八-channel异常总结" class="sidebar-link reco-side-八-channel异常总结" data-v-cb1513f6>(八)：channel异常总结</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#九-goroutine池实现" class="sidebar-link reco-side-九-goroutine池实现" data-v-cb1513f6>(九)：Goroutine池实现</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#四-select多路复用-主要作用在channel上" class="sidebar-link reco-side-四-select多路复用-主要作用在channel上" data-v-cb1513f6>四：select多路复用(主要作用在channel上)</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-select与channel直接的关系" class="sidebar-link reco-side-一-select与channel直接的关系" data-v-cb1513f6>(一)：select与channel直接的关系</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#五-并发安全和锁-参考文档" class="sidebar-link reco-side-五-并发安全和锁-参考文档" data-v-cb1513f6>五：并发安全和锁 参考文档</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#一-有时候在go代码中可能会存在多个goroutine同时操作一个资源-临界区" class="sidebar-link reco-side-一-有时候在go代码中可能会存在多个goroutine同时操作一个资源-临界区" data-v-cb1513f6>(一)：有时候在Go代码中可能会存在多个goroutine同时操作一个资源（临界区）</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#二-互斥锁sync-mutex解决临界资源访问-这里的sync-mutex完全互斥-隔离级别最高" class="sidebar-link reco-side-二-互斥锁sync-mutex解决临界资源访问-这里的sync-mutex完全互斥-隔离级别最高" data-v-cb1513f6>(二)：互斥锁sync.Mutex解决临界资源访问，这里的sync.Mutex完全互斥 隔离级别最高</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#三-读写互斥锁sync-rwmutex-读操作不会阻塞-适合读多写少情况下使用" class="sidebar-link reco-side-三-读写互斥锁sync-rwmutex-读操作不会阻塞-适合读多写少情况下使用" data-v-cb1513f6>(三)：读写互斥锁sync.RWMutex，读操作不会阻塞(适合读多写少情况下使用)</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#四-sync-waitgroup-实现并发任务同步-需要注意sync-waitgroup是一个结构体-作为参数传递的时候要传递指针" class="sidebar-link reco-side-四-sync-waitgroup-实现并发任务同步-需要注意sync-waitgroup是一个结构体-作为参数传递的时候要传递指针" data-v-cb1513f6>(四)：sync.WaitGroup:实现并发任务同步(需要注意sync.WaitGroup是一个结构体，作为参数传递的时候要传递指针)</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#五-sync-once和init函数的区别-共同特点-只执行一次操作" class="sidebar-link reco-side-五-sync-once和init函数的区别-共同特点-只执行一次操作" data-v-cb1513f6>(五)：sync.Once和init函数的区别(共同特点：只执行一次操作)</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#六-sync-map-线程安全的map" class="sidebar-link reco-side-六-sync-map-线程安全的map" data-v-cb1513f6>(六)：sync.Map(线程安全的map)</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/golang/basic/docs/go-cocurrent/go-cocurrent.html#七-原子操作" class="sidebar-link reco-side-七-原子操作" data-v-cb1513f6>(七)：原子操作</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.ef2ae1d4.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/142.b99f910e.js" defer></script>
+  </body>
+</html>

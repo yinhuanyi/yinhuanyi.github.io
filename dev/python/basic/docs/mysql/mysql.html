@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL数据库使用 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.ef2ae1d4.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/52.037d8e07.js" as="script"><link rel="prefetch" href="/assets/js/10.256d2d9e.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.b17181c3.js"><link rel="prefetch" href="/assets/js/103.f8859f28.js"><link rel="prefetch" href="/assets/js/104.9fab75ef.js"><link rel="prefetch" href="/assets/js/105.25712a6b.js"><link rel="prefetch" href="/assets/js/106.321faf0e.js"><link rel="prefetch" href="/assets/js/107.edbc3950.js"><link rel="prefetch" href="/assets/js/108.0922d38e.js"><link rel="prefetch" href="/assets/js/109.451e04b9.js"><link rel="prefetch" href="/assets/js/11.452c26e6.js"><link rel="prefetch" href="/assets/js/110.f7745add.js"><link rel="prefetch" href="/assets/js/111.82f49a62.js"><link rel="prefetch" href="/assets/js/112.3eca9556.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.a1ffa028.js"><link rel="prefetch" href="/assets/js/115.3ebc5b5f.js"><link rel="prefetch" href="/assets/js/116.68f73bc2.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.691d7c30.js"><link rel="prefetch" href="/assets/js/119.b9e4d8c9.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.033a7ce9.js"><link rel="prefetch" href="/assets/js/121.4e17b9cc.js"><link rel="prefetch" href="/assets/js/122.f6342712.js"><link rel="prefetch" href="/assets/js/123.3cc58446.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.e7ca9035.js"><link rel="prefetch" href="/assets/js/126.95b05ce9.js"><link rel="prefetch" href="/assets/js/127.914d6fb9.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.acd254e3.js"><link rel="prefetch" href="/assets/js/13.742bd49b.js"><link rel="prefetch" href="/assets/js/130.56b0744c.js"><link rel="prefetch" href="/assets/js/131.4ef95683.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.566bd1f7.js"><link rel="prefetch" href="/assets/js/134.a93be345.js"><link rel="prefetch" href="/assets/js/135.a79f211c.js"><link rel="prefetch" href="/assets/js/136.2a6f9b42.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.624fc52f.js"><link rel="prefetch" href="/assets/js/139.ca7fb473.js"><link rel="prefetch" href="/assets/js/14.5e9f76b2.js"><link rel="prefetch" href="/assets/js/140.696be263.js"><link rel="prefetch" href="/assets/js/141.bb08404f.js"><link rel="prefetch" href="/assets/js/142.b99f910e.js"><link rel="prefetch" href="/assets/js/143.c4bd878c.js"><link rel="prefetch" href="/assets/js/144.21df22c7.js"><link rel="prefetch" href="/assets/js/145.7027e2a4.js"><link rel="prefetch" href="/assets/js/146.2ee3be79.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.19e9eaee.js"><link rel="prefetch" href="/assets/js/149.c6118e48.js"><link rel="prefetch" href="/assets/js/15.6f107f59.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.3aa4d6ef.js"><link rel="prefetch" href="/assets/js/153.882d8a36.js"><link rel="prefetch" href="/assets/js/154.f0ab3594.js"><link rel="prefetch" href="/assets/js/155.e2ee68b1.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.ece42361.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.b5706a52.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.86946675.js"><link rel="prefetch" href="/assets/js/161.68382dc7.js"><link rel="prefetch" href="/assets/js/162.db9c0697.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.c51b79ba.js"><link rel="prefetch" href="/assets/js/166.a5599c72.js"><link rel="prefetch" href="/assets/js/167.d93d6d09.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.c5fbab48.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.e5dde466.js"><link rel="prefetch" href="/assets/js/171.897a5989.js"><link rel="prefetch" href="/assets/js/172.a3fa92f8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.c3e01b8b.js"><link rel="prefetch" href="/assets/js/175.a3cdba2f.js"><link rel="prefetch" href="/assets/js/176.d72805d0.js"><link rel="prefetch" href="/assets/js/177.ebbd2633.js"><link rel="prefetch" href="/assets/js/178.2a27768f.js"><link rel="prefetch" href="/assets/js/179.9286be73.js"><link rel="prefetch" href="/assets/js/18.4ee3074e.js"><link rel="prefetch" href="/assets/js/180.f18cbd55.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.08ce6859.js"><link rel="prefetch" href="/assets/js/183.1dc25b0f.js"><link rel="prefetch" href="/assets/js/184.3c961f5c.js"><link rel="prefetch" href="/assets/js/185.f9f79dff.js"><link rel="prefetch" href="/assets/js/186.28f91be3.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.5df2da19.js"><link rel="prefetch" href="/assets/js/189.a794c794.js"><link rel="prefetch" href="/assets/js/19.118ab13e.js"><link rel="prefetch" href="/assets/js/190.7cdec2de.js"><link rel="prefetch" href="/assets/js/191.0297e6cf.js"><link rel="prefetch" href="/assets/js/192.697228d1.js"><link rel="prefetch" href="/assets/js/193.5cb8d43d.js"><link rel="prefetch" href="/assets/js/194.04976a6f.js"><link rel="prefetch" href="/assets/js/195.8d606920.js"><link rel="prefetch" href="/assets/js/196.c37afe55.js"><link rel="prefetch" href="/assets/js/197.2c6d1226.js"><link rel="prefetch" href="/assets/js/198.038c24f2.js"><link rel="prefetch" href="/assets/js/199.ae91bccb.js"><link rel="prefetch" href="/assets/js/20.eb4595e8.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.f1d6cf9b.js"><link rel="prefetch" href="/assets/js/202.2ea1d1b9.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.da0a6eb7.js"><link rel="prefetch" href="/assets/js/205.3a31f1d9.js"><link rel="prefetch" href="/assets/js/206.29121567.js"><link rel="prefetch" href="/assets/js/207.2d8fe84f.js"><link rel="prefetch" href="/assets/js/208.2b32fee1.js"><link rel="prefetch" href="/assets/js/209.b95ecdfa.js"><link rel="prefetch" href="/assets/js/21.11c481e1.js"><link rel="prefetch" href="/assets/js/210.b71de55d.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.356048bc.js"><link rel="prefetch" href="/assets/js/215.80bd52a8.js"><link rel="prefetch" href="/assets/js/216.a693de49.js"><link rel="prefetch" href="/assets/js/217.d3f0cb2d.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.4fc65310.js"><link rel="prefetch" href="/assets/js/22.09e52363.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.37a9bc26.js"><link rel="prefetch" href="/assets/js/222.14c4ce9a.js"><link rel="prefetch" href="/assets/js/223.79200d95.js"><link rel="prefetch" href="/assets/js/224.b633ba46.js"><link rel="prefetch" href="/assets/js/225.eb4316ed.js"><link rel="prefetch" href="/assets/js/226.f5def5b6.js"><link rel="prefetch" href="/assets/js/227.a30097c7.js"><link rel="prefetch" href="/assets/js/228.08ddff61.js"><link rel="prefetch" href="/assets/js/229.cdf68885.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.26d4f9a9.js"><link rel="prefetch" href="/assets/js/231.23da383d.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.dcbeedc1.js"><link rel="prefetch" href="/assets/js/234.cedc03a0.js"><link rel="prefetch" href="/assets/js/235.6b91d63a.js"><link rel="prefetch" href="/assets/js/236.082930c3.js"><link rel="prefetch" href="/assets/js/237.71a0d31d.js"><link rel="prefetch" href="/assets/js/238.3b347296.js"><link rel="prefetch" href="/assets/js/239.199b5800.js"><link rel="prefetch" href="/assets/js/24.1a0ec854.js"><link rel="prefetch" href="/assets/js/240.5e7fe51a.js"><link rel="prefetch" href="/assets/js/241.fdccefb6.js"><link rel="prefetch" href="/assets/js/242.1a263fef.js"><link rel="prefetch" href="/assets/js/243.9b76c980.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.0ca047be.js"><link rel="prefetch" href="/assets/js/246.f492f6e3.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.dfdf517b.js"><link rel="prefetch" href="/assets/js/249.f3abb8d4.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.6ac4cc3a.js"><link rel="prefetch" href="/assets/js/251.6b64e464.js"><link rel="prefetch" href="/assets/js/252.ee2fa61e.js"><link rel="prefetch" href="/assets/js/253.ff810602.js"><link rel="prefetch" href="/assets/js/254.0bde9601.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.5bcd6250.js"><link rel="prefetch" href="/assets/js/257.c7b560b0.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.4e700996.js"><link rel="prefetch" href="/assets/js/26.bbfde0f8.js"><link rel="prefetch" href="/assets/js/260.f4becfcc.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.43d14785.js"><link rel="prefetch" href="/assets/js/263.b69c03ad.js"><link rel="prefetch" href="/assets/js/264.dbc22129.js"><link rel="prefetch" href="/assets/js/265.b5cb48f6.js"><link rel="prefetch" href="/assets/js/266.34356500.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.ff5ce018.js"><link rel="prefetch" href="/assets/js/27.9675606e.js"><link rel="prefetch" href="/assets/js/270.ef200fe2.js"><link rel="prefetch" href="/assets/js/271.4ac62df5.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.a3a9c76d.js"><link rel="prefetch" href="/assets/js/275.85c008bc.js"><link rel="prefetch" href="/assets/js/276.ca9b96a1.js"><link rel="prefetch" href="/assets/js/277.ccecfc0f.js"><link rel="prefetch" href="/assets/js/278.c342c4bb.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.01207ecc.js"><link rel="prefetch" href="/assets/js/280.4a8eddcd.js"><link rel="prefetch" href="/assets/js/281.b3bdd051.js"><link rel="prefetch" href="/assets/js/282.291be060.js"><link rel="prefetch" href="/assets/js/283.7065411b.js"><link rel="prefetch" href="/assets/js/284.e93a4e73.js"><link rel="prefetch" href="/assets/js/285.009d797f.js"><link rel="prefetch" href="/assets/js/286.ec26c975.js"><link rel="prefetch" href="/assets/js/287.448073e1.js"><link rel="prefetch" href="/assets/js/288.4207e20b.js"><link rel="prefetch" href="/assets/js/289.53bc96e2.js"><link rel="prefetch" href="/assets/js/29.281eb37f.js"><link rel="prefetch" href="/assets/js/290.30a4fd5c.js"><link rel="prefetch" href="/assets/js/291.2c87a450.js"><link rel="prefetch" href="/assets/js/292.7391f420.js"><link rel="prefetch" href="/assets/js/293.e2c07d98.js"><link rel="prefetch" href="/assets/js/294.69a39f91.js"><link rel="prefetch" href="/assets/js/295.c625045b.js"><link rel="prefetch" href="/assets/js/296.34d89b4e.js"><link rel="prefetch" href="/assets/js/297.064983a6.js"><link rel="prefetch" href="/assets/js/298.023e5d86.js"><link rel="prefetch" href="/assets/js/299.e220fd12.js"><link rel="prefetch" href="/assets/js/3.0616cd46.js"><link rel="prefetch" href="/assets/js/30.e39632a0.js"><link rel="prefetch" href="/assets/js/300.28529b60.js"><link rel="prefetch" href="/assets/js/301.d1438c52.js"><link rel="prefetch" href="/assets/js/302.49a73ebb.js"><link rel="prefetch" href="/assets/js/303.1d69c976.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.3dc675ac.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.5833b544.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.08f0d836.js"><link rel="prefetch" href="/assets/js/313.5519c581.js"><link rel="prefetch" href="/assets/js/314.89323fa8.js"><link rel="prefetch" href="/assets/js/315.5c7d3885.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.e2d7a191.js"><link rel="prefetch" href="/assets/js/318.fc1ea4dc.js"><link rel="prefetch" href="/assets/js/319.4b4eaa24.js"><link rel="prefetch" href="/assets/js/32.6f8f7735.js"><link rel="prefetch" href="/assets/js/320.26cadf73.js"><link rel="prefetch" href="/assets/js/321.da66552d.js"><link rel="prefetch" href="/assets/js/322.d1b7e27b.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.1bed89f2.js"><link rel="prefetch" href="/assets/js/325.74a10b7f.js"><link rel="prefetch" href="/assets/js/326.6733614c.js"><link rel="prefetch" href="/assets/js/327.2ddf9fe2.js"><link rel="prefetch" href="/assets/js/328.79dc0b15.js"><link rel="prefetch" href="/assets/js/329.d39f716c.js"><link rel="prefetch" href="/assets/js/33.c1604104.js"><link rel="prefetch" href="/assets/js/330.32c96058.js"><link rel="prefetch" href="/assets/js/331.405b6757.js"><link rel="prefetch" href="/assets/js/332.537134ee.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.f4f1e806.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.360d22f4.js"><link rel="prefetch" href="/assets/js/337.95c52f93.js"><link rel="prefetch" href="/assets/js/338.824f01ee.js"><link rel="prefetch" href="/assets/js/339.8e0c18d7.js"><link rel="prefetch" href="/assets/js/34.61042921.js"><link rel="prefetch" href="/assets/js/340.a666422a.js"><link rel="prefetch" href="/assets/js/341.8061f90b.js"><link rel="prefetch" href="/assets/js/342.5ecffedd.js"><link rel="prefetch" href="/assets/js/343.d67c1d54.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.87c72db5.js"><link rel="prefetch" href="/assets/js/346.2796487d.js"><link rel="prefetch" href="/assets/js/347.57b5c6a5.js"><link rel="prefetch" href="/assets/js/348.0cffac81.js"><link rel="prefetch" href="/assets/js/349.8e908833.js"><link rel="prefetch" href="/assets/js/35.1d574a74.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.2ffd5646.js"><link rel="prefetch" href="/assets/js/353.4ffbf66f.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.21de33fa.js"><link rel="prefetch" href="/assets/js/356.3d20f95a.js"><link rel="prefetch" href="/assets/js/357.2612cca5.js"><link rel="prefetch" href="/assets/js/358.7cce50cb.js"><link rel="prefetch" href="/assets/js/359.c23b92e5.js"><link rel="prefetch" href="/assets/js/36.66b33e93.js"><link rel="prefetch" href="/assets/js/360.6e33c30f.js"><link rel="prefetch" href="/assets/js/361.6db53217.js"><link rel="prefetch" href="/assets/js/362.28e15494.js"><link rel="prefetch" href="/assets/js/363.5316eb9a.js"><link rel="prefetch" href="/assets/js/364.ae04b75f.js"><link rel="prefetch" href="/assets/js/365.64c1e88f.js"><link rel="prefetch" href="/assets/js/366.066b98bd.js"><link rel="prefetch" href="/assets/js/367.06e05293.js"><link rel="prefetch" href="/assets/js/368.82209659.js"><link rel="prefetch" href="/assets/js/369.d687a4ee.js"><link rel="prefetch" href="/assets/js/37.18a4caf1.js"><link rel="prefetch" href="/assets/js/370.02d4e333.js"><link rel="prefetch" href="/assets/js/371.9e35695d.js"><link rel="prefetch" href="/assets/js/372.de59ddf8.js"><link rel="prefetch" href="/assets/js/373.7cfca530.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.07a95ecc.js"><link rel="prefetch" href="/assets/js/376.0859df9f.js"><link rel="prefetch" href="/assets/js/377.241c4721.js"><link rel="prefetch" href="/assets/js/378.a2d485d0.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c7cc8ff1.js"><link rel="prefetch" href="/assets/js/380.886e2c5c.js"><link rel="prefetch" href="/assets/js/381.514ea971.js"><link rel="prefetch" href="/assets/js/382.9bd440e8.js"><link rel="prefetch" href="/assets/js/383.cda3a324.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.3ebff401.js"><link rel="prefetch" href="/assets/js/386.7125d75d.js"><link rel="prefetch" href="/assets/js/387.472cd823.js"><link rel="prefetch" href="/assets/js/388.235ad655.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.c156642a.js"><link rel="prefetch" href="/assets/js/390.b25b016f.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.86acebaf.js"><link rel="prefetch" href="/assets/js/393.f5e26c18.js"><link rel="prefetch" href="/assets/js/394.ceb6bc2c.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.ee8abf24.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.d83e363b.js"><link rel="prefetch" href="/assets/js/399.a800f7df.js"><link rel="prefetch" href="/assets/js/4.ff0d0983.js"><link rel="prefetch" href="/assets/js/40.d21ba833.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.04724ff3.js"><link rel="prefetch" href="/assets/js/402.e2a01c0d.js"><link rel="prefetch" href="/assets/js/403.4c059b3b.js"><link rel="prefetch" href="/assets/js/404.0b33c4fc.js"><link rel="prefetch" href="/assets/js/405.31f9f4d4.js"><link rel="prefetch" href="/assets/js/406.0ea31eb3.js"><link rel="prefetch" href="/assets/js/407.f8aeaf6a.js"><link rel="prefetch" href="/assets/js/408.e31d8e6d.js"><link rel="prefetch" href="/assets/js/409.527b15a8.js"><link rel="prefetch" href="/assets/js/41.e327929c.js"><link rel="prefetch" href="/assets/js/410.ab3891e5.js"><link rel="prefetch" href="/assets/js/411.cabd9e6f.js"><link rel="prefetch" href="/assets/js/412.c00feda1.js"><link rel="prefetch" href="/assets/js/413.da9d8d0d.js"><link rel="prefetch" href="/assets/js/414.86e019be.js"><link rel="prefetch" href="/assets/js/415.024f200c.js"><link rel="prefetch" href="/assets/js/416.7a7f201a.js"><link rel="prefetch" href="/assets/js/417.9039f0f5.js"><link rel="prefetch" href="/assets/js/418.d0af7314.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.766a1ebb.js"><link rel="prefetch" href="/assets/js/420.e143149b.js"><link rel="prefetch" href="/assets/js/421.ce227e9b.js"><link rel="prefetch" href="/assets/js/422.5af358c3.js"><link rel="prefetch" href="/assets/js/423.b72620fc.js"><link rel="prefetch" href="/assets/js/424.0fffeb28.js"><link rel="prefetch" href="/assets/js/425.40613664.js"><link rel="prefetch" href="/assets/js/426.2e22eebf.js"><link rel="prefetch" href="/assets/js/427.a553f7d4.js"><link rel="prefetch" href="/assets/js/428.76aab144.js"><link rel="prefetch" href="/assets/js/429.3f7541a4.js"><link rel="prefetch" href="/assets/js/43.bd29747c.js"><link rel="prefetch" href="/assets/js/430.499095ce.js"><link rel="prefetch" href="/assets/js/431.8ab3c62f.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.048e0058.js"><link rel="prefetch" href="/assets/js/435.b7f62b08.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.91febbb0.js"><link rel="prefetch" href="/assets/js/439.3bdc32c2.js"><link rel="prefetch" href="/assets/js/44.159635cf.js"><link rel="prefetch" href="/assets/js/440.4c502b0c.js"><link rel="prefetch" href="/assets/js/441.f720ea4c.js"><link rel="prefetch" href="/assets/js/442.a0317b88.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.991c700e.js"><link rel="prefetch" href="/assets/js/445.eebf3c94.js"><link rel="prefetch" href="/assets/js/446.baf1e6b5.js"><link rel="prefetch" href="/assets/js/447.36441c47.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.e543e021.js"><link rel="prefetch" href="/assets/js/452.23d29581.js"><link rel="prefetch" href="/assets/js/453.4cefab78.js"><link rel="prefetch" href="/assets/js/454.505893ff.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.34067054.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.9f72dafe.js"><link rel="prefetch" href="/assets/js/459.298e4e26.js"><link rel="prefetch" href="/assets/js/46.54e218d9.js"><link rel="prefetch" href="/assets/js/460.875ebcb2.js"><link rel="prefetch" href="/assets/js/461.2e995131.js"><link rel="prefetch" href="/assets/js/462.93690745.js"><link rel="prefetch" href="/assets/js/463.c13b2bec.js"><link rel="prefetch" href="/assets/js/464.bf750fb8.js"><link rel="prefetch" href="/assets/js/465.81c60d5d.js"><link rel="prefetch" href="/assets/js/466.a61d596e.js"><link rel="prefetch" href="/assets/js/467.3842176d.js"><link rel="prefetch" href="/assets/js/468.63c7bcdd.js"><link rel="prefetch" href="/assets/js/469.75d9181a.js"><link rel="prefetch" href="/assets/js/47.f17d1df2.js"><link rel="prefetch" href="/assets/js/470.e5676a3b.js"><link rel="prefetch" href="/assets/js/471.6277f541.js"><link rel="prefetch" href="/assets/js/472.125e562f.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.92a7814b.js"><link rel="prefetch" href="/assets/js/475.783a6e1b.js"><link rel="prefetch" href="/assets/js/476.13ab38fd.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.4dfe6494.js"><link rel="prefetch" href="/assets/js/479.4c41ba37.js"><link rel="prefetch" href="/assets/js/48.7e42f465.js"><link rel="prefetch" href="/assets/js/480.fc824c74.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.0f102a04.js"><link rel="prefetch" href="/assets/js/484.4717857e.js"><link rel="prefetch" href="/assets/js/485.a935adb5.js"><link rel="prefetch" href="/assets/js/486.6984e85f.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.a95486d4.js"><link rel="prefetch" href="/assets/js/49.f67f18f2.js"><link rel="prefetch" href="/assets/js/490.b3795263.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.fb97316c.js"><link rel="prefetch" href="/assets/js/493.fbd42d21.js"><link rel="prefetch" href="/assets/js/494.d49dbddc.js"><link rel="prefetch" href="/assets/js/495.960d7a7a.js"><link rel="prefetch" href="/assets/js/496.067e2f8a.js"><link rel="prefetch" href="/assets/js/497.8892200d.js"><link rel="prefetch" href="/assets/js/498.f370eeef.js"><link rel="prefetch" href="/assets/js/499.9a73037b.js"><link rel="prefetch" href="/assets/js/5.abc9632b.js"><link rel="prefetch" href="/assets/js/50.f653d3eb.js"><link rel="prefetch" href="/assets/js/500.3908db61.js"><link rel="prefetch" href="/assets/js/501.268d26f2.js"><link rel="prefetch" href="/assets/js/502.a0b06ceb.js"><link rel="prefetch" href="/assets/js/503.e58b9748.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.148ab5d9.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.60ef697c.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.6b74fe01.js"><link rel="prefetch" href="/assets/js/514.1ee3b99e.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.e29023be.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.ce2bd6da.js"><link rel="prefetch" href="/assets/js/520.017b325c.js"><link rel="prefetch" href="/assets/js/521.58a6306c.js"><link rel="prefetch" href="/assets/js/522.a40f2287.js"><link rel="prefetch" href="/assets/js/523.edb81dd7.js"><link rel="prefetch" href="/assets/js/524.16258545.js"><link rel="prefetch" href="/assets/js/525.4bcc1c02.js"><link rel="prefetch" href="/assets/js/526.c355d6fc.js"><link rel="prefetch" href="/assets/js/527.7c3b7161.js"><link rel="prefetch" href="/assets/js/528.ac47d7da.js"><link rel="prefetch" href="/assets/js/529.3e5e6bc0.js"><link rel="prefetch" href="/assets/js/53.d65bef48.js"><link rel="prefetch" href="/assets/js/530.13d1b1c6.js"><link rel="prefetch" href="/assets/js/531.04e2e897.js"><link rel="prefetch" href="/assets/js/532.533d810f.js"><link rel="prefetch" href="/assets/js/533.2bd83146.js"><link rel="prefetch" href="/assets/js/534.cd16ff61.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.7824cd53.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.911cc914.js"><link rel="prefetch" href="/assets/js/539.2de30ddc.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.1046697c.js"><link rel="prefetch" href="/assets/js/542.ef1092c7.js"><link rel="prefetch" href="/assets/js/543.54235171.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.6983d416.js"><link rel="prefetch" href="/assets/js/546.98a57513.js"><link rel="prefetch" href="/assets/js/547.8c0ea7a4.js"><link rel="prefetch" href="/assets/js/548.b2e5147f.js"><link rel="prefetch" href="/assets/js/549.110d8ccc.js"><link rel="prefetch" href="/assets/js/55.994be3d0.js"><link rel="prefetch" href="/assets/js/550.b30b0650.js"><link rel="prefetch" href="/assets/js/551.4038a02e.js"><link rel="prefetch" href="/assets/js/552.4ce5afbb.js"><link rel="prefetch" href="/assets/js/553.6156a64c.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.5e22fac0.js"><link rel="prefetch" href="/assets/js/556.e37be811.js"><link rel="prefetch" href="/assets/js/557.9ef5c296.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.78e2830c.js"><link rel="prefetch" href="/assets/js/56.a07a348f.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.4b1b4b8c.js"><link rel="prefetch" href="/assets/js/562.6ff741ad.js"><link rel="prefetch" href="/assets/js/563.10fe6323.js"><link rel="prefetch" href="/assets/js/564.23bc7ae3.js"><link rel="prefetch" href="/assets/js/565.99045d53.js"><link rel="prefetch" href="/assets/js/566.e0e8a181.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.cc37a022.js"><link rel="prefetch" href="/assets/js/569.0b2d095f.js"><link rel="prefetch" href="/assets/js/57.d8914610.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.8e5c59b6.js"><link rel="prefetch" href="/assets/js/572.5a60007c.js"><link rel="prefetch" href="/assets/js/573.f0e2a0f5.js"><link rel="prefetch" href="/assets/js/574.fffad53b.js"><link rel="prefetch" href="/assets/js/575.4297f78b.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.3824ee1c.js"><link rel="prefetch" href="/assets/js/58.02da9451.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.21bed6e7.js"><link rel="prefetch" href="/assets/js/582.c94227c4.js"><link rel="prefetch" href="/assets/js/583.f0611b7e.js"><link rel="prefetch" href="/assets/js/584.809f0bbb.js"><link rel="prefetch" href="/assets/js/585.ed41b413.js"><link rel="prefetch" href="/assets/js/586.957fe496.js"><link rel="prefetch" href="/assets/js/587.ff5d8d3c.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.275b0293.js"><link rel="prefetch" href="/assets/js/590.6ee9e42d.js"><link rel="prefetch" href="/assets/js/591.d2c873ee.js"><link rel="prefetch" href="/assets/js/592.63d5541c.js"><link rel="prefetch" href="/assets/js/593.1b5910fa.js"><link rel="prefetch" href="/assets/js/594.a9e7a407.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.93454a11.js"><link rel="prefetch" href="/assets/js/597.e92d65a6.js"><link rel="prefetch" href="/assets/js/598.05057c9f.js"><link rel="prefetch" href="/assets/js/599.534ff18f.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.222db31a.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.3d7ae82f.js"><link rel="prefetch" href="/assets/js/604.f3055453.js"><link rel="prefetch" href="/assets/js/605.af0c8252.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.974b78f2.js"><link rel="prefetch" href="/assets/js/608.26462e83.js"><link rel="prefetch" href="/assets/js/609.dd27e631.js"><link rel="prefetch" href="/assets/js/61.eaf63186.js"><link rel="prefetch" href="/assets/js/610.000c1e9d.js"><link rel="prefetch" href="/assets/js/611.44ff14d4.js"><link rel="prefetch" href="/assets/js/612.5b4036a0.js"><link rel="prefetch" href="/assets/js/613.3b71b5a2.js"><link rel="prefetch" href="/assets/js/614.28925cbf.js"><link rel="prefetch" href="/assets/js/615.a9e93388.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.31662991.js"><link rel="prefetch" href="/assets/js/618.6d9dcf9c.js"><link rel="prefetch" href="/assets/js/619.d2833531.js"><link rel="prefetch" href="/assets/js/62.7460f830.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.8109ad4e.js"><link rel="prefetch" href="/assets/js/622.06a5babf.js"><link rel="prefetch" href="/assets/js/623.ccf364a6.js"><link rel="prefetch" href="/assets/js/624.18209fc2.js"><link rel="prefetch" href="/assets/js/625.eb3f309d.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.af3ee1ec.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.18441910.js"><link rel="prefetch" href="/assets/js/630.f8552446.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.ca268728.js"><link rel="prefetch" href="/assets/js/633.e5bcf026.js"><link rel="prefetch" href="/assets/js/634.8ec52643.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.eb23b5c5.js"><link rel="prefetch" href="/assets/js/637.eee47171.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.9bcd2f77.js"><link rel="prefetch" href="/assets/js/640.a02db32d.js"><link rel="prefetch" href="/assets/js/641.25990053.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.becf6b9f.js"><link rel="prefetch" href="/assets/js/644.ac752ef6.js"><link rel="prefetch" href="/assets/js/645.cf92857c.js"><link rel="prefetch" href="/assets/js/646.d4646b84.js"><link rel="prefetch" href="/assets/js/647.b1895af0.js"><link rel="prefetch" href="/assets/js/648.c26381da.js"><link rel="prefetch" href="/assets/js/649.c0818833.js"><link rel="prefetch" href="/assets/js/65.5ee94aae.js"><link rel="prefetch" href="/assets/js/650.8d4d92d6.js"><link rel="prefetch" href="/assets/js/651.4ff5f780.js"><link rel="prefetch" href="/assets/js/66.f1b27e87.js"><link rel="prefetch" href="/assets/js/67.47082498.js"><link rel="prefetch" href="/assets/js/68.502aa70c.js"><link rel="prefetch" href="/assets/js/69.9a3a9a86.js"><link rel="prefetch" href="/assets/js/70.1a8828f1.js"><link rel="prefetch" href="/assets/js/71.d32d3acb.js"><link rel="prefetch" href="/assets/js/72.0d13e6d5.js"><link rel="prefetch" href="/assets/js/73.be72ee5e.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.1450e671.js"><link rel="prefetch" href="/assets/js/76.f41837bd.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.e5277cab.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.d33b4c24.js"><link rel="prefetch" href="/assets/js/81.e3349db5.js"><link rel="prefetch" href="/assets/js/82.304e56e7.js"><link rel="prefetch" href="/assets/js/83.886030fc.js"><link rel="prefetch" href="/assets/js/84.3d1dd526.js"><link rel="prefetch" href="/assets/js/85.9f2d1ef1.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.0d02b425.js"><link rel="prefetch" href="/assets/js/88.8e3d0899.js"><link rel="prefetch" href="/assets/js/89.414af620.js"><link rel="prefetch" href="/assets/js/9.5a6081e3.js"><link rel="prefetch" href="/assets/js/90.e20539a2.js"><link rel="prefetch" href="/assets/js/91.e9e57bd4.js"><link rel="prefetch" href="/assets/js/92.9b5cf84f.js"><link rel="prefetch" href="/assets/js/93.366136f2.js"><link rel="prefetch" href="/assets/js/94.524b1442.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.eb5ca57b.js"><link rel="prefetch" href="/assets/js/97.912c0f6a.js"><link rel="prefetch" href="/assets/js/98.825483b2.js"><link rel="prefetch" href="/assets/js/99.ae4d5edd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python发展历史和趋势、解释器、开发工具</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/history/history.html" class="sidebar-link">Python 发展历史</a></li><li><a href="/dev/python/basic/docs/interpreter/interpreter.html" class="sidebar-link">Python 解释器</a></li><li><a href="/dev/python/basic/docs/devtool/devtool.html" class="sidebar-link">Python 开发工具</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>编写Python程序、字节</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/data-type/data-type.html" class="sidebar-link">编写Python程序</a></li><li><a href="/dev/python/basic/docs/byte/byte.html" class="sidebar-link">字节</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>字符串、列表、字典</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/string/string.html" class="sidebar-link">字符串</a></li><li><a href="/dev/python/basic/docs/list/list.html" class="sidebar-link">列表</a></li><li><a href="/dev/python/basic/docs/dict/dict.html" class="sidebar-link">字典</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>元组、集合、时间</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/tuple/tuple.html" class="sidebar-link">元组</a></li><li><a href="/dev/python/basic/docs/set/set.html" class="sidebar-link">集合</a></li><li><a href="/dev/python/basic/docs/time/time.html" class="sidebar-link">时间和冒泡排序</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>表达式、运算符、控制流</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/operation/operation.html" class="sidebar-link">表达式与运算符</a></li><li><a href="/dev/python/basic/docs/controller/controller.html" class="sidebar-link">控制流</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>解析式、生成器、容器类数据类型的封装与解构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/analytical-formula/analytical-formula.html" class="sidebar-link">解析式</a></li><li><a href="/dev/python/basic/docs/generator/generator.html" class="sidebar-link">生成器</a></li><li><a href="/dev/python/basic/docs/encapsulation-deconstruction/encapsulation-deconstruction.html" class="sidebar-link">容器类数据类型的封装与解构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>函数、函数的返回值、嵌套函数、递归函数、匿名函数</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/function/function.html" class="sidebar-link">函数</a></li><li><a href="/dev/python/basic/docs/function-return/function-return.html" class="sidebar-link">函数的返回值</a></li><li><a href="/dev/python/basic/docs/embed-function/embed-function.html" class="sidebar-link">嵌套函数</a></li><li><a href="/dev/python/basic/docs/recursion-function/recursion-function.html" class="sidebar-link">递归函数</a></li><li><a href="/dev/python/basic/docs/lamada-function/lamada-function.html" class="sidebar-link">匿名函数</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>生成器函数、高阶函数、装饰器</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/gen-function/gen-function.html" class="sidebar-link">生成器函数</a></li><li><a href="/dev/python/basic/docs/high-function/high-function.html" class="sidebar-link">高阶函数</a></li><li><a href="/dev/python/basic/docs/decoration/decoration.html" class="sidebar-link">装饰器</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>参数注解、文件操作、线性查找、插入排序、选择排序</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/params/params.html" class="sidebar-link">参数注解</a></li><li><a href="/dev/python/basic/docs/file/file.html" class="sidebar-link">文件操作</a></li><li><a href="/dev/python/basic/docs/linear-search/linear-search.html" class="sidebar-link">线性查找</a></li><li><a href="/dev/python/basic/docs/insert-sort/insert-sort.html" class="sidebar-link">插入排序</a></li><li><a href="/dev/python/basic/docs/select-sort/select-sort.html" class="sidebar-link">选择排序</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>文件路径相关模块、序列化与反序列化、命令行参数解析</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/path/path.html" class="sidebar-link">文件路径相关模块</a></li><li><a href="/dev/python/basic/docs/json/json.html" class="sidebar-link">序列化与反序列化</a></li><li><a href="/dev/python/basic/docs/argparse/argparse.html" class="sidebar-link">命令行参数解析</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>正则表达式与面向对象</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/re/re.html" class="sidebar-link">正则表达式</a></li><li><a href="/dev/python/basic/docs/object1/object1.html" class="sidebar-link">面向对象1</a></li><li><a href="/dev/python/basic/docs/object2/object2.html" class="sidebar-link">面向对象2</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>魔术方法与上下文管理器</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/magic/magic.html" class="sidebar-link">魔术方法</a></li><li><a href="/dev/python/basic/docs/context/context.html" class="sidebar-link">上下文管理器</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>反射与描述器</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/reflect/reflect.html" class="sidebar-link">反射</a></li><li><a href="/dev/python/basic/docs/describer/describer.html" class="sidebar-link">描述器</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>模块化开发与异常处理</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/module/module.html" class="sidebar-link">模块化开发</a></li><li><a href="/dev/python/basic/docs/exception/exception.html" class="sidebar-link">异常处理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>线程与进程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/thread/thread.html" class="sidebar-link">线程</a></li><li><a href="/dev/python/basic/docs/concurrent/concurrent.html" class="sidebar-link">线程同步与并发</a></li><li><a href="/dev/python/basic/docs/process-concurrent/process-concurrent.html" class="sidebar-link">进程同步与并发</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Socket编程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/socket/socket.html" class="sidebar-link">socket 网络</a></li><li><a href="/dev/python/basic/docs/socketserver/socketserver.html" class="sidebar-link">SocketServer服务器</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Web编程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/web/web.html" class="sidebar-link">Python Web开发</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Python操作MySQL数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/mysql/mysql.html" aria-current="page" class="active sidebar-link">MySQL数据库使用</a></li><li><a href="/dev/python/basic/docs/mysqlclient/mysqlclient.html" class="sidebar-link">mysqlclient操作MySQL</a></li><li><a href="/dev/python/basic/docs/SQLALchemy/SQLALchemy.html" class="sidebar-link">SQLALchemy操作MySQL</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python操作MongoDB数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/mongodb/mongodb.html" class="sidebar-link">MongoDB的使用</a></li><li><a href="/dev/python/basic/docs/pymongodb/pymongodb.html" class="sidebar-link">Python操作MongoDB</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python操作Redis数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/redis/redis.html" class="sidebar-link">Redis的使用</a></li><li><a href="/dev/python/basic/docs/pyredis/pyredis.html" class="sidebar-link">Python操作Redis</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Django框架</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/django-start/django-start.html" class="sidebar-link">Django入门</a></li><li><a href="/dev/python/basic/docs/django-config/django-config.html" class="sidebar-link">Django框架配置</a></li><li><a href="/dev/python/basic/docs/django-router/django-router.html" class="sidebar-link">Django路由处理</a></li><li><a href="/dev/python/basic/docs/django-view/django-view.html" class="sidebar-link">Django视图</a></li><li><a href="/dev/python/basic/docs/django-model/django-model.html" class="sidebar-link">Django Model模型建立</a></li><li><a href="/dev/python/basic/docs/django-template/django-template.html" class="sidebar-link">Django模板引擎以及模板</a></li><li><a href="/dev/python/basic/docs/django-media/django-media.html" class="sidebar-link">Django模板静态文件处理和媒体文件处理</a></li><li><a href="/dev/python/basic/docs/django-debug/django-debug.html" class="sidebar-link">Django 调试技巧</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Django REST Framework框架</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/drf/drf.html" class="sidebar-link">Django REST Framework介绍</a></li><li><a href="/dev/python/basic/docs/drf-csrf/drf-csrf.html" class="sidebar-link">Django启用和禁用CSRF功能</a></li><li><a href="/dev/python/basic/docs/drf-serializer/drf-serializer.html" class="sidebar-link">Django REST framework ModelSerializer 和 Mixin的使用</a></li><li><a href="/dev/python/basic/docs/drf-model-serializer/drf-model-serializer.html" class="sidebar-link">Django REST framework  Serializer/ModelSerializer的使用</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python 测试</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/test/test.html" class="sidebar-link">Python测试</a></li><li><a href="/dev/python/basic/docs/test-fiddler/test-fiddler.html" class="sidebar-link">Fiddler的使用</a></li><li><a href="/dev/python/basic/docs/test-requests/test-requests.html" class="sidebar-link">requests第三方库在测试中的使用</a></li><li><a href="/dev/python/basic/docs/test-unittest/test-unittest.html" class="sidebar-link">unittest使用</a></li><li><a href="/dev/python/basic/docs/test-unittest-assert/test-unittest-assert.html" class="sidebar-link">unittest断言的使用</a></li><li><a href="/dev/python/basic/docs/test-unittest-doc/test-unittest-doc.html" class="sidebar-link">unittest生成测试报告</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python Mock数据</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/mock/mock.html" class="sidebar-link">mock介绍</a></li><li><a href="/dev/python/basic/docs/mock-advance/mock-advance.html" class="sidebar-link">封装mock</a></li><li><a href="/dev/python/basic/docs/mock-cookie/mock-cookie.html" class="sidebar-link">Cookie 和 Session分析</a></li><li><a href="/dev/python/basic/docs/mock-exception/mock-exception.html" class="sidebar-link">测试中的异常处理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python 爬虫</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/requests/requests.html" class="sidebar-link">requests模块使用</a></li><li><a href="/dev/python/basic/docs/beautiful-soup/beautiful-soup.html" class="sidebar-link">Beautiful Soup模块使用</a></li><li><a href="/dev/python/basic/docs/scrapy/scrapy.html" class="sidebar-link">scrapy框架介绍</a></li><li><a href="/dev/python/basic/docs/scrapy-css/scrapy-css.html" class="sidebar-link">scrapy的CSS选择器</a></li><li><a href="/dev/python/basic/docs/scrapy-url/scrapy-url.html" class="sidebar-link">Scrapy的URL字段解析</a></li><li><a href="/dev/python/basic/docs/scrapy-page/scrapy-page.html" class="sidebar-link">Scrapy页面元素解析</a></li><li><a href="/dev/python/basic/docs/scrapy-image/scrapy-image.html" class="sidebar-link">Scrapy图片下载</a></li><li><a href="/dev/python/basic/docs/scrapy-path/scrapy-path.html" class="sidebar-link">Scrapy图片路径存储且item的json化</a></li><li><a href="/dev/python/basic/docs/scrapy-model/scrapy-model.html" class="sidebar-link">Scrapy的item数据model保存到数据库中</a></li><li><a href="/dev/python/basic/docs/scrapy-twist/scrapy-twist.html" class="sidebar-link">使用twist框架实现MySQL写入</a></li><li><a href="/dev/python/basic/docs/scrapy-item-loader/scrapy-item-loader.html" class="sidebar-link">引入ItemLoader和Item的预处理函数</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python 相关操作</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/dev/python/basic/docs/excel/excel.html" class="sidebar-link">Python操作Excel(xlrd, xlwt)</a></li><li><a href="/dev/python/basic/docs/word/word.html" class="sidebar-link">Python操作Word</a></li><li><a href="/dev/python/basic/docs/batch-image/batch-image.html" class="sidebar-link">Python批量处理图片</a></li><li><a href="/dev/python/basic/docs/batch-mail/batch-mail.html" class="sidebar-link">Python批量发送邮件</a></li><li><a href="/dev/python/basic/docs/batch-file/batch-file.html" class="sidebar-link">Python实现文件名批量处理</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>MySQL数据库使用</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">MySQL数据库使用</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2017/5/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-mysql数据库使用"><a href="#一-mysql数据库使用" class="header-anchor">#</a> 一：MySQL数据库使用</h2> <h3 id="一-数据库概念"><a href="#一-数据库概念" class="header-anchor">#</a> (一)：数据库概念</h3> <ul><li>基本概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>数据库：数据存储的仓库
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>常用的数据库分类</li></ul> <p><img src="/assets/img/2021-12-2421.54.13.98943e85.png" alt="常用的数据库分类"></p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：关系型数据库
+    Oracle
+    MySQL
+    PostgreSQL
+    SQL Server
+    DB2
+
+
+2：非关系型数据库
+    MongoDB
+    Redis
+    Elasticsearch
+    Cassandra： 宽列存储模型
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="二-mysql数据库"><a href="#二-mysql数据库" class="header-anchor">#</a> (二)：MySQL数据库</h3> <ul><li>概念介绍</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>一种关系型数据库管理软件，原本是一个开放源代码的关系数据库管理系统，原开发者为瑞典的MySQL AB公司，该公司于2008年被昇阳微系统（Sun Microsystems）收购。2009年，甲骨文公司（Oracle）收购昇阳微系统公司，MySQL成为Oracle旗下产品
+
+MySQL在过去由于性能高、成本低、可靠性好，已经成为最流行的开源数据库，因此被广泛地应用在Internet上的中小型网站中。随着MySQL的不断成熟，它也逐渐用于更多大规模网站和应用，比如维基百科、Google和Facebook等网站。非常流行的开源软件组合LAMP中的“M”指的就是MySQL。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>数据库的数据类型</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>数据类型
+    数值类型
+        整数：tinyint、smallint、mediumint、int、bigint
+        浮点数：float、double、real、decimal
+    日期和时间：
+        date、time、datetime、timestamp、year
+    字符串类型
+        字符串：char、varchar
+        文本：tinytext、text、mediumtext、longtext
+    二进制：
+        tinyblob、blob、mediumblob、longblob
+
+
+修饰符
+    unsigned    
+    not null
+    default
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="三-sql语句分类"><a href="#三-sql语句分类" class="header-anchor">#</a> (三)：SQL语句分类</h3> <ul><li>SQL语句分类</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：DDL：数据库定义语言，负责数据库定义
+    CREATE
+    ALTER
+    DROP
+
+2: DML：数据库操作语言, 负责数据集对象操作
+    INSERT
+    DELETE
+    UPDATE
+    SELECT
+
+3: DCL：数据库控制语言, 负责权限访问控制
+    GRANT
+    REVOKE
+
+4：TCL：事务控制语言，负责ACID事务处理
+    commit
+    rollback
+
+
+注意：SQL语句不区分大小写，句尾使用分号表示一条语句结束, \G 结尾表示以以竖行显示
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>DDL示例</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code># 创建库
+create database Zabbix;
+
+# character set指定字符集为utf8, 排序规则为utf8_bin
+create datebase if not exists zabbix character set utf8 collate utf8_bin 
+
+# 删除库
+drop database Zabbix;
+
+# 修改库
+alter database Zabbix character set = utf8mb4 
+alter database Zabbix collate = utf8mb4_general_ci
+
+# 创建表
+create table students (id int not null primary key auto_increment, name varchar(250) not null, class varchar(250) not null) engine=InnoDB default charset=utf8;
+
+# 查看表结构
+desc students;
+
+# 修改表
+alter table students add gender enum('f','m');
+alter table students drop gender;
+alter table students change name username varchar(100) after id;
+alter table students modify username varchar(100) first;
+
+# 删除表
+drop table students;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>DML示例</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code># 增
+insert into <span class="token function">org</span> <span class="token punctuation">(</span><span class="token keyword">class</span><span class="token punctuation">,</span>username<span class="token punctuation">)</span> <span class="token function">values</span> <span class="token punctuation">(</span><span class="token string">'ops'</span><span class="token punctuation">,</span> <span class="token string">'运维开发'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'opsdev'</span><span class="token punctuation">,</span> <span class="token string">'运维开发'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">'开发'</span><span class="token punctuation">,</span> <span class="token string">'java开发'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+# 改
+update home <span class="token keyword">set</span> <span class="token keyword">class</span> <span class="token operator">=</span> <span class="token string">'开发部门'</span> where id <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+# 删
+<span class="token keyword">delete</span> from home where <span class="token keyword">class</span> <span class="token operator">=</span> <span class="token string">'开发'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>SELECT 语句</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code># 查询表上的所有的数据
+select <span class="token operator">*</span> from home<span class="token punctuation">;</span>
+
+查询部分数据
+select id<span class="token punctuation">,</span><span class="token keyword">class</span> <span class="token class-name">from</span> home<span class="token punctuation">;</span>
+# 还可以取个别名
+select id <span class="token keyword">as</span> num<span class="token punctuation">,</span><span class="token keyword">class</span> <span class="token class-name">from</span> home<span class="token punctuation">;</span>
+
+# 使用where子句过滤
+# 可以使用的算数运算符：<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span> <span class="token punctuation">,</span> <span class="token operator">&gt;=</span><span class="token punctuation">,</span> <span class="token operator">&lt;=</span><span class="token punctuation">,</span> <span class="token operator">==</span><span class="token punctuation">,</span> <span class="token operator">!=</span> 
+# 可以使用连接词：and <span class="token punctuation">,</span> or
+select <span class="token operator">*</span> from home where id <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id <span class="token operator">&lt;=</span> <span class="token number">2</span> and id <span class="token operator">&gt;</span><span class="token number">1</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id between <span class="token number">1</span> and <span class="token number">2</span><span class="token punctuation">;</span>
+
+# 可以使用like做模糊匹配（<span class="token operator">%</span>：表示任意长度的字符，_：表示任意单个字符）
+select <span class="token operator">*</span> from home where <span class="token keyword">class</span> <span class="token class-name">like</span> <span class="token string">'ops%'</span><span class="token punctuation">;</span>
+
+# 可以使用<span class="token keyword">null</span>对值进行判断
+select <span class="token operator">*</span> from home where id is not <span class="token keyword">null</span><span class="token punctuation">;</span> 
+select <span class="token operator">*</span> from home where id is <span class="token keyword">null</span><span class="token punctuation">;</span> 
+
+# 使用order指定排序（默认是asc<span class="token punctuation">,</span>升序排列）
+select <span class="token operator">*</span> from home order by id desc<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>DCL语言打通关</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code># 先创建用户，再授权
+create user Robby@<span class="token string">'172.16.19.%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span>
+grant all on <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> to Robby@<span class="token string">'172.16.19.%'</span><span class="token punctuation">;</span>
+flush privileges<span class="token punctuation">;</span>
+
+
+# 创建用户的同时给用户授权
+grant all on <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> to Robby@<span class="token string">'172.16.19.%'</span> identified by <span class="token string">'123456'</span><span class="token punctuation">;</span>
+flush privileges<span class="token punctuation">;</span>
+
+# 给用户授予某些权限
+show grants <span class="token keyword">for</span> Robby@<span class="token string">'172.16.19.%'</span><span class="token punctuation">;</span>
+
+# 撤销授权
+revoke select <span class="token constant">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> from Robby@<span class="token string">'172.16.19.%'</span><span class="token punctuation">;</span> 
+flush privileges<span class="token punctuation">;</span>
+
+# 查看用户的权限
+show grants <span class="token keyword">for</span> Robby@<span class="token string">'172.16.19.%'</span><span class="token punctuation">;</span>
+
+# 删除用户
+<span class="token keyword">delete</span> from mysql<span class="token punctuation">.</span>user where user <span class="token operator">=</span> <span class="token string">&quot;Robby&quot;</span><span class="token punctuation">;</span>
+flush privileges<span class="token punctuation">;</span>
+
+# 删除用户
+drop user <span class="token string">'Robby'</span>@<span class="token string">'192.168.%.%'</span><span class="token punctuation">;</span>
+
+# 修改密码
+（<span class="token number">1</span>）<span class="token keyword">set</span> password <span class="token keyword">for</span> <span class="token string">'Robby'</span>@<span class="token string">'192.168.%.%'</span> <span class="token operator">=</span> <span class="token function">password</span><span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+（<span class="token number">2</span>）使用update命令，直接修改 mysql<span class="token punctuation">.</span>user 用户表，修改之后flush priveleges<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><ul><li>SELECT语句处理流程</li></ul> <p><img src="/assets/img/2021-12-2421.58.04.2fc903d4.png" alt="SELECT语句处理流程"></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token number">1</span>：where子句：指明过滤条件
+    可以使用的算数运算符：<span class="token operator">+</span>， <span class="token operator">-</span>， <span class="token operator">*</span> ，<span class="token operator">/</span> ，<span class="token operator">=</span> ，<span class="token operator">!=</span> ，<span class="token operator">&lt;=</span>， <span class="token operator">&gt;=</span> 
+    between 较小的数 and 较大的数
+    <span class="token keyword">in</span> <span class="token punctuation">(</span>较小的数，较大的数<span class="token punctuation">)</span>
+    is <span class="token keyword">null</span> 或 is not <span class="token keyword">null</span>
+    like模糊匹配
+示例：
+select <span class="token operator">*</span> from home where id <span class="token operator">&gt;=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id <span class="token operator">&lt;=</span> <span class="token number">2</span> and id <span class="token operator">&gt;</span><span class="token number">1</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id between <span class="token number">1</span> and <span class="token number">2</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> # 从<span class="token number">1</span>和<span class="token number">2</span>中取值
+select <span class="token operator">*</span> from home where <span class="token keyword">class</span> <span class="token class-name">like</span> <span class="token string">'ops%'</span><span class="token punctuation">;</span>
+select <span class="token operator">*</span> from home where id is not <span class="token keyword">null</span><span class="token punctuation">;</span> 
+select <span class="token operator">*</span> from home where id is <span class="token keyword">null</span><span class="token punctuation">;</span> 
+
+<span class="token number">2</span>：group by 子句：根据指定的查询条件将查询结构进行分组，用于做聚合运算
+<span class="token function">使用聚合函数：avg</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> <span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span> <span class="token punctuation">)</span> 
+select age<span class="token punctuation">,</span>gender from students group by gender<span class="token punctuation">;</span> 
+select <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span>gender from students group by gender<span class="token punctuation">;</span> 
+select <span class="token function">min</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span> gender from students group by gender<span class="token punctuation">;</span>
+select <span class="token function">max</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">,</span> gender from students group by gender<span class="token punctuation">;</span>
+select <span class="token function">count</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> gender from students group by gender<span class="token punctuation">;</span> 
+
+<span class="token number">3</span>：having子句：将分组之后的结果再次过滤
+select <span class="token function">avg</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">'average_age'</span><span class="token punctuation">,</span> gender from students group by gender having average_age <span class="token operator">&gt;</span> <span class="token number">50</span><span class="token punctuation">;</span> 
+
+<span class="token number">4</span>：order by子句 ：根据指定的字段对查询结果进行排序，默认为升序，降序使用关键字desc
+select name<span class="token punctuation">,</span>age from students order by age desc<span class="token punctuation">;</span>
+
+<span class="token number">5</span>：limit 子句：对查询的结果进行输出行数的限制 
+# 选前<span class="token number">8</span>行
+select name<span class="token punctuation">,</span>age from students order by age desc limit <span class="token number">8</span><span class="token punctuation">;</span> 
+# 前<span class="token number">4</span>个不选，从第五行开始选<span class="token number">2</span>行
+select name<span class="token punctuation">,</span>age from students order by age  limit <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">;</span> 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>总结单表查询次序</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>子句的书写顺序：
+where <span class="token operator">-</span><span class="token operator">&gt;</span> group by <span class="token operator">-</span><span class="token operator">&gt;</span> having <span class="token operator">-</span><span class="token operator">&gt;</span> order by <span class="token operator">-</span><span class="token operator">&gt;</span> limit 
+
+例如：
+select <span class="token operator">*</span><span class="token punctuation">,</span><span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">'各班平均成绩'</span> from students where id <span class="token operator">&gt;</span> <span class="token number">1</span> group by <span class="token keyword">class</span> <span class="token class-name">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">55</span> order by score desc limit <span class="token number">3</span> <span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="四-主键、唯一键、外键-以及-一对一查询-一对多查询"><a href="#四-主键、唯一键、外键-以及-一对一查询-一对多查询" class="header-anchor">#</a> (四)：主键、唯一键、外键 以及 一对一查询，一对多查询</h3> <ul><li>基本概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1: 什么叫键
+数据库中的键（key）又称为关键字，是关系模型中的一个重要概念，它是逻辑结构，不是数据库的物理部分。
+
+2：唯一键
+唯一键，即一个或者一组列，其中没有重复的记录。可以唯一标示一条记录。
+
+3：主键
+属于唯一键，是一个比较特殊的唯一键。区别在于主键不可为空。
+
+4：外键
+一张表外键的值一般来说是另一张表主键的值。因此，外键的存在使得表与表之间可以联系起来
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>创建主键、唯一键</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>第一种方式：
+reate table <span class="token function">Robby</span> <span class="token punctuation">(</span>id int not <span class="token keyword">null</span> primary key <span class="token punctuation">,</span>name <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span> unique key<span class="token punctuation">,</span> age int<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+第二种方式：这里同时也给大家演示了如何将多个字段合并起来创建一个键
+create table <span class="token function">Robby</span> <span class="token punctuation">(</span>id int<span class="token punctuation">,</span> name <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> age int<span class="token punctuation">,</span> primary <span class="token function">key</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> unique <span class="token function">key</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>创建外键</li></ul> <p><img src="/assets/img/2021-12-2422.00.51.bd21a95d.png" alt="创建外键"></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>（<span class="token number">1</span>）创建主表和从表
+create table <span class="token function">part</span> <span class="token punctuation">(</span>nid int<span class="token punctuation">,</span> caption <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primary <span class="token function">key</span><span class="token punctuation">(</span>nid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+create table <span class="token function">person</span> <span class="token punctuation">(</span>nid int<span class="token punctuation">,</span> name <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> email <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> extra <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> part_id int<span class="token punctuation">,</span> foreign <span class="token function">key</span><span class="token punctuation">(</span>part_id<span class="token punctuation">)</span> references <span class="token function">part</span> <span class="token punctuation">(</span>nid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+（<span class="token number">2</span>）删除主表和从表
+drop table person<span class="token punctuation">;</span>
+drop table part<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>创建多张主表，一张从表的模型</li></ul> <p><img src="/assets/img/2021-12-2422.02.30.d10c6af0.png" alt="主表"></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code># 思路：先创建主表，再创建从表
+
+create table <span class="token function">woman</span> <span class="token punctuation">(</span>id int<span class="token punctuation">,</span> name <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primary <span class="token function">key</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+create table <span class="token function">man</span> <span class="token punctuation">(</span>id int<span class="token punctuation">,</span> name <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">,</span> primary <span class="token function">key</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+create table <span class="token function">man_to_woman</span> <span class="token punctuation">(</span>nid int<span class="token punctuation">,</span> man_id int<span class="token punctuation">,</span> woman_id int<span class="token punctuation">,</span> foreign <span class="token function">key</span><span class="token punctuation">(</span>man_id<span class="token punctuation">)</span> references <span class="token function">man</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">,</span> foreign <span class="token function">key</span><span class="token punctuation">(</span>woman_id<span class="token punctuation">)</span> references <span class="token function">woman</span> <span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>给创建好的主从表插入数据</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code># 思路：先给主表插入数据，再给从表插入数据，
+
+<span class="token number">1</span>：如何给part表、person表插入数据
+insert into part <span class="token function">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'运维开发'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'HTML5全栈'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'python全栈'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'IOS移动端开发'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into person <span class="token function">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'nike'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'jason'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'robbie'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'marry'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'jack'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><img src="/assets/img/2021-12-2422.04.24.d8141c4d.png" alt="主从表插入数据"></p> <ul><li>给woman表、man表、man_to_woman表插入数据</li></ul> <p><img src="/assets/img/2021-12-2422.05.23.0f9d137c.png" alt="man_to_woman表插入数据"></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>insert into man <span class="token function">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'白子画'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'檀梵'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'太子'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into woman <span class="token function">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'花千骨'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'紫熏'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'秋水'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+insert into man_to_woman <span class="token function">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="/assets/img/2021-12-2422.06.32.2f7c88d4.png" alt="表插入数据"></p> <ul><li>连表查询</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>一对一连接查询：找到部门为<span class="token constant">HTML5</span>全栈的所有人的姓名
+select person<span class="token punctuation">.</span>name<span class="token punctuation">,</span> part<span class="token punctuation">.</span>caption from person left join part on person<span class="token punctuation">.</span>part_id<span class="token operator">=</span>part<span class="token punctuation">.</span>nid where part<span class="token punctuation">.</span>caption<span class="token operator">=</span><span class="token string">'HTML5全栈'</span><span class="token punctuation">;</span>
+
+
+
+一对多连接查询：找到与太子有关系的所有的女人
+select woman<span class="token punctuation">.</span>name from man_to_woman
+left join man on man<span class="token punctuation">.</span>id<span class="token operator">=</span>man_to_woman<span class="token punctuation">.</span>man_id
+left join woman on woman<span class="token punctuation">.</span>id<span class="token operator">=</span>man_to_woman<span class="token punctuation">.</span>woman_id
+where man<span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">'太子'</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="五-索引"><a href="#五-索引" class="header-anchor">#</a> (五)：索引</h3> <ul><li>概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1: 索引就像是一张表的目录，在查找内容之前可以先在目录中查找索引位置，以此快速定位查询数据。保存索引数据的文件一般会与保存数据的目录分开
+
+2: 索引应该构建在经常被用作查询条件的字段上
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>使用 DESC TABLE 查看表的索引</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token constant">DESC</span> <span class="token constant">TABLE_NAME</span><span class="token punctuation">;</span>
+
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> Field   <span class="token operator">|</span> Type         <span class="token operator">|</span> Null <span class="token operator">|</span> Key <span class="token operator">|</span> Default <span class="token operator">|</span> Extra <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+<span class="token operator">|</span> id     <span class="token operator">|</span> <span class="token function">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>       <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span> <span class="token constant">PRI</span> <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">|</span> name   <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>   <span class="token operator">|</span> <span class="token constant">NO</span>   <span class="token operator">|</span> <span class="token constant">UNI</span> <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">|</span> age    <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span>  <span class="token operator">|</span> <span class="token constant">YES</span>  <span class="token operator">|</span> <span class="token constant">MUL</span> <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">|</span> <span class="token keyword">class</span>  <span class="token operator">|</span> <span class="token function">varchar</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>   <span class="token operator">|</span> <span class="token constant">YES</span>  <span class="token operator">|</span> <span class="token constant">MUL</span> <span class="token operator">|</span> <span class="token constant">NULL</span>    <span class="token operator">|</span>       <span class="token operator">|</span>
+<span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span><span class="token operator">+</span>
+    
+<span class="token constant">PRI</span> 表示主键索引（<span class="token constant">PRIMARY</span> <span class="token constant">KEY</span>）。
+<span class="token constant">UNI</span> 表示唯一性索引（<span class="token constant">UNIQUE</span> <span class="token constant">KEY</span>），值不能重复。
+<span class="token constant">MUL</span> 表示非唯一性索引（<span class="token constant">MULTIPLE</span> <span class="token constant">KEY</span>） ，值可重复。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>创建索引</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>普通索引：仅加速查询
+create {unique|fulltext|spacial} index 索引名称 {btree|hass} on 表名称 (字段1, 字段2...)
+
+（1）create index name_and_age on students (name,age);
+（2）drop index name_and_age on students;
+（3）alter table students add index age (age);
+（4）alter table students drop index age;
+（5）alter table students add primary key (id);
+（6）alter table students drop primary key;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>索引类型</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：普通索引：加速查询
+
+2：唯一索引：加速查询 + 列值唯一（可以有null）
+
+3：主键索引：加速查询 + 列值唯一 +　表中只有一个（不可以有null）
+
+4：组合索引：多列值组成一个索引，专门用于组合搜索，其效率大于索引合并
+
+5：全文索引：对文本的内容进行分词，进行搜索
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>索引结构</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>①：B-TREE 索引：顺序索引，每一个叶子节点到根节点的距离是相同的，左前缀索引，适合查找范围内的数据 
+   适合B-tree索引的查询类型有：全键值，键值范围或键左前缀查找
+   全值匹配：精确查找某个值 
+   最左前缀匹配：只精确匹配起头部分，'Qcache%'
+   匹配范围值：id &gt; 1
+
+   不适合使用B-tree索引的场景
+   如果查找不是最左侧开始，索引无效
+   如果查询中某个列是范围查询，那么其右侧的列都无法再次使用索引优化查询
+
+
+②：Hash索引：基于哈希表，特别适用于精确匹配索引中的所有列，但是只有memory存储引擎支持显示hash索引
+   适应场景：只支持值的比较，例如： id &gt; 1 
+   不适用场景：模糊匹配查询、顺序查询
+
+③：空间索引（SPATIAL）:指依据空间对象的位置和形状或空间对象之间的某种空间关系按一定的顺序排列的一种数据结构
+    MyISAM支持空间索引
+
+④：全文索引(FULLTEXT)：用于在文本中查找关键词
+    MyISAM支持全文索引
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><ul><li>索引优化策略</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：独立使用列，尽量避免其参与运算
+
+2：左前缀索引：查询字段的时候，条件过滤时，最左前缀精确匹配
+
+3：多列索引：AND 连接字段时适合多列索引；选择合适的索引次序，将选择性最高的放在左侧，范围匹配的放在右侧
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>索引的调优可以使用explain进行分析</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>explain select id,name from students where name = 'yhy%'\G
+
+// 下面是输出结果的解释说明
+# 当前程序语句中每个select语句的编号 
+id: 1  
+# 查询类型，简单类型为simple，复杂类型为：subquery(子查询)，derived（用户from中的子查询） union（union语句的第一个之后的select语句）union select（匿名临时表）
+select_type: SIMPLE  
+# 查询关联到的表
+table: student1 
+# 关联类型，或访问类型mysql如何查找表中的行的方式，all（全表扫描） index（根据索引的次序进行全表扫描，如果在extra列出现using index表示覆盖索引）range（服务扫描，有限制的根据索引实现的范围扫描，扫描位置为索引的某一点到另一点结束）ref（根据索引，返回表中所有匹配单个值的行） eq_ref（仅仅返回一行，但需要与某个参考值做比较） const或system（直接返回单个行，效果最佳）
+type: ref 
+# 查询可能会用到的索引 
+possible_keys: name_age_unique 
+# 查询使用到的索引
+key: name_age_unique
+# 使用到索引中使用的字节数 
+key_len: 752
+# 在利用key字段所表示的索引进行查询所用的列或某个常量值 
+ref: const
+# mysql估计找到目标行所读取的行数 
+rows: 3
+# 额外信息，如 using index（使用覆盖索引） using where （mysql服务器将在存储引擎内存层再进行过滤）using temporary（mysql对结果排序会使用临时表） using filesort（在磁盘创建临时表或内存中排序） 
+Extra: Using where
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>查看表的状态</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token number">1</span>：show table status
+
+<span class="token number">2</span>：show table status like <span class="token string">'students'</span>\<span class="token constant">G</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="六-存储引擎"><a href="#六-存储引擎" class="header-anchor">#</a> (六)：存储引擎</h3> <ul><li>Innodb 存储引擎</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1: 所有的InnoDB表的数据和索引存储于同一个表文件中，但是表数据和表结构分离，例如
+    -rw-rw---- 1 mysql mysql    65 8月  27 14:31 db.opt
+    -rw-rw---- 1 mysql mysql  8614 8月  27 14:31 students.frm
+    -rw-rw---- 1 mysql mysql 98304 8月  27 14:31 students.ibd
+
+    db.opt文件 该文件主要用来存储当前数据库的默认字符集和字符校验规则。
+    students.frm文件是存放表结构的
+    students.ibd文件存储了当前表的数据和相关的索引数据
+    因此，表数据和表结构分离, 每个表单独使用一个表文件来存储数据和索引
+
+2：Mariadb默认的存储引擎是XtraDB，但是为了与MySQL兼容，因此也取名做InnoDB，因为MySQL的默认存储引擎是InnoDB。
+
+3：使用聚集索引（数据和索引在一起），也支持自适应hash索引，锁粒度为行级别，支持支持热备工具 (Xtrabackup)
+
+4：支持事务的存储引擎，适合处理大量的短期事务
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>MyISAM 存储引擎</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：所有的MyISAM表的数据和索引存放在不同的文件中，表结构也分离，例如：
+-rw-rw---- 1 mysql mysql  10630 8月  27 13:12 user.frm
+-rw-rw---- 1 mysql mysql    504 8月  27 13:15 user.MYD
+-rw-rw---- 1 mysql mysql   2048 8月  27 14:30 user.MYI
+user.frm：为表结构
+user.MYD：为表数据
+user.MYI：为表索引
+
+2：支持全文索引（fulltext index），压缩，空间函数，
+
+3：不支持事物，表级锁，适用于只读，读多写少
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="七-mysql的并发访问控制"><a href="#七-mysql的并发访问控制" class="header-anchor">#</a> (七)：MySQL的并发访问控制</h3> <ul><li>概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>任何的数据集只要支持并发访问模型就必须基于锁机制进行访问控制
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>锁种类</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>读锁：共享锁，允许给其他人读，不允许他人写
+
+写锁：独占锁, 不允许其他人读和写
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>锁类型</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>显示锁：用户手动请求读锁或写锁
+
+隐式锁：由存储引擎自行根据需要加的，无需我们管理
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>给表施加锁机制</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>（一）lock tables 方式
+    <span class="token number">1</span>：lock tables 表名称 <span class="token punctuation">{</span>read<span class="token operator">|</span>write<span class="token punctuation">}</span>      施加锁
+        例如：（<span class="token number">1</span>）lock tables home read<span class="token punctuation">;</span>
+             （<span class="token number">2</span>）lock tables home write<span class="token punctuation">;</span>
+    <span class="token number">2</span>：unlock tables<span class="token punctuation">;</span>    给表解锁   
+
+
+（二）flush tables 方式
+
+    <span class="token number">1</span>：flush tables 表名称 <span class="token keyword">with</span> <span class="token punctuation">{</span>read<span class="token operator">|</span>write<span class="token punctuation">}</span> lock<span class="token punctuation">;</span>   
+    <span class="token number">2</span>：unlock tables<span class="token punctuation">;</span> 
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="八-mysql事务机制"><a href="#八-mysql事务机制" class="header-anchor">#</a> (八)：MySQL事务机制</h3> <ul><li>概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>一组原子性的SQL查询，或多个SQL语句组成了一个独立的单元。要么这一组SQL语句全部执行，要么全部不执行
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>事物日志：管理事物机制的日志</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>redo日志：记录SQL执行的语句，这些SQL语句还没有同步到磁盘上，没有修改数据。如果数据奔溃，可以通过撤销SQL执行的语句来进行还原。但是，如果已经同步到磁盘上的SQL语句而言，就只能使用undo来回滚之前的数据了
+
+undo日志：记录没有执行SQL的样子，也就是记录修改数据之前的数据记录下来
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>ACID机制</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>A：automicity, 原子性，整个事物中的所有操作要么全部成功提交，要么全部失败回滚
+
+C：consistency , 一致性，数据库总是从一个一致性状态转化为另一个一致性状态
+
+I：isolation, 隔离性，事物不会相互影响，一个事物所作出的操作在提交之前，是不能为其他事物所见，隔离有多种级别，主要是为了并发
+
+D：durability , 持久性，事物一旦提交，其所作的修改会保存在数据库中，不能丢失
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>事物操作示例1</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：show global variables where Variable_name like '%commit%';  查看全局变量
+
+2：set session autocommit = OFF; 修改事务日志自动提交功能 
+
+3：show variables where Variable_name like ‘%commit%’; 查看当前会话的全局变量
+
+4：start transaction;  启用事务日志机制
+
+5：在表中插入数据，但是不提交（commit）
+
+6：rollback; 事务回滚
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>事物操作示例2</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：insert into home values (4, 'yhy1', 99); 添加一条记录
+
+2：savepoint first; 设置一个保存点
+
+3：update home set name = 'yhy2' where id = 4; 跟新一条记录
+
+4：savepoint second; 设置第二个保持点
+
+5：insert into home values (5, 'yhy3', 199); 再添加一条记录
+
+6：rollback to second; 回滚到第二个保存点
+
+7：rollback to first; 回顾到第一个保持点
+
+8：commit; 提交数据
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="九-mysql-忘记root密码"><a href="#九-mysql-忘记root密码" class="header-anchor">#</a> (九)：MySQL 忘记root密码</h3> <ul><li>方案</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>记住如果忘记root密码，在启动MySQL的时候，跳过查询授权表
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>对于RedHat 6 而言</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（1）启动mysqld 进程时，为其使用：--skip-grant-tables --skip-networking（这两项在/etc/init.d/mysqld文件中的start那一项的mysqld_safe后面加上就是）
+
+（2）使用update命令修改管理员密码 
+update mysql.user set password = password('123456') where user = 'root';
+flush privileges;
+
+（3）停止mysqd进程，移除上述两个选项，重启mysqld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>对于RedHat 7 而言</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（1）编辑/usr/lib/systemd/system/mariadb.service文件，在mysqld_safe 后面加上--skip-grant-tables --skip-networking
+
+（2）使用update命令修改管理员密码，且让进程重读权限表
+
+（3）停止mysqd进程，移除上述两个选项，重启mysqldtext
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>对于Linux系统而言</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>直接在/etc/my.cnf文件中，找到[mysqld]，在后面加上下面两个指令
+
+skip-grant-tables=on
+skip-networking=on
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="十-mysql-查询缓存机制"><a href="#十-mysql-查询缓存机制" class="header-anchor">#</a> (十)：MySQL 查询缓存机制</h3> <ul><li>概念</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1:缓存的是查询语句的整个查询结果，是一个完整的select语句的缓存结果
+
+2:哪些查询可能不会被缓存 ：查询中包含UDF、存储函数、用户自定义变量、临时表、mysql库中系统表、或者包含列级别的权限表、有着不确定值的函数，如：now( )
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>缓存相关的服务器全局变量</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1:query_cache_min_res_unit：查询缓存分配内存块的最小的分配单位，较小的值较少内存浪费，但是会导致更加平凡的内存分配操作 ，较大的值会导致浪费
+
+2:query_cache_limit：能够缓存的最大查询结果，对有较大结果的查询语句，建议在select中使用SQL_NO_CACHE
+
+3:query_cache_size：查询缓存总共可用的内存空间，单位是字节，必须是1024整数倍
+
+4:query_cache_type：ON , OFF , DEMAND
+
+5:query_cache_wlock_invalidate：如果某个数据表被其他的连接锁定，是否仍然可以从查询缓存中返回结果，默认值为off，表示可以返回数据，on为不允许
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>缓存命中率</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>缓存命中率计算公式： Qcache_hits / (Qcache_hits+Com_select)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="/assets/img/2021-12-2422.18.26.6f23bbf0.png" alt="缓存命中率计算公式"></p> <h3 id="十一-mysql-日志功能"><a href="#十一-mysql-日志功能" class="header-anchor">#</a> (十一)：MySQL 日志功能</h3> <ul><li>MySQL日志分类</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：查询日志 ：query log  
+
+2：慢查询日志：slow_query_log 查询执行时长超过指定时长的查询操作所记录日志
+
+3：错误日志：error log  
+
+4：二进制日志：binary log
+
+5：中继日志：relay log (主从复制会讲解)
+
+6：事务日志：transaction log 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>查询日志 （query log一般不启用）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>general_log = {ON|OFF}: 是否启用查询日志
+
+general_log_file = /logs/mysql/general_log：当log_output为FILE类型时，日志信息的记录位置；
+
+log_output = {TABLE|FILE|NONE} 
+
+log_output = TABLE,FILE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>慢查询日志 （slow_query_log 必须启用）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>慢查询日志产生的来源: SQL语句返回的结果集大，或者SQL语句没有被优化器优化，或SQL语句没有使用索引
+
+慢查询日志的作用: 慢查询日志用于对执行速率较慢的SQL语句就像过滤，有利于SQL代码的优化
+
+1：执行时长超出指定时长的操作 
+show global variables like 'long_query_time'; 查看指定的时长
+set global long_query_time = 自定义时长
+
+
+2：slow_query_log = {ON|OFF}：是否启用慢查询日志
+set global slow_query_log = ON
+
+3：slow_query_log_file = mariadb1-slow.log
+
+# 过滤条件
+4：log_slow_filter=admin,filesort,filesort_on_disk,full_join,full_scan,query_cache,query_cache_miss,tmp_table,tmp_table_on_disk 
+
+5：log_slow_rate_limit = 1 指定记录速率
+
+6：log_slow_verbosity = 指定内容级别
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><ul><li>中继日志（relay log）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>在主从复制架构中，从服务器用于保存从主服务器的二进制日志中读取到的时间
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>事物日志（transaction log）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>事物日志由事物型存储引擎自行管理和使用，无需手动管理
+    redo log：将一组SQL语句安装先后顺序再执行一次
+    undo log：回滚到之前数据集没有发生改变的状态 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>错误日志 （error log 必须启用）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：错误日志信息产生的来源
+    mysqld启动和关闭过程中输出的信息；
+    mysqld运行中产生的错误信息；
+    event scheduler运行一个event时产生的日志信息
+    在主从复制架构中的从服务器上启动从服务器线程时产生的日志信息； 
+
+2：错误日志的作用
+    二进制日志可以反应MySQL数据库的错误信息，用于调试
+
+3：如何开启错误日志
+    log_error = /path/to/somefile
+    log_warnings = {ON|OFF}：是否记录警告信息于错误日志中；
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>二进制日志（binary log）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：二级制日志信息产生的来源
+记录导致数据改变，或者潜在改变数据的SQL语句
+
+
+2：二级制日志的作用
+用于通过'重新执行'日志文件中的记录的事件（SQL语句）来生成数据副本，也就是用于主从复制
+
+
+3：服务器变量
+    （1）sql_log_bin = [on|off] 是否记录二进制日志, 通常为on
+    （2）log_bin= on ：记录位置，通常为on，如果为off，那么需要在my.cnf配置文件中添加一项：log_bin=mysql-bin，用来指明二进制日志保存的路径名，对于yum安装的MySQL，保存于/var/lib/mysql/mysql-bin.000001这样的二进制日志中
+    （3）binlog_format = MIXED ：二进制记录的格式
+    （4）max_binlog_size = 1073741824 ：单个二进制文件的最大值，默认为1G 
+        到达最大值会自动滚动
+        文件达到上限的大小未必是精确值
+    （5）max_binlog_cache_size = 18446744073709547520
+    （6）sync_binlog = 0：设定多久同步一次二进制日志文件；0表示不同步；任何正值都表示记录多少个语句后同步一次； 
+
+4：查看二进制文件的信息
+    show master status： 显示当前正在使用的二进制文件名
+    show {binary | master} logs：查看当前二进制文件记录end_log_pos（结束位置）的值，其实当前正在记录的二进制文件的大小。
+
+5：日志记录的格式分类
+    基于“SQL语句”记录: statement
+    基于“行”记录：row
+    “混合模式” ：mixed，系统自行判断
+
+6：二进制日志文件的构成
+    日志文件：mysql-bin.文件序号 
+        例如： mysql-bin.000001
+
+    索引文件：mysql-bin.index 
+        例如：mysql-bin.index
+
+7：使用 mysqlbinlog 客户端命令工具查看二进制文件
+mysqlbinlog /var/lib/mysql/mysql-bin.000001
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><ul><li>二进制格式解析</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code># at 19364 
+#140829 15:50:07 server id 1 end_log_pos 19486 Query thread_id=13 exec_time=0 error_code=0 
+SET TIMESTAMP=1409298607/*!*/; 
+GRANT SELECT ON tdb.* TO tuser@localhost 
+/*!*/; 
+# at 19486 
+事件发生的日期和时间；(140829 15:50:07) 
+事件发生在服务器的标识（server id） 
+事件的起始位置：（begin_log_pos 19364） 
+事件的结束位置：（end_log_pos 19486） 
+事件的类型：(Query) 
+事件发生时所在的服务器执行此事件的线程的ID：（thread_id=13） 
+语句的时间戳与将其写入二进制文件中的时间差：（exec_time=0） 
+错误代码：（error_code=0) 
+事件内容：（SET TIMESTAMP=1409298607/*!*/; 
+GRANT SELECT ON tdb.* TO tuser@localhost） 
+GTID事件专属： 事件所属的全局事务的GTID：（GTID 0-1-2）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="十二-mysql-备份和恢复"><a href="#十二-mysql-备份和恢复" class="header-anchor">#</a> (十二)：MySQL 备份和恢复</h3> <ul><li>备份策略的注意点</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：可容忍丢失多少数据
+
+2：恢复需要在多长时间内完成
+
+3：备份的对象: 数据、二进制日志和InnoDB的事务日志、SQL代码（存储过程和存储函数、触发器、事件调度器等）、服务器配置文件
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>备份类型</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（1）站在数据集是否完整的角度上
+    完全备份，部分备份 
+
+（2）站在完全备份的基础上
+    增量备份，差异备份 
+
+（3）站在是否影响数据集读写的角度上
+    热备份：在线备份，读写操作不受影响；
+    温备份：在线备份，读操作可继续进行，但写操作不允许
+    冷备份：离线备份，数据库服务器离线，备份期间不能为业务提供读写服务
+    MyISAM存储引擎: 能够实现温备
+    InnoDB存储引擎: 能够实现热备
+
+（4）站在数据存储角度上
+    物理备份：直接复制数据文件进行的备份
+    逻辑备份：从数据库中“导出”操作数据的SQL语句，再执行，实现备份
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>备份策略需要考虑的因素</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>持锁的时长
+备份过程时长
+备份负载
+恢复过程时长
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>数据库备份具体解决方案</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>数据：完全备份 + 增量备份
+
+备份：物理 + 逻辑
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>备份工具介绍</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：mysqldump: 逻辑备份工具，适用于所有存储引擎，温备；但是对InnoDB存储引擎支持热备；
+2：scp, tar 等文件系统工具：物理备份工具，适用于所有存储引擎；冷备；完全备份，部分备份，不适用于Innodb存储引擎；
+3：lvm2的快照：几乎热备；借助于文件系统工具实现物理备份；
+4：mysqlhotcopy: 几乎冷备；仅适用于MyISAM存储引擎
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>实施备份期间，备份工具的常用组合</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（一）mysqldump+binlog:
+     mysqldump：完全备份，通过备份二进制日志实现增量备份
+
+（二）lvm2快照+binlog：
+    lvm2快照使用scp、tar进行物理完全备份
+    通过备份二进制日志实现增量备份
+
+（三）xtrabackup（最佳）
+    由percana提供的热备，在物理层，实现完全备份和增量备份
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>MySQL 基于mysqldump备份工具的备份</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>先执行 show global variables like 'log_bin';看看log_bin的值，如果服务器变量log_bin的值为OFF，需要修改my.cnf配置文件，将log_bin=mysql-bin，再重启MySQL
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>mysqldump: 客户端SQL导出工具，通过mysql协议连接至mysqld服务器</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（1）使用格式：
+    mysqldump [选项] &gt; backup.sql
+
+（2）选项说明
+    -A: 备份所有的数据库
+    -B 数据库1, 数据库2, 数据库3：指定需要备份的数据库
+    MyISAM, InnoDB: 温备 
+        -x 或 --lock-all-tables：锁定所有表
+        -l 或 --lock-tables：锁定备份数据库中的表
+    InnoDB：热备
+        --single-transaction：启动一个大的单一事务实现备份
+        -B 或 --databases 数据库1，数据库2：备份指定的数据库
+        -C 或 --compress：压缩传输
+注意：二进制文件不应该与数据文件放在同一个磁盘上
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>备份注意点</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>由于mysqldump只能实现数据库中指定数据库或数据表的完全备份，无法实现对表的单行或多行的增量备份，那么对应增量备份，将使用二进制文件进行备份
+
+第一步：
+使用mysqldump做完全备份，其中使用 --master-data=2 选项会在hellodb.sql中增加一条注释说明完全备份的结束位置,并且会显示完全备份结束后，滚到到了那个日志文件
+
+mysqldump -uroot -h192.168.23.11 -p123456 -B TestDB --lock-tables --flush-logs  &gt; testdb.sql
+
+第二步：
+对完全备份之后的时间点到当前时间点做增量备份，在需要备份的服务器上操作，其中8631是完全备份后的时间点，因此，将从这个点开始到最后的日志文件的SQL语句都备份出来
+（对于之后的每次增量做备份，可以无需指定开始时间，我们可以在增量备份之前将，二进制日志滚动，那么每次增量的时候，登入mysql使用 flush logs 命令，滚动日志，那么如何再有日志产生，将会写在下一个日志文件里，那么对于上一次增量备份到此时，可以直接使用客户端命令 mysqlbinlog  /data/mysql/mysql-bin.000005 &gt; increment.sql , 再将备份文件拷贝到备份的数据库中就可以了）
+
+mysqlbinlog  /data/mysql/mysql-bin.000005 &gt; increment.sql
+
+第三步：
+set sql_log_bin = OFF; # 关闭二进制文件
+show variables like 'sql_log_bin'; # 查看状态
+
+第四步：
+将hellodb.sql和increment.sql文件都拷贝到对应的数据恢复的主机上，将备份的SQL文件进行导入（关闭备份数据库服务器的二进制日志功能）
+
+mysql -p123456 &amp;lt; hellodb.sql
+mysql -p123456 &amp;lt; increment.sql
+
+
+第五步：
+当关闭二进制文件之后再导入文件系统上保存的SQL文件，但是SQL文件不要放在/root目录下面，因为/root目录对其它用户的权限是0，而mysqld进程的属主和属组都是mysql，因此无法进入/root目录里面，去读取SQL文件，切记
+导入了SQL文件之后，在开启二进制文件
+
+开启二进制文件
+set sql_log_bin = ON;
+
+查看状态
+show variables like 'sql_log_bin'; 
+注意：SQL文件进行导入的时候不能一个同样的SQL进行重复导入，如果是插入语句，就会一直插入值
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>MySQL 基于lvm2的备份</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>实战过程如下：这里的演示是在一台Mariadb服务器上进行创建快照，将快照中的文件scp到备份服务器上的Mariadb的数据目录中，这样就实现了基于lvm2的备份
+
+
+    （1）新添加一块磁盘，将磁盘进行分区之后，先在分区上创建pv物理卷，然后在pv物理卷上创建vg卷组，之后在vg卷组上创建lv逻辑卷，将lv逻辑卷创建文件系统（使用ext4文件系统），将创建了文件系统的lv逻辑卷挂载至数据库目录，这里最好是创建两个lv逻辑卷，两个lv逻辑卷可以实现将数据库目录与二进制日志文件分开，分别放在不同的lv逻辑卷上，那么当使用lvcreate命令进行快照的时候，只对数据库目录进行快照，不对二进制文件进行快照，可以将
+
+    0: 添加一块硬盘，sdb给个40G就ok
+
+    1：fdisk /dev/sdb  # 创建分区/dev/sdb1、/dev/sdb2，设置分区类型为linux lvm
+
+    2：partx -a /dev/sdb # 让内核重读
+
+    3：pvcreate /dev/sdb1 /dev/sdb2 # 创建两个pv
+
+    4：vgcreate myvg /dev/sdb1 /dev/sdb2 # 在两个pv上创建一个vg
+
+    5：lvcreate -L 20G -n mysql_data myvg # 创建一个名为mysql_data的逻辑卷
+
+    6：lvcreate -L 19.9G -n mysql_binlog myvg # 创建一个名为mysql_binlog的逻辑卷
+
+    7：mkfs -t ext4 /dev/myvg/mysql_data  # 在mysql_data的逻辑卷逻辑卷上创建文件系统
+
+    8：mkfs -t ext4 /dev/myvg/mysql_binlog # 在mysql_binlog的逻辑卷上创建文件系统
+
+    9：mkdir -pv /data/{mysql,binlog} # 创建数据库目录和二进制文件目录
+
+    10：mount /dev/myvg/mysql_data /data/mysql # 挂载数据库目录
+
+    11：mount /dev/myvg/mysql_binlog  /data/binlog # 挂载数据库目录
+
+    12：chown -R mysql.mysql /data  # 让mysql用户可以读写
+
+    13：修改/etc/my.cnf配置文件：log-bin=/data/binlog/mysql-bin 和 datadir = /data/mysql
+
+    14：cd /usr/local/mysql/;
+
+    ./scripts/mysql_install_db --user=mysql --datadir=/data/mysql # 如果是二级制或者编译安装的Mariadb这样初始化数据库，如果是yum安装的Mariadb，那么在数据库重启的时候自动hui
+
+    15：systemctl start mariadb.service # 启动Mariadb
+
+
+
+    （2）在数据库依然提供服务的情况下，首先登入mysql数据库，请求锁定所有的表，添加读锁，这个时候所有的数据表只能够读数据，不能够写数据
+    1：flush tables with read lock;
+
+    （3）让二进制日志文件滚动跟新，并且记录新的二进制文件的开始位置，那么数据库新的数据更改操作将记录到新的二进制文件中，做增量备份的时候需要再次滚动二进制日志，并且导出当前的日志为SQL文件
+    这里的日志滚动其实可以不要
+    flush logs;
+
+    （4）使用lvcreate 命令创建快照
+    查看现在数据目录有多大了，如果是40M，那么创建快照的时候给个50M就ok了
+    du -sh /data/mysql  
+
+    创建名为lvm_snap的快照 ，-s 表示创建快照，-p r 表示快照的权限是只读的，-n 表示快照的名，此时就会在生成一个/dev/myvg/lvm_snap的快照
+    lvcreate -L 50M -s -p r -n lvm_snap /dev/myvg/mysql_data  
+
+    （5）释放读锁，MySQL服务器可以读写正常工作，此时立马让日志滚动一下，让之后的所有操作都记录在新的二进制文件中
+    unlock tables;
+    flush tables
+
+    （6）将快照挂载，将数据库目录通过文件系统命令cp -a等不修改属性和时间戳的情况下拷贝
+    mount /dev/myvg/lvm_snap /mnt
+    scp -rp /mnt/* 192.168.23.32:/data/mysql 
+
+    试一试这里是否需要拷贝二进制文件，如果不拷贝二进制文件，那么备份服务器使用的二进制文件应该是从第一个开始的。但是，现在只需要备份数据，所以拷贝二进制文件也是可以的。
+    scp -rp /data/binlog/* 192.168.23.32:/data/binlog/
+    此时在192.168.23.32这台Mariadb备份服务器中，已经存在Mariadb的数据目录/data/mysql和二进制目录/data/binlog/，且配置文件/etc/my.cnf都已经配置完毕。在这个时候，还需要修改/data目录的属主和属组，在192.168.23.32这台Mariadb备份服务器中操作如下：
+    chown -R mysql.mysql /data
+    （7）使用客户端命令mysqlbinlog 导出SQL文件
+        mysqlbinlog /data/binlog/`mysql -p123456 -e 'show master status;' | grep mysql-bin | awk '{print $1}'` &gt; increment.sql 
+    （8）使用scp命令将数据库目录、导出的SQL文件拷贝到备份的MySQL服务器上，在备份的MySQL服务器上将数据库目录放在对应的数据库目录，并且导入增量备份的SQL文件
+        scp -rp increment1.sql 192.168.23.11:/root/
+        mysql -p123456  &amp;lt; increment.sql 
+    （9）之后的备份，均使用二进制文件做增量备份即可，备份前切记先滚动新的日志文件，再将当前二进制日志文件导出为SQL文件即可
+        mysql -p123456 -e 'flush logs;'
+        mysqlbinlog /data/binlog/`mysql -p123456 -e 'show master status;' | grep mysql-bin | awk '{print $1}'` &gt; increment2.sql 
+        scp increment2.sql 192.168.23.32:/root/
+        在备份的服务器上执行导入增量的sql备份文件
+        mysql -p123456 increment2.sql
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><ul><li>基于xtrabackup备份—热备工具：完全备份</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：在配置文件里面，设置主服务器和备份服务器的数据目录为/data/mysql, 二进制目录为/data/binlog
+datadir=/data/mysql
+log_bin=/data/binlog/mysql-bin
+innodb_file_per_table=on
+
+2：在主服务器里面创建数据库，创建表，插入数据，使用innobackupex进行完全备份
+innobackupex --user=root --password=123456 /backup 
+
+3：将完全备份拷贝到备份服务器
+scp -pr /backup/2016-08-30_21-55-01 192.168.23.32:/root/
+
+4：在备份服务器停止Mariadb，先整理完全备份的事务
+innobackupex --apply-log /root/2016-08-30_21-55-01
+
+5：再导入数据，此时会在备份服务器上创建数据目录为/data/mysql, 二进制目录为/data/binlog
+innobackupex --copy-back /root/2016-08-30_21-55-01
+
+6：最后将备份服务器的数据目录的属主和属组修改为mysql
+chown -R mysql.mysql /data/
+
+
+7：在备份服务器启动Mariadb，检查是否备份完毕
+systemctl start mariadb.service
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>增量备份</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：完全备份之后，我们再来增量备份，现在主服务器上创建其他的数据库，和表，已经插入数据
+
+2：基于刚刚创建的完全备份，再创建增量备份
+innobackupex --user=root --password=123456 --incremental /backup/ --incremental-basedir=/backup/2016-08-30_21-55-01
+
+
+3：再整理完全备份
+innobackupex --apply-log --redo-only /backup/2016-08-30_21-55-01
+
+
+4：将增量备份合并到完全备份
+innobackupex --apply-log --redo-only /backup/2016-08-30_21-55-01 --incremental-dir=/backup/2016-08-30_23-16-04
+
+
+5：将完全备份拷贝到备份服务器，这会覆盖之前备份服务器上的完全备份
+scp -pr /backup/2016-08-30_21-55-01 192.168.23.32:/root/
+
+
+6：将备份服务器停止，在备份服务器上还原数据
+innobackupex --copy-back /root/2016-08-30_21-55-01
+
+7：修改数据目录的属主和属组为mysql
+chown -R mysql.mysql /data/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h3 id="十三-mysql-高可用"><a href="#十三-mysql-高可用" class="header-anchor">#</a> (十三)：MySQL 高可用</h3> <ul><li>主从模式</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>主节点 （192.168.23.10）
+（1）编译配置文件，启动二进制日志 ，为当前节点设置一个全局唯一的id号 
+    编辑/etc/my.cnf，添加如下信息
+    log_bin=/data/binlog/master-bin  （一定要让mysql用户对/data/binlog有读写权限）
+    server_id = 1
+    innodb_file_per_table=on
+    skip_name_resolve=on
+（2）创建一个有复制权限的用户账号 
+    grant replication slave,replication client on *.* to repluser@'192.168.23.%' identified by '123456';
+    flush privileges;
+
+
+从节点 （192.168.23.11）
+（1）编辑配置文件/etc/my.cnf启动中继日志, 设置一个全局唯一的id号 
+    relay_log = relay-log
+    relay_log_index=relay-log.index
+    server_id = 2
+    innodb_file_per_table=on
+    skip_name_resolve=on
+
+（2）使用有复制权限的用户账号连接至主服务器，并启动复制线程 
+    change master to master_host = '192.168.23.10',master_user = 'repluser',master_password = '123456',master_log_file = 'master-bin.000005',master_log_pos = 245;
+    show slave status\G : 查看slave节点的信息
+    start slave; ：指明启动I/O线程和SQL线程
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>注意点</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>问：如果主节点已经运行了一段时间，且有大量的数据，如何启动slave节点
+
+答：如果主服务器已近启动了一段时间了，那么这个时间点之前的数据使用完全备份到从服务器，并且记录备份的position，因此再从主节点新的二进制文件开始做主从同步
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>复制架构中应该注意的问题</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1： 从服务器为只读模式，不能写
+    第一种方案：在从服务器上设置：read_only = ON，此限制对root用户无效
+    第二种方案：阻止所有的用户，给表加锁 
+        flush tables with read lock; 
+    # master_info记录了主节点的信息，这就是为什么重新启动MySQL的时候会自动连接复制功能
+    sync_master_info = 1
+2：如何保证主从复制的事务安全 
+    （1）在master节点启用参数 
+        sync_binlog = ON ：提交之后内存中的事务立马写到磁盘上
+    如果用到的为InnoDB存储引擎 
+        innodb_flush_logs_at_trx_commit = ON ：将内存中的事务日志写在磁盘上
+        innodb_support_xa = ON : 是否支持分布式事务
+
+    （2）在slave节点 
+        skip_slave_start = ON : 指定手动启动复制功能，不要自动启动复制功能
+        sync_relay_log = 1;
+        sync_relay_log_info = 1;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><ul><li>MySQL 半同步复制模型：所谓的半同步复制指的是：一台主节点有多个从节点，在众多的从节点之中有一个从节点在收到主节点的二进制日志信息之后，存储在中继日志中，执行中继日志后，给主节点一个反馈信息，直接点收到这个反馈信息之后，返回给执行这句SQL的ORM语句，表示数据已经存储完毕。其他的从节点同样以异步的方式执行中继日志中的SQL语句</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1: 编辑主节点的配置文件
+innodb_file_per_table=on
+skip_name_resolve=on
+log_bin=master-bin  # 开启二进制日志
+server_id = 1
+
+2: 编辑从节点的配置文件
+relay_log = relay-log  # 开启中继日志
+relay_log_index=relay-log.index   # 开启中继日志管理功能
+server_id = 2
+innodb_file_per_table=on
+skip_name_resolve=on
+
+3: 登入主节点
+grant replication slave,replication client on *.* to repluser@'192.168.23.%' identified by '123456';  # 授权同步用户
+flush privileges;
+install plugin rpl_semi_sync_master soname 'semisync_master.so';  # 安装插件
+show plugins;  # 查看插件
+set global rpl_semi_sync_master_enabled = ON;  # 开启半同步功能
+show global status like '%semi%';
+
+4:登入从节点
+install plugin rpl_semi_sync_slave soname 'semisync_slave.so'; # 安装插件
+show plugins;  # 查看插件
+set global rpl_semi_sync_slave_enabled = ON;   # 开启半同步功能
+# 这里注意先查看一下主节点的 show master status;
+change master to master_host = '192.168.23.10',master_user = 'repluser' , master_password = '123456', master_log_file = 'master-bin.000004',master_log_pos = 494;  # 添加主节点的信息 
+show global status like '%semi%';  # 查看是否开启半同步
+start slave;  # 开始同步
+
+
+建议：半同步复制最好就是只设置一个半同步的从服务器，其他的都是普通的从服务器
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><ul><li>MySQL MHA模型：MHA对主节点进行监控，可实现自动故障转移至其他的从节点，提升从节点为新的主节点，实现主节点的高可用</li></ul> <p><img src="/assets/img/2021-12-2422.31.51.2199c7ff.png" alt="MySQL MHA模型"></p> <ul><li>准备配置四个节点，并且通过主机名解析</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>这里需要特别的说明一下，ssh的密钥认证的问题。
+以前我们使用ssh基于密钥认证时，通常是在不同的主机上通过ssh创建公钥和私钥，这使得我们的操作过程繁琐。那么是否在一个集群里面只使用一个公钥和私钥就实现非口令ssh连接呢？
+这是可以的，通过在一台主机上生成一个RSA的密钥对，然后将公钥的信息拷贝到authorized_keys文件里，然后再将公钥文件删除。在.ssh目录中只留下私钥文件和认证文件，再通过SCP将整个的.ssh目录推送到其他的主机，这样就实现了繁琐的在不同的主机上创建密钥对的过程
+其中的ssh通过密钥登入的原理是这样的：一台主机通过ssh命令连接到其他主机时，其他主机会通过.ssh目录中的authorized_keys文件对连接进来的主机的id_rsa私钥文件进行密钥配对。而authorized_keys文件中会保存连接进来的主机的id_rsa.pub公钥文件的信息，如果配对成功，那么就可以登入连接。
+
+
+具体的过程如下：
+# 在node1 执行
+ssh-keygen -t rsa -P ''
+cat /root/.ssh/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
+rm -f /root/.ssh/id_rsa.pub  # 公钥的文件中的信息已经拷贝到authorized_keys文件中，因此可以删除公钥文件
+chmod 600 /root/.ssh/authorized_keys  # 将权限修改一下，认证文件必须600
+scp -rp /root/.ssh node2:/root/.ssh
+scp -rp /root/.ssh node3:/root/.ssh
+scp -rp /root/.ssh node4:/root/.ssh
+
+小结：那么在node1、node2、node3、node4文件中的所有的ssh认证将通过一个密钥对实现登入
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><ul><li>node2, node3 , node4的配置文件/etc/my.cnf分别如下</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code># node2
+log_bin = master-bin
+relay_log = relay-bin
+server_id = 1
+skip_name_resolve = ON
+innodb_file_per_table = ON
+
+# node3
+log_bin = master-bin
+relay_log = relay-bin
+server_id = 2
+skip_name_resolve = ON
+innodb_file_per_table = ON
+read_only = ON  # 从节点只读
+relay_log_purge = OFF  # 自动清理的功能关闭
+
+# node4
+log_bin = master-bin
+relay_log = relay-bin
+server_id = 3
+skip_name_resolve = ON
+innodb_file_per_table = ON
+read_only = ON
+relay_log_purge = OFF
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li><p>将node2, node3, node4 的数据库目录都设置为/data/mysql，这里选择RPM包安装的MariaDB，直接启动就是。如何是编译安装的MariaDB需要先对/data/mysql进行初始化才能启动</p></li> <li><p>将node2, node3, node4登入mysql，在node2，先查看当前使用的是哪个二进制日志和记录到了哪个点，并且授权一个允许在主节点复制的用户, 并且，在node3和node4上设置复制的主节点，请求开启复制</p></li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code># node2
+show master status;
+grant replication slave,replication client on *.* to repluser@'192.168.23.%' identified by '123456';
+flush privileges;
+
+# node3
+change master to master_host='192.168.23.11',master_user='repluser',master_password='123456',master_log_file='master-bin.000003',master_log_pos=245;
+start slave;
+show slave status\G  # 查看两个thread是否都是yes，如果不是说明复制有错误
+
+# node4
+change master to master_host='192.168.23.11',master_user='repluser',master_password='123456',master_log_file='master-bin.000003',master_log_pos=245;
+start slave;
+show slave status\G  # 查看两个thread是否都是yes，如果不是说明复制有错误
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>在node2主节点上授权一个mha的管理用户，这个SQL语句会通过同步到node3和node4上，因此在node3和node4上检验一下，是否该用户存在即可</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>grant all on *.* to mhauser@'192.168.23.%' identified by '123456';
+flush privileges;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>在node1上安装mha4mysql-manager和mha4mysql-node（把RPM包下载到本地）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>yum install -y mha4mysql-node-0.54-0.el6.noarch.rpm
+yum install -y mha4mysql-manager-0.55-0.el6.noarch.rpm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>在node2、node3、node4上安装mha4mysql-node（把RPM包下载到本地）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>yum install -y mha4mysql-node-0.54-0.el6.noarch.rpm
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>对安装的MHA的配置文件进行说明</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>配置文件
+    global配置项：为各个application提供默认配置
+    application配置项：各个不同的节点的专用配置 
+
+在node1（mha）上配置application信息，
+    mkdir -pv /etc/masterha
+    vi /etc/masterha/app1.cnf 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>/etc/masterha/app1.cnf 文件中的信息如下</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>[server default]
+user=mhauser # 管理所有的节点的用户
+password=123456
+manager_workdir=/data/masterha/app1  # 工作目录，用于放置二进制文件
+manager_log=/data/masterha/app1/manager.log   # 日志文件
+remote_workdir=/data/masterha/app1  
+ssh_user=root
+repl_user=repluser
+repl_password=123456
+ping_interval=1
+master_binlog_dir=/data/mysql
+[server1]
+hostname=192.168.23.32
+#ssh_port=22
+[server2]
+hostname=192.168.23.33
+#ssh_port=22
+#candidate_master=1
+[server3]
+hostname=192.168.23.34
+#ssh_port=22
+# 指明不提示为主节点
+#no_master=1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>在manager节点上检查ssh通信是否OK</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>masterha_check_ssh --conf=/etc/masterha/app1.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>在manager节点上检查replication是否ok</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>masterha_check_repl --conf=/etc/masterha/app1.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>前端启动一下mha-manager</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>masterha_manager --conf=/etc/masterha/app1.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>将主节点的mysqld 和mysqld_safe杀掉</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>killall mysqld mysqld_safe
+
+# 这时候，看看其他节点的状态,show slave status，可以查看 show global variables like 'read_only', 看看当前新的主节点是否已经关闭了只读功能
+显示结果为node3为主节点，node4依然是从节点
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>让被杀掉的主节点重新上线，但是为从节点了</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code># 编辑配置文件/etc/my.cnf添加两个参数 read_only = ON 和 relay_log_purge = OFF 
+
+# 删除/data/mysql/所有的数据
+    rm -fr /data/mysql/*
+    systemctl start mariadb.service
+
+# 登入到mysql，在启动slave复制功能之前，需要先将新的主节点的数据全部备份下来，并且导入，记录备份完成之后，滚动到的新的二进制日志文件和position，然后再启动slave，指定从记录下的二进制文件和position位置开始复制
+
+# 但是在这里，由于没有对主服务器插入数据，那么我们只有手动的创建复制用户和管理用户，再开启slave复制功能
+ grant all on *.* to mhauser@'192.168.23.%' identified by '123456';
+ grant replication slave,replication client on *.* to repluser@'192.168.23.%' identified by '123456';
+ flush privileges;
+
+ change master to master_host='192.168.23.12',master_user='repluser',master_password='123456',master_log_file='master-bin.000003',master_log_pos= 882;
+
+ start slave;
+
+ show slave status;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>在重新启动mhamanager，并且检查ssh和replication是否OK</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>masterha_check_ssh --conf=/etc/masterha/app1.cnf 
+masterha_check_repl --conf=/etc/masterha/app1.cnf 
+masterha_check_status --conf=/etc/masterha/app1.cnf 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>停止mhamanager</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>masterha_stop --conf=/etc/masterha/app1.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/python/basic/docs/web/web.html" class="prev">
+            Python Web开发
+          </a></span> <span class="next"><a href="/dev/python/basic/docs/mysqlclient/mysqlclient.html">
+            mysqlclient操作MySQL
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#一-mysql数据库使用" class="sidebar-link reco-side-一-mysql数据库使用" data-v-cb1513f6>一：MySQL数据库使用</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#一-数据库概念" class="sidebar-link reco-side-一-数据库概念" data-v-cb1513f6>(一)：数据库概念</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#二-mysql数据库" class="sidebar-link reco-side-二-mysql数据库" data-v-cb1513f6>(二)：MySQL数据库</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#三-sql语句分类" class="sidebar-link reco-side-三-sql语句分类" data-v-cb1513f6>(三)：SQL语句分类</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#四-主键、唯一键、外键-以及-一对一查询-一对多查询" class="sidebar-link reco-side-四-主键、唯一键、外键-以及-一对一查询-一对多查询" data-v-cb1513f6>(四)：主键、唯一键、外键 以及 一对一查询，一对多查询</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#五-索引" class="sidebar-link reco-side-五-索引" data-v-cb1513f6>(五)：索引</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#六-存储引擎" class="sidebar-link reco-side-六-存储引擎" data-v-cb1513f6>(六)：存储引擎</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#七-mysql的并发访问控制" class="sidebar-link reco-side-七-mysql的并发访问控制" data-v-cb1513f6>(七)：MySQL的并发访问控制</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#八-mysql事务机制" class="sidebar-link reco-side-八-mysql事务机制" data-v-cb1513f6>(八)：MySQL事务机制</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#九-mysql-忘记root密码" class="sidebar-link reco-side-九-mysql-忘记root密码" data-v-cb1513f6>(九)：MySQL 忘记root密码</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#十-mysql-查询缓存机制" class="sidebar-link reco-side-十-mysql-查询缓存机制" data-v-cb1513f6>(十)：MySQL 查询缓存机制</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#十一-mysql-日志功能" class="sidebar-link reco-side-十一-mysql-日志功能" data-v-cb1513f6>(十一)：MySQL 日志功能</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#十二-mysql-备份和恢复" class="sidebar-link reco-side-十二-mysql-备份和恢复" data-v-cb1513f6>(十二)：MySQL 备份和恢复</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/basic/docs/mysql/mysql.html#十三-mysql-高可用" class="sidebar-link reco-side-十三-mysql-高可用" data-v-cb1513f6>(十三)：MySQL 高可用</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.ef2ae1d4.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/52.037d8e07.js" defer></script>
+  </body>
+</html>

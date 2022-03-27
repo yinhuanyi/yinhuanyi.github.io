@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>搭建Layout架构 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.ef2ae1d4.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/35.1d574a74.js" as="script"><link rel="prefetch" href="/assets/js/10.256d2d9e.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.b17181c3.js"><link rel="prefetch" href="/assets/js/103.f8859f28.js"><link rel="prefetch" href="/assets/js/104.9fab75ef.js"><link rel="prefetch" href="/assets/js/105.25712a6b.js"><link rel="prefetch" href="/assets/js/106.321faf0e.js"><link rel="prefetch" href="/assets/js/107.edbc3950.js"><link rel="prefetch" href="/assets/js/108.0922d38e.js"><link rel="prefetch" href="/assets/js/109.451e04b9.js"><link rel="prefetch" href="/assets/js/11.452c26e6.js"><link rel="prefetch" href="/assets/js/110.f7745add.js"><link rel="prefetch" href="/assets/js/111.82f49a62.js"><link rel="prefetch" href="/assets/js/112.3eca9556.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.a1ffa028.js"><link rel="prefetch" href="/assets/js/115.3ebc5b5f.js"><link rel="prefetch" href="/assets/js/116.68f73bc2.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.691d7c30.js"><link rel="prefetch" href="/assets/js/119.b9e4d8c9.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.033a7ce9.js"><link rel="prefetch" href="/assets/js/121.4e17b9cc.js"><link rel="prefetch" href="/assets/js/122.f6342712.js"><link rel="prefetch" href="/assets/js/123.3cc58446.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.e7ca9035.js"><link rel="prefetch" href="/assets/js/126.95b05ce9.js"><link rel="prefetch" href="/assets/js/127.914d6fb9.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.acd254e3.js"><link rel="prefetch" href="/assets/js/13.742bd49b.js"><link rel="prefetch" href="/assets/js/130.56b0744c.js"><link rel="prefetch" href="/assets/js/131.4ef95683.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.566bd1f7.js"><link rel="prefetch" href="/assets/js/134.a93be345.js"><link rel="prefetch" href="/assets/js/135.a79f211c.js"><link rel="prefetch" href="/assets/js/136.2a6f9b42.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.624fc52f.js"><link rel="prefetch" href="/assets/js/139.ca7fb473.js"><link rel="prefetch" href="/assets/js/14.5e9f76b2.js"><link rel="prefetch" href="/assets/js/140.696be263.js"><link rel="prefetch" href="/assets/js/141.bb08404f.js"><link rel="prefetch" href="/assets/js/142.b99f910e.js"><link rel="prefetch" href="/assets/js/143.c4bd878c.js"><link rel="prefetch" href="/assets/js/144.21df22c7.js"><link rel="prefetch" href="/assets/js/145.7027e2a4.js"><link rel="prefetch" href="/assets/js/146.2ee3be79.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.19e9eaee.js"><link rel="prefetch" href="/assets/js/149.c6118e48.js"><link rel="prefetch" href="/assets/js/15.6f107f59.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.3aa4d6ef.js"><link rel="prefetch" href="/assets/js/153.882d8a36.js"><link rel="prefetch" href="/assets/js/154.f0ab3594.js"><link rel="prefetch" href="/assets/js/155.e2ee68b1.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.ece42361.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.b5706a52.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.86946675.js"><link rel="prefetch" href="/assets/js/161.68382dc7.js"><link rel="prefetch" href="/assets/js/162.db9c0697.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.c51b79ba.js"><link rel="prefetch" href="/assets/js/166.a5599c72.js"><link rel="prefetch" href="/assets/js/167.d93d6d09.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.c5fbab48.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.e5dde466.js"><link rel="prefetch" href="/assets/js/171.897a5989.js"><link rel="prefetch" href="/assets/js/172.a3fa92f8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.c3e01b8b.js"><link rel="prefetch" href="/assets/js/175.a3cdba2f.js"><link rel="prefetch" href="/assets/js/176.d72805d0.js"><link rel="prefetch" href="/assets/js/177.ebbd2633.js"><link rel="prefetch" href="/assets/js/178.2a27768f.js"><link rel="prefetch" href="/assets/js/179.9286be73.js"><link rel="prefetch" href="/assets/js/18.4ee3074e.js"><link rel="prefetch" href="/assets/js/180.f18cbd55.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.08ce6859.js"><link rel="prefetch" href="/assets/js/183.1dc25b0f.js"><link rel="prefetch" href="/assets/js/184.3c961f5c.js"><link rel="prefetch" href="/assets/js/185.f9f79dff.js"><link rel="prefetch" href="/assets/js/186.28f91be3.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.5df2da19.js"><link rel="prefetch" href="/assets/js/189.a794c794.js"><link rel="prefetch" href="/assets/js/19.118ab13e.js"><link rel="prefetch" href="/assets/js/190.7cdec2de.js"><link rel="prefetch" href="/assets/js/191.0297e6cf.js"><link rel="prefetch" href="/assets/js/192.697228d1.js"><link rel="prefetch" href="/assets/js/193.5cb8d43d.js"><link rel="prefetch" href="/assets/js/194.04976a6f.js"><link rel="prefetch" href="/assets/js/195.8d606920.js"><link rel="prefetch" href="/assets/js/196.c37afe55.js"><link rel="prefetch" href="/assets/js/197.2c6d1226.js"><link rel="prefetch" href="/assets/js/198.038c24f2.js"><link rel="prefetch" href="/assets/js/199.ae91bccb.js"><link rel="prefetch" href="/assets/js/20.eb4595e8.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.f1d6cf9b.js"><link rel="prefetch" href="/assets/js/202.2ea1d1b9.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.da0a6eb7.js"><link rel="prefetch" href="/assets/js/205.3a31f1d9.js"><link rel="prefetch" href="/assets/js/206.29121567.js"><link rel="prefetch" href="/assets/js/207.2d8fe84f.js"><link rel="prefetch" href="/assets/js/208.2b32fee1.js"><link rel="prefetch" href="/assets/js/209.b95ecdfa.js"><link rel="prefetch" href="/assets/js/21.11c481e1.js"><link rel="prefetch" href="/assets/js/210.b71de55d.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.356048bc.js"><link rel="prefetch" href="/assets/js/215.80bd52a8.js"><link rel="prefetch" href="/assets/js/216.a693de49.js"><link rel="prefetch" href="/assets/js/217.d3f0cb2d.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.4fc65310.js"><link rel="prefetch" href="/assets/js/22.09e52363.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.37a9bc26.js"><link rel="prefetch" href="/assets/js/222.14c4ce9a.js"><link rel="prefetch" href="/assets/js/223.79200d95.js"><link rel="prefetch" href="/assets/js/224.b633ba46.js"><link rel="prefetch" href="/assets/js/225.eb4316ed.js"><link rel="prefetch" href="/assets/js/226.f5def5b6.js"><link rel="prefetch" href="/assets/js/227.a30097c7.js"><link rel="prefetch" href="/assets/js/228.08ddff61.js"><link rel="prefetch" href="/assets/js/229.cdf68885.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.26d4f9a9.js"><link rel="prefetch" href="/assets/js/231.23da383d.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.dcbeedc1.js"><link rel="prefetch" href="/assets/js/234.cedc03a0.js"><link rel="prefetch" href="/assets/js/235.6b91d63a.js"><link rel="prefetch" href="/assets/js/236.082930c3.js"><link rel="prefetch" href="/assets/js/237.71a0d31d.js"><link rel="prefetch" href="/assets/js/238.3b347296.js"><link rel="prefetch" href="/assets/js/239.199b5800.js"><link rel="prefetch" href="/assets/js/24.1a0ec854.js"><link rel="prefetch" href="/assets/js/240.5e7fe51a.js"><link rel="prefetch" href="/assets/js/241.fdccefb6.js"><link rel="prefetch" href="/assets/js/242.1a263fef.js"><link rel="prefetch" href="/assets/js/243.9b76c980.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.0ca047be.js"><link rel="prefetch" href="/assets/js/246.f492f6e3.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.dfdf517b.js"><link rel="prefetch" href="/assets/js/249.f3abb8d4.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.6ac4cc3a.js"><link rel="prefetch" href="/assets/js/251.6b64e464.js"><link rel="prefetch" href="/assets/js/252.ee2fa61e.js"><link rel="prefetch" href="/assets/js/253.ff810602.js"><link rel="prefetch" href="/assets/js/254.0bde9601.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.5bcd6250.js"><link rel="prefetch" href="/assets/js/257.c7b560b0.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.4e700996.js"><link rel="prefetch" href="/assets/js/26.bbfde0f8.js"><link rel="prefetch" href="/assets/js/260.f4becfcc.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.43d14785.js"><link rel="prefetch" href="/assets/js/263.b69c03ad.js"><link rel="prefetch" href="/assets/js/264.dbc22129.js"><link rel="prefetch" href="/assets/js/265.b5cb48f6.js"><link rel="prefetch" href="/assets/js/266.34356500.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.ff5ce018.js"><link rel="prefetch" href="/assets/js/27.9675606e.js"><link rel="prefetch" href="/assets/js/270.ef200fe2.js"><link rel="prefetch" href="/assets/js/271.4ac62df5.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.a3a9c76d.js"><link rel="prefetch" href="/assets/js/275.85c008bc.js"><link rel="prefetch" href="/assets/js/276.ca9b96a1.js"><link rel="prefetch" href="/assets/js/277.ccecfc0f.js"><link rel="prefetch" href="/assets/js/278.c342c4bb.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.01207ecc.js"><link rel="prefetch" href="/assets/js/280.4a8eddcd.js"><link rel="prefetch" href="/assets/js/281.b3bdd051.js"><link rel="prefetch" href="/assets/js/282.291be060.js"><link rel="prefetch" href="/assets/js/283.7065411b.js"><link rel="prefetch" href="/assets/js/284.e93a4e73.js"><link rel="prefetch" href="/assets/js/285.009d797f.js"><link rel="prefetch" href="/assets/js/286.ec26c975.js"><link rel="prefetch" href="/assets/js/287.448073e1.js"><link rel="prefetch" href="/assets/js/288.4207e20b.js"><link rel="prefetch" href="/assets/js/289.53bc96e2.js"><link rel="prefetch" href="/assets/js/29.281eb37f.js"><link rel="prefetch" href="/assets/js/290.30a4fd5c.js"><link rel="prefetch" href="/assets/js/291.2c87a450.js"><link rel="prefetch" href="/assets/js/292.7391f420.js"><link rel="prefetch" href="/assets/js/293.e2c07d98.js"><link rel="prefetch" href="/assets/js/294.69a39f91.js"><link rel="prefetch" href="/assets/js/295.c625045b.js"><link rel="prefetch" href="/assets/js/296.34d89b4e.js"><link rel="prefetch" href="/assets/js/297.064983a6.js"><link rel="prefetch" href="/assets/js/298.023e5d86.js"><link rel="prefetch" href="/assets/js/299.e220fd12.js"><link rel="prefetch" href="/assets/js/3.0616cd46.js"><link rel="prefetch" href="/assets/js/30.e39632a0.js"><link rel="prefetch" href="/assets/js/300.28529b60.js"><link rel="prefetch" href="/assets/js/301.d1438c52.js"><link rel="prefetch" href="/assets/js/302.49a73ebb.js"><link rel="prefetch" href="/assets/js/303.1d69c976.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.3dc675ac.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.5833b544.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.08f0d836.js"><link rel="prefetch" href="/assets/js/313.5519c581.js"><link rel="prefetch" href="/assets/js/314.89323fa8.js"><link rel="prefetch" href="/assets/js/315.5c7d3885.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.e2d7a191.js"><link rel="prefetch" href="/assets/js/318.fc1ea4dc.js"><link rel="prefetch" href="/assets/js/319.4b4eaa24.js"><link rel="prefetch" href="/assets/js/32.6f8f7735.js"><link rel="prefetch" href="/assets/js/320.26cadf73.js"><link rel="prefetch" href="/assets/js/321.da66552d.js"><link rel="prefetch" href="/assets/js/322.d1b7e27b.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.1bed89f2.js"><link rel="prefetch" href="/assets/js/325.74a10b7f.js"><link rel="prefetch" href="/assets/js/326.6733614c.js"><link rel="prefetch" href="/assets/js/327.2ddf9fe2.js"><link rel="prefetch" href="/assets/js/328.79dc0b15.js"><link rel="prefetch" href="/assets/js/329.d39f716c.js"><link rel="prefetch" href="/assets/js/33.c1604104.js"><link rel="prefetch" href="/assets/js/330.32c96058.js"><link rel="prefetch" href="/assets/js/331.405b6757.js"><link rel="prefetch" href="/assets/js/332.537134ee.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.f4f1e806.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.360d22f4.js"><link rel="prefetch" href="/assets/js/337.95c52f93.js"><link rel="prefetch" href="/assets/js/338.824f01ee.js"><link rel="prefetch" href="/assets/js/339.8e0c18d7.js"><link rel="prefetch" href="/assets/js/34.61042921.js"><link rel="prefetch" href="/assets/js/340.a666422a.js"><link rel="prefetch" href="/assets/js/341.8061f90b.js"><link rel="prefetch" href="/assets/js/342.5ecffedd.js"><link rel="prefetch" href="/assets/js/343.d67c1d54.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.87c72db5.js"><link rel="prefetch" href="/assets/js/346.2796487d.js"><link rel="prefetch" href="/assets/js/347.57b5c6a5.js"><link rel="prefetch" href="/assets/js/348.0cffac81.js"><link rel="prefetch" href="/assets/js/349.8e908833.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.2ffd5646.js"><link rel="prefetch" href="/assets/js/353.4ffbf66f.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.21de33fa.js"><link rel="prefetch" href="/assets/js/356.3d20f95a.js"><link rel="prefetch" href="/assets/js/357.2612cca5.js"><link rel="prefetch" href="/assets/js/358.7cce50cb.js"><link rel="prefetch" href="/assets/js/359.c23b92e5.js"><link rel="prefetch" href="/assets/js/36.66b33e93.js"><link rel="prefetch" href="/assets/js/360.6e33c30f.js"><link rel="prefetch" href="/assets/js/361.6db53217.js"><link rel="prefetch" href="/assets/js/362.28e15494.js"><link rel="prefetch" href="/assets/js/363.5316eb9a.js"><link rel="prefetch" href="/assets/js/364.ae04b75f.js"><link rel="prefetch" href="/assets/js/365.64c1e88f.js"><link rel="prefetch" href="/assets/js/366.066b98bd.js"><link rel="prefetch" href="/assets/js/367.06e05293.js"><link rel="prefetch" href="/assets/js/368.82209659.js"><link rel="prefetch" href="/assets/js/369.d687a4ee.js"><link rel="prefetch" href="/assets/js/37.18a4caf1.js"><link rel="prefetch" href="/assets/js/370.02d4e333.js"><link rel="prefetch" href="/assets/js/371.9e35695d.js"><link rel="prefetch" href="/assets/js/372.de59ddf8.js"><link rel="prefetch" href="/assets/js/373.7cfca530.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.07a95ecc.js"><link rel="prefetch" href="/assets/js/376.0859df9f.js"><link rel="prefetch" href="/assets/js/377.241c4721.js"><link rel="prefetch" href="/assets/js/378.a2d485d0.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c7cc8ff1.js"><link rel="prefetch" href="/assets/js/380.886e2c5c.js"><link rel="prefetch" href="/assets/js/381.514ea971.js"><link rel="prefetch" href="/assets/js/382.9bd440e8.js"><link rel="prefetch" href="/assets/js/383.cda3a324.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.3ebff401.js"><link rel="prefetch" href="/assets/js/386.7125d75d.js"><link rel="prefetch" href="/assets/js/387.472cd823.js"><link rel="prefetch" href="/assets/js/388.235ad655.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.c156642a.js"><link rel="prefetch" href="/assets/js/390.b25b016f.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.86acebaf.js"><link rel="prefetch" href="/assets/js/393.f5e26c18.js"><link rel="prefetch" href="/assets/js/394.ceb6bc2c.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.ee8abf24.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.d83e363b.js"><link rel="prefetch" href="/assets/js/399.a800f7df.js"><link rel="prefetch" href="/assets/js/4.ff0d0983.js"><link rel="prefetch" href="/assets/js/40.d21ba833.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.04724ff3.js"><link rel="prefetch" href="/assets/js/402.e2a01c0d.js"><link rel="prefetch" href="/assets/js/403.4c059b3b.js"><link rel="prefetch" href="/assets/js/404.0b33c4fc.js"><link rel="prefetch" href="/assets/js/405.31f9f4d4.js"><link rel="prefetch" href="/assets/js/406.0ea31eb3.js"><link rel="prefetch" href="/assets/js/407.f8aeaf6a.js"><link rel="prefetch" href="/assets/js/408.e31d8e6d.js"><link rel="prefetch" href="/assets/js/409.527b15a8.js"><link rel="prefetch" href="/assets/js/41.e327929c.js"><link rel="prefetch" href="/assets/js/410.ab3891e5.js"><link rel="prefetch" href="/assets/js/411.cabd9e6f.js"><link rel="prefetch" href="/assets/js/412.c00feda1.js"><link rel="prefetch" href="/assets/js/413.da9d8d0d.js"><link rel="prefetch" href="/assets/js/414.86e019be.js"><link rel="prefetch" href="/assets/js/415.024f200c.js"><link rel="prefetch" href="/assets/js/416.7a7f201a.js"><link rel="prefetch" href="/assets/js/417.9039f0f5.js"><link rel="prefetch" href="/assets/js/418.d0af7314.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.766a1ebb.js"><link rel="prefetch" href="/assets/js/420.e143149b.js"><link rel="prefetch" href="/assets/js/421.ce227e9b.js"><link rel="prefetch" href="/assets/js/422.5af358c3.js"><link rel="prefetch" href="/assets/js/423.b72620fc.js"><link rel="prefetch" href="/assets/js/424.0fffeb28.js"><link rel="prefetch" href="/assets/js/425.40613664.js"><link rel="prefetch" href="/assets/js/426.2e22eebf.js"><link rel="prefetch" href="/assets/js/427.a553f7d4.js"><link rel="prefetch" href="/assets/js/428.76aab144.js"><link rel="prefetch" href="/assets/js/429.3f7541a4.js"><link rel="prefetch" href="/assets/js/43.bd29747c.js"><link rel="prefetch" href="/assets/js/430.499095ce.js"><link rel="prefetch" href="/assets/js/431.8ab3c62f.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.048e0058.js"><link rel="prefetch" href="/assets/js/435.b7f62b08.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.91febbb0.js"><link rel="prefetch" href="/assets/js/439.3bdc32c2.js"><link rel="prefetch" href="/assets/js/44.159635cf.js"><link rel="prefetch" href="/assets/js/440.4c502b0c.js"><link rel="prefetch" href="/assets/js/441.f720ea4c.js"><link rel="prefetch" href="/assets/js/442.a0317b88.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.991c700e.js"><link rel="prefetch" href="/assets/js/445.eebf3c94.js"><link rel="prefetch" href="/assets/js/446.baf1e6b5.js"><link rel="prefetch" href="/assets/js/447.36441c47.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.e543e021.js"><link rel="prefetch" href="/assets/js/452.23d29581.js"><link rel="prefetch" href="/assets/js/453.4cefab78.js"><link rel="prefetch" href="/assets/js/454.505893ff.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.34067054.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.9f72dafe.js"><link rel="prefetch" href="/assets/js/459.298e4e26.js"><link rel="prefetch" href="/assets/js/46.54e218d9.js"><link rel="prefetch" href="/assets/js/460.875ebcb2.js"><link rel="prefetch" href="/assets/js/461.2e995131.js"><link rel="prefetch" href="/assets/js/462.93690745.js"><link rel="prefetch" href="/assets/js/463.c13b2bec.js"><link rel="prefetch" href="/assets/js/464.bf750fb8.js"><link rel="prefetch" href="/assets/js/465.81c60d5d.js"><link rel="prefetch" href="/assets/js/466.a61d596e.js"><link rel="prefetch" href="/assets/js/467.3842176d.js"><link rel="prefetch" href="/assets/js/468.63c7bcdd.js"><link rel="prefetch" href="/assets/js/469.75d9181a.js"><link rel="prefetch" href="/assets/js/47.f17d1df2.js"><link rel="prefetch" href="/assets/js/470.e5676a3b.js"><link rel="prefetch" href="/assets/js/471.6277f541.js"><link rel="prefetch" href="/assets/js/472.125e562f.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.92a7814b.js"><link rel="prefetch" href="/assets/js/475.783a6e1b.js"><link rel="prefetch" href="/assets/js/476.13ab38fd.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.4dfe6494.js"><link rel="prefetch" href="/assets/js/479.4c41ba37.js"><link rel="prefetch" href="/assets/js/48.7e42f465.js"><link rel="prefetch" href="/assets/js/480.fc824c74.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.0f102a04.js"><link rel="prefetch" href="/assets/js/484.4717857e.js"><link rel="prefetch" href="/assets/js/485.a935adb5.js"><link rel="prefetch" href="/assets/js/486.6984e85f.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.a95486d4.js"><link rel="prefetch" href="/assets/js/49.f67f18f2.js"><link rel="prefetch" href="/assets/js/490.b3795263.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.fb97316c.js"><link rel="prefetch" href="/assets/js/493.fbd42d21.js"><link rel="prefetch" href="/assets/js/494.d49dbddc.js"><link rel="prefetch" href="/assets/js/495.960d7a7a.js"><link rel="prefetch" href="/assets/js/496.067e2f8a.js"><link rel="prefetch" href="/assets/js/497.8892200d.js"><link rel="prefetch" href="/assets/js/498.f370eeef.js"><link rel="prefetch" href="/assets/js/499.9a73037b.js"><link rel="prefetch" href="/assets/js/5.abc9632b.js"><link rel="prefetch" href="/assets/js/50.f653d3eb.js"><link rel="prefetch" href="/assets/js/500.3908db61.js"><link rel="prefetch" href="/assets/js/501.268d26f2.js"><link rel="prefetch" href="/assets/js/502.a0b06ceb.js"><link rel="prefetch" href="/assets/js/503.e58b9748.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.148ab5d9.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.60ef697c.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.6b74fe01.js"><link rel="prefetch" href="/assets/js/514.1ee3b99e.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.e29023be.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.ce2bd6da.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.017b325c.js"><link rel="prefetch" href="/assets/js/521.58a6306c.js"><link rel="prefetch" href="/assets/js/522.a40f2287.js"><link rel="prefetch" href="/assets/js/523.edb81dd7.js"><link rel="prefetch" href="/assets/js/524.16258545.js"><link rel="prefetch" href="/assets/js/525.4bcc1c02.js"><link rel="prefetch" href="/assets/js/526.c355d6fc.js"><link rel="prefetch" href="/assets/js/527.7c3b7161.js"><link rel="prefetch" href="/assets/js/528.ac47d7da.js"><link rel="prefetch" href="/assets/js/529.3e5e6bc0.js"><link rel="prefetch" href="/assets/js/53.d65bef48.js"><link rel="prefetch" href="/assets/js/530.13d1b1c6.js"><link rel="prefetch" href="/assets/js/531.04e2e897.js"><link rel="prefetch" href="/assets/js/532.533d810f.js"><link rel="prefetch" href="/assets/js/533.2bd83146.js"><link rel="prefetch" href="/assets/js/534.cd16ff61.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.7824cd53.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.911cc914.js"><link rel="prefetch" href="/assets/js/539.2de30ddc.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.1046697c.js"><link rel="prefetch" href="/assets/js/542.ef1092c7.js"><link rel="prefetch" href="/assets/js/543.54235171.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.6983d416.js"><link rel="prefetch" href="/assets/js/546.98a57513.js"><link rel="prefetch" href="/assets/js/547.8c0ea7a4.js"><link rel="prefetch" href="/assets/js/548.b2e5147f.js"><link rel="prefetch" href="/assets/js/549.110d8ccc.js"><link rel="prefetch" href="/assets/js/55.994be3d0.js"><link rel="prefetch" href="/assets/js/550.b30b0650.js"><link rel="prefetch" href="/assets/js/551.4038a02e.js"><link rel="prefetch" href="/assets/js/552.4ce5afbb.js"><link rel="prefetch" href="/assets/js/553.6156a64c.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.5e22fac0.js"><link rel="prefetch" href="/assets/js/556.e37be811.js"><link rel="prefetch" href="/assets/js/557.9ef5c296.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.78e2830c.js"><link rel="prefetch" href="/assets/js/56.a07a348f.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.4b1b4b8c.js"><link rel="prefetch" href="/assets/js/562.6ff741ad.js"><link rel="prefetch" href="/assets/js/563.10fe6323.js"><link rel="prefetch" href="/assets/js/564.23bc7ae3.js"><link rel="prefetch" href="/assets/js/565.99045d53.js"><link rel="prefetch" href="/assets/js/566.e0e8a181.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.cc37a022.js"><link rel="prefetch" href="/assets/js/569.0b2d095f.js"><link rel="prefetch" href="/assets/js/57.d8914610.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.8e5c59b6.js"><link rel="prefetch" href="/assets/js/572.5a60007c.js"><link rel="prefetch" href="/assets/js/573.f0e2a0f5.js"><link rel="prefetch" href="/assets/js/574.fffad53b.js"><link rel="prefetch" href="/assets/js/575.4297f78b.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.3824ee1c.js"><link rel="prefetch" href="/assets/js/58.02da9451.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.21bed6e7.js"><link rel="prefetch" href="/assets/js/582.c94227c4.js"><link rel="prefetch" href="/assets/js/583.f0611b7e.js"><link rel="prefetch" href="/assets/js/584.809f0bbb.js"><link rel="prefetch" href="/assets/js/585.ed41b413.js"><link rel="prefetch" href="/assets/js/586.957fe496.js"><link rel="prefetch" href="/assets/js/587.ff5d8d3c.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.275b0293.js"><link rel="prefetch" href="/assets/js/590.6ee9e42d.js"><link rel="prefetch" href="/assets/js/591.d2c873ee.js"><link rel="prefetch" href="/assets/js/592.63d5541c.js"><link rel="prefetch" href="/assets/js/593.1b5910fa.js"><link rel="prefetch" href="/assets/js/594.a9e7a407.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.93454a11.js"><link rel="prefetch" href="/assets/js/597.e92d65a6.js"><link rel="prefetch" href="/assets/js/598.05057c9f.js"><link rel="prefetch" href="/assets/js/599.534ff18f.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.222db31a.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.3d7ae82f.js"><link rel="prefetch" href="/assets/js/604.f3055453.js"><link rel="prefetch" href="/assets/js/605.af0c8252.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.974b78f2.js"><link rel="prefetch" href="/assets/js/608.26462e83.js"><link rel="prefetch" href="/assets/js/609.dd27e631.js"><link rel="prefetch" href="/assets/js/61.eaf63186.js"><link rel="prefetch" href="/assets/js/610.000c1e9d.js"><link rel="prefetch" href="/assets/js/611.44ff14d4.js"><link rel="prefetch" href="/assets/js/612.5b4036a0.js"><link rel="prefetch" href="/assets/js/613.3b71b5a2.js"><link rel="prefetch" href="/assets/js/614.28925cbf.js"><link rel="prefetch" href="/assets/js/615.a9e93388.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.31662991.js"><link rel="prefetch" href="/assets/js/618.6d9dcf9c.js"><link rel="prefetch" href="/assets/js/619.d2833531.js"><link rel="prefetch" href="/assets/js/62.7460f830.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.8109ad4e.js"><link rel="prefetch" href="/assets/js/622.06a5babf.js"><link rel="prefetch" href="/assets/js/623.ccf364a6.js"><link rel="prefetch" href="/assets/js/624.18209fc2.js"><link rel="prefetch" href="/assets/js/625.eb3f309d.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.af3ee1ec.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.18441910.js"><link rel="prefetch" href="/assets/js/630.f8552446.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.ca268728.js"><link rel="prefetch" href="/assets/js/633.e5bcf026.js"><link rel="prefetch" href="/assets/js/634.8ec52643.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.eb23b5c5.js"><link rel="prefetch" href="/assets/js/637.eee47171.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.9bcd2f77.js"><link rel="prefetch" href="/assets/js/640.a02db32d.js"><link rel="prefetch" href="/assets/js/641.25990053.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.becf6b9f.js"><link rel="prefetch" href="/assets/js/644.ac752ef6.js"><link rel="prefetch" href="/assets/js/645.cf92857c.js"><link rel="prefetch" href="/assets/js/646.d4646b84.js"><link rel="prefetch" href="/assets/js/647.b1895af0.js"><link rel="prefetch" href="/assets/js/648.c26381da.js"><link rel="prefetch" href="/assets/js/649.c0818833.js"><link rel="prefetch" href="/assets/js/65.5ee94aae.js"><link rel="prefetch" href="/assets/js/650.8d4d92d6.js"><link rel="prefetch" href="/assets/js/651.4ff5f780.js"><link rel="prefetch" href="/assets/js/66.f1b27e87.js"><link rel="prefetch" href="/assets/js/67.47082498.js"><link rel="prefetch" href="/assets/js/68.502aa70c.js"><link rel="prefetch" href="/assets/js/69.9a3a9a86.js"><link rel="prefetch" href="/assets/js/70.1a8828f1.js"><link rel="prefetch" href="/assets/js/71.d32d3acb.js"><link rel="prefetch" href="/assets/js/72.0d13e6d5.js"><link rel="prefetch" href="/assets/js/73.be72ee5e.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.1450e671.js"><link rel="prefetch" href="/assets/js/76.f41837bd.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.e5277cab.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.d33b4c24.js"><link rel="prefetch" href="/assets/js/81.e3349db5.js"><link rel="prefetch" href="/assets/js/82.304e56e7.js"><link rel="prefetch" href="/assets/js/83.886030fc.js"><link rel="prefetch" href="/assets/js/84.3d1dd526.js"><link rel="prefetch" href="/assets/js/85.9f2d1ef1.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.0d02b425.js"><link rel="prefetch" href="/assets/js/88.8e3d0899.js"><link rel="prefetch" href="/assets/js/89.414af620.js"><link rel="prefetch" href="/assets/js/9.5a6081e3.js"><link rel="prefetch" href="/assets/js/90.e20539a2.js"><link rel="prefetch" href="/assets/js/91.e9e57bd4.js"><link rel="prefetch" href="/assets/js/92.9b5cf84f.js"><link rel="prefetch" href="/assets/js/93.366136f2.js"><link rel="prefetch" href="/assets/js/94.524b1442.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.eb5ca57b.js"><link rel="prefetch" href="/assets/js/97.912c0f6a.js"><link rel="prefetch" href="/assets/js/98.825483b2.js"><link rel="prefetch" href="/assets/js/99.ae4d5edd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/vue/vue-element-admin/docs/eslint/eslint.html" class="sidebar-link">ESLint 和 GitHooks</a></li><li><a href="/dev/vue/vue-element-admin/docs/config/config.html" class="sidebar-link">管理后台的前端项目架构</a></li><li><a href="/dev/vue/vue-element-admin/docs/layout/layout.html" aria-current="page" class="active sidebar-link">搭建Layout架构</a></li><li><a href="/dev/vue/vue-element-admin/docs/common/common.html" class="sidebar-link">通用功能开发</a></li><li><a href="/dev/vue/vue-element-admin/docs/profile/profile.html" class="sidebar-link">实现个人中心业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html" class="sidebar-link">实现用户管理业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/user/user.html" class="sidebar-link">实现用户、角色、权限业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/table/table.html" class="sidebar-link">表格动态列和表格拖动排序解决方案</a></li><li><a href="/dev/vue/vue-element-admin/docs/md/md.html" class="sidebar-link">富文本与markdown解决方案</a></li><li><a href="/dev/vue/vue-element-admin/docs/deploy/deploy.html" class="sidebar-link">项目部署</a></li><li><a href="/dev/vue/vue-element-admin/docs/summary/summary.html" class="sidebar-link">总结</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>搭建Layout架构</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">搭建Layout架构</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2021/8/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-layout布局"><a href="#一-layout布局" class="header-anchor">#</a> 一：Layout布局</h2> <h3 id="一-layout基本布局"><a href="#一-layout基本布局" class="header-anchor">#</a> （一）Layout基本布局</h3> <ul><li>管理系统的layout布局分为三个部分，Menu、NavBar、Main</li></ul> <p><img src="/assets/img/2021-12-081.43.47.27f96e0d.png" alt="Alt text"></p> <ul><li>创建对应的Sidebar、Navbar、AppMain三个组件，如下结构，Sidebar由于比较复杂，还有其他的小组件组成，因此创建一个组件目录</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>layout
+├── components
+│   ├── AppMain.vue // 组件的内容给一个标识就好
+│   ├── Navbar.vue
+│   └── Sidebar
+│       └── index.vue
+└── index.vue
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>在styles目录下，创建scss样式文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>.
+├── index.scss  // 系统css样式
+├── mixin.scss  // 定义通用的css样式
+├── sidebar.scss // menu 菜单的样式
+└── variables.scss // 定义常量，以便在其他css中被使用
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在styles/index.scss文件中导入variables.scss、sidebar.scss、mixin.scss(<code>样式的内容不再贴出来</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code></code></pre> <div class="line-numbers-wrapper"></div></div><ul><li>在layout/index.vue中导入Navbar、Sidebar、AppMain三个组件，并且导入样式变量，</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;app-wrapper&quot;&gt;
+    &lt;!-- 左侧 menu --&gt;
+    &lt;!-- 这里的style是行内样式，目的是根据menuBg变量，改变menu背景色 --&gt;
+    &lt;sidebar
+      class=&quot;sidebar-container&quot;
+      :style=&quot;{ backgroundColor: variables.menuBg }&quot;
+    /&gt;
+    &lt;!-- 右侧容器 --&gt;
+    &lt;div class=&quot;main-container&quot;&gt;
+      &lt;div class=&quot;fixed-header&quot;&gt;
+        &lt;!-- 顶部的 navbar --&gt;
+        &lt;navbar /&gt;
+      &lt;/div&gt;
+      &lt;!-- 内容区 --&gt;
+      &lt;app-main /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import Navbar from '@/layout/components/Navbar'
+import Sidebar from '@/layout/components/Sidebar'
+import AppMain from '@/layout/components/AppMain'
+// 导入样式变量
+import variables from '@/styles/variables.scss'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+
+.app-wrapper {
+  // 调用clearfix这个mixin
+  @include clearfix;
+  // 针对body相对定位
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.fixed-header {
+  // 相对于浏览器窗口定位
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  // Navbar的宽度是屏幕宽度 - Menu宽度
+  width: calc(100% - #{$sideBarWidth});
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><ul><li>给AppMain.vue组件设置一个样式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;app-main&quot;&gt;AppMain&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.app-main {
+  // 浏览器可视区域的高度 100vh
+  min-height: calc(100vh - 50px);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 61px 20px 20px 20px;
+  // border-box盒模型width和height包含border和padding
+  box-sizing: border-box;
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>layout页面渲染如下</li></ul> <p><img src="/assets/img/2021-12-086.40.33.be1c9ec6.png" alt="Alt text"></p> <h3 id="二-获取用户基本信息实现navbar组件中的【用户头像菜单】功能"><a href="#二-获取用户基本信息实现navbar组件中的【用户头像菜单】功能" class="header-anchor">#</a> （二）获取用户基本信息实现Navbar组件中的【用户头像菜单】功能</h3> <ul><li>在src/api/sys.js文件中，添加请求用户基本信息的接口</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 携带token获取用户信息
+export function getUserInfo() {
+  return request({
+    url: '/sys/profile',
+    method: 'GET'
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>在src/utils/request.js中，添加请求拦截器，目的是获取vuex中的token，附加到请求头中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>//...
+
+// 请求拦截器
+service.interceptors.request.use(
+  (config) =&gt; {
+    if (store.getters.token) {
+      // 获取用户token，设置Authorization请求头
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+
+    return config
+  },
+  (error) =&gt; {
+    return Promise.reject(error)
+  }
+)
+
+//...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>在 store/modules/user.js 中加入userInfo相关信息，<code>这个getUserInfo函数，使用了async+await获取请求接口的数据，没有将其封装在promise对象中</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { login, getUserInfo } from '@/api/sys'
+
+const state = {
+  // ...
+  userInfo: {}
+}
+
+const mutations = {
+  // ...
+  setUserInfo: (state, userInfo) =&gt; {
+    state.userInfo = userInfo // 将用户信息存储到state中
+  }
+}
+
+const actions = {
+  // ...
+  
+  // 获取用户信息, 这里使用async + await
+  async getUserInfo({ commit, state }) {
+    const res = await getUserInfo()
+    commit('setUserInfo', res)
+    return res
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>在store/modules/getters.js中，添加hasUserInfo属性，用于判断用户是否获取到了userInfo信息</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">const</span> getters <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">token</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>token<span class="token punctuation">,</span>
+  <span class="token function-variable function">hasUserInfo</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 由于userInfo在vuex中是一个对象，那么需要将其json化后，再判断这个对象是否为空, 为true表示用户信息存在</span>
+    <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>userInfo<span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token string">'{}'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">userInfo</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>userInfo
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> getters
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>在permission.js中，当用户有token，但是没有获取用户信息的时候，会触发获取用户信息的动作，调用getUserInfo函数，permission.js文件修改如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import router from './router'
+import store from './store'
+
+// 白名单
+const whiteList = ['/login']
+
+router.beforeEach(async (to, from, next) =&gt; {
+
+  if (store.getters.token) {
+    if (to.path === '/login') {
+      next('/')
+      
+    } else {
+      // 如果用户信息不存在，先获取用户信息
+      if (!store.getters.hasUserInfo) {
+        await store.dispatch('user/getUserInfo')
+      }
+      next() // 如果访问的不是/login，那么直接跳转即可
+    }
+  } else {
+  
+	// ...
+	
+  }
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><ul><li>此时刷新页面，发现浏览器请求了<code>http://localhost:8080/api/sys/profile</code>接口</li></ul> <h3 id="三-渲染用户头像菜单"><a href="#三-渲染用户头像菜单" class="header-anchor">#</a> （三）渲染用户头像菜单</h3> <ul><li>当获取userInfo用户基本信息后，就可以对用户头像组件进行渲染了，编辑layout/components/Navbar.vue组件，<code>这里使用到了el-dropdown组件和el-avatar组件，已经router-link路由跳转</code>，Navbar.vue组件内容如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+    &lt;div class=&quot;right-menu&quot;&gt;
+      &lt;!-- 头像使用了el-dropdown组件 --&gt;
+      &lt;el-dropdown class=&quot;avatar-container&quot; trigger=&quot;click&quot;&gt;
+        &lt;div class=&quot;avatar-wrapper&quot;&gt;
+          &lt;el-avatar
+            shape=&quot;square&quot;
+            :size=&quot;40&quot;
+            :src=&quot;$store.getters.userInfo.avatar&quot;
+          &gt;&lt;/el-avatar&gt;
+          &lt;i class=&quot;el-icon-s-tools&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+
+        &lt;template #dropdown&gt;
+          &lt;el-dropdown-menu class=&quot;user-dropdown&quot;&gt;
+            &lt;!-- 下面是子选项 --&gt;
+            &lt;router-link to=&quot;/&quot;&gt;
+              &lt;el-dropdown-item&gt;主页&lt;/el-dropdown-item&gt;
+            &lt;/router-link&gt;
+
+            &lt;a target=&quot;_blank&quot; href=&quot;https://www.baidu.com&quot;&gt;
+              &lt;el-dropdown-item&gt;百度搜索&lt;/el-dropdown-item&gt;
+            &lt;/a&gt;
+
+            &lt;router-link to=&quot;/&quot;&gt;
+              &lt;el-dropdown-item divided&gt;退出登录&lt;/el-dropdown-item&gt;
+            &lt;/router-link&gt;
+          &lt;/el-dropdown-menu&gt;
+        &lt;/template&gt;
+      &lt;/el-dropdown&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.navbar {
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+
+  .right-menu {
+    display: flex;
+    align-items: center;
+    float: right;
+    padding-right: 16px;
+
+    ::v-deep .avatar-container {
+      cursor: pointer;
+      .avatar-wrapper {
+        margin-top: 5px;
+        position: relative;
+        .el-avatar {
+          --el-avatar-background-color: none;
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br></div></div><ul><li>渲染效果如下</li></ul> <p><img src="/assets/img/2021-12-0811.45.58.c388e8df.png" alt="Alt text"></p> <h3 id="四-主动退出登录方案"><a href="#四-主动退出登录方案" class="header-anchor">#</a> （四）主动退出登录方案</h3> <ul><li>用户退出有两种</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：主动退出指：用户点击登录按钮之后退出
+
+2：被动退出指：token 过期或被 其他人”顶下来“ 时退出
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>无论是什么退出方式，在用户退出时，所需要执行的操作都是固定的：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：清理掉当前用户缓存数据
+
+2：清理掉权限相关配置
+
+3：返回到登录页
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在store/modules/user.js文件中，添加logout的actions函数，vuex和localstorage中用户数据的清理</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const actions = {
+  // ...
+  	
+  // 用户退出登录，清理用户数据
+  logout({ commit }) {
+    commit('setToken', '')
+    commit('setUserInfo', {})
+    removeAllItem()
+    // Todo: 清理掉权限相关的配置
+    // ...
+    router.push('/login') // 跳转到登录页面
+  }
+
+  // ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>在layout/components/Navbar.vue组件中，给【退出登录】下拉选项绑定logout方法，调用vuex中的logout actions</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+
+            &lt;!-- ...... --&gt;
+            
+            &lt;router-link to=&quot;/&quot;&gt;
+              &lt;el-dropdown-item divided @click=&quot;logout&quot;
+                &gt;退出登录&lt;/el-dropdown-item
+              &gt;
+              
+			&lt;!-- ...... --&gt;
+&lt;/template&gt;
+
+
+&lt;script setup&gt;
+import {} from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore()
+const logout = () =&gt; {
+  store.dispatch('user/logout')
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><ul><li>此时用户点击【退出登录】，就会跳转到登录页面</li></ul> <p><img src="/assets/img/2021-12-0910.08.21.8a6fa33c.png" alt="Alt text"></p> <h3 id="五-被动退出登录方案-前端主动处理用户退出"><a href="#五-被动退出登录方案-前端主动处理用户退出" class="header-anchor">#</a> （五）被动退出登录方案：前端主动处理用户退出</h3> <ul><li>被动退出 的场景主要有两个</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：token 失效
+
+2：单点登录：其他人登录该账号被 “顶下来”
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>那么这两种场景下，在前端对应的处理方案一共也分为两种，共分为 主动处理 、被动处理 两种 ：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：主动处理：主要应对 token 失效
+
+2：被动处理：同时应对 token 失效 与 单点登录
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>为了保证用户的信息安全，<code>那么对于 token 而言就被制定了很多的安全策略</code>( <code>很重要</code> )</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：动态可变token (表单提交：csrf token)
+
+2：刷新 token   (单点登录系统：token + refresh token)
+
+3：时效 token   (单体应用：token)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>对于时效token，在单体应用中使用比较多(<code>由于在这个项目中，token不是保存在cookie中的，token保存在LocalStorage中，LocalStorage中的数据没有domain、path、expire time等信息，因此需要前端记录这些信息，这是前端主动处理用户退出的方法</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：在用户登陆时，记录当前 登录时间
+
+2：制定一个 失效时长
+
+3：在接口调用时，根据 当前时间 对比 登录时间 ，看是否超过了 时效时长
+	如果未超过，则正常进行后续操作
+	如果超过，则进行 退出登录 操作
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>在constant/index.js中，添加两个LocalStorage的key</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>export const TOKEN = 'token'
+export const TIME_STAMP = 'timeStamp'
+// token过期时间 2小时
+export const TOKEN_TIMEOUT_VALUE = 2 * 3600 * 1000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>在src/utils/auth.js文件中，创建三个函数，用于主动判断token过期</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { TIME_STAMP, TOKEN_TIMEOUT_VALUE } from '@/constant'
+import { setItem, getItem } from '@/utils/storage'
+
+// 获取登录时间戳
+export function getTimeStamp() {
+  return getItem(TIME_STAMP)
+}
+
+// 设置登录时间戳
+export function setTimeStamp() {
+  setItem(TIME_STAMP, Date.now())
+}
+
+// 判断token是否超时
+export function isCheckTimeout() {
+  // 当前时间戳
+  const currentTime = Date.now()
+  // 缓存时间戳
+  const timeStamp = getTimeStamp()
+  return currentTime - timeStamp &gt; TOKEN_TIMEOUT_VALUE
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>在vuex的user.js中，当用户登录成功后，写入用户登录的时间戳到LocalStorage中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const actions = {
+  // ...
+    return new Promise((resolve, reject) =&gt; {
+      login({ username: username.trim(), password: md5(password) })
+        .then((response) =&gt; {
+		  
+		  // ...
+		  
+          setTimeStamp()
+          
+		  // ...	
+        })
+        .catch((error) =&gt; {
+          // 抛出异常
+          reject(error)
+        })
+    })
+  },
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>在request.js的请求拦截器中，调用接口的时候，判断用户的token是否过期(<code>这里的return Promise.reject(new Error('token 失效'))错误信息，会被响应拦截器的error函数捕获到，然后基于ElMessage弹出错误信息</code>) (<code>很重要</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>service.interceptors.request.use(
+  (config) =&gt; {
+    if (store.getters.token) {
+      // 判断用户token是否超时
+      if (isCheckTimeout()) {
+        // 用户登出
+        store.dispatch('user/logout')
+        // 抛出异常，请求拦截器的异常会被响应拦截器捕获到
+        return Promise.reject(new Error('token 失效'))
+      }
+
+      // 获取用户token，设置Authorization请求头
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+
+    return config
+  },
+  (error) =&gt; {
+    return Promise.reject(error)
+  }
+)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>当token过期后，前端请求接口就会被请求拦截器拦截到，协议拦截器获取请求拦截器的错误信息，进行ElMessage显示</li></ul> <p><img src="/assets/img/2021-12-0910.58.43.005cde9f.png" alt="Alt text"></p> <h3 id="六-被动退出登录方案-前端被动处理用户退出"><a href="#六-被动退出登录方案-前端被动处理用户退出" class="header-anchor">#</a> （六）被动退出登录方案：前端被动处理用户退出</h3> <ul><li>对于token 过期，指的是</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>服务端生成的 token 超过，服务端指定时效
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>单点登录 而言</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>当用户 A 登录之后，token 过期之前。
+
+用户 A 的账号在其他的设备中进行了二次登录，导致第一次登录的 A 账号被 “顶下来” 的过程。
+
+即：同一账户仅可以在一个设备中保持在线状态
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>这里比较简单，仅有 token 失效状态码，需要到单点登录时，只需要增加一个状态码判断即可。<code>修改request.js的响应拦截器</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 响应拦截器
+service.interceptors.response.use(
+  // 请求成功
+  (response) =&gt; {
+    // ...
+  },
+  // 请求失败
+  (error) =&gt; {
+    // 判断服务器端返回的状态码，根据状态码===401，让用户登出
+    if (
+      error.response &amp;&amp;
+      error.response.data &amp;&amp;
+      error.response.data.code === 401
+    ) {
+      store.dispatch('user/logout')
+    }
+	
+ 	// ...
+  }
+)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="七-创建临时的menu菜单"><a href="#七-创建临时的menu菜单" class="header-anchor">#</a> （七）创建临时的menu菜单</h3> <ul><li>创建layout/components/Sidebar/Sidebar.vue组件，作为一个零时的menu菜单组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-menu
+    :unique-opened=&quot;true&quot;
+    background-color=&quot;#545c64&quot;
+    text-color=&quot;#fff&quot;
+    active-text-color=&quot;#ffd04b&quot;
+  &gt;
+    &lt;!-- 子集menu --&gt;
+    &lt;el-submenu index=&quot;1&quot;&gt;
+      &lt;template #title&gt;
+        &lt;i class=&quot;el-icon-location&quot;&gt;&lt;/i&gt;
+        &lt;span&gt;导航一&lt;/span&gt;
+      &lt;/template&gt;
+
+      &lt;el-menu-item index=&quot;1-1&quot;&gt;选项一&lt;/el-menu-item&gt;
+      &lt;el-menu-item index=&quot;1-2&quot;&gt;选项二&lt;/el-menu-item&gt;
+    &lt;/el-submenu&gt;
+
+    &lt;!-- 具体菜单 --&gt;
+    &lt;el-menu-item index=&quot;2&quot;&gt;
+      &lt;i class=&quot;el-icon-location&quot;&gt;&lt;/i&gt;
+      &lt;template #title&gt;导航4&lt;/template&gt;
+    &lt;/el-menu-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><ul><li>在layout/components/Sidebar/index.vue组件引入Sidebar.vue组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;占位&lt;/h1&gt;
+    &lt;!--   当菜单过长，el-scrollbar会出现滚动条 --&gt;
+    &lt;el-scrollbar&gt;
+      &lt;sidebar-menu&gt;&lt;/sidebar-menu&gt;
+    &lt;/el-scrollbar&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import SidebarMenu from '@/layout/components/Sidebar/SidebarMenu'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li>此时页面效果如下</li></ul> <p><img src="/assets/img/2021-12-091.54.19.7b0a45fb.png" alt="Alt text"></p> <h3 id="八-动态menu菜单处理方案解析"><a href="#八-动态menu菜单处理方案解析" class="header-anchor">#</a> （八）动态menu菜单处理方案解析</h3> <ul><li><code>【动态menu菜单】主要是和【动态路由表】配合来去实现的，动态路由表又根据【用户权限】来实现的</code>(<code>很重要</code>)。【动态菜单】根据路由表的配置自动生成对应的SidebarMenu组件，当路由表发生变化时，SidebarMenu组件自动发生变化，从而使得菜单是动态的。动态SidebarMenu组件的实现方案如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：定义路由表对应menu菜单规则
+
+2：根据规则制定路由表
+
+3：依据路由表，生成 menu 菜单
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>最核心的就是：定义路由表对应menu菜单的对应规则，其中就包含了<code>静态路由表</code>和<code>动态路由表</code>两部分 (<code>很重要</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>对于单个路由规则而言，有如下的 路由&lt;-&gt;菜单 对应规则
+	1：如果meta &amp;&amp; meta.title &amp;&amp; meta.icon为true：则显示在 menu 菜单中，其中 title 为显示的内容，icon 为显示的图标
+		①：如果存在children ：则以 el-sub-menu（子menu菜单）展示
+		②：如果存不在children：则以 el-menu-item（菜单项）展示
+	
+	2：如果meta &amp;&amp; meta.title &amp;&amp; meta.icon为false：不显示在menu菜单中
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="九-生成项目页面组件"><a href="#九-生成项目页面组件" class="header-anchor">#</a> （九）生成项目页面组件</h3> <ul><li>想要完成动态的 menu，那么我们需要按照以下的步骤来去实现</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：创建页面组件
+
+2：生成路由表
+
+3：解析路由表
+
+4：生成menu菜单
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>创建页面组件，在src/views目录下，创建<code>article-create、article-detail、article-ranking、error-page、import、permission-list、profile、role-list、user-info、user-manage</code>这10个组件，加上login组件，一共11个页面组件，目录结果如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>views
+├── article-create
+│   └── index.vue
+├── article-detail
+│   └── index.vue
+├── article-ranking
+│   └── index.vue
+├── error-page
+│   ├── 401.vue
+│   └── 404.vue
+├── import
+│   └── index.vue
+├── login
+│   ├── index.vue
+│   └── rules.js
+├── permission-list
+│   └── index.vue
+├── profile
+│   └── index.vue
+├── role-list
+│   └── index.vue
+├── user-info
+│   └── index.vue
+└── user-manage
+    └── index.vue
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h3 id="十-创建路由表"><a href="#十-创建路由表" class="header-anchor">#</a> （十）创建路由表</h3> <ul><li>最终的menu如下图所示</li></ul> <p><img src="/assets/img/2021-12-092.27.03.7094f34b.png" alt="Alt text"></p> <ul><li>首先需要对路由表进行划分，将用户的权限映射到私有路由表中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：私有路由表 privateRoutes ：权限路由
+
+2：公有路由表 publicRoutes：无权限路由
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>编辑router/index.js，创建privateRoutes和publicRoutes。在publicRoutes中，只有【个人中心 profile】会显示在侧边栏，privateRoutes中有两个菜单：user和article，它们的子菜单会显示在侧边栏，最后将它们合并到路由配置中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import { createRouter, createWebHashHistory } from 'vue-router'
+import layout from '@/layout'
+
+const privateRoutes = [
+  {
+    path: '/user',
+    component: layout,
+    meta: { title: 'user', icon: 'personnel' },
+    redirect: '/user/manage',
+    children: [
+      {
+        path: '/user/manage',
+        component: () =&gt; import('@/views/user-manage'),
+        meta: {
+          title: 'userManage',
+          icon: 'personnel-manage'
+        }
+      },
+      {
+        path: '/user/role',
+        component: () =&gt; import('@/views/role-list'),
+        meta: {
+          title: 'roleList',
+          icon: 'role'
+        }
+      },
+      {
+        path: '/user/permission',
+        component: () =&gt; import('@/views/permission-list'),
+        meta: {
+          title: 'permissionList',
+          icon: 'permission'
+        }
+      },
+      {
+        path: '/user/info/:id', // 这里是动态路径，在组件的js中可以通过route获取到id的值
+        name: 'userInfo',
+        component: () =&gt; import('@/views/user-info'),
+        meta: {
+          title: 'userInfo'
+        }
+      },
+      {
+        path: '/user/import',
+        name: 'import',
+        component: () =&gt; import('@/views/import'),
+        meta: {
+          title: 'excelImport'
+        }
+      }
+    ]
+  },
+  {
+    path: '/article',
+    component: layout,
+    redirect: '/article/ranking',
+    meta: {
+      title: 'article',
+      icon: 'article'
+    },
+    children: [
+      {
+        path: '/article/ranking',
+        component: () =&gt; import('@/views/article-ranking/index'),
+        name: 'articleRanking',
+        meta: {
+          title: 'articleRanking',
+          icon: 'article-ranking'
+        }
+      },
+      {
+        path: '/article/:id',
+        component: () =&gt; import('@/views/article-detail/index'),
+        name: 'articleDetail',
+        meta: {
+          title: 'articleDetail'
+        }
+      },
+      {
+        path: '/article/create',
+        component: () =&gt; import('@/views/article-create/index'),
+        name: 'articleCreate',
+        meta: {
+          title: 'articleCreate',
+          icon: 'article-create'
+        }
+      },
+      {
+        path: '/article/editor/:id',
+        component: () =&gt; import('@/views/article-create/index'),
+        name: 'articleEditor',
+        meta: {
+          title: 'articleEditor'
+        }
+      }
+    ]
+  }
+]
+
+const publicRoutes = [
+  {
+    path: '/login',
+    component: () =&gt; import('@/views/login')
+  },
+  {
+    path: '/',
+    component: layout,
+    redirect: '/profile',
+    children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        component: () =&gt; import('@/views/profile'),
+        // 这里将个人中心作为菜单栏的第一个菜单
+        meta: { title: 'profile', icon: 'el-icon-user' }
+      },
+      {
+        path: '/404',
+        name: '404',
+        component: () =&gt; import('@/views/error-page/404')
+      },
+      {
+        path: '/401',
+        name: '401',
+        component: () =&gt; import('@/views/error-page/401')
+      }
+    ]
+  }
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  // 这里将共有路由和私有路由合并
+  routes: [...publicRoutes, ...privateRoutes]
+})
+
+export default router
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br></div></div><ul><li>编辑layout/components/AppMain.vue，<code>创建router-view，让layout的children页面组件在&lt;router-view&gt;处展示</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;app-main&quot;&gt;
+    // layout组件的children将会在这里展示
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>此时登录页面，可以看到AppMain组件中显示的页面组件</li></ul> <p><img src="/assets/img/2021-12-093.48.16.7e903c58.png" alt="Alt text"></p> <h3 id="十一-解析路由表获取结构化数据"><a href="#十一-解析路由表获取结构化数据" class="header-anchor">#</a> （十一）解析路由表获取结构化数据</h3> <ul><li>为了基于【路由表配置】生成侧边栏，那么首先需要解析路由表。想要获取路由表数据，那么有两种方式：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：router.options.routes：只能获取初始路由配置，新增路由配置无法获取到
+
+2：router.getRoutes()：可以获取所有路由配置，包括动态新增路由配置，因此使用这个方式
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>编辑layout/components/Sidebar/SidebarMenu.vue组件，在script中获取当前所有的路由</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+console.log(router.getRoutes())
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>打印的结果如下</li></ul> <p><img src="/assets/img/2021-12-093.47.25.b916748d.png" alt="Alt text"></p> <ul><li>但是此时获取的路由配置中，二级路由配置有重复，例如/user/manage在/user中也有，并且没有meta的路由配置需要删除，因此需要对这些路由配置数据进行处理。创建utils/route.js文件，在route.js中先去除脱离层级的路由配置，再生成符合menu的路由数据(<code>这个route.js文件中generateMenus函数使用了【递归的思想】生成menu的路由数据，难度较大，当前项目的一个难点</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import path from 'path'
+
+// 获取子集路由
+function getChildrenRoutes(routes) {
+  const result = []
+  routes.forEach((route) =&gt; {
+    if (route.children &amp;&amp; route.children.length &gt; 0) {
+      // 如果路由有children，全部添加到result里面
+      result.push(...route.children)
+    }
+  })
+  return result
+}
+
+// 过滤路由配置数据，删除脱离路由层级的路由配置
+export function filterRoutes(routes) {
+  // 获取所有的子路由
+  const childrenRoutes = getChildrenRoutes(routes)
+  // 将子路由从routes中过滤掉
+  return routes.filter((route) =&gt; {
+    return !childrenRoutes.find((childrenRoute) =&gt; {
+      return childrenRoute.path === route.path
+    })
+  })
+}
+
+// 判断data是否为空
+function isNull(data) {
+  if (!data) return true
+  if (JSON.stringify(data) === '{}') return true
+  if (JSON.stringify(data) === '[]') return true
+}
+
+// 根据过滤的路由配置数据，创建menu规则的数据
+export function generateMenus(routes, basePath = '') {
+  const result = []
+  routes.forEach((item) =&gt; {
+    // 如果route不存在children 且不存在meta，说明是子路由，直接丢弃
+    if (isNull(item.children) &amp;&amp; isNull(item.meta)) return
+    // 如果route存在children，但是不存在meta，说明是嵌套路由，需要对children再次遍历，
+    if (!isNull(item.children) &amp;&amp; isNull(item.meta)) {
+      result.push(...generateMenus(item.children)) // Todo: 这里是递归调用
+    }
+    // item如果不存在children，但是存在meta
+    // 将basePath与路由的path合并
+    const routePath = path.resolve(basePath, item.path)
+    // Todo：路由分离之后，可能存在同名的父路由情况，
+    let route = result.find((item) =&gt; item.path === routePath)
+    // 如果是空的，说明当前路由未加入到result
+    if (!route) {
+      route = {
+        ...item,
+        path: routePath,
+        children: []
+      }
+      if (route.meta.icon &amp;&amp; route.meta.title) {
+        result.push(route)
+      }
+    }
+    // 如果存在children和meta
+    if (!isNull(item.children)) {
+      route.children.push(...generateMenus(item.children, route.path))
+    }
+  })
+  return result
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br></div></div><ul><li>在layout/components/Sidebar/SidebarMenu.vue中，调用<code>route.js</code>中的<code>filterRoutes</code>和<code>generateMenus</code>，打印生成menu的路由配置数据</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useRouter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue-router'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> filterRoutes<span class="token punctuation">,</span> generateMenus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/utils/route'</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">useRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 通过filterRoutes过滤掉脱离层级的子路由，通过</span>
+<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 通过filterRoutes过滤掉脱离层级的子路由</span>
+  <span class="token keyword">const</span> filterRoutesResult <span class="token operator">=</span> <span class="token function">filterRoutes</span><span class="token punctuation">(</span>router<span class="token punctuation">.</span><span class="token function">getRoutes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token comment">// 通过generateMenus生成想要的路由信息</span>
+  <span class="token keyword">return</span> <span class="token function">generateMenus</span><span class="token punctuation">(</span>filterRoutesResult<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>routes<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><ul><li>最终打印出来的路由配置信息如下（<code>已经删除了不需要的字段</code>）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        &quot;path&quot;:&quot;/profile&quot;,
+        &quot;name&quot;:&quot;profile&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;profile&quot;,
+            &quot;icon&quot;:&quot;el-icon-user&quot;
+        },
+        &quot;children&quot;:[]
+    },
+    {
+        &quot;path&quot;:&quot;/user&quot;,
+        &quot;redirect&quot;:&quot;/user/manage&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;user&quot;,
+            &quot;icon&quot;:&quot;personnel&quot;
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/user/manage&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;userManage&quot;,
+                    &quot;icon&quot;:&quot;personnel-manage&quot;
+                },
+                &quot;children&quot;:[]
+            },
+            {
+                &quot;path&quot;:&quot;/user/role&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;roleList&quot;,
+                    &quot;icon&quot;:&quot;role&quot;
+                },
+                &quot;children&quot;:[]
+            },
+            {
+                &quot;path&quot;:&quot;/user/permission&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;permissionList&quot;,
+                    &quot;icon&quot;:&quot;permission&quot;
+                },
+                &quot;children&quot;:[]
+            }
+        ]
+    },
+    {
+        &quot;path&quot;:&quot;/article&quot;,
+        &quot;redirect&quot;:&quot;/article/ranking&quot;,
+        &quot;meta&quot;:{
+            &quot;title&quot;:&quot;article&quot;,
+            &quot;icon&quot;:&quot;article&quot;
+        },
+        &quot;children&quot;:[
+            {
+                &quot;path&quot;:&quot;/article/ranking&quot;,
+                &quot;name&quot;:&quot;articleRanking&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleRanking&quot;,
+                    &quot;icon&quot;:&quot;article-ranking&quot;
+                },
+                &quot;children&quot;:[]
+            },
+            {
+                &quot;path&quot;:&quot;/article/create&quot;,
+                &quot;name&quot;:&quot;articleCreate&quot;,
+                &quot;meta&quot;:{
+                    &quot;title&quot;:&quot;articleCreate&quot;,
+                    &quot;icon&quot;:&quot;article-create&quot;
+                },
+                &quot;children&quot;:[]
+            }
+        ]
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br></div></div><h3 id="十二-生成动态的menu菜单"><a href="#十二-生成动态的menu菜单" class="header-anchor">#</a> （十二）生成动态的menu菜单</h3> <ul><li>在获取到menu菜单的结构化数据后，那么就需要根据数据生成menu菜单</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：SidebarMenu：处理数据，作为最顶层 menu 载体
+
+2：SidebarItem：根据数据处理 当前项为 el-submenu || el-menu-item
+
+3：MenuItem：处理 el-menu-item 样式
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>删除SidebarMenu.vue的临时固定menu菜单，只保留el-menu组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-menu
+    :unique-opened=&quot;true&quot;
+    background-color=&quot;#545c64&quot;
+    text-color=&quot;#fff&quot;
+    active-text-color=&quot;#ffd04b&quot;
+  &gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>创建layout/components/Sidebar/SidebarItem.vue组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div&gt;SidebarItem&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>在SidebarMenu.vue中导入SidebarItem.vue组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--一级菜单--&gt;
+&lt;template&gt;
+  &lt;el-menu
+    :unique-opened=&quot;true&quot;
+    background-color=&quot;#545c64&quot;
+    text-color=&quot;#fff&quot;
+    active-text-color=&quot;#ffd04b&quot;
+  &gt;
+    &lt;sidebar-item
+      v-for=&quot;item in routes&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { filterRoutes, generateMenus } from '@/utils/route'
+import SidebarItem from '@/layout/components/Sidebar/SidebarItem'
+
+const router = useRouter()
+
+// 通过filterRoutes过滤掉脱离层级的子路由，通过
+const routes = computed(() =&gt; {
+  // 通过filterRoutes过滤掉脱离层级的子路由
+  const filterRoutesResult = filterRoutes(router.getRoutes())
+  // 通过generateMenus生成想要的路由信息
+  return generateMenus(filterRoutesResult)
+})
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>编辑SidebarItem.vue组件，判断当前的菜单数据是显示<code>el-submenu</code> 还是显示 <code>el-menu-item</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--二级菜单--&gt;
+&lt;template&gt;
+  &lt;!-- 当menu数据中有children的时候，展示el-submenu --&gt;
+  &lt;el-submenu v-if=&quot;route.children.length &gt; 0&quot; :index=&quot;route.path&quot;&gt;
+    &lt;template #title&gt;
+      &lt;menu-item :title=&quot;route.meta.title&quot; :icon=&quot;route.meta.icon&quot;&gt;&lt;/menu-item&gt;
+    &lt;/template&gt;
+    &lt;!-- 这里是自己渲染自己，就是渲染子菜单 --&gt;
+    &lt;sidebar-item
+      v-for=&quot;item in route.children&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-submenu&gt;
+
+  &lt;!--如果menu数据中没有children的时候，展示el-menu-item--&gt;
+  &lt;el-menu-item v-else :index=&quot;route.path&quot;&gt;
+    &lt;menu-item :title=&quot;route.meta.title&quot; :icon=&quot;route.meta.icon&quot;&gt;&lt;/menu-item&gt;
+  &lt;/el-menu-item&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps } from 'vue'
+import MenuItem from '@/layout/components/Sidebar/MenuItem'
+
+defineProps({
+  route: {
+    type: Object,
+    required: true
+  }
+})
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>创建layout/components/Sidebar/MenuItem.vue组件，用于展示el-submenu中的子菜单的icon和title。<code>这里的icon分为elementui的icon和自定义的icon，elementui的icon直接使用了class，官方文档是使用的el-icon标签，这里使用i标签意义在于可以根据路由表中定义的icon自定义显示icon图标</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--有children的二级菜单的样式组件，用于显示title和icon--&gt;
+&lt;template&gt;
+  &lt;!-- elementui的icon：如果icon字符串以el-icon开头 --&gt;
+  &lt;i v-if=&quot;icon.includes('el-icon')&quot; class=&quot;sub-el-icon&quot; :class=&quot;icon&quot;&gt;&lt;/i&gt;
+  &lt;!-- 自定义的icon --&gt;
+  &lt;svg-icon v-else :icon=&quot;icon&quot;&gt;&lt;/svg-icon&gt;
+  &lt;!-- 文本 --&gt;
+  &lt;span&gt; {{ title }} &lt;/span&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps } from 'vue'
+import SvgIcon from '@/components/SvgIcon'
+
+defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  icon: {
+    type: String,
+    required: true
+  }
+})
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><h3 id="十三-修复menu菜单的动态样式、路由跳转、默认激活项"><a href="#十三-修复menu菜单的动态样式、路由跳转、默认激活项" class="header-anchor">#</a> （十三）修复menu菜单的动态样式、路由跳转、默认激活项</h3> <ul><li>由于后面我们需要处理 主题替换 ，所以此处我们不能把侧边栏的样式写死，在 store/getters 中创建一个新的 快捷访问，目的是在组件的template中，可以通过<code>$store.getters</code>访问到变量</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import variables from '@/styles/variables.scss'
+
+const getters = {
+  ...
+  cssVar: state =&gt; variables
+}
+
+export default getters
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>那么在SidebarMenu.vue组件中，就可以从store中获取样式变量</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--一级菜单--&gt;
+&lt;template&gt;
+  &lt;!-- 这里将样式都从store变量中获取 --&gt;
+  &lt;el-menu
+    :unique-opened=&quot;true&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+  &gt;
+    &lt;sidebar-item
+      v-for=&quot;item in routes&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li><code>设置:router=&quot;true&quot;</code>，开启vue-router模式，开启<code>el-menu</code>的<code>vue-router模式</code>，让<code>el-menu-item</code>组件的index作为路由的path 进行路由跳转(<code>这就是为什么el-submenu、el-menu-item的index属性都设置为route.path，目的是只要开启了el-menu的vue-router模式就可以路由跳转了</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;!-- 设置:router=&quot;true&quot;，开启vue-router模式 --&gt;
+  &lt;el-menu
+    :unique-opened=&quot;true&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :router=&quot;true&quot; 
+  &gt;
+    &lt;sidebar-item
+      v-for=&quot;item in routes&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li><p>此时点击侧边栏的菜单就会进行路由跳转了</p></li> <li><p>让侧边栏的选中菜单高亮显示，在el-menu组件中，使用default-active属性来控制侧边栏的菜单高亮</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;!--设置default-active属性--&gt;
+  &lt;el-menu
+    :default-active=&quot;activeMenu&quot;
+    :unique-opened=&quot;true&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :router=&quot;true&quot;
+  &gt;
+    &lt;sidebar-item
+      v-for=&quot;item in routes&quot;
+      :key=&quot;item.path&quot;
+      :route=&quot;item&quot;
+    &gt;&lt;/sidebar-item&gt;
+  &lt;/el-menu&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+// ...
+
+import { useRouter, useRoute } from 'vue-router'
+
+// ...
+
+// 获取route实例
+const route = useRoute()
+
+// 获取当前路由的path路径
+const activeMenu = computed(() =&gt; {
+  const { path } = route
+  return path
+})
+
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><ul><li>此时被选中的侧边栏菜单就可以高亮显示了</li></ul> <h3 id="十四-实现顶部隐藏侧边栏的功能"><a href="#十四-实现顶部隐藏侧边栏的功能" class="header-anchor">#</a> （十四）实现顶部隐藏侧边栏的功能</h3> <ul><li>创建store/modules/app.js文件，用于存储侧边栏状态(<code>这里没有定义actions，是因为这个状态改变是同步操作，不是异步的，如果是调用接口，那么是异步的，就需要定义actions</code>)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const state = {
+  sidebarOpened: true
+}
+
+const mutations = {
+  triggerSidebarOpened: (state) =&gt; {
+    state.sidebarOpened = !state.sidebarOpened
+  }
+}
+
+export default {
+  namespaced: true,
+  state,
+  mutations
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>在store/index.js文件中加入加入app模块</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+
+import app from '@/store/modules/app'
+
+// ...
+
+export default createStore({
+  modules: {
+    user,
+    app
+  },
+  getters
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>在store/getters.js文件中，创建一个快捷访问方式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>const getters = {
+  // ...
+  sidebarOpened: (state) =&gt; state.app.sidebarOpened
+  
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>创建components/Hamburger组件，当点击组件的时候，调用toggleClick方法，改变vuex中sidebarOpened的值</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;hamburger-container&quot; @click=&quot;toggleClick&quot;&gt;
+    &lt;svg-icon class=&quot;hamburger&quot; :icon=&quot;icon&quot;&gt;&lt;/svg-icon&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { computed } from 'vue'
+import SvgIcon from '@/components/SvgIcon'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const icon = computed(() =&gt; {
+  return store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'
+})
+
+const toggleClick = () =&gt; {
+  // 这是同步操作，可以直接调用mutations
+  store.commit('app/triggerSidebarOpened')
+}
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.hamburger-container {
+  padding: 0 16px;
+  .hamburger {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><ul><li>在Navbar.vue组件中，导入Hamburger组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;navbar&quot;&gt;
+	  &lt;hamburger class=&quot;hamburger-container&quot; /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.navbar {
+    // ...
+	.hamburger-container {
+	    line-height: 46px;
+	    height: 100%;
+	    float: left;
+	    cursor: pointer;
+	    // hover 动画
+	    transition: background 0.5s;
+	    &amp;:hover {
+	      background: rgba(0, 0, 0, 0.1);
+	    }
+	}
+	// ...
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>给SidebarMenu.vue组件的el-menu组件添加一个collapse属性，当vuex中的sidebarOpened值变化的时候，可以被折叠</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--添加了collapse属性--&gt;
+&lt;el-menu
+    :collapse=&quot;!$store.getters.sidebarOpened&quot;
+    :default-active=&quot;activeMenu&quot;
+    :unique-opened=&quot;true&quot;
+    :background-color=&quot;$store.getters.cssVar.menuBg&quot;
+    :text-color=&quot;$store.getters.cssVar.menuText&quot;
+    :active-text-color=&quot;$store.getters.cssVar.menuActiveText&quot;
+    :router=&quot;true&quot;
+  &gt;
+  &lt;!-- ... --&gt;
+&lt;/el-menu&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>在styles/variables.scss文件中，添加<code>$hideSideBarWidth</code>变量作为侧边栏hide的宽度</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+
+$hideSideBarWidth: 54px; // 侧边栏hide的宽度
+
+// ...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在layout/index.vue组件中，给根元素绑定一个动态class属性，当sidebarOpened值变化的时候，会动态的设置class。当class为openSidebar的时候，侧边栏宽度为<code>width: calc(100% - #{$sideBarWidth});</code>，当class为hideSidebar的时候，侧边栏宽度为<code>width: 54px !important;</code>，并且navbar组件和app-main组件的宽度也会变化，这些样式都写在了sidebar.scss文件中，<code>这里的sidebar.scss文件样式是难点</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div
+    class=&quot;app-wrapper&quot;
+    :class=&quot;[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']&quot;
+  &gt;
+  
+  &lt;!-- ... --&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+// ...
+
+.fixed-header {
+  // 相对于浏览器窗口定位
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  // Navbar的宽度是屏幕宽度 - Menu侧边栏宽度
+  width: calc(100% - #{$sideBarWidth});
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - #{$hideSideBarWidth});
+}
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><ul><li>那么此时点击Hamburger图标的时候，vuex中sidebarOpened值变化，Sidebar、Navbar、AppMain组件的宽度也会变化，就会形成侧边栏隐藏效果</li></ul> <h3 id="十五-侧边栏的头部标题实现"><a href="#十五-侧边栏的头部标题实现" class="header-anchor">#</a> （十五）侧边栏的头部标题实现</h3> <ul><li>侧边栏的头部标题一般是系统的logo和名称，logo一般使用avatar组件，因为可以嵌入图片地址。名称只有当侧边栏展开的时候才会显示</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;logo-container&quot;&gt;
+      &lt;el-avatar
+        size=&quot;44&quot;
+        shape=&quot;square&quot;
+        src=&quot;https://element-plus.gitee.io/images/element-plus-logo.svg&quot;
+      &gt;&lt;/el-avatar&gt;
+      &lt;!-- 当侧边栏展开的时候显示系统title --&gt;
+      &lt;h1 class=&quot;logo-title&quot; v-if=&quot;$store.getters.sidebarOpened&quot;&gt;
+        后台管理系统
+      &lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;!--   当菜单过长，el-scrollbar会出现滚动条 --&gt;
+    &lt;el-scrollbar&gt;
+      &lt;sidebar-menu&gt;&lt;/sidebar-menu&gt;
+    &lt;/el-scrollbar&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import SidebarMenu from '@/layout/components/Sidebar/SidebarMenu'
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.logo-container {
+  height: 44px;
+  padding: 10px 0 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .logo-title {
+    margin-left: 10px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 50px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><ul><li>删除el-avatar的背景颜色，创建styles/element.scss</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>.el-avatar {
+  --el-avatar-background-color: none;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>在styles/index.scss中导入element.scss</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ....
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>此时的页面展示如下</li></ul> <p><img src="/assets/img/2021-12-101.03.06.03caa012.png" alt="Alt text"></p> <h3 id="十六-动态面包屑导航实现"><a href="#十六-动态面包屑导航实现" class="header-anchor">#</a> （十六）动态面包屑导航实现</h3> <ul><li>导航面包屑有两种</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：静态面包屑
+
+2：动态面包屑
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>动态面包屑是什么</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>根据当前的 url 自动生成面包屑导航菜单
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>动态面包屑实现方案</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：创建、渲染基本的面包屑组件
+
+2：计算面包屑结构数据
+
+3：根据数据渲染动态面包屑内容
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在components/Breadcrumb/index.vue中创建面包屑组件，<code>自定义组件也会设置样式，因为自定义组件中会引入elementui的组件，也就是调整elementui的组件的样式，例如设置width、height、color、margin、padding等</code>，<code>这里使用::v-deep深度选择器，主要是修改elementui组件的样式</code>（<code>思想总结很重要</code>）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;el-breadcrumb-item :to=&quot;{ path: '/' }&quot;&gt;homepage&lt;/el-breadcrumb-item&gt;
+    &lt;el-breadcrumb-item&gt;
+      &lt;a href=&quot;/&quot;&gt;promotion management&lt;/a&gt;
+    &lt;/el-breadcrumb-item&gt;
+    &lt;el-breadcrumb-item&gt;promotion list&lt;/el-breadcrumb-item&gt;
+    &lt;el-breadcrumb-item&gt;
+      &lt;span class=&quot;no-redirect&quot;&gt;活动&lt;/span&gt;
+    &lt;/el-breadcrumb-item&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.breadcrumb {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 50px;
+  margin-left: 8px;
+
+  ::v-deep .no-redirect {
+    color: #97a8be;
+    cursor: text;
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><ul><li>在layout/components/Navbar.vue中导入Breadcrumb组件。引入的自定义组件设置样式，<code>一般是设置其在父组件中的摆放位置</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+	&lt;div class=&quot;navbar&quot;&gt;
+	    &lt;!--  ...  --&gt;
+	    
+		&lt;breadcrumb class=&quot;breadcrumb-container&quot; /&gt;
+		
+		&lt;!--  ...  --&gt;
+	&lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;script setup&gt;
+    // ...
+    
+	import Breadcrumb from '@/components/Breadcrumb'
+
+	// ...
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+// ...
+
+.breadcrumb-container {
+  float: left;
+}
+
+// ...
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><ul><li>此时页面如下</li></ul> <p><img src="/assets/img/2021-12-1010.32.37.b0ec8b88.png" alt="Alt text"></p> <h3 id="十七-动态计算面包屑数据"><a href="#十七-动态计算面包屑数据" class="header-anchor">#</a> （十七）动态计算面包屑数据</h3> <ul><li>如果需要动态的面包屑，那么需要根据动态数据，渲染el-breadcrumb-item。那么对应的数据应该有如下格式，title是面包屑的文本，path是面包屑路由的路径</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+	{
+		title: '首页',
+		path: '/'
+	}
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>路由路径可以由<code>route.matched</code>获取到，但是需要过滤没有title的路由。watch属性监控route的变化</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+import { watch, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+
+const breadcrumbData = ref([])
+const getBreadcrumbData = () =&gt; {
+  // 过滤的目的是，只需要有title的路由路径
+  breadcrumbData.value = route.matched.filter(
+    (item) =&gt; item.meta &amp;&amp; item.meta.title
+  )
+}
+
+// 监听route变化
+watch(
+  route,
+  () =&gt; {
+    getBreadcrumbData()
+  },
+  { immediate: true }
+)
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h3 id="十八-基于面包屑数据-动态渲染面包屑"><a href="#十八-基于面包屑数据-动态渲染面包屑" class="header-anchor">#</a> （十八）基于面包屑数据，动态渲染面包屑</h3> <ul><li>面包屑是el-breadcrumb-item渲染出来的，那么需要对el-breadcrumb-item进行for循环，</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;el-breadcrumb-item
+      v-for=&quot;(item, index) in breadcrumbData&quot;
+      :key=&quot;item.path&quot;
+    &gt;
+      &lt;!-- 不可点击 --&gt;
+      &lt;span class=&quot;no-redirect&quot; v-if=&quot;index === breadcrumbData.length - 1&quot;&gt;
+        {{ item.meta.title }}
+      &lt;/span&gt;
+      &lt;!--  可点击 --&gt;
+      &lt;span class=&quot;redirect&quot; v-else @click=&quot;onLinkClick(item)&quot;&gt;
+        {{ item.meta.title }}
+      &lt;/span&gt;
+    &lt;/el-breadcrumb-item&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+
+
+&lt;script setup&gt;
+// ...
+import { useStore } from 'vuex'
+
+
+const router = useRouter()
+const store = useStore()
+
+// 从vuex获取背景色变量
+const linkHoverColor = ref(store.getters.cssVar.menuBg)
+
+// ...
+
+// 跳转点击事件
+const onLinkClick = (item) =&gt; {
+  router.push(item.path)
+}
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+.breadcrumb {
+  // ...
+
+  .redirect {
+    color: #666;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .redirect:hover {
+    // v-bind，可以使用js中的变量
+    color: v-bind(linkHoverColor);
+  }
+
+  // ...
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><ul><li>此时页面如下：点击侧边栏，路由也可以跳转了</li></ul> <p><img src="/assets/img/2021-12-101.10.06.7958777f.png" alt="Alt text"></p> <h3 id="十九-侧边栏页面切换过程中-实现面包屑的动画效果"><a href="#十九-侧边栏页面切换过程中-实现面包屑的动画效果" class="header-anchor">#</a> （十九）侧边栏页面切换过程中，实现面包屑的动画效果</h3> <ul><li>由于面包屑是列表，<code>在vue设置列表动画使用transition-group标签</code>，在components/Breadcrumb/index.vue中，面包屑组件外面添加transition-group标签，并且设置name为breadcrumb</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-breadcrumb class=&quot;breadcrumb&quot; separator=&quot;/&quot;&gt;
+    &lt;transition-group name=&quot;breadcrumb&quot;&gt;
+    &lt;!--  ...  --&gt;
+    &lt;/transition-group&gt;
+  &lt;/el-breadcrumb&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>创建styles/transition.scss文件，给列表设置动画样式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>.breadcrumb-enter-active,
+.breadcrumb-leave-active {
+  transition: all 0.5s;
+}
+
+.breadcrumb-enter-from,
+.breadcrumb-leave-active {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.breadcrumb-leave-active {
+  position: absolute;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>在index.scss中引入transition.scss文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+
+
+// ...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>那么此时面包屑切换就会有动画效果了</li></ul> <h3 id="二十-小结"><a href="#二十-小结" class="header-anchor">#</a> （二十）小结</h3> <ul><li>本章围绕着layout 为核心，主要实现了三个大的业务方案</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：用户退出方案
+
+2：动态侧边栏动态渲染方案
+
+3：动态面包屑动态渲染方案
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>还有一些小的功能，比如</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：退出的通用逻辑封装
+
+2：伸缩侧边栏动画
+
+3：面包屑动画
+
+4：组件状态驱动的动态 CSS 值
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/vue/vue-element-admin/docs/config/config.html" class="prev">
+            管理后台的前端项目架构
+          </a></span> <span class="next"><a href="/dev/vue/vue-element-admin/docs/common/common.html">
+            通用功能开发
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#一-layout布局" class="sidebar-link reco-side-一-layout布局" data-v-cb1513f6>一：Layout布局</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#一-layout基本布局" class="sidebar-link reco-side-一-layout基本布局" data-v-cb1513f6>（一）Layout基本布局</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#二-获取用户基本信息实现navbar组件中的【用户头像菜单】功能" class="sidebar-link reco-side-二-获取用户基本信息实现navbar组件中的【用户头像菜单】功能" data-v-cb1513f6>（二）获取用户基本信息实现Navbar组件中的【用户头像菜单】功能</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#三-渲染用户头像菜单" class="sidebar-link reco-side-三-渲染用户头像菜单" data-v-cb1513f6>（三）渲染用户头像菜单</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#四-主动退出登录方案" class="sidebar-link reco-side-四-主动退出登录方案" data-v-cb1513f6>（四）主动退出登录方案</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#五-被动退出登录方案-前端主动处理用户退出" class="sidebar-link reco-side-五-被动退出登录方案-前端主动处理用户退出" data-v-cb1513f6>（五）被动退出登录方案：前端主动处理用户退出</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#六-被动退出登录方案-前端被动处理用户退出" class="sidebar-link reco-side-六-被动退出登录方案-前端被动处理用户退出" data-v-cb1513f6>（六）被动退出登录方案：前端被动处理用户退出</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#七-创建临时的menu菜单" class="sidebar-link reco-side-七-创建临时的menu菜单" data-v-cb1513f6>（七）创建临时的menu菜单</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#八-动态menu菜单处理方案解析" class="sidebar-link reco-side-八-动态menu菜单处理方案解析" data-v-cb1513f6>（八）动态menu菜单处理方案解析</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#九-生成项目页面组件" class="sidebar-link reco-side-九-生成项目页面组件" data-v-cb1513f6>（九）生成项目页面组件</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十-创建路由表" class="sidebar-link reco-side-十-创建路由表" data-v-cb1513f6>（十）创建路由表</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十一-解析路由表获取结构化数据" class="sidebar-link reco-side-十一-解析路由表获取结构化数据" data-v-cb1513f6>（十一）解析路由表获取结构化数据</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十二-生成动态的menu菜单" class="sidebar-link reco-side-十二-生成动态的menu菜单" data-v-cb1513f6>（十二）生成动态的menu菜单</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十三-修复menu菜单的动态样式、路由跳转、默认激活项" class="sidebar-link reco-side-十三-修复menu菜单的动态样式、路由跳转、默认激活项" data-v-cb1513f6>（十三）修复menu菜单的动态样式、路由跳转、默认激活项</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十四-实现顶部隐藏侧边栏的功能" class="sidebar-link reco-side-十四-实现顶部隐藏侧边栏的功能" data-v-cb1513f6>（十四）实现顶部隐藏侧边栏的功能</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十五-侧边栏的头部标题实现" class="sidebar-link reco-side-十五-侧边栏的头部标题实现" data-v-cb1513f6>（十五）侧边栏的头部标题实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十六-动态面包屑导航实现" class="sidebar-link reco-side-十六-动态面包屑导航实现" data-v-cb1513f6>（十六）动态面包屑导航实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十七-动态计算面包屑数据" class="sidebar-link reco-side-十七-动态计算面包屑数据" data-v-cb1513f6>（十七）动态计算面包屑数据</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十八-基于面包屑数据-动态渲染面包屑" class="sidebar-link reco-side-十八-基于面包屑数据-动态渲染面包屑" data-v-cb1513f6>（十八）基于面包屑数据，动态渲染面包屑</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#十九-侧边栏页面切换过程中-实现面包屑的动画效果" class="sidebar-link reco-side-十九-侧边栏页面切换过程中-实现面包屑的动画效果" data-v-cb1513f6>（十九）侧边栏页面切换过程中，实现面包屑的动画效果</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/layout/layout.html#二十-小结" class="sidebar-link reco-side-二十-小结" data-v-cb1513f6>（二十）小结</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.ef2ae1d4.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/35.1d574a74.js" defer></script>
+  </body>
+</html>

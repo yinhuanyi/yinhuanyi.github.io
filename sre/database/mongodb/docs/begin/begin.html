@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MongoDB | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.ef2ae1d4.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/134.a93be345.js" as="script"><link rel="prefetch" href="/assets/js/10.256d2d9e.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.b17181c3.js"><link rel="prefetch" href="/assets/js/103.f8859f28.js"><link rel="prefetch" href="/assets/js/104.9fab75ef.js"><link rel="prefetch" href="/assets/js/105.25712a6b.js"><link rel="prefetch" href="/assets/js/106.321faf0e.js"><link rel="prefetch" href="/assets/js/107.edbc3950.js"><link rel="prefetch" href="/assets/js/108.0922d38e.js"><link rel="prefetch" href="/assets/js/109.451e04b9.js"><link rel="prefetch" href="/assets/js/11.452c26e6.js"><link rel="prefetch" href="/assets/js/110.f7745add.js"><link rel="prefetch" href="/assets/js/111.82f49a62.js"><link rel="prefetch" href="/assets/js/112.3eca9556.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.a1ffa028.js"><link rel="prefetch" href="/assets/js/115.3ebc5b5f.js"><link rel="prefetch" href="/assets/js/116.68f73bc2.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.691d7c30.js"><link rel="prefetch" href="/assets/js/119.b9e4d8c9.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.033a7ce9.js"><link rel="prefetch" href="/assets/js/121.4e17b9cc.js"><link rel="prefetch" href="/assets/js/122.f6342712.js"><link rel="prefetch" href="/assets/js/123.3cc58446.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.e7ca9035.js"><link rel="prefetch" href="/assets/js/126.95b05ce9.js"><link rel="prefetch" href="/assets/js/127.914d6fb9.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.acd254e3.js"><link rel="prefetch" href="/assets/js/13.742bd49b.js"><link rel="prefetch" href="/assets/js/130.56b0744c.js"><link rel="prefetch" href="/assets/js/131.4ef95683.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.566bd1f7.js"><link rel="prefetch" href="/assets/js/135.a79f211c.js"><link rel="prefetch" href="/assets/js/136.2a6f9b42.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.624fc52f.js"><link rel="prefetch" href="/assets/js/139.ca7fb473.js"><link rel="prefetch" href="/assets/js/14.5e9f76b2.js"><link rel="prefetch" href="/assets/js/140.696be263.js"><link rel="prefetch" href="/assets/js/141.bb08404f.js"><link rel="prefetch" href="/assets/js/142.b99f910e.js"><link rel="prefetch" href="/assets/js/143.c4bd878c.js"><link rel="prefetch" href="/assets/js/144.21df22c7.js"><link rel="prefetch" href="/assets/js/145.7027e2a4.js"><link rel="prefetch" href="/assets/js/146.2ee3be79.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.19e9eaee.js"><link rel="prefetch" href="/assets/js/149.c6118e48.js"><link rel="prefetch" href="/assets/js/15.6f107f59.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.3aa4d6ef.js"><link rel="prefetch" href="/assets/js/153.882d8a36.js"><link rel="prefetch" href="/assets/js/154.f0ab3594.js"><link rel="prefetch" href="/assets/js/155.e2ee68b1.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.ece42361.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.b5706a52.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.86946675.js"><link rel="prefetch" href="/assets/js/161.68382dc7.js"><link rel="prefetch" href="/assets/js/162.db9c0697.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.c51b79ba.js"><link rel="prefetch" href="/assets/js/166.a5599c72.js"><link rel="prefetch" href="/assets/js/167.d93d6d09.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.c5fbab48.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.e5dde466.js"><link rel="prefetch" href="/assets/js/171.897a5989.js"><link rel="prefetch" href="/assets/js/172.a3fa92f8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.c3e01b8b.js"><link rel="prefetch" href="/assets/js/175.a3cdba2f.js"><link rel="prefetch" href="/assets/js/176.d72805d0.js"><link rel="prefetch" href="/assets/js/177.ebbd2633.js"><link rel="prefetch" href="/assets/js/178.2a27768f.js"><link rel="prefetch" href="/assets/js/179.9286be73.js"><link rel="prefetch" href="/assets/js/18.4ee3074e.js"><link rel="prefetch" href="/assets/js/180.f18cbd55.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.08ce6859.js"><link rel="prefetch" href="/assets/js/183.1dc25b0f.js"><link rel="prefetch" href="/assets/js/184.3c961f5c.js"><link rel="prefetch" href="/assets/js/185.f9f79dff.js"><link rel="prefetch" href="/assets/js/186.28f91be3.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.5df2da19.js"><link rel="prefetch" href="/assets/js/189.a794c794.js"><link rel="prefetch" href="/assets/js/19.118ab13e.js"><link rel="prefetch" href="/assets/js/190.7cdec2de.js"><link rel="prefetch" href="/assets/js/191.0297e6cf.js"><link rel="prefetch" href="/assets/js/192.697228d1.js"><link rel="prefetch" href="/assets/js/193.5cb8d43d.js"><link rel="prefetch" href="/assets/js/194.04976a6f.js"><link rel="prefetch" href="/assets/js/195.8d606920.js"><link rel="prefetch" href="/assets/js/196.c37afe55.js"><link rel="prefetch" href="/assets/js/197.2c6d1226.js"><link rel="prefetch" href="/assets/js/198.038c24f2.js"><link rel="prefetch" href="/assets/js/199.ae91bccb.js"><link rel="prefetch" href="/assets/js/20.eb4595e8.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.f1d6cf9b.js"><link rel="prefetch" href="/assets/js/202.2ea1d1b9.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.da0a6eb7.js"><link rel="prefetch" href="/assets/js/205.3a31f1d9.js"><link rel="prefetch" href="/assets/js/206.29121567.js"><link rel="prefetch" href="/assets/js/207.2d8fe84f.js"><link rel="prefetch" href="/assets/js/208.2b32fee1.js"><link rel="prefetch" href="/assets/js/209.b95ecdfa.js"><link rel="prefetch" href="/assets/js/21.11c481e1.js"><link rel="prefetch" href="/assets/js/210.b71de55d.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.356048bc.js"><link rel="prefetch" href="/assets/js/215.80bd52a8.js"><link rel="prefetch" href="/assets/js/216.a693de49.js"><link rel="prefetch" href="/assets/js/217.d3f0cb2d.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.4fc65310.js"><link rel="prefetch" href="/assets/js/22.09e52363.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.37a9bc26.js"><link rel="prefetch" href="/assets/js/222.14c4ce9a.js"><link rel="prefetch" href="/assets/js/223.79200d95.js"><link rel="prefetch" href="/assets/js/224.b633ba46.js"><link rel="prefetch" href="/assets/js/225.eb4316ed.js"><link rel="prefetch" href="/assets/js/226.f5def5b6.js"><link rel="prefetch" href="/assets/js/227.a30097c7.js"><link rel="prefetch" href="/assets/js/228.08ddff61.js"><link rel="prefetch" href="/assets/js/229.cdf68885.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.26d4f9a9.js"><link rel="prefetch" href="/assets/js/231.23da383d.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.dcbeedc1.js"><link rel="prefetch" href="/assets/js/234.cedc03a0.js"><link rel="prefetch" href="/assets/js/235.6b91d63a.js"><link rel="prefetch" href="/assets/js/236.082930c3.js"><link rel="prefetch" href="/assets/js/237.71a0d31d.js"><link rel="prefetch" href="/assets/js/238.3b347296.js"><link rel="prefetch" href="/assets/js/239.199b5800.js"><link rel="prefetch" href="/assets/js/24.1a0ec854.js"><link rel="prefetch" href="/assets/js/240.5e7fe51a.js"><link rel="prefetch" href="/assets/js/241.fdccefb6.js"><link rel="prefetch" href="/assets/js/242.1a263fef.js"><link rel="prefetch" href="/assets/js/243.9b76c980.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.0ca047be.js"><link rel="prefetch" href="/assets/js/246.f492f6e3.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.dfdf517b.js"><link rel="prefetch" href="/assets/js/249.f3abb8d4.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.6ac4cc3a.js"><link rel="prefetch" href="/assets/js/251.6b64e464.js"><link rel="prefetch" href="/assets/js/252.ee2fa61e.js"><link rel="prefetch" href="/assets/js/253.ff810602.js"><link rel="prefetch" href="/assets/js/254.0bde9601.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.5bcd6250.js"><link rel="prefetch" href="/assets/js/257.c7b560b0.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.4e700996.js"><link rel="prefetch" href="/assets/js/26.bbfde0f8.js"><link rel="prefetch" href="/assets/js/260.f4becfcc.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.43d14785.js"><link rel="prefetch" href="/assets/js/263.b69c03ad.js"><link rel="prefetch" href="/assets/js/264.dbc22129.js"><link rel="prefetch" href="/assets/js/265.b5cb48f6.js"><link rel="prefetch" href="/assets/js/266.34356500.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.ff5ce018.js"><link rel="prefetch" href="/assets/js/27.9675606e.js"><link rel="prefetch" href="/assets/js/270.ef200fe2.js"><link rel="prefetch" href="/assets/js/271.4ac62df5.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.a3a9c76d.js"><link rel="prefetch" href="/assets/js/275.85c008bc.js"><link rel="prefetch" href="/assets/js/276.ca9b96a1.js"><link rel="prefetch" href="/assets/js/277.ccecfc0f.js"><link rel="prefetch" href="/assets/js/278.c342c4bb.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.01207ecc.js"><link rel="prefetch" href="/assets/js/280.4a8eddcd.js"><link rel="prefetch" href="/assets/js/281.b3bdd051.js"><link rel="prefetch" href="/assets/js/282.291be060.js"><link rel="prefetch" href="/assets/js/283.7065411b.js"><link rel="prefetch" href="/assets/js/284.e93a4e73.js"><link rel="prefetch" href="/assets/js/285.009d797f.js"><link rel="prefetch" href="/assets/js/286.ec26c975.js"><link rel="prefetch" href="/assets/js/287.448073e1.js"><link rel="prefetch" href="/assets/js/288.4207e20b.js"><link rel="prefetch" href="/assets/js/289.53bc96e2.js"><link rel="prefetch" href="/assets/js/29.281eb37f.js"><link rel="prefetch" href="/assets/js/290.30a4fd5c.js"><link rel="prefetch" href="/assets/js/291.2c87a450.js"><link rel="prefetch" href="/assets/js/292.7391f420.js"><link rel="prefetch" href="/assets/js/293.e2c07d98.js"><link rel="prefetch" href="/assets/js/294.69a39f91.js"><link rel="prefetch" href="/assets/js/295.c625045b.js"><link rel="prefetch" href="/assets/js/296.34d89b4e.js"><link rel="prefetch" href="/assets/js/297.064983a6.js"><link rel="prefetch" href="/assets/js/298.023e5d86.js"><link rel="prefetch" href="/assets/js/299.e220fd12.js"><link rel="prefetch" href="/assets/js/3.0616cd46.js"><link rel="prefetch" href="/assets/js/30.e39632a0.js"><link rel="prefetch" href="/assets/js/300.28529b60.js"><link rel="prefetch" href="/assets/js/301.d1438c52.js"><link rel="prefetch" href="/assets/js/302.49a73ebb.js"><link rel="prefetch" href="/assets/js/303.1d69c976.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.3dc675ac.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.5833b544.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.08f0d836.js"><link rel="prefetch" href="/assets/js/313.5519c581.js"><link rel="prefetch" href="/assets/js/314.89323fa8.js"><link rel="prefetch" href="/assets/js/315.5c7d3885.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.e2d7a191.js"><link rel="prefetch" href="/assets/js/318.fc1ea4dc.js"><link rel="prefetch" href="/assets/js/319.4b4eaa24.js"><link rel="prefetch" href="/assets/js/32.6f8f7735.js"><link rel="prefetch" href="/assets/js/320.26cadf73.js"><link rel="prefetch" href="/assets/js/321.da66552d.js"><link rel="prefetch" href="/assets/js/322.d1b7e27b.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.1bed89f2.js"><link rel="prefetch" href="/assets/js/325.74a10b7f.js"><link rel="prefetch" href="/assets/js/326.6733614c.js"><link rel="prefetch" href="/assets/js/327.2ddf9fe2.js"><link rel="prefetch" href="/assets/js/328.79dc0b15.js"><link rel="prefetch" href="/assets/js/329.d39f716c.js"><link rel="prefetch" href="/assets/js/33.c1604104.js"><link rel="prefetch" href="/assets/js/330.32c96058.js"><link rel="prefetch" href="/assets/js/331.405b6757.js"><link rel="prefetch" href="/assets/js/332.537134ee.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.f4f1e806.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.360d22f4.js"><link rel="prefetch" href="/assets/js/337.95c52f93.js"><link rel="prefetch" href="/assets/js/338.824f01ee.js"><link rel="prefetch" href="/assets/js/339.8e0c18d7.js"><link rel="prefetch" href="/assets/js/34.61042921.js"><link rel="prefetch" href="/assets/js/340.a666422a.js"><link rel="prefetch" href="/assets/js/341.8061f90b.js"><link rel="prefetch" href="/assets/js/342.5ecffedd.js"><link rel="prefetch" href="/assets/js/343.d67c1d54.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.87c72db5.js"><link rel="prefetch" href="/assets/js/346.2796487d.js"><link rel="prefetch" href="/assets/js/347.57b5c6a5.js"><link rel="prefetch" href="/assets/js/348.0cffac81.js"><link rel="prefetch" href="/assets/js/349.8e908833.js"><link rel="prefetch" href="/assets/js/35.1d574a74.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.2ffd5646.js"><link rel="prefetch" href="/assets/js/353.4ffbf66f.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.21de33fa.js"><link rel="prefetch" href="/assets/js/356.3d20f95a.js"><link rel="prefetch" href="/assets/js/357.2612cca5.js"><link rel="prefetch" href="/assets/js/358.7cce50cb.js"><link rel="prefetch" href="/assets/js/359.c23b92e5.js"><link rel="prefetch" href="/assets/js/36.66b33e93.js"><link rel="prefetch" href="/assets/js/360.6e33c30f.js"><link rel="prefetch" href="/assets/js/361.6db53217.js"><link rel="prefetch" href="/assets/js/362.28e15494.js"><link rel="prefetch" href="/assets/js/363.5316eb9a.js"><link rel="prefetch" href="/assets/js/364.ae04b75f.js"><link rel="prefetch" href="/assets/js/365.64c1e88f.js"><link rel="prefetch" href="/assets/js/366.066b98bd.js"><link rel="prefetch" href="/assets/js/367.06e05293.js"><link rel="prefetch" href="/assets/js/368.82209659.js"><link rel="prefetch" href="/assets/js/369.d687a4ee.js"><link rel="prefetch" href="/assets/js/37.18a4caf1.js"><link rel="prefetch" href="/assets/js/370.02d4e333.js"><link rel="prefetch" href="/assets/js/371.9e35695d.js"><link rel="prefetch" href="/assets/js/372.de59ddf8.js"><link rel="prefetch" href="/assets/js/373.7cfca530.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.07a95ecc.js"><link rel="prefetch" href="/assets/js/376.0859df9f.js"><link rel="prefetch" href="/assets/js/377.241c4721.js"><link rel="prefetch" href="/assets/js/378.a2d485d0.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c7cc8ff1.js"><link rel="prefetch" href="/assets/js/380.886e2c5c.js"><link rel="prefetch" href="/assets/js/381.514ea971.js"><link rel="prefetch" href="/assets/js/382.9bd440e8.js"><link rel="prefetch" href="/assets/js/383.cda3a324.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.3ebff401.js"><link rel="prefetch" href="/assets/js/386.7125d75d.js"><link rel="prefetch" href="/assets/js/387.472cd823.js"><link rel="prefetch" href="/assets/js/388.235ad655.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.c156642a.js"><link rel="prefetch" href="/assets/js/390.b25b016f.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.86acebaf.js"><link rel="prefetch" href="/assets/js/393.f5e26c18.js"><link rel="prefetch" href="/assets/js/394.ceb6bc2c.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.ee8abf24.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.d83e363b.js"><link rel="prefetch" href="/assets/js/399.a800f7df.js"><link rel="prefetch" href="/assets/js/4.ff0d0983.js"><link rel="prefetch" href="/assets/js/40.d21ba833.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.04724ff3.js"><link rel="prefetch" href="/assets/js/402.e2a01c0d.js"><link rel="prefetch" href="/assets/js/403.4c059b3b.js"><link rel="prefetch" href="/assets/js/404.0b33c4fc.js"><link rel="prefetch" href="/assets/js/405.31f9f4d4.js"><link rel="prefetch" href="/assets/js/406.0ea31eb3.js"><link rel="prefetch" href="/assets/js/407.f8aeaf6a.js"><link rel="prefetch" href="/assets/js/408.e31d8e6d.js"><link rel="prefetch" href="/assets/js/409.527b15a8.js"><link rel="prefetch" href="/assets/js/41.e327929c.js"><link rel="prefetch" href="/assets/js/410.ab3891e5.js"><link rel="prefetch" href="/assets/js/411.cabd9e6f.js"><link rel="prefetch" href="/assets/js/412.c00feda1.js"><link rel="prefetch" href="/assets/js/413.da9d8d0d.js"><link rel="prefetch" href="/assets/js/414.86e019be.js"><link rel="prefetch" href="/assets/js/415.024f200c.js"><link rel="prefetch" href="/assets/js/416.7a7f201a.js"><link rel="prefetch" href="/assets/js/417.9039f0f5.js"><link rel="prefetch" href="/assets/js/418.d0af7314.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.766a1ebb.js"><link rel="prefetch" href="/assets/js/420.e143149b.js"><link rel="prefetch" href="/assets/js/421.ce227e9b.js"><link rel="prefetch" href="/assets/js/422.5af358c3.js"><link rel="prefetch" href="/assets/js/423.b72620fc.js"><link rel="prefetch" href="/assets/js/424.0fffeb28.js"><link rel="prefetch" href="/assets/js/425.40613664.js"><link rel="prefetch" href="/assets/js/426.2e22eebf.js"><link rel="prefetch" href="/assets/js/427.a553f7d4.js"><link rel="prefetch" href="/assets/js/428.76aab144.js"><link rel="prefetch" href="/assets/js/429.3f7541a4.js"><link rel="prefetch" href="/assets/js/43.bd29747c.js"><link rel="prefetch" href="/assets/js/430.499095ce.js"><link rel="prefetch" href="/assets/js/431.8ab3c62f.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.048e0058.js"><link rel="prefetch" href="/assets/js/435.b7f62b08.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.91febbb0.js"><link rel="prefetch" href="/assets/js/439.3bdc32c2.js"><link rel="prefetch" href="/assets/js/44.159635cf.js"><link rel="prefetch" href="/assets/js/440.4c502b0c.js"><link rel="prefetch" href="/assets/js/441.f720ea4c.js"><link rel="prefetch" href="/assets/js/442.a0317b88.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.991c700e.js"><link rel="prefetch" href="/assets/js/445.eebf3c94.js"><link rel="prefetch" href="/assets/js/446.baf1e6b5.js"><link rel="prefetch" href="/assets/js/447.36441c47.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.e543e021.js"><link rel="prefetch" href="/assets/js/452.23d29581.js"><link rel="prefetch" href="/assets/js/453.4cefab78.js"><link rel="prefetch" href="/assets/js/454.505893ff.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.34067054.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.9f72dafe.js"><link rel="prefetch" href="/assets/js/459.298e4e26.js"><link rel="prefetch" href="/assets/js/46.54e218d9.js"><link rel="prefetch" href="/assets/js/460.875ebcb2.js"><link rel="prefetch" href="/assets/js/461.2e995131.js"><link rel="prefetch" href="/assets/js/462.93690745.js"><link rel="prefetch" href="/assets/js/463.c13b2bec.js"><link rel="prefetch" href="/assets/js/464.bf750fb8.js"><link rel="prefetch" href="/assets/js/465.81c60d5d.js"><link rel="prefetch" href="/assets/js/466.a61d596e.js"><link rel="prefetch" href="/assets/js/467.3842176d.js"><link rel="prefetch" href="/assets/js/468.63c7bcdd.js"><link rel="prefetch" href="/assets/js/469.75d9181a.js"><link rel="prefetch" href="/assets/js/47.f17d1df2.js"><link rel="prefetch" href="/assets/js/470.e5676a3b.js"><link rel="prefetch" href="/assets/js/471.6277f541.js"><link rel="prefetch" href="/assets/js/472.125e562f.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.92a7814b.js"><link rel="prefetch" href="/assets/js/475.783a6e1b.js"><link rel="prefetch" href="/assets/js/476.13ab38fd.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.4dfe6494.js"><link rel="prefetch" href="/assets/js/479.4c41ba37.js"><link rel="prefetch" href="/assets/js/48.7e42f465.js"><link rel="prefetch" href="/assets/js/480.fc824c74.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.0f102a04.js"><link rel="prefetch" href="/assets/js/484.4717857e.js"><link rel="prefetch" href="/assets/js/485.a935adb5.js"><link rel="prefetch" href="/assets/js/486.6984e85f.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.a95486d4.js"><link rel="prefetch" href="/assets/js/49.f67f18f2.js"><link rel="prefetch" href="/assets/js/490.b3795263.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.fb97316c.js"><link rel="prefetch" href="/assets/js/493.fbd42d21.js"><link rel="prefetch" href="/assets/js/494.d49dbddc.js"><link rel="prefetch" href="/assets/js/495.960d7a7a.js"><link rel="prefetch" href="/assets/js/496.067e2f8a.js"><link rel="prefetch" href="/assets/js/497.8892200d.js"><link rel="prefetch" href="/assets/js/498.f370eeef.js"><link rel="prefetch" href="/assets/js/499.9a73037b.js"><link rel="prefetch" href="/assets/js/5.abc9632b.js"><link rel="prefetch" href="/assets/js/50.f653d3eb.js"><link rel="prefetch" href="/assets/js/500.3908db61.js"><link rel="prefetch" href="/assets/js/501.268d26f2.js"><link rel="prefetch" href="/assets/js/502.a0b06ceb.js"><link rel="prefetch" href="/assets/js/503.e58b9748.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.148ab5d9.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.60ef697c.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.6b74fe01.js"><link rel="prefetch" href="/assets/js/514.1ee3b99e.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.e29023be.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.ce2bd6da.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.017b325c.js"><link rel="prefetch" href="/assets/js/521.58a6306c.js"><link rel="prefetch" href="/assets/js/522.a40f2287.js"><link rel="prefetch" href="/assets/js/523.edb81dd7.js"><link rel="prefetch" href="/assets/js/524.16258545.js"><link rel="prefetch" href="/assets/js/525.4bcc1c02.js"><link rel="prefetch" href="/assets/js/526.c355d6fc.js"><link rel="prefetch" href="/assets/js/527.7c3b7161.js"><link rel="prefetch" href="/assets/js/528.ac47d7da.js"><link rel="prefetch" href="/assets/js/529.3e5e6bc0.js"><link rel="prefetch" href="/assets/js/53.d65bef48.js"><link rel="prefetch" href="/assets/js/530.13d1b1c6.js"><link rel="prefetch" href="/assets/js/531.04e2e897.js"><link rel="prefetch" href="/assets/js/532.533d810f.js"><link rel="prefetch" href="/assets/js/533.2bd83146.js"><link rel="prefetch" href="/assets/js/534.cd16ff61.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.7824cd53.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.911cc914.js"><link rel="prefetch" href="/assets/js/539.2de30ddc.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.1046697c.js"><link rel="prefetch" href="/assets/js/542.ef1092c7.js"><link rel="prefetch" href="/assets/js/543.54235171.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.6983d416.js"><link rel="prefetch" href="/assets/js/546.98a57513.js"><link rel="prefetch" href="/assets/js/547.8c0ea7a4.js"><link rel="prefetch" href="/assets/js/548.b2e5147f.js"><link rel="prefetch" href="/assets/js/549.110d8ccc.js"><link rel="prefetch" href="/assets/js/55.994be3d0.js"><link rel="prefetch" href="/assets/js/550.b30b0650.js"><link rel="prefetch" href="/assets/js/551.4038a02e.js"><link rel="prefetch" href="/assets/js/552.4ce5afbb.js"><link rel="prefetch" href="/assets/js/553.6156a64c.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.5e22fac0.js"><link rel="prefetch" href="/assets/js/556.e37be811.js"><link rel="prefetch" href="/assets/js/557.9ef5c296.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.78e2830c.js"><link rel="prefetch" href="/assets/js/56.a07a348f.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.4b1b4b8c.js"><link rel="prefetch" href="/assets/js/562.6ff741ad.js"><link rel="prefetch" href="/assets/js/563.10fe6323.js"><link rel="prefetch" href="/assets/js/564.23bc7ae3.js"><link rel="prefetch" href="/assets/js/565.99045d53.js"><link rel="prefetch" href="/assets/js/566.e0e8a181.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.cc37a022.js"><link rel="prefetch" href="/assets/js/569.0b2d095f.js"><link rel="prefetch" href="/assets/js/57.d8914610.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.8e5c59b6.js"><link rel="prefetch" href="/assets/js/572.5a60007c.js"><link rel="prefetch" href="/assets/js/573.f0e2a0f5.js"><link rel="prefetch" href="/assets/js/574.fffad53b.js"><link rel="prefetch" href="/assets/js/575.4297f78b.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.3824ee1c.js"><link rel="prefetch" href="/assets/js/58.02da9451.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.21bed6e7.js"><link rel="prefetch" href="/assets/js/582.c94227c4.js"><link rel="prefetch" href="/assets/js/583.f0611b7e.js"><link rel="prefetch" href="/assets/js/584.809f0bbb.js"><link rel="prefetch" href="/assets/js/585.ed41b413.js"><link rel="prefetch" href="/assets/js/586.957fe496.js"><link rel="prefetch" href="/assets/js/587.ff5d8d3c.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.275b0293.js"><link rel="prefetch" href="/assets/js/590.6ee9e42d.js"><link rel="prefetch" href="/assets/js/591.d2c873ee.js"><link rel="prefetch" href="/assets/js/592.63d5541c.js"><link rel="prefetch" href="/assets/js/593.1b5910fa.js"><link rel="prefetch" href="/assets/js/594.a9e7a407.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.93454a11.js"><link rel="prefetch" href="/assets/js/597.e92d65a6.js"><link rel="prefetch" href="/assets/js/598.05057c9f.js"><link rel="prefetch" href="/assets/js/599.534ff18f.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.222db31a.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.3d7ae82f.js"><link rel="prefetch" href="/assets/js/604.f3055453.js"><link rel="prefetch" href="/assets/js/605.af0c8252.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.974b78f2.js"><link rel="prefetch" href="/assets/js/608.26462e83.js"><link rel="prefetch" href="/assets/js/609.dd27e631.js"><link rel="prefetch" href="/assets/js/61.eaf63186.js"><link rel="prefetch" href="/assets/js/610.000c1e9d.js"><link rel="prefetch" href="/assets/js/611.44ff14d4.js"><link rel="prefetch" href="/assets/js/612.5b4036a0.js"><link rel="prefetch" href="/assets/js/613.3b71b5a2.js"><link rel="prefetch" href="/assets/js/614.28925cbf.js"><link rel="prefetch" href="/assets/js/615.a9e93388.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.31662991.js"><link rel="prefetch" href="/assets/js/618.6d9dcf9c.js"><link rel="prefetch" href="/assets/js/619.d2833531.js"><link rel="prefetch" href="/assets/js/62.7460f830.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.8109ad4e.js"><link rel="prefetch" href="/assets/js/622.06a5babf.js"><link rel="prefetch" href="/assets/js/623.ccf364a6.js"><link rel="prefetch" href="/assets/js/624.18209fc2.js"><link rel="prefetch" href="/assets/js/625.eb3f309d.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.af3ee1ec.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.18441910.js"><link rel="prefetch" href="/assets/js/630.f8552446.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.ca268728.js"><link rel="prefetch" href="/assets/js/633.e5bcf026.js"><link rel="prefetch" href="/assets/js/634.8ec52643.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.eb23b5c5.js"><link rel="prefetch" href="/assets/js/637.eee47171.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.9bcd2f77.js"><link rel="prefetch" href="/assets/js/640.a02db32d.js"><link rel="prefetch" href="/assets/js/641.25990053.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.becf6b9f.js"><link rel="prefetch" href="/assets/js/644.ac752ef6.js"><link rel="prefetch" href="/assets/js/645.cf92857c.js"><link rel="prefetch" href="/assets/js/646.d4646b84.js"><link rel="prefetch" href="/assets/js/647.b1895af0.js"><link rel="prefetch" href="/assets/js/648.c26381da.js"><link rel="prefetch" href="/assets/js/649.c0818833.js"><link rel="prefetch" href="/assets/js/65.5ee94aae.js"><link rel="prefetch" href="/assets/js/650.8d4d92d6.js"><link rel="prefetch" href="/assets/js/651.4ff5f780.js"><link rel="prefetch" href="/assets/js/66.f1b27e87.js"><link rel="prefetch" href="/assets/js/67.47082498.js"><link rel="prefetch" href="/assets/js/68.502aa70c.js"><link rel="prefetch" href="/assets/js/69.9a3a9a86.js"><link rel="prefetch" href="/assets/js/70.1a8828f1.js"><link rel="prefetch" href="/assets/js/71.d32d3acb.js"><link rel="prefetch" href="/assets/js/72.0d13e6d5.js"><link rel="prefetch" href="/assets/js/73.be72ee5e.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.1450e671.js"><link rel="prefetch" href="/assets/js/76.f41837bd.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.e5277cab.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.d33b4c24.js"><link rel="prefetch" href="/assets/js/81.e3349db5.js"><link rel="prefetch" href="/assets/js/82.304e56e7.js"><link rel="prefetch" href="/assets/js/83.886030fc.js"><link rel="prefetch" href="/assets/js/84.3d1dd526.js"><link rel="prefetch" href="/assets/js/85.9f2d1ef1.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.0d02b425.js"><link rel="prefetch" href="/assets/js/88.8e3d0899.js"><link rel="prefetch" href="/assets/js/89.414af620.js"><link rel="prefetch" href="/assets/js/9.5a6081e3.js"><link rel="prefetch" href="/assets/js/90.e20539a2.js"><link rel="prefetch" href="/assets/js/91.e9e57bd4.js"><link rel="prefetch" href="/assets/js/92.9b5cf84f.js"><link rel="prefetch" href="/assets/js/93.366136f2.js"><link rel="prefetch" href="/assets/js/94.524b1442.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.eb5ca57b.js"><link rel="prefetch" href="/assets/js/97.912c0f6a.js"><link rel="prefetch" href="/assets/js/98.825483b2.js"><link rel="prefetch" href="/assets/js/99.ae4d5edd.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link router-link-active"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      内功心法
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link router-link-active"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/sre/database/mongodb/docs/begin/begin.html" aria-current="page" class="active sidebar-link">MongoDB安装</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>MongoDB</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">MongoDB</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2021/2/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h3 id="一-mongodb-安装和操作"><a href="#一-mongodb-安装和操作" class="header-anchor">#</a> （一） Mongodb 安装和操作</h3> <ul><li>RPM包安装</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token number">1</span>：创建yum仓库配置文件，编辑 /etc/yum.repos.d/mongodb.repo文件，添加
+<span class="token punctuation">[</span>mongodb<span class="token punctuation">]</span>
+<span class="token assign-left variable">name</span><span class="token operator">=</span>MongoDB Repository
+<span class="token assign-left variable">baseurl</span><span class="token operator">=</span>http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
+<span class="token assign-left variable">gpgcheck</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span>
+
+<span class="token number">2</span>：安装mongodb-org，且mongodb-org-server、mongodb-org-mongos、mongodb-org-shell、mongodb-org-tools将一并被安装
+
+yum <span class="token function">install</span> -y mongodb-org
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>修改主配置文件/etc/mongod.conf</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>bind_ip <span class="token operator">=</span> <span class="token number">0.0</span>.0.0        让所有的用户都可以连接服务端, 生成环境里请自行按需修改
+dbpath <span class="token operator">=</span> /data/mongo     重新指定数据存储的路径
+httpinterface <span class="token operator">=</span> <span class="token boolean">true</span>     打开基于web接口来监控mongodb的工作特性，且监听于28017 
+rest <span class="token operator">=</span> <span class="token boolean">true</span>              支持restful编程接口
+port <span class="token operator">=</span> <span class="token number">27017</span>             指定mongodb-server监听的端口
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>创建数据目录，且修改权限</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token function">mkdir</span> -pv /data/mongo
+<span class="token function">chown</span> -R mongod.mongod /data/mongo
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>启动mongodb，且查看数据目录是否存在数据</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>systemctl start mongod.service
+
+ll /data/mongo/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>客户端连接到服务端</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>（一）：使用http接口连接服务端，查看mongodb的信息, http接口是28017
+http://192.168.23.9:28017
+
+（二）：查看客户端连接到服务端的帮助
+<span class="token punctuation">[</span>root@mongodb1 data<span class="token punctuation">]</span><span class="token comment"># mongo --help     </span>
+MongoDB shell version: <span class="token number">2.6</span>.12
+usage: mongo <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token punctuation">[</span>db address<span class="token punctuation">]</span> <span class="token punctuation">[</span>file names <span class="token punctuation">(</span>ending <span class="token keyword">in</span> .js<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+（三）：通过客户端连接到服务端
+mongo --host <span class="token number">192.168</span>.23.9     连接到服务端，默认是连接192.168.23.9:27017/test， test为数据库名
+show dbs<span class="token punctuation">;</span>      查看数据库
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>mongodb的命令介绍</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>db.help<span class="token punctuation">(</span><span class="token punctuation">)</span>                    查看库级别的命令 
+db.stats<span class="token punctuation">(</span><span class="token punctuation">)</span>                   查看数据库状态
+db.version<span class="token punctuation">(</span><span class="token punctuation">)</span>                 查看数据库版本
+db.serverStatus<span class="token punctuation">(</span><span class="token punctuation">)</span>            查看数据库服务器状态
+db.mycoll.help<span class="token punctuation">(</span><span class="token punctuation">)</span>             查看表级别的命令
+db.getCollectionNames        显示当前库中所有的表的列表
+sh.help<span class="token punctuation">(</span><span class="token punctuation">)</span>                    关于sharding的操作
+rs.help<span class="token punctuation">(</span><span class="token punctuation">)</span>                    集合赋值命令
+<span class="token builtin class-name">help</span> admin                   管理命令
+<span class="token builtin class-name">help</span> connect                 连接操作语法
+<span class="token builtin class-name">help</span> keys                    key shortcuts
+<span class="token builtin class-name">help</span> misc                    misc things to know
+<span class="token builtin class-name">help</span> mr                      mapreduce
+show dbs                     显示数据库名称
+show collections             显示表名称
+show <span class="token function">users</span>                   查看已有用户
+show profile                 显示profile信息，显示性能评估工具
+show logs                    显示日志名信息
+show log <span class="token punctuation">[</span>name<span class="token punctuation">]</span>              显示指定的日志名的信息
+use <span class="token operator">&lt;</span>db_name<span class="token operator">&gt;</span>                进入某库，设定某库为当前库
+db.foo.find<span class="token punctuation">(</span><span class="token punctuation">)</span>                
+db.foo.find<span class="token punctuation">(</span> <span class="token punctuation">{</span> a <span class="token builtin class-name">:</span> <span class="token number">1</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span>       
+it                           result of the last line evaluated<span class="token punctuation">;</span> use to further iterate
+DBQuery.shellBatchSize <span class="token operator">=</span> x   <span class="token builtin class-name">set</span> default number of items to display on shell
+<span class="token builtin class-name">exit</span>                         quit the mongo shell
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><ul><li>DDL, DML, DCL （在mongodb中叫做CRUD操作）</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>db.students.insert<span class="token punctuation">(</span><span class="token punctuation">{</span>name:<span class="token string">&quot;dage&quot;</span>,age:20<span class="token punctuation">}</span><span class="token punctuation">)</span>  插入一条数据，默认会创建students表
+show collections                         显示当前的表
+db.students.stats<span class="token punctuation">(</span><span class="token punctuation">)</span>                      显示students表的数据信息
+db.students.find<span class="token punctuation">(</span><span class="token punctuation">)</span>                       查询插入的各个字段
+db.students.count<span class="token punctuation">(</span><span class="token punctuation">)</span>                      查看students表中有多少个document
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>Collection的简单查询过滤操作</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>find<span class="token punctuation">(</span><span class="token punctuation">)</span>的高级用法：比较操作：
+（一） db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$gt</span><span class="token builtin class-name">:</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age大于30
+<span class="token punctuation">{</span> <span class="token string">&quot;_id&quot;</span> <span class="token builtin class-name">:</span> ObjectId<span class="token punctuation">(</span><span class="token string">&quot;597b49b4072d632a342867cc&quot;</span><span class="token punctuation">)</span>, <span class="token string">&quot;name&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;data&quot;</span>, <span class="token string">&quot;age&quot;</span> <span class="token builtin class-name">:</span> <span class="token number">34</span> <span class="token punctuation">}</span>
+
+（二）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$gte</span><span class="token builtin class-name">:</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age大于等于30
+（三）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$lt</span><span class="token builtin class-name">:</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age小于30
+（四）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$lte</span><span class="token builtin class-name">:</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age小于等于30
+（五）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$in</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token number">20</span>, <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age在<span class="token punctuation">[</span><span class="token number">20</span>, <span class="token number">30</span><span class="token punctuation">]</span>的document
+（六）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$nin</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token number">20</span>, <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  age不在<span class="token punctuation">[</span><span class="token number">20</span>, <span class="token number">30</span><span class="token punctuation">]</span>的document
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>Collection的复杂查询过滤操作</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>find<span class="token punctuation">(</span><span class="token punctuation">)</span>的高级用法：组合条件：逻辑运算
+（一）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token variable">$or</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>name: <span class="token punctuation">{</span><span class="token variable">$eq</span><span class="token builtin class-name">:</span> <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span>age: <span class="token punctuation">{</span><span class="token variable">$nin</span><span class="token builtin class-name">:</span> <span class="token punctuation">[</span><span class="token number">40,50</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 或运算
+（二）<span class="token variable">$and</span>：与运算
+（三）<span class="token variable">$not</span>：非运算
+（四）<span class="token variable">$nor</span>：取反运算
+
+find<span class="token punctuation">(</span><span class="token punctuation">)</span>的高级用法：元素查询： 根据document中是否存在指定的字段进行的查询
+（一）db.students.find<span class="token punctuation">(</span><span class="token punctuation">{</span>gender: <span class="token punctuation">{</span><span class="token variable">$exists</span><span class="token builtin class-name">:</span> true<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  查询存在gender字段的document
+（二）<span class="token variable">$mod</span>：取摸
+（三）<span class="token variable">$type</span>：返回指定字段的值类型为指定类型的document
+
+MongoDB支持的数据类型有：Double, String, Object, Array, Binary data, Undefined, Boolean, Date, Null 等
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>Collection的跟新操作（update( )方法详解：插入和修改字段的值）</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>update<span class="token punctuation">(</span><span class="token punctuation">)</span>的高级用法：<span class="token variable">$set</span> 更新，或插入字段的值， <span class="token variable">$unset</span> 删除指定字段 ，<span class="token variable">$rename</span> 修改字段名 
+（一）db.students.update<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span><span class="token variable">$set</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>age: <span class="token number">44</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+     将name为yhy的这个document的age字段的值改为44
+     db.students.update<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span><span class="token variable">$set</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>age: <span class="token number">50</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+     将name为yhy的这个document的age字段的值改为50
+
+（二）db.students.update<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span><span class="token variable">$unset</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>age: <span class="token number">50</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+     删除name字段为yhy的document的age为50的字段
+
+（三）db.students.update<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span><span class="token variable">$rename</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>age: <span class="token string">&quot;Age&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+     修改name字段为yhy的document的age字段名为Age字段名
+
+（四）db.students.update<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span><span class="token variable">$inc</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span>course: <span class="token string">&quot;Python&quot;</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+     给name字段为yhy的document增加一个字段course且值为Python
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>Collection的删除操作(remove( )，drop( ), dropDatabase( )方法详解)</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># 删除字段</span>
+db.students.remove<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 删除表</span>
+db.students.drop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 删除当前数据库</span>
+db.dropDatabase<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="二-mongodb-index-介绍"><a href="#二-mongodb-index-介绍" class="header-anchor">#</a> （二）Mongodb index 介绍</h3> <ul><li>索引操作介绍</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>db.student.ensureIndex<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+给name字段创建索引, <span class="token number">1</span>为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
+实例
+
+db.student.getIndexes<span class="token punctuation">(</span><span class="token punctuation">)</span>
+查看索引
+
+db.student.find<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;name&quot;</span><span class="token builtin class-name">:</span> <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>.explain<span class="token punctuation">(</span><span class="token punctuation">)</span>
+查看是否使用到了索引（由于MongoDB调优）
+
+db.student.dropIndex<span class="token punctuation">(</span><span class="token string">&quot;name_1&quot;</span><span class="token punctuation">)</span>
+删除索引
+
+db.students.ensureIndex<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token number">1</span><span class="token punctuation">}</span>, <span class="token punctuation">{</span>unique: true<span class="token punctuation">}</span><span class="token punctuation">)</span>
+给name字段创建一个唯一键索引，那么再给students表增加一条行document，且name与之前存在的document的name值相同，那么就会报错， 如：增加一条document
+db.students.insert<span class="token punctuation">(</span><span class="token punctuation">{</span>name: <span class="token string">&quot;yhy&quot;</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+报错的信息如下：
+WriteResult<span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string">&quot;nInserted&quot;</span> <span class="token builtin class-name">:</span> <span class="token number">0</span>,
+        <span class="token string">&quot;writeError&quot;</span> <span class="token builtin class-name">:</span> <span class="token punctuation">{</span>
+                <span class="token string">&quot;code&quot;</span> <span class="token builtin class-name">:</span> <span class="token number">11000</span>,
+                <span class="token string">&quot;errmsg&quot;</span> <span class="token builtin class-name">:</span> <span class="token string">&quot;insertDocument :: caused by :: 11000 E11000 duplicate key error index: test.students.<span class="token variable">$name_1</span>  dup key: { : <span class="token entity" title="\&quot;">\&quot;</span>yhy<span class="token entity" title="\&quot;">\&quot;</span> }&quot;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="三-mongodb-授权认证-介绍"><a href="#三-mongodb-授权认证-介绍" class="header-anchor">#</a> （三）Mongodb 授权认证 介绍</h3> <ul><li>db.createUser( )函数介绍</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token number">1</span>：创建一个root用户，角色为userAdminAnyDatabase，因此root用户对数据库具有管理权限，但是不具备操作权限
+db.createUser<span class="token punctuation">(</span><span class="token punctuation">{</span>user:<span class="token string">&quot;root&quot;</span>,pwd:<span class="token string">&quot;123456&quot;</span>, roles: <span class="token punctuation">[</span><span class="token punctuation">{</span> role: <span class="token string">&quot;userAdminAnyDatabase&quot;</span>, db: <span class="token string">&quot;admin&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token number">2</span>：createUser<span class="token punctuation">(</span><span class="token punctuation">)</span>方法说明
+user：定义用户名 
+pwd：设置密码 
+roles：指定用户的角色，可以用一个空数组给新用户设定空角色； 在roles字段,可以指定内置角色和用户定义的角色。
+db：指定用户对哪个数据库具有管理员权限
+
+<span class="token number">3</span>：角色种类说明
+Built-In Roles（内置角色）： 
+①. 数据库用户角色：read、readWrite<span class="token punctuation">;</span> 
+②. 数据库管理角色：dbAdmin、dbOwner、userAdmin； 
+③. 集群管理角色：clusterAdmin、clusterManager、clusterMonitor、hostManager； 
+④. 备份恢复角色：backup、restore； 
+⑤. 所有数据库角色：readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、dbAdminAnyDatabase 
+⑥. 超级用户角色：root 
+// 这里还有几个角色间接或直接提供了系统超级用户的访问（dbOwner 、userAdmin、userAdminAnyDatabase） 
+⑦. 内部角色：__system
+
+<span class="token number">4</span>：角色对应的意义说明
+Read：允许用户读取指定数据库 
+readWrite：允许用户读写指定数据库 
+dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile 
+userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户 
+clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。 
+readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限 
+readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限 
+userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限 
+dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。 
+root：只在admin数据库中可用。超级账号，超级权限
+
+<span class="token number">5</span>：查看授权表
+db.system.users.find<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token number">6</span>：此时退出MongoDB，且编辑配置文件/etc/mongod.conf, 添加
+<span class="token assign-left variable">auth</span><span class="token operator">=</span>true<span class="token punctuation">(</span>针对于2.6版本<span class="token punctuation">)</span>
+security:<span class="token punctuation">(</span>针对于3.4版本<span class="token punctuation">)</span>
+  authorization: enabled
+
+<span class="token number">7</span>：可以在连接数据库的时候认证，也可以在登入时候认证，这里使用登入之后认证的方式
+show dbs<span class="token punctuation">;</span> （会报错，因为没有管理授权）
+db.auth<span class="token punctuation">(</span><span class="token string">&quot;root&quot;</span>, <span class="token string">&quot;123456&quot;</span><span class="token punctuation">)</span>   授权之后再查看数据库就没有问题了
+
+<span class="token number">8</span>：此时登入使用的是root用户，角色是管理角色，但是不具备对数据库的操作权限
+use <span class="token builtin class-name">test</span><span class="token punctuation">;</span>
+show collections<span class="token punctuation">;</span>  <span class="token punctuation">(</span>会报错，因为没有操作权限<span class="token punctuation">)</span>
+
+<span class="token number">9</span>：再次创建一个用户: test，让其对test具有读写操作, 且切换用户为test
+db.createUser<span class="token punctuation">(</span><span class="token punctuation">{</span>user:<span class="token string">&quot;test&quot;</span>,pwd:<span class="token string">&quot;test&quot;</span>, roles: <span class="token punctuation">[</span><span class="token punctuation">{</span> role: <span class="token string">&quot;readWrite&quot;</span>, db: <span class="token string">&quot;test&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+db.auth<span class="token punctuation">(</span><span class="token string">&quot;test&quot;</span>, <span class="token string">&quot;test&quot;</span><span class="token punctuation">)</span>
+
+<span class="token number">10</span>：再次查看test库的表，发现可以查看了
+show collections<span class="token punctuation">;</span>
+
+<span class="token number">11</span>：其实，如果需要创建一个用户具有管理权限且同时具有操作权限，那么这个用户的角色必须是root
+db.createUser<span class="token punctuation">(</span><span class="token punctuation">{</span>user:<span class="token string">&quot;yhy&quot;</span>,pwd:<span class="token string">&quot;123456&quot;</span>, roles: <span class="token punctuation">[</span><span class="token punctuation">{</span> role: <span class="token string">&quot;root&quot;</span>, db: <span class="token string">&quot;admn&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h3 id="四-mongod-的常用选项-介绍"><a href="#四-mongod-的常用选项-介绍" class="header-anchor">#</a> （四）mongod 的常用选项 介绍</h3> <ul><li>在启动mongod的时候，可以指定一系列的选项，那么mongodb中，提供了一个配置文件：/etc/mongod.conf ，那么可以将这些选项都写在这个配置文件里，使得启动mongod时，mongodb会先读取这个配置文件中的选项，之后在读取命令行的选项来启动mongodb</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>①：在配置mongodb2.6的时候，常用的一些选项有 
+    fork <span class="token operator">=</span> <span class="token punctuation">{</span>true<span class="token operator">=</span>false<span class="token punctuation">}</span>：指定mongod是否运行在后台
+    bind_ip <span class="token operator">=</span> IP地址：指定监听的地址，如果不指定，默认是监听本地的所有IP地址
+    port <span class="token operator">=</span> 监听的端口：指定监听的端口
+    maxConns <span class="token operator">=</span> 并发连接数：指定支持的最大并发连接数
+    logappend <span class="token operator">=</span> <span class="token punctuation">{</span>true<span class="token operator">=</span>false<span class="token punctuation">}</span>：指定是否支持日志滚动
+    auth <span class="token operator">=</span> ：指定是否启用认证功能
+
+②：在配置mongodb3.4的时候，常用的选项有（如果想使用mongodb的web管理页面，在/usr/lib/systemd/system/mongod.service文件中，修改：Environment<span class="token operator">=</span><span class="token string">&quot;OPTIONS=-f /etc/mongod.conf --rest&quot;</span>）（/usr/lib/systemd/system/mongod.service这个unit file可以指定很多环境配置选项）
+systemLog:
+  destination: <span class="token function">file</span>
+  logAppend: <span class="token boolean">true</span>
+  path: /var/log/mongodb/mongod.log
+
+<span class="token comment"># Where and how to store data.</span>
+storage:
+  dbPath: /data/mongodb
+  journal:
+    enabled: <span class="token boolean">true</span>
+processManagement:
+  fork: <span class="token boolean">true</span>  <span class="token comment"># fork and run in background</span>
+  pidFilePath: /var/run/mongodb/mongod.pid  <span class="token comment"># location of pidfile</span>
+net:
+  port: <span class="token number">27017</span>
+  bindIp: <span class="token number">0.0</span>.0.0  <span class="token comment"># Listen to local interface only, comment to listen on all interfaces.</span>
+
+<span class="token comment"># 启用认证</span>
+security:
+  authorization: enabled
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h3 id="五-mongodb-compass-介绍"><a href="#五-mongodb-compass-介绍" class="header-anchor">#</a> （五）Mongodb compass 介绍</h3> <ul><li>安装 Mongodb compass</li></ul> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token number">1</span>：下载安装包：
+<span class="token function">wget</span> https://downloads.mongodb.com/compass/mongodb-compass-1.6.0.x86_64.rpm<span class="token punctuation">;</span>
+
+<span class="token number">2</span>：安装
+yum <span class="token function">install</span> mongodb-compass-1.6.0.x86_64.rpm<span class="token punctuation">;</span>
+
+<span class="token number">3</span>：启动
+<span class="token assign-left variable">DEBUG</span><span class="token operator">=</span>* mongodb-compass<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="六-mongodb-复制架构-介绍"><a href="#六-mongodb-复制架构-介绍" class="header-anchor">#</a> （六）Mongodb 复制架构 介绍</h3> <ul><li>MongoDB复制是将数据同步在多个服务器的过程,复制提供了数据的冗余备份，并在多个服务器上存储数据副本，提高了数据的可用性， 并可以保证数据的安全性, 复制还允许您从硬件故障和服务中断中恢复数据</li></ul> <p><img src="/assets/img/2021-12-3017.25.58.fa2198d6.png" alt="Mongodb 复制架构 介绍"></p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>以上结构图中，客户端从主节点读取数据，在客户端写入数据到主节点时， 主节点与从节点进行数据交互保障数据的一致性
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>复制概念说明、副本集概念说明（如果实在是不理解什么是副本集，就认为一个副本集是一个集群）</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：在mongodb的集群中，一般会部署多个节点，且有多个节点有相同的数据。
+
+2：主节点可以进行读写操作，而从节点一般只能够进行读操作
+
+3：副本集就是服务所有的mongodb实例的同一个数据集（也就是说副本集定义了一个集群，一个已经运行的集群中如果添加了一个新的节点，那么必须指定这个新的节点加入到哪个副本集中。一个副本集就定义了一个集群，一个副本集可以最多支持12个成员，但是只有7个成员可以参与投票）
+
+4：对应MySQL而言：从节点在主节点复制数据的方式为主节点将数据操作保存在二进制日志中，而从节点就是复制主节点的二进制日志，在本地再执行一次，那么这就实现了与主节点的数据一致。而mongodb是主节点将数据操作保存在操作日志(oplog)中，从节点复制操作日志(oplog)，在本地再执行一次实现数据集一致
+
+5：从节点每隔一段时间会探测一次主节点的心跳信息，如果在一段时间中无法获得主节点的心跳信息，那么其余的从节点会重新进行一次投票选举操作，谁的优先级高就会成为下一个主节点。
+
+6：mongodb节点集群至少需要三个节点，一个主节点，两个从节点
+
+7：复制中的四种特殊的从节点分类
+    a：0优先级的节点：冷备节点，不会被选举成为主节点，但是可以参与选举过程
+    b：被隐藏的从节点：不想让客户端访问数据的节点，必须为0优先级的节点，不会显示在mongodb集群的信息中
+    c：延迟复制的从节点：必须为0优先级的节点，且复制时间落后于主节点一个固定时间，可以参与选举过程
+    d：arbiter：没有数据
+
+8：oplog：记录数据改变的操作日志，用于数据同步复制，大小固定的文件，存储在local数据库中，集群中每一个节点都有oplog。但是只有当其成为主节点的时候，才会将其数据改变的操作记录到oplog之中
+
+同步的步骤分为：
+    初始同步
+    同步之后追赶主节点
+    切分块迁移（切片）
+local库中存放了副本集的所有的元数据和oplog，用于存储oplog的一个叫oplog.rs的collection表，oplog.rs的大小默认与文件系统有关，但是可以自定义
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><ul><li>基于MongoDB2.6版本配置MongoDB主从复制集群架构</li></ul> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：集群环境说明：mongodb1：192.168.43.10、mongodb2：192.168.43.11、mongodb3：192.168.43.12。且基于主机名相互通信/etc/hosts文件（为了集群信息同步不出现问题，先关闭认证功能anth）
+
+2：编辑mongodb1的/etc/mongod.conf文件，注释auth指令，添加如下内容
+# 指定副本集的名称
+replSet=uplooking
+# 指定预拷贝的索引，这里只拷贝id那个系统自动生成的索引
+replIndexPrefetch=_id_only
+noauth=true
+
+3：将mongodb1的配置文件拷贝到mongodb2、mongodb3
+scp /etc/mongod.conf 192.168.43.11:/etc/
+scp /etc/mongod.conf 192.168.43.12:/etc/
+
+3：启动mongodb1、mongodb2、mongodb3
+
+4：登入mongodb1的shell接口
+&gt; rs.status(); （查看集群中的节点状态）
+&gt; rs.initiate();（初始化副本集）
+&gt; rs.status();（再次查看集群中的节点状态）
+uplooking:PRIMARY&gt;  （此时的提示符已经变了）
+
+5：当初始化了主节点以后，需要添加其他的从节点到mongodb集群中来
+uplooking:PRIMARY&gt; rs.add(&quot;192.168.43.11&quot;)
+uplooking:PRIMARY&gt; rs.add(&quot;192.168.43.12&quot;)
+
+6：添加了其他节点以后，就可以查看配置信息和副本集的状态信息
+uplooking:PRIMARY&gt; rs.conf()  
+{
+        &quot;_id&quot; : &quot;uplooking&quot;,
+        &quot;version&quot; : 3,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 0,
+                        &quot;host&quot; : &quot;mongodb1:27017&quot;
+                },
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;host&quot; : &quot;192.168.43.11:27017&quot;
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;host&quot; : &quot;192.168.43.12:27017&quot;
+                }
+        ]
+}
+
+7：再次查看状态副本集的状态信息
+uplooking:PRIMARY&gt; rs.status()
+{
+        &quot;set&quot; : &quot;uplooking&quot;,
+        &quot;date&quot; : ISODate(&quot;2017-10-29T16:05:55Z&quot;),
+        &quot;myState&quot; : 1,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 0,
+                        &quot;name&quot; : &quot;mongodb1:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 1,
+                        &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+                        &quot;uptime&quot; : 914,
+                        &quot;optime&quot; : Timestamp(1509292923, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2017-10-29T16:02:03Z&quot;),
+                        &quot;electionTime&quot; : Timestamp(1509292619, 1),
+                        &quot;electionDate&quot; : ISODate(&quot;2017-10-29T15:56:59Z&quot;),
+                        &quot;self&quot; : true
+                },
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;name&quot; : &quot;192.168.43.11:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 237,
+                        &quot;optime&quot; : Timestamp(1509292923, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2017-10-29T16:02:03Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2017-10-29T16:05:54Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2017-10-29T16:05:54Z&quot;),
+                        &quot;pingMs&quot; : 0,
+                        &quot;syncingTo&quot; : &quot;mongodb1:27017&quot;
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;name&quot; : &quot;192.168.43.12:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 232,
+                        &quot;optime&quot; : Timestamp(1509292923, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2017-10-29T16:02:03Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2017-10-29T16:05:55Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2017-10-29T16:05:55Z&quot;),
+                        &quot;pingMs&quot; : 0,
+                        &quot;syncingTo&quot; : &quot;mongodb1:27017&quot;
+                }
+        ],
+        &quot;ok&quot; : 1
+}
+
+8：此时从节点可以在shell接口查看到在主节点复制过来的数据库和表，但是不能查询表的内容，因此需要通过命令让从节点变为可用节点，在查询就可以了
+uplooking:SECONDARY&gt; rs.slaveOk()
+
+9：主节点也可以通过命令变为从节点, 此时其他的节点通过投票将会变为主节点
+uplooking:SECONDARY&gt; rs.stepDown()
+
+10：在新的主节点(mongodb2)中可以设置从节点的优先级让从节点变为主节点，让第一个从节点优先级为10，那么第一个从节点就会变为主节点
+uplooking:PRIMARY&gt; config=rs.conf()    # 先使用一个config临时变量保存rs.conf（）的值，也就是当前的副本集配置
+uplooking:PRIMARY&gt; config.members[0].priority=10  # 让第一个节点，也即是mongodb1的优先级为10
+uplooking:PRIMARY&gt; rs.reconfig(config)   # 让副本集获得新的配置，此时，mongodb1将会成为主节点
+
+11：在主节点中，从副本集中移除一个节点，
+rs.conf() # 先查看需要删除的host
+rs.remove(&quot;192.168.43.12:27017&quot;)
+
+12：也可以将一个从节点变为arbiter仲裁节点，这里将mongodb3变为arbiter节点，必须先让mongodb3下线，然后删除数据目录，在重启，再设置为arbiter仲裁节点
+rs.addArb(&quot;192.168.43.12&quot;) 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br></div></div><h3 id="七-mongodb-分片操作-介绍"><a href="#七-mongodb-分片操作-介绍" class="header-anchor">#</a> （七）Mongodb 分片操作 介绍</h3> <ul><li>当单个MongoDB节点的数据量过大的时候，我们通常考虑将数据切分为多个shard，也就是切分为多片。</li></ul> <p><img src="/assets/img/2021-12-3017.28.26.f915927e.png" alt="Mongodb 分片操作 介绍"></p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>（一）数据分片之后，整个集群中的MongoDB节点就分为了三类，一类是Router节点，实现前端路由，客户端由此接入，且让整个集群看上去像单一数据库，前端应用可以透明使用。一类是Config节点，存储了整个 元数据ClusterMetadata，其中包括 chunk信息，明确知道客户端请求的数据在哪个shard节点上。第三类，shard节点，存储真实的数据，将原有的数据集分片之后平均存储在每一个shard节点之上。
+
+（二）MongoDB的分片机制上建立在副本集概念之上的概念，因为这里每一个shard节点都将组成一个副本集，使每一个shard节点的数据具有高可用性。这里需要补充一个chunk的概念，大数据集首先是切分为多个chunk，之后再将chunk发布到各个shard节点中，就是每一个shard节点的数据都是一个一个的chunk组成的。那么chunk又是基于什么标准切分出来的呢？是这样的，一般在切分chunk的时候，会指定索引，比如age，如果在一个collection中给age这个字段创建了一个索引，那么切分chunk的时候，就以age这个索引来切分，使得1~60岁这个年龄阶段的数据能够根据不同的区间范围，切割为多个chunk，例如1~15岁为一个chunk，15~20岁一个chunk，21~30岁一个chunk，31~60岁一个chunk，每一个chunk的数量大小均等，因此整个collection就被切割成为了3个chunk，chunk信息将会保存至config节点中，而chunk数据将会保存在每一个shard节点中。
+
+（三）shard分片的衡量的标准，也就是根据哪个索引（切片键）进行切片（让经常写的数据尽量离散分散到各个shard中，让经常读的数据尽量集中到一个shard中）
+
+1：基于范围range做分片
+    例如：以年龄、时间等切片
+
+2：基于离散列表切片
+    例如：以区域、地名等数据切片
+
+3：基于hash值进行随机切片
+    例如：以热点人物（例如：鹿晗和关晓彤）做hash之后切片
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>生产环境中MongoDB集群架构如下</li></ul> <p><img src="/assets/img/2021-12-3017.29.48.7ab83160.png" alt="MongoDB集群架构"></p> <h3 id="八-mongodb-分片操作实战"><a href="#八-mongodb-分片操作实战" class="header-anchor">#</a> （八）Mongodb 分片操作实战</h3> <ul><li>试验环境介绍</li></ul> <p><img src="/assets/img/2021-12-3017.31.41.cc0b5afe.png" alt="试验环境介绍"></p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1：准备四个节点mongodb1(mongos)、mongodb2(config)、mongodb3(shard1)、mongodb4(shard2)且保证可以通过主机名访问，且时间同步
+
+2：配置mongodb2(config)节点，使得mongodb2为config节点，编辑配置文件/etc/mongod.conf
+添加：configsvr = true
+同时注释：#replSet=uplooking #replIndexPrefetch=_id_only #port=27017 这3个指令
+（因为副本集与config节点不能同时工作）
+
+4：启动config server，此时默认config server监听在27019端口
+systemctl start mongod.service
+
+
+5: 在mongodb1上操纵：mongodb1作为路由，使用mongos连接config server，先清空配置文件，再添加如下信息
+logpath=/var/log/mongodb/mongod.log  # 指明日志路径
+pidfilepath=/var/run/mongodb/mongod.pid  # 指明pid路径
+logappend=true # 指明日志累加
+fork=true  # 指明运行于守护进程
+port=27017 # 指明端口
+configdb=192.168.43.11:27019 # 指明config server 的地址在哪里
+
+6：指定配置文件，启动mongos，也可以使用systemctl启动，但是需要修改下启动脚本/etc/rc.d/init.d/mongod
+mongos -f /etc/mongod.conf
+
+7：将mongodb3和mongodb4配置文件中关于副本集的指令注释，然后直接启动
+systemctl start mongod
+
+8：mongodb3、mongodb4启动之后，在mongodb1上，通过mongo登入到mongos，将mongodb3、mongodb4作为shard添加到mongos的路由策略中
+
+9：创建支持shard机制的数据库
+sh.enableSharding(&quot;uplookingdb&quot;)
+mongos&gt; sh.status();
+--- Sharding Status --- 
+  sharding version: {
+        &quot;_id&quot; : 1,
+        &quot;version&quot; : 4,
+        &quot;minCompatibleVersion&quot; : 4,
+        &quot;currentVersion&quot; : 5,
+        &quot;clusterId&quot; : ObjectId(&quot;59f6caf5c93e5ff2a637a0cd&quot;)
+}
+  shards:
+        {  &quot;_id&quot; : &quot;shard0000&quot;,  &quot;host&quot; : &quot;192.168.43.13:27017&quot; }
+        {  &quot;_id&quot; : &quot;shard0001&quot;,  &quot;host&quot; : &quot;192.168.43.12:27017&quot; }
+  databases: # 这里会显示支持shard的数据库，分片collection放置在各个shard，而没有分片的collection放置在主shard中
+        {  &quot;_id&quot; : &quot;admin&quot;,  &quot;partitioned&quot; : false,  &quot;primary&quot; : &quot;config&quot; }
+        {  &quot;_id&quot; : &quot;test&quot;,  &quot;partitioned&quot; : false,  &quot;primary&quot; : &quot;shard0001&quot; }
+        {  &quot;_id&quot; : &quot;uplookingdb&quot;,  &quot;partitioned&quot; : true,  &quot;primary&quot; : &quot;shard0001&quot; }
+
+10：在对应支持shard机制的数据库上创建支持shard的collection，{&quot;age&quot;: 1}指明索引为age，升序排序，这样shard集群的功能就已经启动了，之后就可以调用mongodb1这个接口写数据了，但是写入mongodb1的数据不会保存在mongodb1，因为mongodb1是一个router节点，所有的数据都会保存至shard节点上。
+sh.shardCollection(&quot;uplookingdb.students&quot;, {&quot;age&quot;: 1})
+
+11：此时mongodb1节点上会有uplookingdb库 和 students表了
+mongos&gt; show dbs;
+admin        (empty)
+config       0.016GB
+uplookingdb  0.078GB
+mongos&gt; use uplookingdb
+switched to db uplookingdb
+mongos&gt; show collections;
+students
+system.indexes
+
+12：给students表创建添加数据（可以使用js的循环语法插入数据）
+mongos&gt; for (i=1; i&amp;lt;1000000; i++){  
+db.students.insert({&quot;name&quot;: &quot;yhy&quot;+i, &quot;age&quot;: i%100, &quot;student_id&quot;: i, &quot;skill&quot;: &quot;ok&quot;+i, &quot;salary&quot;: &quot;$&quot;+i%10000})
+ }
+
+13：复制mongodb1窗口，先查看一下students表有多少行数据了，在看看此时的shard分片的状态
+mongos&gt;db.students.find().count();  # 查看students表中有多少行数据了
+237751
+mongos&gt; sh.status()   # 再查看一下shard的状态信息
+--- Sharding Status --- 
+  sharding version: {
+        &quot;_id&quot; : 1,
+        &quot;version&quot; : 4,
+        &quot;minCompatibleVersion&quot; : 4,
+        &quot;currentVersion&quot; : 5,
+        &quot;clusterId&quot; : ObjectId(&quot;59f6caf5c93e5ff2a637a0cd&quot;)
+}
+  shards:  # 只是shard节点列表
+        {  &quot;_id&quot; : &quot;shard0000&quot;,  &quot;host&quot; : &quot;192.168.43.13:27017&quot; }
+        {  &quot;_id&quot; : &quot;shard0001&quot;,  &quot;host&quot; : &quot;192.168.43.12:27017&quot; }
+  databases:  # 这是支持shard机制的库
+        {  &quot;_id&quot; : &quot;admin&quot;,  &quot;partitioned&quot; : false,  &quot;primary&quot; : &quot;config&quot; }
+        {  &quot;_id&quot; : &quot;test&quot;,  &quot;partitioned&quot; : false,  &quot;primary&quot; : &quot;shard0001&quot; }
+        {  &quot;_id&quot; : &quot;uplookingdb&quot;,  &quot;partitioned&quot; : true,  &quot;primary&quot; : &quot;shard0001&quot; }
+                uplookingdb.students  这是支持shard机制的表
+                        shard key: { &quot;age&quot; : 1 }  # 用表上的哪个索引作为shard的键
+                        chunks:  # 这里是显示chunk的发布情况
+                                shard0000       2  # 发布两个chunk
+                                shard0001       3  # 发布三个chunk
+                        { &quot;age&quot; : { &quot;$minKey&quot; : 1 } } --&gt;&gt; { &quot;age&quot; : 1 } on : shard0000 Timestamp(2, 0) 
+                        { &quot;age&quot; : 1 } --&gt;&gt; { &quot;age&quot; : 47 } on : shard0000 Timestamp(3, 0) 
+                        { &quot;age&quot; : 47 } --&gt;&gt; { &quot;age&quot; : 72 } on : shard0001 Timestamp(3, 2) 
+                        { &quot;age&quot; : 72 } --&gt;&gt; { &quot;age&quot; : 99 } on : shard0001 Timestamp(3, 3) 
+                        { &quot;age&quot; : 99 } --&gt;&gt; { &quot;age&quot; : { &quot;$maxKey&quot; : 1 } } on : shard0001 Timestamp(2, 3) 
+
+
+
+14：过一段时间之后，等数据在mongodb1节点插入完毕，在mongodb3，mongodb4上就会发现一部分年龄的人在mongodb3，而另外一部分在mongodb4上
+db.students.find();
+
+
+15：再添加一个新的节点进来，在mongodb1上设置它为shard节点，此时你会发现chunk就会自动迁移，无需我们手动管理，但是chunk在shard节点中自动迁移会消耗大量的带宽以及带来I/O压力，因此，一般是现在mongodb1节点将
+
+16：如果创建一个库，且添加一张表，且并没有将库和表添加到shard机制中来，那么
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br></div></div><ul><li>对于每一个shard节点实现副本集赋值功能，以及多个config节点，同学们一定要完成（我出去调研的时候发现，MongoDB的应用场景再某种程度上不比MySQL弱）</li></ul></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#一-mongodb-安装和操作" class="sidebar-link reco-side-一-mongodb-安装和操作" data-v-cb1513f6>（一） Mongodb 安装和操作</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#二-mongodb-index-介绍" class="sidebar-link reco-side-二-mongodb-index-介绍" data-v-cb1513f6>（二）Mongodb index 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#三-mongodb-授权认证-介绍" class="sidebar-link reco-side-三-mongodb-授权认证-介绍" data-v-cb1513f6>（三）Mongodb 授权认证 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#四-mongod-的常用选项-介绍" class="sidebar-link reco-side-四-mongod-的常用选项-介绍" data-v-cb1513f6>（四）mongod 的常用选项 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#五-mongodb-compass-介绍" class="sidebar-link reco-side-五-mongodb-compass-介绍" data-v-cb1513f6>（五）Mongodb compass 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#六-mongodb-复制架构-介绍" class="sidebar-link reco-side-六-mongodb-复制架构-介绍" data-v-cb1513f6>（六）Mongodb 复制架构 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#七-mongodb-分片操作-介绍" class="sidebar-link reco-side-七-mongodb-分片操作-介绍" data-v-cb1513f6>（七）Mongodb 分片操作 介绍</a></li><li class="level-3" data-v-cb1513f6><a href="/sre/database/mongodb/docs/begin/begin.html#八-mongodb-分片操作实战" class="sidebar-link reco-side-八-mongodb-分片操作实战" data-v-cb1513f6>（八）Mongodb 分片操作实战</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.ef2ae1d4.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/134.a93be345.js" defer></script>
+  </body>
+</html>
