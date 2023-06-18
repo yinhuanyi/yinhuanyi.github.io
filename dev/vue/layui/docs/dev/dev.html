@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Layui开发 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.9a5d1377.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/157.be5d1989.js" as="script"><link rel="prefetch" href="/assets/js/10.bf3a4a01.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.77871772.js"><link rel="prefetch" href="/assets/js/103.b1663661.js"><link rel="prefetch" href="/assets/js/104.e2724712.js"><link rel="prefetch" href="/assets/js/105.66d2fca1.js"><link rel="prefetch" href="/assets/js/106.d13147aa.js"><link rel="prefetch" href="/assets/js/107.6c143695.js"><link rel="prefetch" href="/assets/js/108.38baff0a.js"><link rel="prefetch" href="/assets/js/109.b87f3dae.js"><link rel="prefetch" href="/assets/js/11.2d4145aa.js"><link rel="prefetch" href="/assets/js/110.ecd312df.js"><link rel="prefetch" href="/assets/js/111.e86d0cf5.js"><link rel="prefetch" href="/assets/js/112.838e7814.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.90eb6e00.js"><link rel="prefetch" href="/assets/js/115.9086d1d7.js"><link rel="prefetch" href="/assets/js/116.fcaba423.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.11985c3d.js"><link rel="prefetch" href="/assets/js/119.ab560a50.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.25784945.js"><link rel="prefetch" href="/assets/js/121.03b17d23.js"><link rel="prefetch" href="/assets/js/122.dbb3d982.js"><link rel="prefetch" href="/assets/js/123.e04e1de0.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.dc1e889c.js"><link rel="prefetch" href="/assets/js/126.4e0be7c0.js"><link rel="prefetch" href="/assets/js/127.2648dc86.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.ddeea161.js"><link rel="prefetch" href="/assets/js/13.794cb86f.js"><link rel="prefetch" href="/assets/js/130.2f51e053.js"><link rel="prefetch" href="/assets/js/131.50ad10f9.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.952404bc.js"><link rel="prefetch" href="/assets/js/134.319691ce.js"><link rel="prefetch" href="/assets/js/135.358e0553.js"><link rel="prefetch" href="/assets/js/136.a5240b23.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.060a4f8d.js"><link rel="prefetch" href="/assets/js/139.ac0e3354.js"><link rel="prefetch" href="/assets/js/14.8e692555.js"><link rel="prefetch" href="/assets/js/140.d14826df.js"><link rel="prefetch" href="/assets/js/141.855d329f.js"><link rel="prefetch" href="/assets/js/142.707f4edb.js"><link rel="prefetch" href="/assets/js/143.7ac10fb6.js"><link rel="prefetch" href="/assets/js/144.ccbcbe88.js"><link rel="prefetch" href="/assets/js/145.f97912c7.js"><link rel="prefetch" href="/assets/js/146.8564b53a.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.3b03ba9b.js"><link rel="prefetch" href="/assets/js/149.b099e234.js"><link rel="prefetch" href="/assets/js/15.5a69bb7b.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.de07d289.js"><link rel="prefetch" href="/assets/js/153.6ed13d07.js"><link rel="prefetch" href="/assets/js/154.e33f8138.js"><link rel="prefetch" href="/assets/js/155.9514ea65.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.7685a5ea.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.b8b2aa7c.js"><link rel="prefetch" href="/assets/js/161.2be5e8ba.js"><link rel="prefetch" href="/assets/js/162.e39ddda0.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.74e47c48.js"><link rel="prefetch" href="/assets/js/166.8d1656c7.js"><link rel="prefetch" href="/assets/js/167.1a8d36d8.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.ad76d2ad.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.86c8539e.js"><link rel="prefetch" href="/assets/js/171.a00bc1de.js"><link rel="prefetch" href="/assets/js/172.4f7cc2b8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.bcbc7ed5.js"><link rel="prefetch" href="/assets/js/175.8c13131f.js"><link rel="prefetch" href="/assets/js/176.a8e0a82f.js"><link rel="prefetch" href="/assets/js/177.cc3e8330.js"><link rel="prefetch" href="/assets/js/178.0f6cf921.js"><link rel="prefetch" href="/assets/js/179.70e295f9.js"><link rel="prefetch" href="/assets/js/18.dfc6a15d.js"><link rel="prefetch" href="/assets/js/180.5e8d67ce.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.0b1bc7fc.js"><link rel="prefetch" href="/assets/js/183.92dd7271.js"><link rel="prefetch" href="/assets/js/184.ce4e0f66.js"><link rel="prefetch" href="/assets/js/185.4b6c844e.js"><link rel="prefetch" href="/assets/js/186.fb4510cf.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.c54c9ff8.js"><link rel="prefetch" href="/assets/js/189.cc525573.js"><link rel="prefetch" href="/assets/js/19.c9a4b6df.js"><link rel="prefetch" href="/assets/js/190.0a0fc517.js"><link rel="prefetch" href="/assets/js/191.c0b20f10.js"><link rel="prefetch" href="/assets/js/192.a401c173.js"><link rel="prefetch" href="/assets/js/193.3884a8c4.js"><link rel="prefetch" href="/assets/js/194.2aecb6b4.js"><link rel="prefetch" href="/assets/js/195.d5b973f4.js"><link rel="prefetch" href="/assets/js/196.e8311196.js"><link rel="prefetch" href="/assets/js/197.49170522.js"><link rel="prefetch" href="/assets/js/198.6a0c43cb.js"><link rel="prefetch" href="/assets/js/199.b20ce791.js"><link rel="prefetch" href="/assets/js/20.531ffaef.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.aca6d71e.js"><link rel="prefetch" href="/assets/js/202.0bf45c68.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.e9703838.js"><link rel="prefetch" href="/assets/js/205.11be8755.js"><link rel="prefetch" href="/assets/js/206.5df53ca7.js"><link rel="prefetch" href="/assets/js/207.7881dce6.js"><link rel="prefetch" href="/assets/js/208.4f9fee3c.js"><link rel="prefetch" href="/assets/js/209.b029372d.js"><link rel="prefetch" href="/assets/js/21.551fce6d.js"><link rel="prefetch" href="/assets/js/210.53655350.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.ce8c9841.js"><link rel="prefetch" href="/assets/js/215.192a0677.js"><link rel="prefetch" href="/assets/js/216.6cd17926.js"><link rel="prefetch" href="/assets/js/217.00ed48ab.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.c56f8cf4.js"><link rel="prefetch" href="/assets/js/22.986fb9e7.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.39b770a4.js"><link rel="prefetch" href="/assets/js/222.9e1df2c8.js"><link rel="prefetch" href="/assets/js/223.5eff1248.js"><link rel="prefetch" href="/assets/js/224.c0cea281.js"><link rel="prefetch" href="/assets/js/225.8ad561aa.js"><link rel="prefetch" href="/assets/js/226.43acb0be.js"><link rel="prefetch" href="/assets/js/227.37ebd361.js"><link rel="prefetch" href="/assets/js/228.ead480ed.js"><link rel="prefetch" href="/assets/js/229.3baad619.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.1af99529.js"><link rel="prefetch" href="/assets/js/231.59879531.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.f21ede1a.js"><link rel="prefetch" href="/assets/js/234.7918e7e4.js"><link rel="prefetch" href="/assets/js/235.300a10a5.js"><link rel="prefetch" href="/assets/js/236.d35b33b7.js"><link rel="prefetch" href="/assets/js/237.96116ee5.js"><link rel="prefetch" href="/assets/js/238.59a35d89.js"><link rel="prefetch" href="/assets/js/239.9dfc4fbc.js"><link rel="prefetch" href="/assets/js/24.8425bd19.js"><link rel="prefetch" href="/assets/js/240.36bac2f9.js"><link rel="prefetch" href="/assets/js/241.ad0d06e7.js"><link rel="prefetch" href="/assets/js/242.9344b5fa.js"><link rel="prefetch" href="/assets/js/243.facc5ec6.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.82a78890.js"><link rel="prefetch" href="/assets/js/246.d274961a.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.8825abef.js"><link rel="prefetch" href="/assets/js/249.5061079a.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.cd3b6c4a.js"><link rel="prefetch" href="/assets/js/251.d218096c.js"><link rel="prefetch" href="/assets/js/252.ac828464.js"><link rel="prefetch" href="/assets/js/253.6030735c.js"><link rel="prefetch" href="/assets/js/254.3534a5fb.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.48ca0db6.js"><link rel="prefetch" href="/assets/js/257.d0ca646c.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.48f6daae.js"><link rel="prefetch" href="/assets/js/26.e0e94a5e.js"><link rel="prefetch" href="/assets/js/260.ce650517.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.b976ff4c.js"><link rel="prefetch" href="/assets/js/263.c1daf4e9.js"><link rel="prefetch" href="/assets/js/264.72936fdc.js"><link rel="prefetch" href="/assets/js/265.16ece61e.js"><link rel="prefetch" href="/assets/js/266.b17f1b64.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.158ff25d.js"><link rel="prefetch" href="/assets/js/27.66fdb8f8.js"><link rel="prefetch" href="/assets/js/270.7446d42b.js"><link rel="prefetch" href="/assets/js/271.68bf6f03.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.81b9b843.js"><link rel="prefetch" href="/assets/js/275.bd55419d.js"><link rel="prefetch" href="/assets/js/276.3b600307.js"><link rel="prefetch" href="/assets/js/277.19eff568.js"><link rel="prefetch" href="/assets/js/278.f34b0bd3.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.93d4f4ab.js"><link rel="prefetch" href="/assets/js/280.3c4ed74e.js"><link rel="prefetch" href="/assets/js/281.f37d360e.js"><link rel="prefetch" href="/assets/js/282.79b14434.js"><link rel="prefetch" href="/assets/js/283.f30f0408.js"><link rel="prefetch" href="/assets/js/284.d8658140.js"><link rel="prefetch" href="/assets/js/285.be71c641.js"><link rel="prefetch" href="/assets/js/286.579ea834.js"><link rel="prefetch" href="/assets/js/287.0badbfd7.js"><link rel="prefetch" href="/assets/js/288.0a4d6ad8.js"><link rel="prefetch" href="/assets/js/289.b35dc3c7.js"><link rel="prefetch" href="/assets/js/29.79b889e1.js"><link rel="prefetch" href="/assets/js/290.9152baa2.js"><link rel="prefetch" href="/assets/js/291.bb638936.js"><link rel="prefetch" href="/assets/js/292.c0d33103.js"><link rel="prefetch" href="/assets/js/293.36991fc2.js"><link rel="prefetch" href="/assets/js/294.31714e68.js"><link rel="prefetch" href="/assets/js/295.cb156d67.js"><link rel="prefetch" href="/assets/js/296.ade170a2.js"><link rel="prefetch" href="/assets/js/297.a54e7f48.js"><link rel="prefetch" href="/assets/js/298.1625bd2a.js"><link rel="prefetch" href="/assets/js/299.32a89505.js"><link rel="prefetch" href="/assets/js/3.4041ad45.js"><link rel="prefetch" href="/assets/js/30.11c1c4a9.js"><link rel="prefetch" href="/assets/js/300.3018c2a8.js"><link rel="prefetch" href="/assets/js/301.de84e79f.js"><link rel="prefetch" href="/assets/js/302.9240eb69.js"><link rel="prefetch" href="/assets/js/303.7d585f45.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.f60f1bce.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.25437db7.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.26c3bcdb.js"><link rel="prefetch" href="/assets/js/313.dc39f08b.js"><link rel="prefetch" href="/assets/js/314.655c6ac0.js"><link rel="prefetch" href="/assets/js/315.e35fac2d.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.8b6a01a8.js"><link rel="prefetch" href="/assets/js/318.b77d87e1.js"><link rel="prefetch" href="/assets/js/319.b2cc794b.js"><link rel="prefetch" href="/assets/js/32.51c932ff.js"><link rel="prefetch" href="/assets/js/320.af5899d0.js"><link rel="prefetch" href="/assets/js/321.2f00f711.js"><link rel="prefetch" href="/assets/js/322.c935286c.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.8a0cfed6.js"><link rel="prefetch" href="/assets/js/325.4afeea42.js"><link rel="prefetch" href="/assets/js/326.8c15ef2e.js"><link rel="prefetch" href="/assets/js/327.8d999cbb.js"><link rel="prefetch" href="/assets/js/328.523585ed.js"><link rel="prefetch" href="/assets/js/329.cbffae2d.js"><link rel="prefetch" href="/assets/js/33.a4a24c5c.js"><link rel="prefetch" href="/assets/js/330.089b8bda.js"><link rel="prefetch" href="/assets/js/331.f62e76ea.js"><link rel="prefetch" href="/assets/js/332.41ac44fb.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.629527a5.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.b4ee5265.js"><link rel="prefetch" href="/assets/js/337.a65084e0.js"><link rel="prefetch" href="/assets/js/338.b8c7f9d4.js"><link rel="prefetch" href="/assets/js/339.32dd2a1f.js"><link rel="prefetch" href="/assets/js/34.d5a4cc1c.js"><link rel="prefetch" href="/assets/js/340.181fbac2.js"><link rel="prefetch" href="/assets/js/341.dfbdcd6a.js"><link rel="prefetch" href="/assets/js/342.7e191cd0.js"><link rel="prefetch" href="/assets/js/343.1fc1aa07.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.d9343bc3.js"><link rel="prefetch" href="/assets/js/346.265f5633.js"><link rel="prefetch" href="/assets/js/347.316afdfc.js"><link rel="prefetch" href="/assets/js/348.5b24302c.js"><link rel="prefetch" href="/assets/js/349.be0ea3c0.js"><link rel="prefetch" href="/assets/js/35.9d8a6e6c.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.50b2e64e.js"><link rel="prefetch" href="/assets/js/353.4cc0f899.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.b7fd8cb7.js"><link rel="prefetch" href="/assets/js/356.c211c1b8.js"><link rel="prefetch" href="/assets/js/357.d16a2d83.js"><link rel="prefetch" href="/assets/js/358.d7237c49.js"><link rel="prefetch" href="/assets/js/359.6734cad1.js"><link rel="prefetch" href="/assets/js/36.4b6cd3a4.js"><link rel="prefetch" href="/assets/js/360.a33983a6.js"><link rel="prefetch" href="/assets/js/361.6ff246f0.js"><link rel="prefetch" href="/assets/js/362.2f864708.js"><link rel="prefetch" href="/assets/js/363.c392c5e8.js"><link rel="prefetch" href="/assets/js/364.22a6b189.js"><link rel="prefetch" href="/assets/js/365.df1dbb8e.js"><link rel="prefetch" href="/assets/js/366.0d2547a8.js"><link rel="prefetch" href="/assets/js/367.34d64bf7.js"><link rel="prefetch" href="/assets/js/368.5a888040.js"><link rel="prefetch" href="/assets/js/369.9e4cf3f4.js"><link rel="prefetch" href="/assets/js/37.9577c26e.js"><link rel="prefetch" href="/assets/js/370.12a47033.js"><link rel="prefetch" href="/assets/js/371.6d43aa3f.js"><link rel="prefetch" href="/assets/js/372.f52d346f.js"><link rel="prefetch" href="/assets/js/373.f47542f8.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.cd11d66c.js"><link rel="prefetch" href="/assets/js/376.938c07c7.js"><link rel="prefetch" href="/assets/js/377.03fe1608.js"><link rel="prefetch" href="/assets/js/378.ed6d6894.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c179026f.js"><link rel="prefetch" href="/assets/js/380.a41a6355.js"><link rel="prefetch" href="/assets/js/381.ae2d3065.js"><link rel="prefetch" href="/assets/js/382.304163b7.js"><link rel="prefetch" href="/assets/js/383.7b17d4a7.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.e359cc49.js"><link rel="prefetch" href="/assets/js/386.63eb6322.js"><link rel="prefetch" href="/assets/js/387.d17554a7.js"><link rel="prefetch" href="/assets/js/388.a81f4ee2.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.147cc35f.js"><link rel="prefetch" href="/assets/js/390.5e754f5e.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.c83337ff.js"><link rel="prefetch" href="/assets/js/393.5d36dd95.js"><link rel="prefetch" href="/assets/js/394.f0167b91.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.e6fea9c1.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.0dd0e255.js"><link rel="prefetch" href="/assets/js/399.f19817b8.js"><link rel="prefetch" href="/assets/js/4.3ac1d119.js"><link rel="prefetch" href="/assets/js/40.39968cf8.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.41cf5537.js"><link rel="prefetch" href="/assets/js/402.89091ee3.js"><link rel="prefetch" href="/assets/js/403.d5d2cbaa.js"><link rel="prefetch" href="/assets/js/404.c7fa04e1.js"><link rel="prefetch" href="/assets/js/405.8f210f6c.js"><link rel="prefetch" href="/assets/js/406.543bb325.js"><link rel="prefetch" href="/assets/js/407.738ee9c2.js"><link rel="prefetch" href="/assets/js/408.e32a6f90.js"><link rel="prefetch" href="/assets/js/409.b73ca551.js"><link rel="prefetch" href="/assets/js/41.1d56c643.js"><link rel="prefetch" href="/assets/js/410.284b9e06.js"><link rel="prefetch" href="/assets/js/411.7cca2664.js"><link rel="prefetch" href="/assets/js/412.f05bbf63.js"><link rel="prefetch" href="/assets/js/413.d0550ac2.js"><link rel="prefetch" href="/assets/js/414.dca9673f.js"><link rel="prefetch" href="/assets/js/415.298c5573.js"><link rel="prefetch" href="/assets/js/416.8dff3a66.js"><link rel="prefetch" href="/assets/js/417.8c1a0a4e.js"><link rel="prefetch" href="/assets/js/418.a6b3d607.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.1b306b17.js"><link rel="prefetch" href="/assets/js/420.e17e772d.js"><link rel="prefetch" href="/assets/js/421.64699486.js"><link rel="prefetch" href="/assets/js/422.3f898a85.js"><link rel="prefetch" href="/assets/js/423.aba3c659.js"><link rel="prefetch" href="/assets/js/424.abbcc73e.js"><link rel="prefetch" href="/assets/js/425.3469bdbd.js"><link rel="prefetch" href="/assets/js/426.deb86b4b.js"><link rel="prefetch" href="/assets/js/427.c6faeccf.js"><link rel="prefetch" href="/assets/js/428.ce2143ba.js"><link rel="prefetch" href="/assets/js/429.f6ac264f.js"><link rel="prefetch" href="/assets/js/43.7aca7037.js"><link rel="prefetch" href="/assets/js/430.c5564c52.js"><link rel="prefetch" href="/assets/js/431.8f223d2d.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.313a2983.js"><link rel="prefetch" href="/assets/js/435.4e75644a.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.8f3290a7.js"><link rel="prefetch" href="/assets/js/439.0d98dc66.js"><link rel="prefetch" href="/assets/js/44.5bb17146.js"><link rel="prefetch" href="/assets/js/440.0555189f.js"><link rel="prefetch" href="/assets/js/441.8583cfc0.js"><link rel="prefetch" href="/assets/js/442.bf7b236d.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.1a388c82.js"><link rel="prefetch" href="/assets/js/445.f0b67036.js"><link rel="prefetch" href="/assets/js/446.8c732c56.js"><link rel="prefetch" href="/assets/js/447.6d1be8d9.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.9e75dd3b.js"><link rel="prefetch" href="/assets/js/452.73b48879.js"><link rel="prefetch" href="/assets/js/453.932fa75e.js"><link rel="prefetch" href="/assets/js/454.14027c6b.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.ee0b078b.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.27022088.js"><link rel="prefetch" href="/assets/js/459.ab2f4695.js"><link rel="prefetch" href="/assets/js/46.471ff9b5.js"><link rel="prefetch" href="/assets/js/460.11e77a24.js"><link rel="prefetch" href="/assets/js/461.194f79d1.js"><link rel="prefetch" href="/assets/js/462.80a34b65.js"><link rel="prefetch" href="/assets/js/463.f66a897c.js"><link rel="prefetch" href="/assets/js/464.45bb7abf.js"><link rel="prefetch" href="/assets/js/465.c38904d3.js"><link rel="prefetch" href="/assets/js/466.0c8a1201.js"><link rel="prefetch" href="/assets/js/467.c8b86791.js"><link rel="prefetch" href="/assets/js/468.70a2a91e.js"><link rel="prefetch" href="/assets/js/469.8bbe4ac4.js"><link rel="prefetch" href="/assets/js/47.5ce5c3c2.js"><link rel="prefetch" href="/assets/js/470.fde0c73c.js"><link rel="prefetch" href="/assets/js/471.0be5c4ef.js"><link rel="prefetch" href="/assets/js/472.7e1c6165.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.29c08fbe.js"><link rel="prefetch" href="/assets/js/475.b85cc5be.js"><link rel="prefetch" href="/assets/js/476.d2472e0d.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.2c8a78ce.js"><link rel="prefetch" href="/assets/js/479.10db54c8.js"><link rel="prefetch" href="/assets/js/48.63747cc1.js"><link rel="prefetch" href="/assets/js/480.abd30718.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.e1b09083.js"><link rel="prefetch" href="/assets/js/484.9b4b5c9c.js"><link rel="prefetch" href="/assets/js/485.36c42239.js"><link rel="prefetch" href="/assets/js/486.73b5ece1.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.5a922985.js"><link rel="prefetch" href="/assets/js/49.c8a3f2ca.js"><link rel="prefetch" href="/assets/js/490.c6845b01.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.b03e4127.js"><link rel="prefetch" href="/assets/js/493.db71ed8b.js"><link rel="prefetch" href="/assets/js/494.9608a92e.js"><link rel="prefetch" href="/assets/js/495.ced07f96.js"><link rel="prefetch" href="/assets/js/496.185decf2.js"><link rel="prefetch" href="/assets/js/497.ddc55f9e.js"><link rel="prefetch" href="/assets/js/498.43397afd.js"><link rel="prefetch" href="/assets/js/499.7320fe31.js"><link rel="prefetch" href="/assets/js/5.3134845c.js"><link rel="prefetch" href="/assets/js/50.68b1ba39.js"><link rel="prefetch" href="/assets/js/500.41912532.js"><link rel="prefetch" href="/assets/js/501.5a2c44ad.js"><link rel="prefetch" href="/assets/js/502.3e92b592.js"><link rel="prefetch" href="/assets/js/503.a909f346.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.ea559644.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.840f1c2d.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.09e693c1.js"><link rel="prefetch" href="/assets/js/514.9ea29f17.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.afd3f56e.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.0e0f3b50.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.91f935f6.js"><link rel="prefetch" href="/assets/js/521.686c1eb6.js"><link rel="prefetch" href="/assets/js/522.554cbfe5.js"><link rel="prefetch" href="/assets/js/523.48e15e4e.js"><link rel="prefetch" href="/assets/js/524.52d7dd1c.js"><link rel="prefetch" href="/assets/js/525.eb2d041a.js"><link rel="prefetch" href="/assets/js/526.18d14b74.js"><link rel="prefetch" href="/assets/js/527.72005be4.js"><link rel="prefetch" href="/assets/js/528.a927bfeb.js"><link rel="prefetch" href="/assets/js/529.577cf1e8.js"><link rel="prefetch" href="/assets/js/53.1fd6d004.js"><link rel="prefetch" href="/assets/js/530.8214546e.js"><link rel="prefetch" href="/assets/js/531.188187ee.js"><link rel="prefetch" href="/assets/js/532.0d33ab06.js"><link rel="prefetch" href="/assets/js/533.713b971d.js"><link rel="prefetch" href="/assets/js/534.4c3f120d.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.19cd9376.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.2e3d2af3.js"><link rel="prefetch" href="/assets/js/539.ced32c6c.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.79472898.js"><link rel="prefetch" href="/assets/js/542.c19e66bf.js"><link rel="prefetch" href="/assets/js/543.8c7ba033.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.990cf62f.js"><link rel="prefetch" href="/assets/js/546.c450bfe9.js"><link rel="prefetch" href="/assets/js/547.5f9d5d3c.js"><link rel="prefetch" href="/assets/js/548.da38e02f.js"><link rel="prefetch" href="/assets/js/549.4e7ef51b.js"><link rel="prefetch" href="/assets/js/55.889a99a0.js"><link rel="prefetch" href="/assets/js/550.fe38cd54.js"><link rel="prefetch" href="/assets/js/551.a962ba39.js"><link rel="prefetch" href="/assets/js/552.ea9b8c68.js"><link rel="prefetch" href="/assets/js/553.bb05d44b.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.b9c01360.js"><link rel="prefetch" href="/assets/js/556.90c1efbd.js"><link rel="prefetch" href="/assets/js/557.e91bab69.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.ffc1daab.js"><link rel="prefetch" href="/assets/js/56.0d815a94.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.58ef4b9a.js"><link rel="prefetch" href="/assets/js/562.2aea2b58.js"><link rel="prefetch" href="/assets/js/563.9fa5d88a.js"><link rel="prefetch" href="/assets/js/564.9009c1a9.js"><link rel="prefetch" href="/assets/js/565.cc151c74.js"><link rel="prefetch" href="/assets/js/566.6d1dc45c.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.dce9b1bc.js"><link rel="prefetch" href="/assets/js/569.47798dcf.js"><link rel="prefetch" href="/assets/js/57.4af72b89.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.271e5add.js"><link rel="prefetch" href="/assets/js/572.948d49fb.js"><link rel="prefetch" href="/assets/js/573.eede7803.js"><link rel="prefetch" href="/assets/js/574.040dcefc.js"><link rel="prefetch" href="/assets/js/575.d6c8a336.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.1a6bf5b8.js"><link rel="prefetch" href="/assets/js/58.df984a43.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.c149fae7.js"><link rel="prefetch" href="/assets/js/582.55545a35.js"><link rel="prefetch" href="/assets/js/583.a31c53bf.js"><link rel="prefetch" href="/assets/js/584.36626d3d.js"><link rel="prefetch" href="/assets/js/585.fd277c61.js"><link rel="prefetch" href="/assets/js/586.52204405.js"><link rel="prefetch" href="/assets/js/587.99335ca1.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.c65322cc.js"><link rel="prefetch" href="/assets/js/590.08417ac3.js"><link rel="prefetch" href="/assets/js/591.9cb3207b.js"><link rel="prefetch" href="/assets/js/592.8595a9f4.js"><link rel="prefetch" href="/assets/js/593.605c39df.js"><link rel="prefetch" href="/assets/js/594.cc98eb1f.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.b34683c2.js"><link rel="prefetch" href="/assets/js/597.ce917673.js"><link rel="prefetch" href="/assets/js/598.1b31cbf3.js"><link rel="prefetch" href="/assets/js/599.11899b1a.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.36a408d5.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.502d8c92.js"><link rel="prefetch" href="/assets/js/604.e660e01e.js"><link rel="prefetch" href="/assets/js/605.2403db7a.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.9c6f2afe.js"><link rel="prefetch" href="/assets/js/608.734afab0.js"><link rel="prefetch" href="/assets/js/609.4c1a6347.js"><link rel="prefetch" href="/assets/js/61.2d4e6a1a.js"><link rel="prefetch" href="/assets/js/610.312082cc.js"><link rel="prefetch" href="/assets/js/611.117258e3.js"><link rel="prefetch" href="/assets/js/612.dbff59f2.js"><link rel="prefetch" href="/assets/js/613.07f207a5.js"><link rel="prefetch" href="/assets/js/614.7690add3.js"><link rel="prefetch" href="/assets/js/615.18c81803.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.15209f2e.js"><link rel="prefetch" href="/assets/js/618.4a9d5e62.js"><link rel="prefetch" href="/assets/js/619.4507e3c7.js"><link rel="prefetch" href="/assets/js/62.45203677.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.d08dbba4.js"><link rel="prefetch" href="/assets/js/622.a46d6f6c.js"><link rel="prefetch" href="/assets/js/623.9820d99d.js"><link rel="prefetch" href="/assets/js/624.60571315.js"><link rel="prefetch" href="/assets/js/625.da6f7154.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.d2296bee.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.77bcb425.js"><link rel="prefetch" href="/assets/js/630.82ed32d5.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.92997d70.js"><link rel="prefetch" href="/assets/js/633.e66c3cbc.js"><link rel="prefetch" href="/assets/js/634.b314ab80.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.5e41c48d.js"><link rel="prefetch" href="/assets/js/637.45799a46.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.48a44ac7.js"><link rel="prefetch" href="/assets/js/640.b538e6a5.js"><link rel="prefetch" href="/assets/js/641.291cd95e.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.6a4e5909.js"><link rel="prefetch" href="/assets/js/644.395e1509.js"><link rel="prefetch" href="/assets/js/645.df897a52.js"><link rel="prefetch" href="/assets/js/646.07bb34ad.js"><link rel="prefetch" href="/assets/js/647.40581df6.js"><link rel="prefetch" href="/assets/js/648.cc78ed85.js"><link rel="prefetch" href="/assets/js/649.6c9bfe91.js"><link rel="prefetch" href="/assets/js/65.594d727c.js"><link rel="prefetch" href="/assets/js/650.6a7966d1.js"><link rel="prefetch" href="/assets/js/651.cdbe3a61.js"><link rel="prefetch" href="/assets/js/66.697e3989.js"><link rel="prefetch" href="/assets/js/67.a3eb57a2.js"><link rel="prefetch" href="/assets/js/68.e0579512.js"><link rel="prefetch" href="/assets/js/69.c53a8af2.js"><link rel="prefetch" href="/assets/js/70.1af2e395.js"><link rel="prefetch" href="/assets/js/71.47eb643b.js"><link rel="prefetch" href="/assets/js/72.5262f104.js"><link rel="prefetch" href="/assets/js/73.d07f6ff2.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.69ac6b6c.js"><link rel="prefetch" href="/assets/js/76.c05cd6a7.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.c188f8e3.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.c0771c09.js"><link rel="prefetch" href="/assets/js/81.5893998e.js"><link rel="prefetch" href="/assets/js/82.6d490909.js"><link rel="prefetch" href="/assets/js/83.9bd41235.js"><link rel="prefetch" href="/assets/js/84.8f0298e2.js"><link rel="prefetch" href="/assets/js/85.150db05f.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.07e03e84.js"><link rel="prefetch" href="/assets/js/88.2cc7eabb.js"><link rel="prefetch" href="/assets/js/89.001203fd.js"><link rel="prefetch" href="/assets/js/9.420da603.js"><link rel="prefetch" href="/assets/js/90.4ae35882.js"><link rel="prefetch" href="/assets/js/91.3da12e9b.js"><link rel="prefetch" href="/assets/js/92.d58a0bce.js"><link rel="prefetch" href="/assets/js/93.b354f9d1.js"><link rel="prefetch" href="/assets/js/94.d41623fe.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.d23892fd.js"><link rel="prefetch" href="/assets/js/97.914b3374.js"><link rel="prefetch" href="/assets/js/98.957d1e13.js"><link rel="prefetch" href="/assets/js/99.c9c3f20a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link router-link-active"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link router-link-active"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/vue/layui/docs/basic/basic.html" class="sidebar-link">LayUI基础入门</a></li><li><a href="/dev/vue/layui/docs/doc/doc.html" class="sidebar-link">LayUI文档</a></li><li><a href="/dev/vue/layui/docs/dev/dev.html" aria-current="page" class="active sidebar-link">LayUI框架的开发使用</a></li><li><a href="/dev/vue/layui/docs/page/page.html" class="sidebar-link">LayUI中的页面元素</a></li><li><a href="/dev/vue/layui/docs/inter/inter.html" class="sidebar-link">LayUI中的内置模块</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Layui开发</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">Layui开发</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2019/10/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-弹出层"><a href="#一-弹出层" class="header-anchor">#</a> 一：弹出层</h2> <ul><li>有两个弹出层方法</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：layer.open({content: ''})：弹出内容
+2：layer.msg('', {time: 3})：弹出消息
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="_1-使用layer-msg弹出层信息提示"><a href="#_1-使用layer-msg弹出层信息提示" class="header-anchor">#</a> 1：使用layer.msg弹出层信息提示</h3> <ul><li>在登录成功的时候，可以信息提示</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  var layer = layui.layer;
+  layer.msg(&quot;登录成功&quot;, {
+      type: 0,
+      time: 1000,
+  });
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="_2-使用layer-open弹出层"><a href="#_2-使用layer-open弹出层" class="header-anchor">#</a> 2：使用layer.open弹出层</h3> <ul><li>设置单个属性</li></ul> <p><img src="/assets/img/2019-11-1411.33.59.902eca47.png" alt="Alt text"></p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>  <span class="token keyword">var</span> layer <span class="token operator">=</span> layui<span class="token punctuation">.</span>layer<span class="token punctuation">;</span>
+
+  <span class="token comment">// 表示正在加载</span>
+  layer<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>设置多个属性</li></ul> <p><img src="/assets/img/2019-11-1510.18.15.7d52f72a.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>layui.use('layer', function(){
+  var layer = layui.layer;
+  layer.open({
+      // 类型
+      type: 0,
+      // 标题
+      title: &quot;提示&quot;,
+      // 设置图标
+      icon: 1,
+      // 内容
+      content: &quot;&lt;div style=\&quot;text-align: center; font-size: 30px; color: red; display: inline-block; vertical-align: center\&quot;&gt;&quot; +
+               &quot;确定需要删除吗?&quot; +
+               &quot;&lt;/div&gt;&quot;,
+      // 设置弹出层大小
+      area: [&quot;350px&quot;, &quot;250px&quot;],
+      // 这是偏移，默认是水平居中
+      // offset: [&quot;400px&quot;, &quot;250px&quot;]
+      // 定义按钮
+      btn: ['确定', '取消'],
+      // 按钮排列， 居中
+      // btnAlign: 'c',
+      // 设置弹出层关闭时间
+      time: 5000,
+  })
+
+}); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h3 id="_3-按钮事件监听"><a href="#_3-按钮事件监听" class="header-anchor">#</a> 3：按钮事件监听</h3> <ul><li>按钮回调监听，如果设置了closeBtn: 0, 表示不显示关闭弹出层的按钮</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  layer.open({
+    content: '这里是内容，编写内容',
+    btn: ['按钮一', '按钮二', '按钮三'],
+    //按钮【按钮一】的回调
+    yes: function(index, layero){
+        console.log(&quot;点击了按钮一&quot;);
+    },
+    //按钮【按钮二】的回调
+    btn2: function(index, layero){
+        console.log(&quot;点击了按钮二&quot;);
+    },
+    //按钮【按钮三】的回调
+    btn3: function(index, layero){
+        console.log(&quot;点击了按钮三&quot;);
+    },
+    // 点击关闭弹出层  
+    cancel: function(){
+
+    // return false //开启该代码可禁止点击该按钮关闭
+    }
+});
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h2 id="二-日期与时间"><a href="#二-日期与时间" class="header-anchor">#</a> 二：日期与时间</h2> <h3 id="_1-简单使用"><a href="#_1-简单使用" class="header-anchor">#</a> 1：简单使用</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;div class=&quot;layui-container&quot;&gt;
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;input id=&quot;date&quot; type=&quot;text&quot; class=&quot;layui-input&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;
+
+  layui.use(&quot;laydate&quot;, function () {
+      var laydate = layui.laydate;
+
+      //执行一个laydate实例
+      laydate.render({
+        // 基于id，找到input标签
+        elem: '#date' 
+        // 
+      });
+  });
+
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h2 id="三-分页"><a href="#三-分页" class="header-anchor">#</a> 三：分页</h2> <h3 id="_1-简单使用-2"><a href="#_1-简单使用-2" class="header-anchor">#</a> 1：简单使用</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;div class=&quot;layui-container&quot;&gt;
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;div id=&quot;page&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  layui.use(&quot;laypage&quot;, function () {
+      var laypage = layui.laypage;
+
+      //执行一个laydate实例
+      laypage.render({
+        // 这不不要加#
+        elem: 'page',
+        // 数据总数
+        count: 5000,
+        // limit: 10,
+        // 指定每页的数据条数
+        limits: [10, 20, 30, 40, 50],
+        // 自定义分页组件
+        layout: ['prev', 'page', 'next', 'limit']
+      });
+  });
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="_2-jump-切换分页的回调"><a href="#_2-jump-切换分页的回调" class="header-anchor">#</a> 2：jump - 切换分页的回调</h3> <ul><li>这个属性用于与服务器端数据交互</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  layui<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">&quot;laypage&quot;</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> laypage <span class="token operator">=</span> layui<span class="token punctuation">.</span>laypage<span class="token punctuation">;</span>
+
+      <span class="token comment">//执行一个laydate实例</span>
+      laypage<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// 这不不要加#</span>
+        elem<span class="token operator">:</span> <span class="token string">'page'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 数据总数</span>
+        count<span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>
+        <span class="token comment">// limit: 10,</span>
+        <span class="token comment">// 指定每页的数据条数</span>
+        limits<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 自定义分页组件</span>
+        layout<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'prev'</span><span class="token punctuation">,</span> <span class="token string">'page'</span><span class="token punctuation">,</span> <span class="token string">'next'</span><span class="token punctuation">,</span> <span class="token string">'limit'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 分页的回调</span>
+        <span class="token function-variable function">jump</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj<span class="token punctuation">,</span> first</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//obj包含了当前分页的所有参数，比如：</span>
+            <span class="token comment">// 得到当前页，以便向服务端请求对应页的数据。</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>curr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 得到每页显示的条数, 告诉服务器返回多少条数据</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">//首次不执行</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>first<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;每次点击分页都会调用, 在这里可以向服务器发送请求&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h2 id="四-数据表格"><a href="#四-数据表格" class="header-anchor">#</a> 四：数据表格</h2> <h3 id="_1-创建简单表格"><a href="#_1-创建简单表格" class="header-anchor">#</a> 1：创建简单表格</h3> <p><img src="/assets/img/2019-11-152.23.01.3daee83c.png" alt="Alt text"></p> <ul><li>数据来自js文件的表格(使用的是方法渲染)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;div class=&quot;layui-container&quot;&gt;
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;div class=&quot;layui-col-md12&quot;&gt;&lt;/div&gt;
+    &lt;!--这里是创建table容器--&gt;
+    &lt;table id=&quot;demo&quot; lay-filter=&quot;simple-table&quot;&gt;&lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script&gt;
+  // 加载表格模块
+  layui.use('table', function () {
+      // 创建表格模块对象
+      var table = layui.table;
+      // 渲染表格
+      table.render({
+        // 选择表格元素
+        elem: '#demo',
+        // 设置高度
+        height: 312,
+        // 请求json数据，这里是直接将json数据写入到了js文件中
+        url: &quot;{% static 'layuiadmin/json/table/simple.js' %}&quot;,
+        // 开启分页功能
+        page: true,
+        // 设置字段
+        cols: [[
+            {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'},
+            {field: 'username', title: '用户名', width:80},
+            {field: 'email', title: '邮件', width:80},
+            {field: 'sex', title: '性别', width:80},
+            {field: 'city', title: '城市', width:80},
+            {field: 'sign', title: '签名', width: 177},
+            {field: 'experience', title: '积分', width: 80, sort: true},
+            {field: 'ip', title: 'IP', width: 150},
+            {field: 'logins', title: '登录次数', width: 80, sort: true},
+            {field: 'joinTime', title: '创建时间', width: 80},
+        ]]
+      });
+  });
+&lt;/script&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><ul><li>在simple.js文件或后台返回的json数据中，默认表格数据格式为</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;code&quot;: 0,
+  &quot;msg&quot;: &quot;&quot;,
+  &quot;count&quot;: 1000,
+  &quot;data&quot;: [{}, {}]
+} 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>simple.js示例</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+	&quot;code&quot;: 0,
+    &quot;msg&quot;: &quot;&quot;,
+	&quot;count&quot;: 2,
+	&quot;data&quot;: [
+		{   &quot;id&quot;:&quot;10001&quot;,
+            &quot;username&quot;:&quot;杜甫&quot;,
+            &quot;email&quot;:&quot;xianxin@layui.com&quot;,
+            &quot;sex&quot;:&quot;男&quot;,
+            &quot;city&quot;:&quot;浙江杭州&quot;,
+            &quot;sign&quot;:&quot;点击此处，显示更多&quot;,
+            &quot;experience&quot;:&quot;116&quot;,
+            &quot;ip&quot;:&quot;192.168.0.8&quot;,
+            &quot;logins&quot;:&quot;108&quot;,
+            &quot;joinTime&quot;:&quot;2016-10-14&quot;},
+        {
+            &quot;id&quot;:&quot;10002&quot;,
+            &quot;username&quot;:&quot;李白&quot;,
+            &quot;email&quot;:&quot;xianxin@layui.com&quot;,
+            &quot;sex&quot;:&quot;男&quot;,
+            &quot;city&quot;:&quot;浙江杭州&quot;,
+            &quot;sign&quot;:&quot;君不见，黄河之水天上来&quot;,
+            &quot;experience&quot;:&quot;12&quot;,
+            &quot;ip&quot;:&quot;192.168.0.8&quot;,
+            &quot;logins&quot;:&quot;106&quot;,
+            &quot;joinTime&quot;:&quot;2016-10-14&quot;,
+            &quot;LAY_CHECKED&quot;:true
+        }
+
+	]
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h3 id="_2-方法渲染"><a href="#_2-方法渲染" class="header-anchor">#</a> 2：方法渲染</h3> <ul><li>表格方法渲染中，数据请求会使用到的参数为</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>table.render({ 
+  // get请求的时候，默认携带的参数为：page和limit，这两个参数是告诉服务器端前端请求是第几页的数据，且需要多少条
+  url: '/api/data/'
+  // 这里是自定义的参数
+  where: {token: 'sasasas', id: 123} 
+  // 如果是post请求，需要加入这个参数
+  method: 'post' 
+  // 如果后台需要自定义查询参数，不使用page和limit，那么需要在这个request参数中转换
+  request: {} 
+  // 如果后台返回的字段不是标准的code、msg、count、data，那么就需要在这个response里面将后台的字段转换标准字段
+  response: {} 
+}); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h3 id="_3-toolbar绑定工具条"><a href="#_3-toolbar绑定工具条" class="header-anchor">#</a> 3：toolbar绑定工具条</h3> <ul><li>表格的每一行加上 <code>查看、编辑、删除</code> 这样类似的操作按钮</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-container&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-row&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-col-md12&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>table id<span class="token operator">=</span><span class="token string">&quot;demo&quot;</span> lay<span class="token operator">-</span>filter<span class="token operator">=</span><span class="token string">&quot;simple-table&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>table<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>使用表格模块<span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token comment">// 加载表格模块</span>
+  layui<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'table'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 获取表格对象</span>
+      <span class="token keyword">var</span> table <span class="token operator">=</span> layui<span class="token punctuation">.</span>table<span class="token punctuation">;</span>
+
+      <span class="token comment">// 渲染表格</span>
+      table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// 选择表格元素</span>
+        elem<span class="token operator">:</span> <span class="token string">'#demo'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置高度</span>
+        <span class="token comment">// height: 312,</span>
+        limit<span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+        <span class="token comment">// 请求json数据</span>
+        url<span class="token operator">:</span> <span class="token string">&quot;{% static 'layuiadmin/json/table/simple.js' %}&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 开启分页功能</span>
+        page<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token comment">//   开启工具条</span>
+        toolbar<span class="token operator">:</span> <span class="token string">'true'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 使用字段过滤和导出功能</span>
+        defaultToolbar<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'filter'</span><span class="token punctuation">,</span> <span class="token string">'exports'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 指定排序字段</span>
+        initSort<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">//排序字段，对应 cols 设定的各字段名,</span>
+          field<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span>
+          <span class="token comment">//排序方式  asc: 升序、desc: 降序、null: 默认排序</span>
+          type<span class="token operator">:</span> <span class="token string">'asc'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置表格容器到浏览器底部距离为20px</span>
+        height<span class="token operator">:</span> <span class="token string">'full-20'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置字段</span>
+        cols<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>
+            <span class="token comment">// fixed: 'left'表示第一个字段固定在表左边</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'ID'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> fixed<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// 表格左侧添加复选框</span>
+            <span class="token punctuation">{</span>type<span class="token operator">:</span><span class="token string">'checkbox'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// edit: 'text'表示字段可以编辑</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'username'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span> edit<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// align: 'center' 文字单元格居中</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'email'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'邮件'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'sex'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'city'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'城市'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'sign'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'签名'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'experience'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'积分'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'ip'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'IP'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'logins'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'登录次数'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'joinTime'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// 添加工具栏</span>
+            <span class="token punctuation">{</span>fixed<span class="token operator">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span> width<span class="token operator">:</span><span class="token number">150</span><span class="token punctuation">,</span> align<span class="token operator">:</span><span class="token string">'center'</span><span class="token punctuation">,</span> toolbar<span class="token operator">:</span> <span class="token string">'#barDemo'</span><span class="token punctuation">}</span>
+
+        <span class="token punctuation">]</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// tool 是工具条事件名，simple-table是table原始容器的属性 lay-filter=&quot;对应的值&quot;</span>
+      <span class="token comment">// 这个就是监听表格的工具条的触发的动作</span>
+      table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'tool(simple-table)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//获得当前行数据, {id: &quot;10003&quot;, username: &quot;王勃&quot;, email: &quot;xianxin@layui.com&quot;, sex: &quot;男&quot;, city: &quot;浙江杭州&quot;, …}city: &quot;浙江杭州&quot;email: &quot;xianxin@layui.com&quot;experience: &quot;65&quot;id: &quot;10003&quot;ip: &quot;192.168.0.8&quot;joinTime: &quot;2016-10-14&quot;logins: &quot;106&quot;sex: &quot;男&quot;sign: &quot;人生恰似一场修行&quot;username: &quot;王勃&quot;__proto__: Object</span>
+        <span class="token keyword">var</span> data <span class="token operator">=</span> obj<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+
+        <span class="token comment">// 获得lay-event对应的值 , edit</span>
+        <span class="token keyword">var</span> layEvent <span class="token operator">=</span> obj<span class="token punctuation">.</span>event<span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'del'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token comment">// 首先前端删除</span>
+          layer<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'真的删除行么'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          obj<span class="token punctuation">.</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//删除对应行（tr）的DOM结构，并更新缓存</span>
+          layer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token comment">// 再向服务端发送删除指令</span>
+
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'edit'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token comment">//编辑的时候，先获取到编辑的数据，</span>
+
+
+          <span class="token comment">//同步更新缓存对应的值, 哪个字段的值修改了就更新哪个字段即可</span>
+          obj<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            username<span class="token operator">:</span> <span class="token string">'123'</span>
+            <span class="token punctuation">,</span>title<span class="token operator">:</span> <span class="token string">'xxx'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'LAYTABLE_TIPS'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Hi，头部工具栏扩展的右侧图标。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>创建toolBar模板<span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">&quot;text/html&quot;</span> id<span class="token operator">=</span><span class="token string">&quot;barDemo&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 这个lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;detail&quot;</span>的值可以随便定义 <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-xs&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;edit&quot;</span><span class="token operator">&gt;</span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-danger layui-btn-xs&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;del&quot;</span><span class="token operator">&gt;</span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br></div></div><h3 id="_4-table模块的主要方法"><a href="#_4-table模块的主要方法" class="header-anchor">#</a> 4：table模块的主要方法</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>//设定全局默认参数。options即各项基础参数
+table.set(options); 
+//事件监听。event为内置事件名（详见下文），filter为容器lay-filter设定的值
+table.on('event(filter)', callback); 
+//filter为容器lay-filter设定的值，options即各项基础参数。例子见：转换静态表格
+table.init(filter, options); 
+//获取表格选中行（下文会有详细介绍）。id 即为 id 参数对应的值
+table.checkStatus(id);
+//用于表格方法级渲染，核心方法。应该不用再过多解释了，详见：方法级渲染 
+table.render(options); 
+//表格重载
+table.reload(id, options); 
+//重置表格尺寸
+table.resize(id); 
+//导出数据
+table.exportFile(id, data, type); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="_5-资产表格开发"><a href="#_5-资产表格开发" class="header-anchor">#</a> 5：资产表格开发</h3> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-container&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-row&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-col-md12&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>table id<span class="token operator">=</span><span class="token string">&quot;demo&quot;</span> lay<span class="token operator">-</span>filter<span class="token operator">=</span><span class="token string">&quot;simple-table&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>table<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>使用表格模块<span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token comment">// 加载表格模块</span>
+  layui<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'table'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 获取表格对象</span>
+      <span class="token keyword">var</span> table <span class="token operator">=</span> layui<span class="token punctuation">.</span>table<span class="token punctuation">;</span>
+
+      <span class="token comment">// 一：渲染表格</span>
+      table<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token comment">// 给表格绑定ID</span>
+        id<span class="token operator">:</span> <span class="token string">'table_demo'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 选择表格元素</span>
+        elem<span class="token operator">:</span> <span class="token string">'#demo'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置高度</span>
+        <span class="token comment">// height: 312,</span>
+        limit<span class="token operator">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+        <span class="token comment">// 请求json数据</span>
+        url<span class="token operator">:</span> <span class="token string">&quot;{% static 'layuiadmin/json/table/simple.js' %}&quot;</span><span class="token punctuation">,</span>
+        <span class="token comment">// 开启分页功能</span>
+        page<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token comment">//   开启工具条</span>
+        <span class="token comment">// toolbar: 'true',</span>
+        <span class="token comment">// 开启表格左上角的工具条按钮</span>
+        toolbar<span class="token operator">:</span> <span class="token string">'#toolbarDemo'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 使用字段过滤和导出功能</span>
+        defaultToolbar<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'filter'</span><span class="token punctuation">,</span> <span class="token string">'exports'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token comment">// 指定排序字段</span>
+        initSort<span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token comment">//排序字段，对应 cols 设定的各字段名,</span>
+          field<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span>
+          <span class="token comment">//排序方式  asc: 升序、desc: 降序、null: 默认排序</span>
+          type<span class="token operator">:</span> <span class="token string">'asc'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置表格容器到浏览器底部距离为20px</span>
+        height<span class="token operator">:</span> <span class="token string">'full-20'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 设置字段</span>
+        cols<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>
+            <span class="token comment">// fixed: 'left'表示第一个字段固定在表左边</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'ID'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> fixed<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// 表格左侧添加复选框</span>
+            <span class="token punctuation">{</span>type<span class="token operator">:</span><span class="token string">'checkbox'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// edit: 'text'表示字段可以编辑</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'username'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'用户名'</span><span class="token punctuation">,</span> edit<span class="token operator">:</span> <span class="token string">'text'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// align: 'center' 文字单元格居中</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'email'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'邮件'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'sex'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'性别'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'city'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'城市'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'sign'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'签名'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'experience'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'积分'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'ip'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'IP'</span><span class="token punctuation">,</span> minWidth<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'logins'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'登录次数'</span><span class="token punctuation">,</span> sort<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>field<span class="token operator">:</span> <span class="token string">'joinTime'</span><span class="token punctuation">,</span> title<span class="token operator">:</span> <span class="token string">'创建时间'</span><span class="token punctuation">,</span> align<span class="token operator">:</span> <span class="token string">'center'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token comment">// 添加工具栏</span>
+            <span class="token punctuation">{</span>fixed<span class="token operator">:</span> <span class="token string">'right'</span><span class="token punctuation">,</span> width<span class="token operator">:</span><span class="token number">150</span><span class="token punctuation">,</span> align<span class="token operator">:</span><span class="token string">'center'</span><span class="token punctuation">,</span> toolbar<span class="token operator">:</span> <span class="token string">'#barDemo'</span><span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 二：这个就是监听表格的工具条的触发的动作，tool是工具条事件名，simple-table是table原始容器的属性 lay-filter=&quot;对应的值&quot;</span>
+      table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'tool(simple-table)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//获得当前行数据, {id: &quot;10003&quot;, username: &quot;王勃&quot;, email: &quot;xianxin@layui.com&quot;, sex: &quot;男&quot;, city: &quot;浙江杭州&quot;, …}city: &quot;浙江杭州&quot;email: &quot;xianxin@layui.com&quot;experience: &quot;65&quot;id: &quot;10003&quot;ip: &quot;192.168.0.8&quot;joinTime: &quot;2016-10-14&quot;logins: &quot;106&quot;sex: &quot;男&quot;sign: &quot;人生恰似一场修行&quot;username: &quot;王勃&quot;__proto__: Object</span>
+        <span class="token keyword">var</span> data <span class="token operator">=</span> obj<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+
+        <span class="token comment">// 获得lay-event对应的值 , edit</span>
+        <span class="token keyword">var</span> layEvent <span class="token operator">=</span> obj<span class="token punctuation">.</span>event<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'del'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token comment">// 首先前端删除</span>
+          layer<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'真的删除行么'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token comment">// 删除对应行（tr）的DOM结构，并更新缓存</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          obj<span class="token punctuation">.</span><span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          layer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token comment">// 再向服务端发送删除指令</span>
+
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'edit'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token comment">//编辑的时候，先获取到编辑的数据，</span>
+
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;编辑&quot;</span><span class="token punctuation">)</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+          <span class="token comment">//同步更新缓存对应的值, 哪个字段的值修改了就更新哪个字段即可</span>
+          obj<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            username<span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
+            title<span class="token operator">:</span> <span class="token string">'xxx'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>layEvent <span class="token operator">===</span> <span class="token string">'LAYTABLE_TIPS'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          layer<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Hi，头部工具栏扩展的右侧图标。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 三：工具栏左边按钮操作监听</span>
+      table<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'toolbar(simple-table)'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">obj</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        <span class="token comment">// 根据工具栏</span>
+        <span class="token keyword">switch</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>event<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+          <span class="token comment">// 如果是添加数据</span>
+          <span class="token keyword">case</span> <span class="token string">'add'</span><span class="token operator">:</span>
+            <span class="token comment">// 跳转到添加资产表单页面，提交表单信息，再次跳转到这个页面</span>
+            layer<span class="token punctuation">.</span><span class="token function">msg</span><span class="token punctuation">(</span><span class="token string">'添加'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+          <span class="token comment">// 如果是删除数据</span>
+          <span class="token keyword">case</span> <span class="token string">'delete'</span><span class="token operator">:</span>
+            <span class="token comment">// 先删除前端数据</span>
+            layer<span class="token punctuation">.</span><span class="token function">confirm</span><span class="token punctuation">(</span><span class="token string">'真的删除这些资产吗?'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token comment">// 先获取复选框选中的数据</span>
+              <span class="token keyword">var</span> checkStatus <span class="token operator">=</span> table<span class="token punctuation">.</span><span class="token function">checkStatus</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>config<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">// 获取选中行的数量</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;长度&quot;</span> <span class="token operator">+</span> checkStatus<span class="token punctuation">.</span>data<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">// 获取选中行的数据</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>checkStatus<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">// 判断是否全选</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">&quot;是否全选&quot;</span> <span class="token operator">+</span> checkStatus<span class="token punctuation">.</span>isAll<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token comment">// 先获取复选框选中的数据</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+              <span class="token comment">// obj.del(); //删除对应行（tr）的DOM结构，并更新缓存</span>
+              layer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 再向服务端发送删除指令</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>创建tool模板， 每一行的左边按钮<span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">&quot;text/html&quot;</span> id<span class="token operator">=</span><span class="token string">&quot;barDemo&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 这个lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;detail&quot;</span>的值可以随便定义 <span class="token operator">--</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-xs&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;edit&quot;</span><span class="token operator">&gt;</span>编辑<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>a <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-danger layui-btn-xs&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;del&quot;</span><span class="token operator">&gt;</span>删除<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>创建toolBar模板， 表格的左上角按钮<span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script type<span class="token operator">=</span><span class="token string">&quot;text/html&quot;</span> id<span class="token operator">=</span><span class="token string">&quot;toolbarDemo&quot;</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn-container&quot;</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-sm&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;add&quot;</span><span class="token operator">&gt;</span>添加资产<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn layui-btn-sm&quot;</span> lay<span class="token operator">-</span>event<span class="token operator">=</span><span class="token string">&quot;delete&quot;</span><span class="token operator">&gt;</span>批量删除<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br></div></div><h2 id="五-表单开发"><a href="#五-表单开发" class="header-anchor">#</a> 五：表单开发</h2> <h3 id="_1-简单表单"><a href="#_1-简单表单" class="header-anchor">#</a> 1：简单表单</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;div class=&quot;layui-container&quot;&gt;
+  &lt;div class=&quot;layui-row&quot;&gt;
+    &lt;form class=&quot;layui-form&quot;&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;输入框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;&quot; placeholder=&quot;请输入&quot; autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;下拉选择框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;select name=&quot;interest&quot; lay-filter=&quot;aihao&quot;&gt;
+            &lt;option value=&quot;0&quot;&gt;写作&lt;/option&gt;
+            &lt;option value=&quot;1&quot;&gt;阅读&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;复选框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;like[write]&quot; title=&quot;写作&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;like[read]&quot; title=&quot;阅读&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;开关关&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; lay-skin=&quot;switch&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;开关开&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; checked lay-skin=&quot;switch&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;单选框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;0&quot; title=&quot;男&quot;&gt;
+          &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;1&quot; title=&quot;女&quot; checked&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item layui-form-text&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;请填写描述&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;textarea placeholder=&quot;请输入内容&quot; class=&quot;layui-textarea&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;button class=&quot;layui-btn&quot; lay-submit lay-filter=&quot;asset_create&quot;&gt;立即提交&lt;/button&gt;
+          &lt;button type=&quot;reset&quot; class=&quot;layui-btn layui-btn-primary&quot;&gt;重置&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      {% csrf_token %}
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;!--使用表单模块--&gt;
+&lt;script&gt;
+layui.use('form', function(){
+  var form = layui.form;
+  form.render();
+  // 监听表单提交事件
+  form.on('submit(asset_create)', function(data){
+  console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+  console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+  console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+  //阻止表单跳转。如果需要表单跳转，去掉这段即可, 然后基于jQuery的形式发送post请求到后台
+  return false; 
+  });
+});
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><h3 id="_2-表单赋值与取值"><a href="#_2-表单赋值与取值" class="header-anchor">#</a> 2：表单赋值与取值</h3> <ul><li>基本语法</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 用于给指定表单集合的元素赋值和取值。如果 object 参数存在，则为赋值；如果 object 参数不存在，则为取值。
+form.val('filter', object);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>给表单赋值</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    &lt;form class=&quot;layui-form&quot; lay-filter=&quot;demo&quot;&gt;
+      &lt;!--输入框，搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;输入框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;请输入&quot; autocomplete=&quot;off&quot; class=&quot;layui-input&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--下拉选择框，搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;下拉选择框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;select name=&quot;interest&quot; lay-filter=&quot;aihao&quot;&gt;
+            &lt;option value=&quot;0&quot;&gt;写作&lt;/option&gt;
+            &lt;option value=&quot;1&quot;&gt;阅读&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--复选框，搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;复选框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;write&quot; title=&quot;写作&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;read&quot; title=&quot;阅读&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;listen&quot; title=&quot;听写&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--开关，搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;是否结婚&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;checkbox&quot; name=&quot;marry&quot; lay-skin=&quot;switch&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;是否是管理员&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input name=&quot;admin&quot; type=&quot;checkbox&quot; lay-skin=&quot;switch&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--单选框性别搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;单选框&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;0&quot; title=&quot;男&quot;&gt;
+          &lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;1&quot; title=&quot;女&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--textarea标签也是描述搞定--&gt;
+      &lt;div class=&quot;layui-form-item layui-form-text&quot;&gt;
+        &lt;label class=&quot;layui-form-label&quot;&gt;请填写描述&lt;/label&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;textarea name=&quot;desc&quot; placeholder=&quot;请输入内容&quot; class=&quot;layui-textarea&quot;&gt;&lt;/textarea&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!--这里是提交按钮和重置按钮搞定--&gt;
+      &lt;div class=&quot;layui-form-item&quot;&gt;
+        &lt;div class=&quot;layui-input-block&quot;&gt;
+          &lt;button class=&quot;layui-btn&quot; lay-submit lay-filter=&quot;asset_create&quot;&gt;立即提交&lt;/button&gt;
+          &lt;button type=&quot;reset&quot; class=&quot;layui-btn layui-btn-primary&quot;&gt;重置&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      {% csrf_token %}
+    &lt;/form&gt;
+
+
+&lt;script&gt;
+// 赋值的方式是key/value的方式赋值
+layui.use('form', function(){
+  var form = layui.form;
+  // lay-filter=&quot;&quot; 对应的值，这里的form表单的lay-filter=&quot;demo&quot;
+  form.val(&quot;demo&quot;, {
+  // 输入框
+  &quot;username&quot;: &quot;Robby&quot;,
+  // 单选框
+  &quot;sex&quot;: &quot;1&quot;,
+  // 下拉选择框
+  &quot;interest&quot;: 0,
+  // 复选框
+  &quot;write&quot;: &quot;on&quot;,
+  &quot;listen&quot;: &quot;&quot;,
+  &quot;read&quot;: &quot;&quot;,
+  // 开关打开
+  &quot;marry&quot;: &quot;&quot;,
+  // 开关关闭
+  &quot;admin&quot;: &quot;on&quot;,
+  // 文本框
+  &quot;desc&quot;: &quot;你好这里是layui&quot;
+});
+});
+
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br></div></div><h3 id="_3-表单验证"><a href="#_3-表单验证" class="header-anchor">#</a> 3：表单验证</h3> <ul><li>自带验证</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!--对邮件进行验证--&gt;
+&lt;input type=&quot;text&quot; lay-verify=&quot;email&quot;### 
+ 
+&lt;!--多种格式验证--&gt;
+&lt;input type=&quot;text&quot; lay-verify=&quot;required|phone|number&quot;&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>自定义验证方式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>form.verify({
+  //value：表单的值、item：表单的DOM对象
+  username: function(value, item){ 
+    if(!new RegExp(&quot;^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$&quot;).test(value)){
+      return '用户名不能有特殊字符';
+    }
+    if(/(^\_)|(\__)|(\_+$)/.test(value)){
+      return '用户名首尾不能出现下划线\'_\'';
+    }
+    if(/^\d+\d+\d$/.test(value)){
+      return '用户名不能全为数字';
+    }
+  }
+});   
+
+&lt;!--你只需要把 key 赋值给输入框的 lay-verify 属性即可--&gt;
+&lt;input type=&quot;text&quot; lay-verify=&quot;username&quot; placeholder=&quot;请输入用户名&quot;&gt;
+   
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h2 id="六-图片上传"><a href="#六-图片上传" class="header-anchor">#</a> 六：图片上传</h2> <ul><li>简单图片上传</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>button type<span class="token operator">=</span><span class="token string">&quot;button&quot;</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-btn&quot;</span> id<span class="token operator">=</span><span class="token string">&quot;test1&quot;</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;layui-icon&quot;</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#xe67c<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">&gt;</span>上传文件
+<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token comment">// 加载upload模块</span>
+layui<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">'upload'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">// 获取上传对象</span>
+  <span class="token keyword">var</span> upload <span class="token operator">=</span> layui<span class="token punctuation">.</span>upload<span class="token punctuation">;</span>
+
+  <span class="token comment">//执行实例</span>
+  <span class="token keyword">var</span> uploadInst <span class="token operator">=</span> upload<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">//绑定元素</span>
+    elem<span class="token operator">:</span> <span class="token string">'#test1'</span><span class="token punctuation">,</span>
+    <span class="token comment">//上传接口</span>
+    url<span class="token operator">:</span> <span class="token string">'/upload/'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 允许上传的文件类型</span>
+    accept<span class="token operator">:</span> <span class="token string">'file'</span><span class="token punctuation">,</span>
+    <span class="token comment">//最大允许上传的文件大小,单位是KB，这里设定为100M</span>
+    size<span class="token operator">:</span> <span class="token number">102400</span><span class="token punctuation">,</span>
+    <span class="token comment">//上传完毕回调</span>
+    <span class="token function-variable function">done</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//假设code=0代表上传成功</span>
+	    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>code <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	      <span class="token comment">//do something （比如将res返回的图片链接保存到表单的隐藏域）</span>
+	      
+	    <span class="token punctuation">}</span>
+    
+        <span class="token comment">//获取当前触发上传的元素，一般用于 elem 绑定 class 的情况，注意：此乃 layui 2.1.0 新增</span>
+        <span class="token keyword">var</span> item <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>item<span class="token punctuation">;</span>
+    
+       <span class="token comment">//文件保存失败</span>
+       <span class="token comment">//do something</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token comment">//请求异常回调</span>
+    <span class="token function-variable function">error</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">index<span class="token punctuation">,</span> upload</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">// 当请求上传时出现异常时触发（如网络异常、404/500等）。回调返回两个参数，分别为：当前文件的索引、重新上传的方法。当上传失败时，你可以生成一个“重新上传”的按钮，点击该按钮时，执行 upload() 方法即可实现重新上传</span>
+		
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><ul><li>该接口返回的相应信息（response）必须是一个标准的 JSON 格式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;code&quot;: 0
+  ,&quot;msg&quot;: &quot;&quot;
+  ,&quot;data&quot;: {
+    &quot;src&quot;: &quot;http://cdn.layui.com/123.jpg&quot;
+  }
+} 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>大文件上传采用进度条</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>upload.render({
+  elem: '#id'
+  ,url: '/api/upload/'
+  ,progress: function(n){
+    var percent = n + '%' //获取进度百分比
+    element.progress('demo', percent); //可配合 layui 进度条元素使用
+  }
+}); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/vue/layui/docs/doc/doc.html" class="prev">
+            LayUI文档
+          </a></span> <span class="next"><a href="/dev/vue/layui/docs/page/page.html">
+            LayUI中的页面元素
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#一-弹出层" class="sidebar-link reco-side-一-弹出层" data-v-cb1513f6>一：弹出层</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_1-使用layer-msg弹出层信息提示" class="sidebar-link reco-side-_1-使用layer-msg弹出层信息提示" data-v-cb1513f6>1：使用layer.msg弹出层信息提示</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_2-使用layer-open弹出层" class="sidebar-link reco-side-_2-使用layer-open弹出层" data-v-cb1513f6>2：使用layer.open弹出层</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_3-按钮事件监听" class="sidebar-link reco-side-_3-按钮事件监听" data-v-cb1513f6>3：按钮事件监听</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#二-日期与时间" class="sidebar-link reco-side-二-日期与时间" data-v-cb1513f6>二：日期与时间</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_1-简单使用" class="sidebar-link reco-side-_1-简单使用" data-v-cb1513f6>1：简单使用</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#三-分页" class="sidebar-link reco-side-三-分页" data-v-cb1513f6>三：分页</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_1-简单使用-2" class="sidebar-link reco-side-_1-简单使用-2" data-v-cb1513f6>1：简单使用</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_2-jump-切换分页的回调" class="sidebar-link reco-side-_2-jump-切换分页的回调" data-v-cb1513f6>2：jump - 切换分页的回调</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#四-数据表格" class="sidebar-link reco-side-四-数据表格" data-v-cb1513f6>四：数据表格</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_1-创建简单表格" class="sidebar-link reco-side-_1-创建简单表格" data-v-cb1513f6>1：创建简单表格</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_2-方法渲染" class="sidebar-link reco-side-_2-方法渲染" data-v-cb1513f6>2：方法渲染</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_3-toolbar绑定工具条" class="sidebar-link reco-side-_3-toolbar绑定工具条" data-v-cb1513f6>3：toolbar绑定工具条</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_4-table模块的主要方法" class="sidebar-link reco-side-_4-table模块的主要方法" data-v-cb1513f6>4：table模块的主要方法</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_5-资产表格开发" class="sidebar-link reco-side-_5-资产表格开发" data-v-cb1513f6>5：资产表格开发</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#五-表单开发" class="sidebar-link reco-side-五-表单开发" data-v-cb1513f6>五：表单开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_1-简单表单" class="sidebar-link reco-side-_1-简单表单" data-v-cb1513f6>1：简单表单</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_2-表单赋值与取值" class="sidebar-link reco-side-_2-表单赋值与取值" data-v-cb1513f6>2：表单赋值与取值</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#_3-表单验证" class="sidebar-link reco-side-_3-表单验证" data-v-cb1513f6>3：表单验证</a></li><li class="level-2" data-v-cb1513f6><a href="/dev/vue/layui/docs/dev/dev.html#六-图片上传" class="sidebar-link reco-side-六-图片上传" data-v-cb1513f6>六：图片上传</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9a5d1377.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/157.be5d1989.js" defer></script>
+  </body>
+</html>

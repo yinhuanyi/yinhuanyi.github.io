@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>重新开发《在线教育平台》注意事项 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.9a5d1377.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/8.9176dd4b.js" as="script"><link rel="prefetch" href="/assets/js/10.bf3a4a01.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.77871772.js"><link rel="prefetch" href="/assets/js/103.b1663661.js"><link rel="prefetch" href="/assets/js/104.e2724712.js"><link rel="prefetch" href="/assets/js/105.66d2fca1.js"><link rel="prefetch" href="/assets/js/106.d13147aa.js"><link rel="prefetch" href="/assets/js/107.6c143695.js"><link rel="prefetch" href="/assets/js/108.38baff0a.js"><link rel="prefetch" href="/assets/js/109.b87f3dae.js"><link rel="prefetch" href="/assets/js/11.2d4145aa.js"><link rel="prefetch" href="/assets/js/110.ecd312df.js"><link rel="prefetch" href="/assets/js/111.e86d0cf5.js"><link rel="prefetch" href="/assets/js/112.838e7814.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.90eb6e00.js"><link rel="prefetch" href="/assets/js/115.9086d1d7.js"><link rel="prefetch" href="/assets/js/116.fcaba423.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.11985c3d.js"><link rel="prefetch" href="/assets/js/119.ab560a50.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.25784945.js"><link rel="prefetch" href="/assets/js/121.03b17d23.js"><link rel="prefetch" href="/assets/js/122.dbb3d982.js"><link rel="prefetch" href="/assets/js/123.e04e1de0.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.dc1e889c.js"><link rel="prefetch" href="/assets/js/126.4e0be7c0.js"><link rel="prefetch" href="/assets/js/127.2648dc86.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.ddeea161.js"><link rel="prefetch" href="/assets/js/13.794cb86f.js"><link rel="prefetch" href="/assets/js/130.2f51e053.js"><link rel="prefetch" href="/assets/js/131.50ad10f9.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.952404bc.js"><link rel="prefetch" href="/assets/js/134.319691ce.js"><link rel="prefetch" href="/assets/js/135.358e0553.js"><link rel="prefetch" href="/assets/js/136.a5240b23.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.060a4f8d.js"><link rel="prefetch" href="/assets/js/139.ac0e3354.js"><link rel="prefetch" href="/assets/js/14.8e692555.js"><link rel="prefetch" href="/assets/js/140.d14826df.js"><link rel="prefetch" href="/assets/js/141.855d329f.js"><link rel="prefetch" href="/assets/js/142.707f4edb.js"><link rel="prefetch" href="/assets/js/143.7ac10fb6.js"><link rel="prefetch" href="/assets/js/144.ccbcbe88.js"><link rel="prefetch" href="/assets/js/145.f97912c7.js"><link rel="prefetch" href="/assets/js/146.8564b53a.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.3b03ba9b.js"><link rel="prefetch" href="/assets/js/149.b099e234.js"><link rel="prefetch" href="/assets/js/15.5a69bb7b.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.de07d289.js"><link rel="prefetch" href="/assets/js/153.6ed13d07.js"><link rel="prefetch" href="/assets/js/154.e33f8138.js"><link rel="prefetch" href="/assets/js/155.9514ea65.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.be5d1989.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.7685a5ea.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.b8b2aa7c.js"><link rel="prefetch" href="/assets/js/161.2be5e8ba.js"><link rel="prefetch" href="/assets/js/162.e39ddda0.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.74e47c48.js"><link rel="prefetch" href="/assets/js/166.8d1656c7.js"><link rel="prefetch" href="/assets/js/167.1a8d36d8.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.ad76d2ad.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.86c8539e.js"><link rel="prefetch" href="/assets/js/171.a00bc1de.js"><link rel="prefetch" href="/assets/js/172.4f7cc2b8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.bcbc7ed5.js"><link rel="prefetch" href="/assets/js/175.8c13131f.js"><link rel="prefetch" href="/assets/js/176.a8e0a82f.js"><link rel="prefetch" href="/assets/js/177.cc3e8330.js"><link rel="prefetch" href="/assets/js/178.0f6cf921.js"><link rel="prefetch" href="/assets/js/179.70e295f9.js"><link rel="prefetch" href="/assets/js/18.dfc6a15d.js"><link rel="prefetch" href="/assets/js/180.5e8d67ce.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.0b1bc7fc.js"><link rel="prefetch" href="/assets/js/183.92dd7271.js"><link rel="prefetch" href="/assets/js/184.ce4e0f66.js"><link rel="prefetch" href="/assets/js/185.4b6c844e.js"><link rel="prefetch" href="/assets/js/186.fb4510cf.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.c54c9ff8.js"><link rel="prefetch" href="/assets/js/189.cc525573.js"><link rel="prefetch" href="/assets/js/19.c9a4b6df.js"><link rel="prefetch" href="/assets/js/190.0a0fc517.js"><link rel="prefetch" href="/assets/js/191.c0b20f10.js"><link rel="prefetch" href="/assets/js/192.a401c173.js"><link rel="prefetch" href="/assets/js/193.3884a8c4.js"><link rel="prefetch" href="/assets/js/194.2aecb6b4.js"><link rel="prefetch" href="/assets/js/195.d5b973f4.js"><link rel="prefetch" href="/assets/js/196.e8311196.js"><link rel="prefetch" href="/assets/js/197.49170522.js"><link rel="prefetch" href="/assets/js/198.6a0c43cb.js"><link rel="prefetch" href="/assets/js/199.b20ce791.js"><link rel="prefetch" href="/assets/js/20.531ffaef.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.aca6d71e.js"><link rel="prefetch" href="/assets/js/202.0bf45c68.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.e9703838.js"><link rel="prefetch" href="/assets/js/205.11be8755.js"><link rel="prefetch" href="/assets/js/206.5df53ca7.js"><link rel="prefetch" href="/assets/js/207.7881dce6.js"><link rel="prefetch" href="/assets/js/208.4f9fee3c.js"><link rel="prefetch" href="/assets/js/209.b029372d.js"><link rel="prefetch" href="/assets/js/21.551fce6d.js"><link rel="prefetch" href="/assets/js/210.53655350.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.ce8c9841.js"><link rel="prefetch" href="/assets/js/215.192a0677.js"><link rel="prefetch" href="/assets/js/216.6cd17926.js"><link rel="prefetch" href="/assets/js/217.00ed48ab.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.c56f8cf4.js"><link rel="prefetch" href="/assets/js/22.986fb9e7.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.39b770a4.js"><link rel="prefetch" href="/assets/js/222.9e1df2c8.js"><link rel="prefetch" href="/assets/js/223.5eff1248.js"><link rel="prefetch" href="/assets/js/224.c0cea281.js"><link rel="prefetch" href="/assets/js/225.8ad561aa.js"><link rel="prefetch" href="/assets/js/226.43acb0be.js"><link rel="prefetch" href="/assets/js/227.37ebd361.js"><link rel="prefetch" href="/assets/js/228.ead480ed.js"><link rel="prefetch" href="/assets/js/229.3baad619.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.1af99529.js"><link rel="prefetch" href="/assets/js/231.59879531.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.f21ede1a.js"><link rel="prefetch" href="/assets/js/234.7918e7e4.js"><link rel="prefetch" href="/assets/js/235.300a10a5.js"><link rel="prefetch" href="/assets/js/236.d35b33b7.js"><link rel="prefetch" href="/assets/js/237.96116ee5.js"><link rel="prefetch" href="/assets/js/238.59a35d89.js"><link rel="prefetch" href="/assets/js/239.9dfc4fbc.js"><link rel="prefetch" href="/assets/js/24.8425bd19.js"><link rel="prefetch" href="/assets/js/240.36bac2f9.js"><link rel="prefetch" href="/assets/js/241.ad0d06e7.js"><link rel="prefetch" href="/assets/js/242.9344b5fa.js"><link rel="prefetch" href="/assets/js/243.facc5ec6.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.82a78890.js"><link rel="prefetch" href="/assets/js/246.d274961a.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.8825abef.js"><link rel="prefetch" href="/assets/js/249.5061079a.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.cd3b6c4a.js"><link rel="prefetch" href="/assets/js/251.d218096c.js"><link rel="prefetch" href="/assets/js/252.ac828464.js"><link rel="prefetch" href="/assets/js/253.6030735c.js"><link rel="prefetch" href="/assets/js/254.3534a5fb.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.48ca0db6.js"><link rel="prefetch" href="/assets/js/257.d0ca646c.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.48f6daae.js"><link rel="prefetch" href="/assets/js/26.e0e94a5e.js"><link rel="prefetch" href="/assets/js/260.ce650517.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.b976ff4c.js"><link rel="prefetch" href="/assets/js/263.c1daf4e9.js"><link rel="prefetch" href="/assets/js/264.72936fdc.js"><link rel="prefetch" href="/assets/js/265.16ece61e.js"><link rel="prefetch" href="/assets/js/266.b17f1b64.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.158ff25d.js"><link rel="prefetch" href="/assets/js/27.66fdb8f8.js"><link rel="prefetch" href="/assets/js/270.7446d42b.js"><link rel="prefetch" href="/assets/js/271.68bf6f03.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.81b9b843.js"><link rel="prefetch" href="/assets/js/275.bd55419d.js"><link rel="prefetch" href="/assets/js/276.3b600307.js"><link rel="prefetch" href="/assets/js/277.19eff568.js"><link rel="prefetch" href="/assets/js/278.f34b0bd3.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.93d4f4ab.js"><link rel="prefetch" href="/assets/js/280.3c4ed74e.js"><link rel="prefetch" href="/assets/js/281.f37d360e.js"><link rel="prefetch" href="/assets/js/282.79b14434.js"><link rel="prefetch" href="/assets/js/283.f30f0408.js"><link rel="prefetch" href="/assets/js/284.d8658140.js"><link rel="prefetch" href="/assets/js/285.be71c641.js"><link rel="prefetch" href="/assets/js/286.579ea834.js"><link rel="prefetch" href="/assets/js/287.0badbfd7.js"><link rel="prefetch" href="/assets/js/288.0a4d6ad8.js"><link rel="prefetch" href="/assets/js/289.b35dc3c7.js"><link rel="prefetch" href="/assets/js/29.79b889e1.js"><link rel="prefetch" href="/assets/js/290.9152baa2.js"><link rel="prefetch" href="/assets/js/291.bb638936.js"><link rel="prefetch" href="/assets/js/292.c0d33103.js"><link rel="prefetch" href="/assets/js/293.36991fc2.js"><link rel="prefetch" href="/assets/js/294.31714e68.js"><link rel="prefetch" href="/assets/js/295.cb156d67.js"><link rel="prefetch" href="/assets/js/296.ade170a2.js"><link rel="prefetch" href="/assets/js/297.a54e7f48.js"><link rel="prefetch" href="/assets/js/298.1625bd2a.js"><link rel="prefetch" href="/assets/js/299.32a89505.js"><link rel="prefetch" href="/assets/js/3.4041ad45.js"><link rel="prefetch" href="/assets/js/30.11c1c4a9.js"><link rel="prefetch" href="/assets/js/300.3018c2a8.js"><link rel="prefetch" href="/assets/js/301.de84e79f.js"><link rel="prefetch" href="/assets/js/302.9240eb69.js"><link rel="prefetch" href="/assets/js/303.7d585f45.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.f60f1bce.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.25437db7.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.26c3bcdb.js"><link rel="prefetch" href="/assets/js/313.dc39f08b.js"><link rel="prefetch" href="/assets/js/314.655c6ac0.js"><link rel="prefetch" href="/assets/js/315.e35fac2d.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.8b6a01a8.js"><link rel="prefetch" href="/assets/js/318.b77d87e1.js"><link rel="prefetch" href="/assets/js/319.b2cc794b.js"><link rel="prefetch" href="/assets/js/32.51c932ff.js"><link rel="prefetch" href="/assets/js/320.af5899d0.js"><link rel="prefetch" href="/assets/js/321.2f00f711.js"><link rel="prefetch" href="/assets/js/322.c935286c.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.8a0cfed6.js"><link rel="prefetch" href="/assets/js/325.4afeea42.js"><link rel="prefetch" href="/assets/js/326.8c15ef2e.js"><link rel="prefetch" href="/assets/js/327.8d999cbb.js"><link rel="prefetch" href="/assets/js/328.523585ed.js"><link rel="prefetch" href="/assets/js/329.cbffae2d.js"><link rel="prefetch" href="/assets/js/33.a4a24c5c.js"><link rel="prefetch" href="/assets/js/330.089b8bda.js"><link rel="prefetch" href="/assets/js/331.f62e76ea.js"><link rel="prefetch" href="/assets/js/332.41ac44fb.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.629527a5.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.b4ee5265.js"><link rel="prefetch" href="/assets/js/337.a65084e0.js"><link rel="prefetch" href="/assets/js/338.b8c7f9d4.js"><link rel="prefetch" href="/assets/js/339.32dd2a1f.js"><link rel="prefetch" href="/assets/js/34.d5a4cc1c.js"><link rel="prefetch" href="/assets/js/340.181fbac2.js"><link rel="prefetch" href="/assets/js/341.dfbdcd6a.js"><link rel="prefetch" href="/assets/js/342.7e191cd0.js"><link rel="prefetch" href="/assets/js/343.1fc1aa07.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.d9343bc3.js"><link rel="prefetch" href="/assets/js/346.265f5633.js"><link rel="prefetch" href="/assets/js/347.316afdfc.js"><link rel="prefetch" href="/assets/js/348.5b24302c.js"><link rel="prefetch" href="/assets/js/349.be0ea3c0.js"><link rel="prefetch" href="/assets/js/35.9d8a6e6c.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.50b2e64e.js"><link rel="prefetch" href="/assets/js/353.4cc0f899.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.b7fd8cb7.js"><link rel="prefetch" href="/assets/js/356.c211c1b8.js"><link rel="prefetch" href="/assets/js/357.d16a2d83.js"><link rel="prefetch" href="/assets/js/358.d7237c49.js"><link rel="prefetch" href="/assets/js/359.6734cad1.js"><link rel="prefetch" href="/assets/js/36.4b6cd3a4.js"><link rel="prefetch" href="/assets/js/360.a33983a6.js"><link rel="prefetch" href="/assets/js/361.6ff246f0.js"><link rel="prefetch" href="/assets/js/362.2f864708.js"><link rel="prefetch" href="/assets/js/363.c392c5e8.js"><link rel="prefetch" href="/assets/js/364.22a6b189.js"><link rel="prefetch" href="/assets/js/365.df1dbb8e.js"><link rel="prefetch" href="/assets/js/366.0d2547a8.js"><link rel="prefetch" href="/assets/js/367.34d64bf7.js"><link rel="prefetch" href="/assets/js/368.5a888040.js"><link rel="prefetch" href="/assets/js/369.9e4cf3f4.js"><link rel="prefetch" href="/assets/js/37.9577c26e.js"><link rel="prefetch" href="/assets/js/370.12a47033.js"><link rel="prefetch" href="/assets/js/371.6d43aa3f.js"><link rel="prefetch" href="/assets/js/372.f52d346f.js"><link rel="prefetch" href="/assets/js/373.f47542f8.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.cd11d66c.js"><link rel="prefetch" href="/assets/js/376.938c07c7.js"><link rel="prefetch" href="/assets/js/377.03fe1608.js"><link rel="prefetch" href="/assets/js/378.ed6d6894.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c179026f.js"><link rel="prefetch" href="/assets/js/380.a41a6355.js"><link rel="prefetch" href="/assets/js/381.ae2d3065.js"><link rel="prefetch" href="/assets/js/382.304163b7.js"><link rel="prefetch" href="/assets/js/383.7b17d4a7.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.e359cc49.js"><link rel="prefetch" href="/assets/js/386.63eb6322.js"><link rel="prefetch" href="/assets/js/387.d17554a7.js"><link rel="prefetch" href="/assets/js/388.a81f4ee2.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.147cc35f.js"><link rel="prefetch" href="/assets/js/390.5e754f5e.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.c83337ff.js"><link rel="prefetch" href="/assets/js/393.5d36dd95.js"><link rel="prefetch" href="/assets/js/394.f0167b91.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.e6fea9c1.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.0dd0e255.js"><link rel="prefetch" href="/assets/js/399.f19817b8.js"><link rel="prefetch" href="/assets/js/4.3ac1d119.js"><link rel="prefetch" href="/assets/js/40.39968cf8.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.41cf5537.js"><link rel="prefetch" href="/assets/js/402.89091ee3.js"><link rel="prefetch" href="/assets/js/403.d5d2cbaa.js"><link rel="prefetch" href="/assets/js/404.c7fa04e1.js"><link rel="prefetch" href="/assets/js/405.8f210f6c.js"><link rel="prefetch" href="/assets/js/406.543bb325.js"><link rel="prefetch" href="/assets/js/407.738ee9c2.js"><link rel="prefetch" href="/assets/js/408.e32a6f90.js"><link rel="prefetch" href="/assets/js/409.b73ca551.js"><link rel="prefetch" href="/assets/js/41.1d56c643.js"><link rel="prefetch" href="/assets/js/410.284b9e06.js"><link rel="prefetch" href="/assets/js/411.7cca2664.js"><link rel="prefetch" href="/assets/js/412.f05bbf63.js"><link rel="prefetch" href="/assets/js/413.d0550ac2.js"><link rel="prefetch" href="/assets/js/414.dca9673f.js"><link rel="prefetch" href="/assets/js/415.298c5573.js"><link rel="prefetch" href="/assets/js/416.8dff3a66.js"><link rel="prefetch" href="/assets/js/417.8c1a0a4e.js"><link rel="prefetch" href="/assets/js/418.a6b3d607.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.1b306b17.js"><link rel="prefetch" href="/assets/js/420.e17e772d.js"><link rel="prefetch" href="/assets/js/421.64699486.js"><link rel="prefetch" href="/assets/js/422.3f898a85.js"><link rel="prefetch" href="/assets/js/423.aba3c659.js"><link rel="prefetch" href="/assets/js/424.abbcc73e.js"><link rel="prefetch" href="/assets/js/425.3469bdbd.js"><link rel="prefetch" href="/assets/js/426.deb86b4b.js"><link rel="prefetch" href="/assets/js/427.c6faeccf.js"><link rel="prefetch" href="/assets/js/428.ce2143ba.js"><link rel="prefetch" href="/assets/js/429.f6ac264f.js"><link rel="prefetch" href="/assets/js/43.7aca7037.js"><link rel="prefetch" href="/assets/js/430.c5564c52.js"><link rel="prefetch" href="/assets/js/431.8f223d2d.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.313a2983.js"><link rel="prefetch" href="/assets/js/435.4e75644a.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.8f3290a7.js"><link rel="prefetch" href="/assets/js/439.0d98dc66.js"><link rel="prefetch" href="/assets/js/44.5bb17146.js"><link rel="prefetch" href="/assets/js/440.0555189f.js"><link rel="prefetch" href="/assets/js/441.8583cfc0.js"><link rel="prefetch" href="/assets/js/442.bf7b236d.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.1a388c82.js"><link rel="prefetch" href="/assets/js/445.f0b67036.js"><link rel="prefetch" href="/assets/js/446.8c732c56.js"><link rel="prefetch" href="/assets/js/447.6d1be8d9.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.9e75dd3b.js"><link rel="prefetch" href="/assets/js/452.73b48879.js"><link rel="prefetch" href="/assets/js/453.932fa75e.js"><link rel="prefetch" href="/assets/js/454.14027c6b.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.ee0b078b.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.27022088.js"><link rel="prefetch" href="/assets/js/459.ab2f4695.js"><link rel="prefetch" href="/assets/js/46.471ff9b5.js"><link rel="prefetch" href="/assets/js/460.11e77a24.js"><link rel="prefetch" href="/assets/js/461.194f79d1.js"><link rel="prefetch" href="/assets/js/462.80a34b65.js"><link rel="prefetch" href="/assets/js/463.f66a897c.js"><link rel="prefetch" href="/assets/js/464.45bb7abf.js"><link rel="prefetch" href="/assets/js/465.c38904d3.js"><link rel="prefetch" href="/assets/js/466.0c8a1201.js"><link rel="prefetch" href="/assets/js/467.c8b86791.js"><link rel="prefetch" href="/assets/js/468.70a2a91e.js"><link rel="prefetch" href="/assets/js/469.8bbe4ac4.js"><link rel="prefetch" href="/assets/js/47.5ce5c3c2.js"><link rel="prefetch" href="/assets/js/470.fde0c73c.js"><link rel="prefetch" href="/assets/js/471.0be5c4ef.js"><link rel="prefetch" href="/assets/js/472.7e1c6165.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.29c08fbe.js"><link rel="prefetch" href="/assets/js/475.b85cc5be.js"><link rel="prefetch" href="/assets/js/476.d2472e0d.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.2c8a78ce.js"><link rel="prefetch" href="/assets/js/479.10db54c8.js"><link rel="prefetch" href="/assets/js/48.63747cc1.js"><link rel="prefetch" href="/assets/js/480.abd30718.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.e1b09083.js"><link rel="prefetch" href="/assets/js/484.9b4b5c9c.js"><link rel="prefetch" href="/assets/js/485.36c42239.js"><link rel="prefetch" href="/assets/js/486.73b5ece1.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.5a922985.js"><link rel="prefetch" href="/assets/js/49.c8a3f2ca.js"><link rel="prefetch" href="/assets/js/490.c6845b01.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.b03e4127.js"><link rel="prefetch" href="/assets/js/493.db71ed8b.js"><link rel="prefetch" href="/assets/js/494.9608a92e.js"><link rel="prefetch" href="/assets/js/495.ced07f96.js"><link rel="prefetch" href="/assets/js/496.185decf2.js"><link rel="prefetch" href="/assets/js/497.ddc55f9e.js"><link rel="prefetch" href="/assets/js/498.43397afd.js"><link rel="prefetch" href="/assets/js/499.7320fe31.js"><link rel="prefetch" href="/assets/js/5.3134845c.js"><link rel="prefetch" href="/assets/js/50.68b1ba39.js"><link rel="prefetch" href="/assets/js/500.41912532.js"><link rel="prefetch" href="/assets/js/501.5a2c44ad.js"><link rel="prefetch" href="/assets/js/502.3e92b592.js"><link rel="prefetch" href="/assets/js/503.a909f346.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.ea559644.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.840f1c2d.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.09e693c1.js"><link rel="prefetch" href="/assets/js/514.9ea29f17.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.afd3f56e.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.0e0f3b50.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.91f935f6.js"><link rel="prefetch" href="/assets/js/521.686c1eb6.js"><link rel="prefetch" href="/assets/js/522.554cbfe5.js"><link rel="prefetch" href="/assets/js/523.48e15e4e.js"><link rel="prefetch" href="/assets/js/524.52d7dd1c.js"><link rel="prefetch" href="/assets/js/525.eb2d041a.js"><link rel="prefetch" href="/assets/js/526.18d14b74.js"><link rel="prefetch" href="/assets/js/527.72005be4.js"><link rel="prefetch" href="/assets/js/528.a927bfeb.js"><link rel="prefetch" href="/assets/js/529.577cf1e8.js"><link rel="prefetch" href="/assets/js/53.1fd6d004.js"><link rel="prefetch" href="/assets/js/530.8214546e.js"><link rel="prefetch" href="/assets/js/531.188187ee.js"><link rel="prefetch" href="/assets/js/532.0d33ab06.js"><link rel="prefetch" href="/assets/js/533.713b971d.js"><link rel="prefetch" href="/assets/js/534.4c3f120d.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.19cd9376.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.2e3d2af3.js"><link rel="prefetch" href="/assets/js/539.ced32c6c.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.79472898.js"><link rel="prefetch" href="/assets/js/542.c19e66bf.js"><link rel="prefetch" href="/assets/js/543.8c7ba033.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.990cf62f.js"><link rel="prefetch" href="/assets/js/546.c450bfe9.js"><link rel="prefetch" href="/assets/js/547.5f9d5d3c.js"><link rel="prefetch" href="/assets/js/548.da38e02f.js"><link rel="prefetch" href="/assets/js/549.4e7ef51b.js"><link rel="prefetch" href="/assets/js/55.889a99a0.js"><link rel="prefetch" href="/assets/js/550.fe38cd54.js"><link rel="prefetch" href="/assets/js/551.a962ba39.js"><link rel="prefetch" href="/assets/js/552.ea9b8c68.js"><link rel="prefetch" href="/assets/js/553.bb05d44b.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.b9c01360.js"><link rel="prefetch" href="/assets/js/556.90c1efbd.js"><link rel="prefetch" href="/assets/js/557.e91bab69.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.ffc1daab.js"><link rel="prefetch" href="/assets/js/56.0d815a94.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.58ef4b9a.js"><link rel="prefetch" href="/assets/js/562.2aea2b58.js"><link rel="prefetch" href="/assets/js/563.9fa5d88a.js"><link rel="prefetch" href="/assets/js/564.9009c1a9.js"><link rel="prefetch" href="/assets/js/565.cc151c74.js"><link rel="prefetch" href="/assets/js/566.6d1dc45c.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.dce9b1bc.js"><link rel="prefetch" href="/assets/js/569.47798dcf.js"><link rel="prefetch" href="/assets/js/57.4af72b89.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.271e5add.js"><link rel="prefetch" href="/assets/js/572.948d49fb.js"><link rel="prefetch" href="/assets/js/573.eede7803.js"><link rel="prefetch" href="/assets/js/574.040dcefc.js"><link rel="prefetch" href="/assets/js/575.d6c8a336.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.1a6bf5b8.js"><link rel="prefetch" href="/assets/js/58.df984a43.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.c149fae7.js"><link rel="prefetch" href="/assets/js/582.55545a35.js"><link rel="prefetch" href="/assets/js/583.a31c53bf.js"><link rel="prefetch" href="/assets/js/584.36626d3d.js"><link rel="prefetch" href="/assets/js/585.fd277c61.js"><link rel="prefetch" href="/assets/js/586.52204405.js"><link rel="prefetch" href="/assets/js/587.99335ca1.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.c65322cc.js"><link rel="prefetch" href="/assets/js/590.08417ac3.js"><link rel="prefetch" href="/assets/js/591.9cb3207b.js"><link rel="prefetch" href="/assets/js/592.8595a9f4.js"><link rel="prefetch" href="/assets/js/593.605c39df.js"><link rel="prefetch" href="/assets/js/594.cc98eb1f.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.b34683c2.js"><link rel="prefetch" href="/assets/js/597.ce917673.js"><link rel="prefetch" href="/assets/js/598.1b31cbf3.js"><link rel="prefetch" href="/assets/js/599.11899b1a.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.36a408d5.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.502d8c92.js"><link rel="prefetch" href="/assets/js/604.e660e01e.js"><link rel="prefetch" href="/assets/js/605.2403db7a.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.9c6f2afe.js"><link rel="prefetch" href="/assets/js/608.734afab0.js"><link rel="prefetch" href="/assets/js/609.4c1a6347.js"><link rel="prefetch" href="/assets/js/61.2d4e6a1a.js"><link rel="prefetch" href="/assets/js/610.312082cc.js"><link rel="prefetch" href="/assets/js/611.117258e3.js"><link rel="prefetch" href="/assets/js/612.dbff59f2.js"><link rel="prefetch" href="/assets/js/613.07f207a5.js"><link rel="prefetch" href="/assets/js/614.7690add3.js"><link rel="prefetch" href="/assets/js/615.18c81803.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.15209f2e.js"><link rel="prefetch" href="/assets/js/618.4a9d5e62.js"><link rel="prefetch" href="/assets/js/619.4507e3c7.js"><link rel="prefetch" href="/assets/js/62.45203677.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.d08dbba4.js"><link rel="prefetch" href="/assets/js/622.a46d6f6c.js"><link rel="prefetch" href="/assets/js/623.9820d99d.js"><link rel="prefetch" href="/assets/js/624.60571315.js"><link rel="prefetch" href="/assets/js/625.da6f7154.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.d2296bee.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.77bcb425.js"><link rel="prefetch" href="/assets/js/630.82ed32d5.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.92997d70.js"><link rel="prefetch" href="/assets/js/633.e66c3cbc.js"><link rel="prefetch" href="/assets/js/634.b314ab80.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.5e41c48d.js"><link rel="prefetch" href="/assets/js/637.45799a46.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.48a44ac7.js"><link rel="prefetch" href="/assets/js/640.b538e6a5.js"><link rel="prefetch" href="/assets/js/641.291cd95e.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.6a4e5909.js"><link rel="prefetch" href="/assets/js/644.395e1509.js"><link rel="prefetch" href="/assets/js/645.df897a52.js"><link rel="prefetch" href="/assets/js/646.07bb34ad.js"><link rel="prefetch" href="/assets/js/647.40581df6.js"><link rel="prefetch" href="/assets/js/648.cc78ed85.js"><link rel="prefetch" href="/assets/js/649.6c9bfe91.js"><link rel="prefetch" href="/assets/js/65.594d727c.js"><link rel="prefetch" href="/assets/js/650.6a7966d1.js"><link rel="prefetch" href="/assets/js/651.cdbe3a61.js"><link rel="prefetch" href="/assets/js/66.697e3989.js"><link rel="prefetch" href="/assets/js/67.a3eb57a2.js"><link rel="prefetch" href="/assets/js/68.e0579512.js"><link rel="prefetch" href="/assets/js/69.c53a8af2.js"><link rel="prefetch" href="/assets/js/70.1af2e395.js"><link rel="prefetch" href="/assets/js/71.47eb643b.js"><link rel="prefetch" href="/assets/js/72.5262f104.js"><link rel="prefetch" href="/assets/js/73.d07f6ff2.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.69ac6b6c.js"><link rel="prefetch" href="/assets/js/76.c05cd6a7.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.c188f8e3.js"><link rel="prefetch" href="/assets/js/80.c0771c09.js"><link rel="prefetch" href="/assets/js/81.5893998e.js"><link rel="prefetch" href="/assets/js/82.6d490909.js"><link rel="prefetch" href="/assets/js/83.9bd41235.js"><link rel="prefetch" href="/assets/js/84.8f0298e2.js"><link rel="prefetch" href="/assets/js/85.150db05f.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.07e03e84.js"><link rel="prefetch" href="/assets/js/88.2cc7eabb.js"><link rel="prefetch" href="/assets/js/89.001203fd.js"><link rel="prefetch" href="/assets/js/9.420da603.js"><link rel="prefetch" href="/assets/js/90.4ae35882.js"><link rel="prefetch" href="/assets/js/91.3da12e9b.js"><link rel="prefetch" href="/assets/js/92.d58a0bce.js"><link rel="prefetch" href="/assets/js/93.b354f9d1.js"><link rel="prefetch" href="/assets/js/94.d41623fe.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.d23892fd.js"><link rel="prefetch" href="/assets/js/97.914b3374.js"><link rel="prefetch" href="/assets/js/98.957d1e13.js"><link rel="prefetch" href="/assets/js/99.c9c3f20a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link router-link-active"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link router-link-active"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/python/deefuture/docs/first/first.html" aria-current="page" class="active sidebar-link">第一部分</a></li><li><a href="/dev/python/deefuture/docs/second/second.html" class="sidebar-link">第二部分</a></li><li><a href="/dev/python/deefuture/docs/third/third.html" class="sidebar-link">第三部分</a></li><li><a href="/dev/python/deefuture/docs/forth/forth.html" class="sidebar-link">第四部分</a></li><li><a href="/dev/python/deefuture/docs/five/five.html" class="sidebar-link">第五部分</a></li><li><a href="/dev/python/deefuture/docs/six/six.html" class="sidebar-link">第六部分</a></li><li><a href="/dev/python/deefuture/docs/seven/seven.html" class="sidebar-link">第七部分</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>重新开发《在线教育平台》注意事项</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">重新开发《在线教育平台》注意事项</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2017/7/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h3 id="一-模块导入的问题"><a href="#一-模块导入的问题" class="header-anchor">#</a> （一）<strong><code>模块导入的问题</code></strong></h3> <p><img src="/assets/img/2018-07-052.59.54.c628173d.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>	在同级别的项目目录下，只有包才能被导入，目录是不能够被导入的。
+	包与目录的区别在于：包多个__init__.py文件
+	
+例如：
+	在test.py文件中，可以导入apps的文件，因为apps里面有__init__.py文件，apps就是一个包，不能导入templates里面的文件，因为templates是目录，没有__init__.py文件
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="二-在django项目中-新建app的方式"><a href="#二-在django项目中-新建app的方式" class="header-anchor">#</a> （二）<strong><code>在Django项目中，新建app的方式</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：命令行创建方式：
+	python manage.py startapp students
+
+2：pycharm创建方式：
+	1:选择Tools ### Run Manager.py Task 就会弹出一个命令执行区域， 类似于已经执行了python manage.py
+	2：直接 startapp students 就可以了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="三-在django项目中-给apps设置为sources-root"><a href="#三-在django项目中-给apps设置为sources-root" class="header-anchor">#</a> （三）<strong><code>在Django项目中，给apps设置为Sources Root</code></strong></h3> <div class="language-python line-numbers-mode"><pre class="language-python"><code>	由于在apps包里面，会创建很多的app， 例如students。如果你想在项目的任何一个文件随时导入一个app里面的文件，那么需要将apps作为Sources Root， 那么pycharm将会知道，文件的根路径为apps。
+	
+	例如： <span class="token keyword">from</span> students <span class="token keyword">import</span> views ， pycharm是不会报错的。都是如果你使用命令行运行这个Python文件，那么就会报错，因为Python解释器认为：Python模块的搜索路径是从当前运行的Python文件所在目录开始寻找，然后在是项目的根目录<span class="token punctuation">,</span> 一级一级找，最后到site<span class="token operator">-</span>packages目录<span class="token punctuation">(</span>第三方包目录<span class="token punctuation">)</span>。
+
+	那么如果你想使用命令行运行这个文件不报错，且将apps在命令行模式下也是Sources Root的话，需要在settings<span class="token punctuation">.</span>py文件中加入一行：
+	sys<span class="token punctuation">.</span>path<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>BASE_DIR<span class="token punctuation">,</span> <span class="token string">'apps'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>。  
+	目的就是在django的sys<span class="token punctuation">.</span>path模块搜索路径中的第一个位置加上apps的路径：<span class="token operator">/</span>Users<span class="token operator">/</span>yinhuanyi<span class="token operator">/</span>Python_Virtual_Env_2<span class="token punctuation">.</span><span class="token number">7.10</span><span class="token operator">/</span>Djang_test<span class="token operator">/</span>apps
+	
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="四-启动django项目"><a href="#四-启动django项目" class="header-anchor">#</a> （四）<strong><code>启动Django项目</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>可以在Run中点击Run指定启动pycharm中哪一个Django项目
+也可以在Run中点击Debug进行项目调试
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="五-配置django项目使用的数据库"><a href="#五-配置django项目使用的数据库" class="header-anchor">#</a> （五）<strong><code>配置Django项目使用的数据库</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>编辑settings文件，在settings文件中配置数据库如下
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '数据库名',
+        'USER': '用户名',
+        'PASSWORD': '密码',
+        'HOST': '主机IP',
+        'PORT': 端口,
+    }
+}
+
+
+且需要安装MySQL-python包，是Python连接MySQL的驱动
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h3 id="六-生成数据表"><a href="#六-生成数据表" class="header-anchor">#</a> （六）<strong><code>生成数据表</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>makemigrations : 检查更新
+migrate：更新数据表
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="七-在settings中指定html页面的templates模板"><a href="#七-在settings中指定html页面的templates模板" class="header-anchor">#</a> （七）<strong><code>在settings中指定HTML页面的templates模板</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>	在每一个app的view里面，都需要render HTML文件，那个HTML文件一般都是填写的相对地址，也就是HTML的文件名称。那么Django会在哪里找这个HTML文件呢？
+	在settings指定的模板目录中找，如下
+
+# 设置静态模板的路径
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # 这里就是指定模板路径
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media',  # 为了引用图片地址的时候，使用data-url=&quot;{{ MEDIA_URL }}{{ course_org.image }}&quot;， 因此，需要加入这个类, 使得{{ MEDIA_URL }}能够取到值
+            ],
+        },
+    },
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="八-在settings中指定静态文件static的路径-这样就能够直接在template中指定static文件的相对路径"><a href="#八-在settings中指定静态文件static的路径-这样就能够直接在template中指定static文件的相对路径" class="header-anchor">#</a> （八）<strong><code>在settings中指定静态文件static的路径, 这样就能够直接在template中指定static文件的相对路径</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：打开settings文件，你会发现已经指定了static为/static/， 
+STATIC_URL = '/static/'
+
+2：但是在template中是无法使用这个路径的，因为没有把这个路径加入到项目的路径中，因此需要把static路径加入到项目的路径中
+STATICFILES_DIRS = (os.path.join(BASE_DIR, &quot;static&quot;), )  # 等价于 /Users/yinhuanyi/Python_Virtual_Env_2.7.10/MxOnline/static
+
+3: 那么在template中引用这个静态文件就可以这样引用，指定相对路径就好了
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% static 'css/muke/course/learn-less.css' %}&quot;/### 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="九-django项目的配置过程"><a href="#九-django项目的配置过程" class="header-anchor">#</a> （九）<strong><code>Django项目的配置过程</code></strong></h3> <p><img src="/assets/img/ScreenShot_20180708140437.660a03cc.png" alt="Alt text"></p> <ul><li><strong>request请求流程</strong></li></ul> <p><img src="/assets/img/django.889beb42.png" alt="Alt text"></p> <h3 id="十-每次创建一个app都需要在settings中将它注册进来-如果不注册进来-那么执行migration的时候就不会生成表"><a href="#十-每次创建一个app都需要在settings中将它注册进来-如果不注册进来-那么执行migration的时候就不会生成表" class="header-anchor">#</a> （十）<strong><code>每次创建一个app都需要在settings中将它注册进来, 如果不注册进来，那么执行migration的时候就不会生成表</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 配置安装好的APP
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users',
+    'courses',
+    'operation',
+    'organization',
+    'xadmin',  # xadmin库
+    'crispy_forms',  # xadmin依赖的form验证库 
+    'captcha',  # 验证码处理库
+    'pure_pagination',  # 翻页库
+    'DjangoUeditor', # 富文本编辑器
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><h3 id="十一-django中的post表单提交操作"><a href="#十一-django中的post表单提交操作" class="header-anchor">#</a> （十一）<strong><code>Django中的post表单提交操作</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>	1：在Django中的每一次表单提交操作都需要提供一个{% csrf_token %}, 因为每次get这个页面的时候，服务器端都会在浏览器端写入token到cookie中。当用户点击提交请求，post表单的时候，这个 {% csrf_token %} 就会做变量替换，替换为一个input标签，获取到浏览器的token，提交到服务器端，服务器端会先通过Django的CSRF token的浏览器，验证token是否是合法的，如果合法，那么请求会通过拦截器，到达服务器端的view处理逻辑，然后就可以取出用户提交的数据了
+
+	2：Django中还有一种csrf认知机制，就是通过ajax，将token写入http的请求头。通过ajax完成一个http的自定义请求头
+
+	3：Django没有referer的CSRF认证机制，referer的认证是最简单的一种，确保每次表单提交的源站都是后台允许的源站
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="十二-django中的object管理器"><a href="#十二-django中的object管理器" class="header-anchor">#</a> （十二）<strong><code>Django中的object管理器</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>	每次当model类调用object去处理数据的时候，都会返回一个Queryset对象，这个Queryset就像一个列表一样，需要遍历才能得到每一条记录对象
+	
+	object常用的方法有：
+		all(): 返回表中的所有的行
+		filter()：返回指定的行，可以对字段进行过滤
+	
+	记录对象可以实现的操作有：
+		message.name: 获取message对象的name字段的值
+		message.save: 将message对象写入表中
+		message.delete: 将将message对象从表中删除
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="十三-简单介绍django中template如何获取到view中传递的值"><a href="#十三-简单介绍django中template如何获取到view中传递的值" class="header-anchor">#</a> （十三）<strong><code>简单介绍Django中template如何获取到view中传递的值</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Python的模板语言的使用都类似，如果在view中render的template是这样写的：
+
+return render(request, 'course-list.html', {
+            &quot;all_courses&quot;: courses,
+            &quot;sort&quot;: sort,
+            &quot;hot_courses&quot;: hot_courses,
+        })
+
+那么，你在模板语言中可以获取到all_courses、sort、hot_courses对应的value
+{% for course in all_courses.object_list %}  # 遍历
+{% if sort == 'up' %} up {% else %} down {% endif %} # 条件判断, if 和 endif是成对出现的
+
+
+文档参考：https://yiyibooks.cn/xx/Django_1.11.6/ref/templates/builtins.html
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="十四-简单介绍django中的过滤器"><a href="#十四-简单介绍django中的过滤器" class="header-anchor">#</a> （十四）<strong><code>简单介绍Django中的过滤器</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>使用的基本方式为：{{ 变量名称|过滤器名称 }}
+1：例如：{{ value|add:&quot;2&quot; }} ： 如果 value 为 4,则会输出 6
+
+2：例如：{{ first|add:second }}：first 是 [1, 2, 3] ，second 是 [4, 5, 6], 将会输出 [1, 2, 3, 4, 5, 6]， 同样适合于字符串的相加
+
+3：例如：{{ value|cut:&quot; &quot; }}：如果value为“String with spaces”，输出将为&quot;Stringwithspaces&quot;。
+
+https://yiyibooks.cn/xx/Django_1.11.6/ref/templates/builtins.html
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="十五-为django自建的user表进行扩展"><a href="#十五-为django自建的user表进行扩展" class="header-anchor">#</a> （十五）<strong><code>为Django自建的user表进行扩展</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 使用AbstractUser， 这样可以使用Django自带的用户字段，也可以添加我们自定义的字段，AbstractUser 中的所有的字段就是auth.user表中的字段，因此扩展的时候直接继承AbstractUser这个model就好了
+
+from django.contrib.auth.models import AbstractUser
+class UserProfile(AbstractUser):
+    nick_name = models.CharField(max_length=50, verbose_name=u'昵称', default=u&quot;&quot;)
+    # 这里的null 和blank一般是一组合，说明用户可以不填写
+    birday = models.DateField(verbose_name=u&quot;生日&quot;, null=True, blank=True)
+    # 对于这个性别，有两种类型，所以使用枚举
+    gender = models.CharField(
+        # 对应后台管理系统中的选择框
+        choices=((&quot;male&quot;, u&quot;男&quot;), (&quot;female&quot;, u&quot;女&quot;)),
+        default=&quot;female&quot;,
+        max_length=50,
+    )
+
+    address = models.CharField(max_length=100, default=u&quot;&quot;)
+    mobile = models.CharField(max_length=11, default=u&quot;&quot;)
+    # 图片字段，有上传的能力
+    image = models.ImageField(upload_to=&quot;image/%Y/%m&quot;, default=u&quot;image/default.png&quot;, max_length=100)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="十六-对django的django-contrib是啥-做出解释"><a href="#十六-对django的django-contrib是啥-做出解释" class="header-anchor">#</a> （十六）<strong><code>对Django的Django.contrib是啥？做出解释</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>1、它是一个强大的功能包，是Django的标准库。
+2、Django的标准库存放在 django.contrib 包中。每个子包都是一个独立的附加功能包。 这些子包一般是互相独立的，不过有些django.contrib子包需要依赖其他子包。
+3、在 django.contrib 中对函数的类型并没有强制要求 。其中一些包中带有模型（因此需要你在数据库中安装对应的数据表），但其它一些由独立的中间件及模板标签组成。
+4、django.contrib 开发包共有的特性是: 就算你将整个django.contrib开发包删除，你依然可以使用 Django 的基础功能而不会遇到任何问题。
+
+5、当 Django 开发者向框架增加新功能的时，他们会严格根据这一原则来决定是否把新功能放入django.contrib中。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p><img src="/assets/img/django.contrib.c59821f7.jpg" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>admin : 自动化的站点管理工具。
+admindocs : 为Django admin站点提供自动文档。
+auth : Django的用户验证框架。
+comments : 一个评论应用，关于这个应用的更多信息请参见Django的官方网站。
+contenttypes : 这是一个用于引入文档类型的框架，每个安装的Django模块作为一种独立的文档类型。 这个框架主要在Django内部被其他应用使用，它主要面向Django的高级开发者。可以通过阅读源码来了解关于这个框架的更多信息，源码的位置在 django/contrib/contenttypes/。
+csrf : 这个模块用来防御跨站请求伪造(CSRF)。
+databrowse：帮助你浏览数据的Django应用。
+flatpages : 一个在数据库中管理单一HTML内容的模块。
+formtools : 一些列处理表单通用模式的高级库。
+gis : 为Django提供GIS（Geographic Information Systems）支持的扩展。 举个例子，它允许你的Django模型保存地理学数据并执行地理学查询。请参看http://geodjango.org/上的文档。
+humanize : 一系列 Django 模块过滤器，用于增加数据的人性化。
+localflavor：针对不同国家和文化的混杂代码段。例如，它包含了验证美国的邮编 以及爱尔兰的身份证号的方法。
+markup : 一系列的 Django 模板过滤器，用于实现一些常用标记语言。
+redirects : 用来管理重定向的框架。
+sessions : Django 的会话框架。
+sitemaps : 用来生成网站地图的 XML 文件的框架。
+sites : 一个让你可以在同一个数据库与 Django 安装中管理多个网站的框架。
+syndication : 一个用 RSS 和 Atom 来生成聚合订阅源的的框架。
+webdesign : 对设计者非常有用的Django扩展。到编写此文时，它只包含一个模板标签{% lorem %}。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="十七-创建了users的app之后-写完users的model之后-每次都需要将app在settings文件中注册-编写的userprofile这个model比较特别-不是直接继承与models-model的-是继承abstractuser这个model-因此还有将这个用户的model在settings文件中重载"><a href="#十七-创建了users的app之后-写完users的model之后-每次都需要将app在settings文件中注册-编写的userprofile这个model比较特别-不是直接继承与models-model的-是继承abstractuser这个model-因此还有将这个用户的model在settings文件中重载" class="header-anchor">#</a> （十七）<strong><code>创建了users的app之后，写完users的model之后，每次都需要将app在settings文件中注册，编写的UserProfile这个model比较特别，不是直接继承与models.Model的，是继承AbstractUser这个model，因此还有将这个用户的model在settings文件中重载</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 配置安装好的APP
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users',
+    'courses',
+    'operation',
+    'organization',
+    'xadmin',  # xadmin库
+    'crispy_forms',  # xadmin依赖的form验证库
+    'captcha',  # 验证码处理库
+    'pure_pagination',  # 翻页库
+    'DjangoUeditor', # 富文本编辑器
+]
+
+
+# 当使用Userprofile替代Django自带的user， 之后用户都使用Userprofile这个模型来认证用户，后台也会读取这个配置，配置Django认证的时候使用的是users这个app的Userprofile这个model
+AUTH_USER_MODEL = &quot;users.Userprofile&quot;
+
+# 且不要忘记需要使用manage.py检查更新
+makemigrations 
+migrate
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><h3 id="十八-如果是使用的python2-7-那么在每个页面中-最好写上使用utf-8编码"><a href="#十八-如果是使用的python2-7-那么在每个页面中-最好写上使用utf-8编码" class="header-anchor">#</a> （十八）<strong><code>如果是使用的Python2.7，那么在每个页面中，最好写上使用utf-8编码</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># coding: utf-8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="十九-如果使用到了django的imagefield这个字段类型的话-需要安装pillow这个库"><a href="#十九-如果使用到了django的imagefield这个字段类型的话-需要安装pillow这个库" class="header-anchor">#</a> （十九）<strong><code>如果使用到了Django的ImageField这个字段类型的话，需要安装pillow这个库</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>pillow是Python Imaging Library的一个兼容版本，支持Python2和Python3.
+使用方式为：
+from PIL import Image
+这里的PIL就是Python的图形处理库
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="二十-说一说django中的循环引用"><a href="#二十-说一说django中的循环引用" class="header-anchor">#</a> （二十）<strong><code>说一说Django中的循环引用</code></strong></h3> <p><img src="/assets/img/xhyy.bb838553.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>	如上图，我们创建两个app，一个是users的app，一个是course的app。在设计表的时候，Usercourse这个model就会引用到Course这个model的主键。CourseComment这个model会引用到User这个model的主键
+	
+	那么这种情况就会变为A需要执行的时候应用了B，B需要执行的时候引用了A，那就变成了循环等待，使得A,B两个任务都无法完成，因此在设计表的时候，需要考虑到循环引用
+
+	为了解决Django的循环引用，必须使用分层设计app， 如下图
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><img src="/assets/img/fengceng.bf32b7e8.png" alt="Alt text"></p> <h3 id="二十一-说一说django的imagefield字段"><a href="#二十一-说一说django的imagefield字段" class="header-anchor">#</a> （二十一）<strong><code>说一说Django的ImageField字段</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>这个字段比较特殊，一般用来做图片上传的功能， 
+image = models.ImageField(max_length=100, upload_to='banner/%Y/%m', verbose_name=u'轮播图')
+max_length：因为数据库保存的是图片的地址，因此需要一个max_length
+upload_to：指定图片上传到哪里，这里一般是上传到media目录下，因为在setting里面会设定
+verbose_name： 指定字段在后台管理系统的名称
+
+# 设置后台图片上传和查找的路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="二十二-django是如何处理表中多对一和一对多的映射关系的"><a href="#二十二-django是如何处理表中多对一和一对多的映射关系的" class="header-anchor">#</a> （二十二）<strong><code>Django是如何处理表中多对一和一对多的映射关系的</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>Django内部的没有关于逻辑的一对多和多对一的写法，Django是通过表之间的外键来实现表与表之间的关联关系的
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="二十三-django中使用外键"><a href="#二十三-django中使用外键" class="header-anchor">#</a> （二十三）<strong><code>Django中使用外键</code></strong></h3> <div class="language-python line-numbers-mode"><pre class="language-python"><code><span class="token keyword">class</span> <span class="token class-name">Course</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">,</span> verbose_name<span class="token operator">=</span><span class="token string">u&quot;课程名&quot;</span><span class="token punctuation">)</span>
+    desc <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span> verbose_name<span class="token operator">=</span><span class="token string">u&quot;课程描述&quot;</span><span class="token punctuation">)</span>
+    detail <span class="token operator">=</span> UEditorField<span class="token punctuation">(</span>verbose_name<span class="token operator">=</span><span class="token string">u&quot;课程详情&quot;</span><span class="token punctuation">,</span>width<span class="token operator">=</span><span class="token number">600</span><span class="token punctuation">,</span> height<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span> imagePath<span class="token operator">=</span><span class="token string">&quot;courses/ueditor/&quot;</span><span class="token punctuation">,</span> filePath<span class="token operator">=</span><span class="token string">&quot;courses/ueditor/&quot;</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        verbose_name <span class="token operator">=</span> <span class="token string">u&quot;课程&quot;</span>
+        verbose_name_plural <span class="token operator">=</span> verbose_name
+
+
+<span class="token comment"># 课程一般是有很多章节的，那么课程与章节直接就是一对多的关系，Django中使用外键来描述一对多的映射关系，因此设置的一个字段为course，主键是Course表中的id字段</span>
+<span class="token keyword">class</span> <span class="token class-name">Lesson</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    course <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>Course<span class="token punctuation">,</span> verbose_name<span class="token operator">=</span><span class="token string">u&quot;课程&quot;</span><span class="token punctuation">)</span> <span class="token comment">#</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> verbose_name<span class="token operator">=</span><span class="token string">u&quot;章节名&quot;</span><span class="token punctuation">)</span>
+    add_time <span class="token operator">=</span> models<span class="token punctuation">.</span>DateTimeField<span class="token punctuation">(</span>default<span class="token operator">=</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">,</span> verbose_name<span class="token operator">=</span><span class="token string">u&quot;添加时间&quot;</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        verbose_name <span class="token operator">=</span> <span class="token string">u&quot;章节&quot;</span>
+        verbose_name_plural <span class="token operator">=</span> verbose_name
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><ul><li>Lesson表的表结构是这样的, 外键名为course_id，后面加了一个 _ 和一个主键的名称</li></ul> <p><img src="/assets/img/2018-07-255.39.49.89e5bc93.png" alt="Alt text"></p> <h3 id="二十四-文件上传字段-filefield"><a href="#二十四-文件上传字段-filefield" class="header-anchor">#</a> （二十四）<strong><code>文件上传字段 FileField</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># upload_to是文件上传的地址, 在后台管理系统中会显示一个按钮
+download = models.FileField(upload_to=&quot;course/resource/%Y/%m&quot;, verbose_name=u&quot;资源文件&quot;, max_length=100)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="二十五-如何将django生成的app移动到指定的apps目录中"><a href="#二十五-如何将django生成的app移动到指定的apps目录中" class="header-anchor">#</a> （二十五）<strong><code>如何将Django生成的app移动到指定的apps目录中</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 由于后续的过程，app会越来越多，那么一般而言，所有的app都需要移动到apps目录下，直接拖动需要移动的app到指定的apps目录即可。但是在移动的时候会出现一个提示对话框，，把search for references 和 open moved files in editor 不要打钩。但是这里就会有个问题，在某个model中取引用其他的model的时候，就会出现找不到model的错误，这是因为Python的搜索路径是从项目的根目录和当前文件所在目录往下找。那么我们需要将apps目录标记为Mark as source root， 那么这样就可以找到了。但是这样还是不行的，如果是命令行执行的话还是会出错，因此，需要在settings文件中将apps加入到Django的搜索路径中：sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))，这样就将sys.path中加入了apps的路径
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="/assets/img/2018-07-283.27.22.69779e74.png" alt="Alt text"></p> <p><img src="/assets/img/2018-07-283.29.02.fa6db50a.png" alt="Alt text"></p> <h3 id="二十六-命令行启动django项目"><a href="#二十六-命令行启动django项目" class="header-anchor">#</a> （二十六）<strong><code>命令行启动Django项目</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>python manage.py runserver 0.0.0.0:8000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="二十七-创建后台admin的管理用户"><a href="#二十七-创建后台admin的管理用户" class="header-anchor">#</a> （二十七）<strong><code>创建后台admin的管理用户</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>python manage.py createsuperuser
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="二十七-修改admin后台为中文"><a href="#二十七-修改admin后台为中文" class="header-anchor">#</a> （二十七）<strong><code>修改admin后台为中文</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 编辑settings文件
+# 让admin显示中文
+LANGUAGE_CODE = 'zh-hans'
+
+TIME_ZONE = 'Asia/Shanghai'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = False # 设置数据库存储的时间为本地时间，如果是True的话，就是UTC时间
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="二十八-当我们将所有的app拖入到apps的时候-会出现too-many-values-to-unpack的问题"><a href="#二十八-当我们将所有的app拖入到apps的时候-会出现too-many-values-to-unpack的问题" class="header-anchor">#</a> （二十八）<strong><code>当我们将所有的app拖入到apps的时候，会出现too many values to unpack的问题</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>	这是由于将app拖入到apps的时候，app的路径在migrations的文件中也会相应变化，因此：需要migrations的文件中在删除apps。
+	在Edit里面，选择find in path，然后一个一个删除掉，再次makemigration 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="二十九-安装xadmin"><a href="#二十九-安装xadmin" class="header-anchor">#</a> （二十九）<strong><code>安装xadmin</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：直接pip install xadmin （我们使用源码安装）
+2：在settings中添加xadmin 这个app
+3: 添加crispy_forms这个app
+4：在urls.py文件中将admin换成xadmin（先要导入xadmin） # url(r'^xadmin/', xadmin.site.urls),
+5: 在重启django系统
+6：makemigration 同步xadmin的数据表
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="三十-xadmin源码引入"><a href="#三十-xadmin源码引入" class="header-anchor">#</a> （三十）<strong><code>xadmin源码引入</code></strong></h3> <ul><li><strong>1：下载xadmin的源码包</strong></li></ul> <p><img src="/assets/img/2018-08-0110.20.02.65e31e62.png" alt="Alt text"></p> <ul><li><strong>2：把xadmin的目录复制到项目的根目录中， 再创建一个extra_apps目录，将xadmin的目录拖入到extra_apps目录，最后将extra_apps目录Mark 为source root。 且在settings文件中加入<code>sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))</code></strong></li></ul> <p><img src="/assets/img/2018-08-0110.39.27.cf17cabd.png" alt="Alt text"></p> <ul><li>修改urls.py文件，不再使用admin，直接引入xadmin作为管理后台</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>from django.conf.urls import url
+from django.contrib import admin
+import xadmin
+
+urlpatterns = [
+    url(r'^xadmin/', xadmin.site.urls),
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li><strong>3：根据xadmin的requirements提示，安装对应的依赖包</strong></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>django-crispy-forms&gt;=1.6.0
+django-import-export&gt;=0.5.1
+django-reversion&gt;=2.0.0
+django-formtools==1.0
+future==0.15.2
+httplib2==0.9.2
+six==1.10.0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>pip install django-crispy-forms
+pip install future==0.15.2
+pip install django-formtools==1.0
+pip install httplib2==0.9.2 
+pip install six==1.10.0
+pip install django-import-export
+pip install django-reversion
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="三十一-创建后台超级用户"><a href="#三十一-创建后台超级用户" class="header-anchor">#</a> （三十一）<strong><code>创建后台超级用户</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>引入了xadmin之后需要注册到settings文件中，且运行makemigration 和 migrate
+在命令行加入到Future_Edu项目的目录，执行 python manage.py createsuperuser, 创建超级用户
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>那么现在就可以使用超级用户登录到xadmin管理后台了</li></ul> <p><img src="/assets/img/2018-08-0211.55.30.e71be137.png" alt="Alt text"></p> <h3 id="三十二-如何设置pycharm自定义的语言模板"><a href="#三十二-如何设置pycharm自定义的语言模板" class="header-anchor">#</a> （三十二）<strong><code>如何设置pycharm自定义的语言模板</code></strong></h3> <ul><li>在pycharm的设置中，搜索template</li></ul> <p><img src="/assets/img/2018-08-0212.14.54.09112887.png" alt="Alt text"></p> <ul><li>这样就可以在pycharm中设定不同语言的模板了</li></ul> <h3 id="三十三-将所有的app的model都注册到xadmin中"><a href="#三十三-将所有的app的model都注册到xadmin中" class="header-anchor">#</a> （三十三）<strong><code>将所有的APP的model都注册到xadmin中</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>因为xadmin自动会将users的UserProfile这个model注册到xadmin中，那么现在我们只需要注册其他到model即可
+
+1：在所有的app底下创建一个adminx.py文件，那么xadmin后台会自动将adminx.py文件model注册到xadmin中， 注意不是xadmin.py， 如果命令为xadmin.py的话，在导入xadmin模块的时候，系统就以为是导入自己, 但是其实这个文件可以任意命名
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>在没有创建adminx.py文件文件之前后台是这样的</li></ul> <p><img src="/assets/img/2018-08-0212.30.37.c39e0719.png" alt="Alt text"></p> <ul><li>创建adminx.py文件文件之后，且注册了model到xadmin之后是这样的，这里<code>用户信息</code>、<code>邮箱验证吗</code>、<code>轮播图</code>，的名字是哪里来的呢，这样由于这个model的meta信息是中指定的</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>class Meta:
+    # 用来描述这张表
+    verbose_name = u&quot;用户信息&quot;  
+    verbose_name_plural = verbose_name # 如何不加这个，在后台就显示为 用户信息s 了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p><img src="/assets/img/2018-08-0212.45.48.cb9e47bc.png" alt="Alt text"></p> <ul><li>将一个app的一张表注册到后台管理系统中如何做呢？只需要四步就可以</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import xadmin  # 导入xadmin模块
+from .models import EmailVerifyRecord  # 导入需要注册的model
+class EmailVerifyRecordAdmin(object):  # 创建model管理器
+    pass
+xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin) # 将model注册到管理器中
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="三十四-在后台给表插入数据-以邮箱验证码为例"><a href="#三十四-在后台给表插入数据-以邮箱验证码为例" class="header-anchor">#</a> （三十四）<strong><code>在后台给表插入数据，以邮箱验证码为例</code></strong></h3> <p><img src="/assets/img/2018-08-021.02.02.4bac13cb.png" alt="Alt text"></p> <ul><li>这里会显示邮箱验证码的中文名称，是因为每一个字段都设置了中文名称<strong>verbose_name</strong></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>code = models.CharField(max_length=20, verbose_name=&quot;验证码&quot;)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="三十五-如何在过滤器中使用外键字段"><a href="#三十五-如何在过滤器中使用外键字段" class="header-anchor">#</a> （三十五）<strong><code>如何在过滤器中使用外键字段</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># TODO:将外键引用的name字段添加到过滤过滤中, 直接将字段名加上两个下划线引入名字即可
+list_filter = ['course__name', 'name', 'add_time', ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="三十六-如何让后台显示app的时候显示自定义的中文名称-而不是app本身的英文名"><a href="#三十六-如何让后台显示app的时候显示自定义的中文名称-而不是app本身的英文名" class="header-anchor">#</a> （三十六）<strong><code>如何让后台显示app的时候显示自定义的中文名称，而不是app本身的英文名</code></strong></h3> <ul><li>设置之前是这样</li></ul> <p><img src="/assets/img/2018-08-029.28.57.8eec9066.png" alt="Alt text"></p> <ul><li>修改每一个APP的<code>apps.py</code>文件和<code>__init__.py</code>文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># apps.py 文件
+class UsersConfig(AppConfig):
+    name = 'users'
+    verbose_name = u&quot;用户信息&quot;  # 在xadmin自定义的APP的中文名称
+
+# __init__.py 文件
+default_app_config = &quot;users.apps.UsersConfig&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>修改之后是这样的</li></ul> <p><img src="/assets/img/2018-08-029.28.57.8eec9066.png" alt="Alt text"></p> <h3 id="三十七-如何修改全局样式、主题样式-后台管理系统的标题"><a href="#三十七-如何修改全局样式、主题样式-后台管理系统的标题" class="header-anchor">#</a> （三十七）<strong><code>如何修改全局样式、主题样式，后台管理系统的标题</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 修改全局样式以及修改后台管理系统的标题
+class GlobalSetting(object):
+    site_title = &quot;Future视频教学管理系统&quot;
+    site_footer = &quot;Future视频教学管理系统&quot;
+    menu_style = &quot;accordion&quot;  # 让后台APP的model自行折叠
+    
+xadmin.site.register(views.CommAdminView, GlobalSetting)
+
+# 修改主题样式
+class BaseSetting(object):
+    enable_themes = True
+    use_bootswatch = True
+    
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><ul><li><strong>修改前是这样的</strong></li></ul> <p><img src="/assets/img/2018-08-032.53.42.0182316a.png" alt="Alt text"></p> <ul><li><strong>修改后是这样的</strong></li></ul> <p><img src="/assets/img/2018-08-032.57.15.56c2da55.png" alt="Alt text"></p> <h3 id="三十八-如何替换xadmin的字体图标"><a href="#三十八-如何替换xadmin的字体图标" class="header-anchor">#</a> （三十八）<strong><code>如何替换xadmin的字体图标</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>在font awesome官网下载字体图标的css包，在xadmin中替换font-awesome的css和fonts。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="/assets/img/2018-08-043.07.30.844c226f.png" alt="Alt text"></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>在每一个app的adminx.py文件的model中加上 model_icon = 'fa fa-tablet'  这一行即可
+注意：有一些css的字体图标用引用不了，所有需要选择一下
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="三十九-在项目根目录下创建static目录-将前端准备好的css、images、img、js-拷贝到static目录中-这一块需要自己能够开发"><a href="#三十九-在项目根目录下创建static目录-将前端准备好的css、images、img、js-拷贝到static目录中-这一块需要自己能够开发" class="header-anchor">#</a> （三十九）<strong><code>在项目根目录下创建static目录，将前端准备好的css、images、img、js 拷贝到static目录中（这一块需要自己能够开发）</code></strong></h3> <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAABkCAYAAAD64c5QAAAO30lEQVR4Xu2de1QU1x3Hv7wEkcfyRkTkJRKVgEUxID5BEI0mVasxPhI1qbExSdNzmuS0p+e0pyc9bU/bU9uYUKOeRmM0CUYRyxtUXsryUJCHsuAi8kZdXr6B7ZlZUZTFnSWz7Ozsb/5C5jd37v387sfZGfZ3x2T+wsVKjLDZ2VjD2toaHR67Rgqh3xMBIvCIQGvaDgAP2X+ZkFg0L4gAPwRILH44UitE4CkCJJaeJsS0yeNx5fpdPZ2dTqtrAqISa/nMzmG86jvGoarNWtcctWo/dO4U/G3DFBSeuYJPTrRpdSwFGwYB0YvFpKHx1jiUN/Mn17ZNIVhipcCmfdc4ZfnZeFdfV/xurQcqc68i/lw3pzYoyLAICEKsVTM6McWpb0Ry9TfNkVQp0UhW3RVL40EAkis0tz20nR8rFpc+UYxhExCEWE7WfdgQ2gkTk+EwB5TAkWIJbt0110iaT7HWxPph4zIPODCdUt7B8aR67D7dg9+/F4RFvk+ufgnfXsSec91YFe2DTcs94WLKDKIPZ07XY3fSTXywa3j8oavjsOcjf5xPqGKPnRrgindf9UawhxU7xrILjdjztRyy/hH/+qGRBQXol4AgxGIQLPbrwcxJ94fRuNRkiTN1tpwo8SXWpOmT8PXP/XA+X47kS3cwL9ILsTPN8ee/lKDbzRlLI7wQZt6DQyUK1NbegNzSGV99OA0tFc04XtoF3wBXrA13xpfxBZBbOQ6Ll8EJ//0kEOcTK/Dvi8AXv5uBSXd6cDi1Gf0Se2xb6oHuyga88mU9p3FTkPAICEYsa4sBbAlTwMLsyf/SD/tN8FWhA+72mXIix7dYuTlyJBW3o6jhPibaW6ClS/UHP3UfBZn9zGZtZQ6JiwN+u90PxScr8KfTimHxdm4uj8XKe+CIT9e54fPPCvF9bT/bxpIIT/hb3sfe0x2cxk1BwiMgGLEYNLM9byPc98kj6Pza8ShtnsCZGl9iKU0s8Yt1PlgX7vro3PdxNqcJu483QqEE3t4UgoVDHl7YuTng4/U+iPC1eaqvKScu4a9nFGrih4rlgE/XObFXw7SWAc5jpUBhExCUWGYmSmyeo4Ct1QC675ri62IH9CvV3HiNwJQvsYY2P2uaI+aFTsSaMCccOlCEA+V32SvQqzZdWBUvZ0PXrHwBu6JscOBgDQ6VdsHRyxX7PpzGftRjxHo2fugVq6DfEX9c44bd/yzEiXrVFStohjMCbPpxrFAh7NlDvRuRgKDEYno51fkelk3vRWqVDWQ3VDfzXDe+xIqI8MOn6yYhPe0KEkt7MWuuJ95a4oYD/ynCoeq77BXo9VAz7DssR75MgaB5AfhVjATfJVxFqUKJuIXeWBhgjaFXrKHxPfbO+PJD1T1WfLUZ9nwUCJebnfg8qRF9tnZ4c+0UWNe34OV/1XIdOsUJjIDgxGIewkV69yCv3hZKLR+K8SWW0nQCPt7qh7igJ4/hz5yW4Q+JLWz6wud64devTWGfGGYkXsJnVcBvNvpjrtd4dr+8vgc+3rY4lVCGv+d1qYk3Q/zHL6Dkh3J2f3DwJLy/2ge+9qp7ybb6Dnxx9ArOttJHQ4H5wrk7ghOLc8/VBPIl1mDT1vZWmGhlglvtd9l7K02bn9t4QNmPuvYHmkKH7zcxh5+rxeiP1/6MdIQOCYhKLB1yoqaJgFYESCytcFEwEeBGgMTixomiiIBWBEgsrXBRMBHgRkBrsVrbb3BrmaKIgBET6GhjniBrUZpPYhnxbKGhcyZAYnFGRYFEgDsBEos7K4okApwJkFhqUK1au37Yb6/KalBRdoEzWAo0bgKiE2vrG1twKjkFHR2jL7lQJxYzTa7Xy3GhWGrcM4ZGz4mA6MT65fuqBUWvNVxHSmoa7t27xwnE0KCRxNLU0MmEbzWF0H4jISBasZj8DQwMoPTCReTlF2iVTj7Fcps6G7FLwuHtoqqCrq+WIv1ENlr7BzBn8cuYHxEEG+abxwMdkJ4tQGp+JRv3vH1aDYaC9UJA1GINEr3/4AHS0zJQJ1fVT2na+BLLwmE63tq5Co53mpCbXw6lvRcWvxSE27IC7CsbwAdrI1FzIRcXazoxLTQCwb4mOHFgP65JwkfcV96q+tsIbcImYBRiDaag4FwhpEVFGjPCl1hTw1Ziw1I/pH3zBQrlqvU8ps+ZD/dxXSi5KWHlqS7JQemlStQ1KiCxt0dnVxfsAxeMuE9j5ylAEASMQqy+vj7k5uWhrLyCE3T+xFqBDdGT2avQsCuNmTOiV0Qj4kVfVZ+U3agsLUVa2jn0mjiNvI9Ztoo2wRMQtVhKpRJV1dXIysqGNvORL7ECwlfitSV+SD74OYqvq2q0JgeGYKL1bUhLZY8nxxT/GZg2cxZemumFs8f24mz1k6+NPW+f4GeXEXdQtGK1tbXjfykp6O7u0Tq9fIll6R6Ct7Ytg+0tOTLOlqDfdgoWRYfBorEYJy5bYUNMEMryU1Bc1Q7vkEhEzfFD9nd70SYJH3FfXg19V1PrhOrhANGJtePt7UhNy8C1hoZR4+RLLKYDXjMjERcdCTcbVdl9Z9NlZCQnoeqmO1aticKsqR6P+1kpzcCx9CIozSePuG/Ug6IDx5SA6MTigx6fYrH9MbWDmzOzMM4DtLU//eIGC3sXOFqa4PaNDvQ+83n1efv4GCe1oTsCJJbu2FLLRkyAxDLi5NPQdUeAxNIdW2rZiAmQWEacfBq67giQWLpjSy0bMQESy4iTT0PXHQESS3dsqWUjJkBi6Tj5Eye5oqWpXcdnoeaFRoDEUpMRvkrzfUJjsDluNmqkKTiaTmX9Qpv8uuyP6MQSUmm+jXcofhYbjOvFWcgsuabLPFLbAiMgOrGoNF9gM8xIuyNasZh86rs0n/12+9aFkKUn4myTBFvX/wTNdV0IDA6AlYkJakpy0XDfAdERM9np1yovR1ZyKuoUfQhdEIf5kSGwMzUBlHdQWXQOaZlS9vuEQ7/Y29/bggp5L/y9xyPt6BFUtD0EuxxAVBS8nc3Ydpkq5VMpeeyxVPI/NqaLWqxBhPoqzbd0D8W722Mgy05AutwOO7fFwA5tOJNZBkv3AIS/6MOudZGTWQo4+WBBaADKsr5HRqMDdm2JgkJ2AdKqZrj6zmBjM4/+AyW9gdixLQ4Tuq8h93wlTB29sShsBjBwC8mHDqCs159dDsCuQ47cCzJYOHpjYVgge5+X0mBLJf9j4xWMQqxBlmNdmq9OrLrso0g6L4e5Ywh2vROHazkJOJ4nA8zcse2jN3HzzDEknpOxZfrMZmlpifFO/li9eiHqshNQjcBhxZNz4zYidpYtTh06gJ6JS7EhJhg5iYdR3nYX92+ZIWrjZgRJruJwRge2rJ6ndjmAMZpvRnMaoxBLX6X5z4o1ePVKOifD431ZKtEYsTbvegPd0h+QdnUcXombj2mejk9NxAtZ3+Nyf8Cwcn+f2cuwOdYfpw7ufSzWszP4wY0r2L8/B8FxUeqXA9CmxNpo9Bj9QEUtlr5L8zmJlZ0ARjRGrC3vvYGuwh/QYhuKZbMlyE7KQN6lOlhPDsM7W6LYj5SX+wPZBWoyv41HQa1qzcR5KzYiKlh1xer1jGWvaEMXsGHqulwtH6JpSC0YlfyPXhouR4pWLCGU5ltPDsU7W1T3WFmNdo9/fuqKpUas6xNm4eW5rijIyIG82xSzwiIx3csOzBUr9bIFew/lgnZIz9XC1N4Ts2d6s/dYjFiVD6ez92BWrdVIyy3DgJ0nImPnYYJcisS6CVTyz8UKHmJEJ5aQSvOZp4LMJK/NPIKsBsnjn5Ol9RjcJ390z/XsR8GfrlyCqe6qRT7bmlvh5uGO4vRvwBxr5TYDq2LDEejlis6mK6huViJ8tgeSD+5lF63xC1mIFcsjIGGeKLLLAVxBRvLJ5y4HwMNcoiaGEBCdWHxkl/fS/FF2ys3VdVg5PyPV8gUBaK0uREFFM9ty+IqNWBpsiYT4Q6i69WhBz1EuBzDKrtJhzxAgsQxsSjALzWze8Tp8HczQ3tSAPqtJ8HAyQ1PFWew/kW9goxFvd0ksA8ythcQLL82eDjf78YDyIdqvX0VOUZUBjkS8XSaxxJtbGpkeCZBYeoRPpxYvARJLvLmlkemRAImlR/h0avESILHEm1samR4JkFg6hk+l+ToGLNDmSSw1iaHSfIHOVgPqlujEotJ8A5p9Iu6q6MSi0nwRz1YDGppoxWJyYMil+ZrK7w1ojhllV0Ut1mBGDa00P1U+4bnl94OvXTXKGWsggzYKsQZzYSil+ZrK70sfvc/YQOaYUXbTKMQytNL8Kg3l9ySW8F0VtViGWppfpaH8nsQiscacwOBTQUMuzU/WUH5PYo35tNL6hKK7YomhNJ9Z/kxT+b3WmaYDxpSA6MTig56+S/M5l9/zMVhqQycESCydYP1xjVL5/Y/jJ4SjSSwhZEFNH6j8XqCJ4dgtEosjKAojAtoQILG0oUWxRIAjARKLIygKIwLaECCxtKFFsUSAIwESiyMoCiMC2hAgsbShNYpYKs0fBTQRHEJiqUkileaLYGbreQiiE4tK8/U8o+j0LAHRiUWl+TSzhUBAtGIxcAVRmr9tGeoyjiK1qJ7eWC+EGT9GfRC1WIMMhVCan6OYSG+sH6NJLYTTGIVYg6D1WZo/KFZ1SQ5KL1WirlEBib09Oru6hDAPqA88EzAKsYRQmp8kVSB6RTS9sZ7nCSzU5kQtlpBK85kXeg9u9MZ6oerAX79EK5YQSvMt3UPx7vYYyLITcJlZxyImCGX5KSiuaod3SCSi5vgh+7u9yKu5wV9GqSVBEBCdWMIqzQ/Fzm0xqDudgJNF97BqTRRmTfV4nPhKaQaOpRcJYiJQJ/glIDqx+MDDV2m+rX84dq5fhPL0I+zjdmazsHeBo6UJbt/oQO+Ako/uUhsCJEBi6SgpPmErsDkmGBhoRkL8YVTdeqijM1GzQiRAYukoK86eAZjqaYOmq+VoaO/T0VmoWaESILGEmhnql0ETILEMOn3UeaESILGEmhnql0ETILEMOn3UeaESILGEmhnql0ETILEMOn3UeaESILEElhlL9xD2bY61mUeQLFX9UZk2wyMwVKz/A3fhCpKGALlgAAAAAElFTkSuQmCC" alt="Alt text"></p> <h3 id="四十-配置静态文件的查找路径"><a href="#四十-配置静态文件的查找路径" class="header-anchor">#</a> （四十）<strong><code>配置静态文件的查找路径</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, &quot;static&quot;), )
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>为什么这么写，因为在html模板中引用css文件是这样引用的：下面是两种方式
+
+# 第一种是直接写死, html解析到/static/的时候就知道去STATICFILES_DIRS所指定的目录下寻找
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/static/css/reset.css&quot;&gt;
+
+# 第二种是通过Django的模板语法，{% static 'css/reset.css' %} 等价于 /static/css/reset.css
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% static 'css/reset.css' %}&quot;&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="四十一-在django框架中显示第一个页面"><a href="#四十一-在django框架中显示第一个页面" class="header-anchor">#</a> （四十一）<strong><code>在Django框架中显示第一个页面</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>from django.conf.urls import url
+
+import xadmin
+# 导入TemplateView这个类
+from django.views.generic import TemplateView
+
+urlpatterns = [
+    url(r'^xadmin/', xadmin.site.urls),
+    # 直接可以渲染template目录中的index.html页面
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>这样就会渲染index.html页面，都是里面的css,  js,  image需要修改下链接</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% static 'css/reset.css' %}&quot;&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>在index.html页面中加上</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;a style=&quot;color:white&quot; class=&quot;fr loginbtn&quot; href=&quot;/login/&quot;&gt;登录&lt;/a&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>在页面中加入urls.py中加入，就可以点进登录按钮，跳转到登录页面</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>url(r'^login/$', TemplateView.as_view(template_name='login.html'), name='login'),
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="四十二-在views-py文件中-添加登录处理逻辑"><a href="#四十二-在views-py文件中-添加登录处理逻辑" class="header-anchor">#</a> （四十二）<strong><code>在views.py文件中，添加登录处理逻辑</code></strong></h3> <ul><li>改写urls.py文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 当URL为login的时候，调用users.views中的login函数
+url(r'^login/$', login, name='login'),
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>在views.py文件中添加处理逻辑</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>from django.shortcuts import render
+from django.contrib.auth import authenticate,login
+
+
+def user_login(request):
+    if request.method == 'POST':
+        user_name = request.POST.get(&quot;username&quot;, &quot;&quot;)
+        pass_word = request.POST.get(&quot;password&quot;, &quot;&quot;)
+        # 这里的authenticate是验证后台传递的user_name，pass_word是否在数据库中，如果在数据库中，就会返回对应的Userprofile类的实例名称
+        user = authenticate(username=user_name, password=pass_word)
+        # 如果user有值，那么使用login函数，将这个user写入客户端的session中
+        if user:
+            login(request, user)
+            return render(request, 'index.html')
+    elif request.method == 'GET':
+        return render(request, 'login.html', {})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="四十三-重载django的认证方式-实现自定义的用户名和邮箱验证"><a href="#四十三-重载django的认证方式-实现自定义的用户名和邮箱验证" class="header-anchor">#</a> （四十三）<strong><code>重载Django的认证方式，实现自定义的用户名和邮箱验证</code></strong></h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># 在setting文件中加入
+# 这里让用户名和密码认证变为了 使用邮箱和用户名都可以认证， 最后需要重写这个class的认证方法
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
+
+
+# 在users的views.py中加入
+
+from django.shortcuts import render
+from django.contrib.auth import authenticate,login
+from django.contrib.auth.backends import ModelBackend
+from users.models import UserProfile
+from django.db.models import Q
+
+
+
+# 重写认证方法
+class CustomBackend(ModelBackend):
+    def authenticate(self, username=None, password=None, **kwargs):
+        try:
+            # 通过用户传递进来的用户名或邮箱判断用户是否是注册用户, 这里引入的Django的或查询方式Q， 这样可以实现与和或运算的随意书写
+            user = UserProfile.objects.get(Q(username=username) | Q(email=username))
+            # 使用Django的密码认证机制，看用户的密码是否能够匹配
+            if user.check_password(password): # 如果匹配，把这个查询的用户return回去
+                return user
+            return None  # 匹配不了，返回None
+        except Exception as e:  # 如果查询异常，返回None
+            return None
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><ul><li>修改完毕之后，在使用邮箱+密码的方式登录，看看是否可以登录</li></ul> <h3 id="四十四-使用django-fbv-function-base-views-方式编写后台逻辑"><a href="#四十四-使用django-fbv-function-base-views-方式编写后台逻辑" class="header-anchor">#</a> （四十四）<strong><code>使用Django FBV（function base views）方式编写后台逻辑</code></strong></h3> <ul><li>在views.py里面编写</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>def user_login(request):
+    if request.method == 'POST':
+        user_name = request.POST.get(&quot;username&quot;, &quot;&quot;)
+        pass_word = request.POST.get(&quot;password&quot;, &quot;&quot;)
+        user = authenticate(username=user_name, password=pass_word)
+        if user:
+            login(request, user) # 给客户端写入session，
+            return render(request, 'index.html')
+        else:
+	        # 这个msg变量可以传递到前端html中，显示错误提示
+            render(request, 'login.html', {'msg':'用户名或密码错误'})
+    elif request.method == 'GET':
+        return render(request, 'login.html', {})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>在html中使用msg变量，作为错误提示</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!-- 错误提示 --&gt;
+&lt;div class=&quot;error btns login-form-tips&quot; id=&quot;jsLoginTips&quot;&gt;
+	{{ msg }}
+&lt;/div&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="四十五-使用django-cbv-class-base-views-方式编写后台逻辑"><a href="#四十五-使用django-cbv-class-base-views-方式编写后台逻辑" class="header-anchor">#</a> （四十五）<strong><code>使用Django CBV（class base views）方式编写后台逻辑</code></strong></h3> <ul><li>在views.py文件中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 之前都是使用的Django的 FBV（function base views），实现的后台逻辑
+# 现在开始修改后台逻辑为CBV的方式
+
+# 在views.py中编写如下内容：
+# 使用Django的内置view类处理展示逻辑
+from django.views.generic.base import View
+# 这里重写了get和post方法，只要是前端请求的是get方法，就会调用这里的get方法，请求的是post方法，就会调用这里的post方法
+class LoginView(View):
+    def get(self, request):
+        return render(request, &quot;login.html&quot;, {})
+
+    def post(self, request):
+        # 引入form对input的信息做验证
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid(): # 如果填入的值合法，开始查询数据库
+
+            user_name = request.POST.get('username', &quot;&quot;)
+            pass_word = request.POST.get('password', &quot;&quot;)
+
+            user = authenticate(username=user_name, password=pass_word)
+
+            if user:  # 如果数据库匹配正确
+                if user.is_active: # 如果用户的账号是激活的
+                    # login()函数，功能是：当用户第一次登录成功，那么给django_session表中会添加一条session记录，且在浏览器端写入一个sessionID，将index.html渲染给用户，且渲染过程中会判断{% if request.user.is_authenticated %}, 如果是True，那么显示用户登录状态信息。当用户第二次访问首页的时候，会带着浏览器的sessionID，发起请求，Django的拦截器会查询数据库，看看是否有这个sessionID存在，如果有，直接显示用户的登录信息
+                    login(request, user) # 这里也是的如果用户没有登入的情况下，访问个人中心，自动跳转到登入页面
+                    return HttpResponseRedirect(reverse('index'))
+                else:
+                    return render(request, &quot;login.html&quot;, {&quot;msg&quot;: &quot;您还没有激活邮箱链接，请激活邮箱链接再登入&quot;})
+            return render(request, &quot;login.html&quot;, {&quot;msg&quot;: &quot;用户名或密码错误!&quot;})
+        return render(request, &quot;login.html&quot;, {&quot;login_form&quot;: login_form})
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><ul><li>在urls.py文件中处理路由的时候，就需要修改之前的函数调用方式， 改为类调用的方式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># from users.views import user_login
+from users.views import LoginView
+# url(r'^login/$', user_login, name='login'),
+url(r'login/$', LoginView.as_view(), name='login')
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="四十六-使用django-的form最表单做验证"><a href="#四十六-使用django-的form最表单做验证" class="header-anchor">#</a> （四十六）<strong><code>使用Django 的Form最表单做验证</code></strong></h3> <ul><li><p>在users这个APP中，添加forms.py文件，用于对提交到后台的form表单的input框的内容做格式、长度等合法性验证，合法性验证通过之后，在查询数据库对比是否用户名和密码正确。Form合法性验证是Django自带的功能</p></li> <li><p>这里的LoginForm类中，username的字段名称和password的字段名称，必须与HTML中的的input表单中的name属性的值一样**<code>&lt;input name=&quot;username&quot;/### &lt;input name=&quot;password&quot;/&gt;</code>**，如果不一样，那么Form在验证的时候就会报错</p></li> <li><p>Form验证的目的就是对前端传递的值做验证，<code>将验证返回的对象传递到前端页面显示，使用Django的模板语法，生成HTML代码</code></p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>from django import forms
+from .models import UserProfile
+
+# 引入form做表单在数据库查询之前的验证
+class LoginForm(forms.Form):
+    # 这两个验证属性的名称的名称，必须要与login.html中的input元素的name属性对应，这样才会使得form帮助我们自行验证
+    # required=True, min_length=6表示：input必须不为空，且最小字符为6个
+    username = forms.CharField(required=True, min_length=6)
+    password = forms.CharField(required=True, min_length=6)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>修改views.py文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>from .forms import LoginForm  # 导入LoginForm类
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, &quot;login.html&quot;, {})
+
+    def post(self, request):
+        # 引入form对input的信息做验证
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid(): # 如果填入的值合法，开始查询数据库
+            user_name = request.POST.get('username', &quot;&quot;)
+            pass_word = request.POST.get('password', &quot;&quot;)
+
+            user = authenticate(username=user_name, password=pass_word)
+            if user:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect(reverse('index'))
+                else:
+                    return render(request, &quot;login.html&quot;, {&quot;msg&quot;: &quot;您还没有激活邮箱链接，请激活邮箱链接再登入&quot;})
+            return render(request, &quot;login.html&quot;, {&quot;msg&quot;: &quot;用户名或密码错误!&quot;})
+        return render(request, &quot;login.html&quot;, {&quot;login_form&quot;: login_form}) # 如果用户填写的登录信息没有成功通过合法性验证，直接把login_form对象返回给前端页面
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><ul><li>前端页面需要显示login_form返回的错误信息，提醒用户，那么就需要修改login.html文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 这个div是高亮提示
+&lt;div class=&quot;form-group marb20 {% if login_form.errors.username %} errorput {% endif %} &quot;### ... &lt;/div&gt;
+
+# 这个div是高亮提示
+&lt;div class=&quot;form-group marb8 {% if login_form.errors.password %} errorput {% endif %} &quot;### ... &lt;/div&gt;
+
+# 这个div是显示错误信息
+&lt;div class=&quot;error btns login-form-tips&quot; id=&quot;jsLoginTips&quot;&gt;
+	{% for key, value in login_form.errors.items %}
+	    {{ value }}
+    {% endfor %}
+    {{ msg }}
+&lt;/div&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>form验证错误的提示效果是这样的</li></ul> <p><img src="/assets/img/2018-08-079.49.45.9fc636e5.png" alt="Alt text"></p> <h3 id="四十七-使用django-的login函数实现session保持的原理"><a href="#四十七-使用django-的login函数实现session保持的原理" class="header-anchor">#</a> （四十七）<strong><code>使用Django 的login函数实现session保持的原理</code></strong></h3> <ul><li>HTTP请求无状态</li></ul> <p><img src="/assets/img/ScreenShot_20180807220145.1ac5edee.png" alt="Alt text"></p> <ul><li>HTTP请求有状态（给浏览器写入sessionID, 无法跨越存储）</li></ul> <p><img src="/assets/img/ScreenShot_20180807220724.c529a5cc.png" alt="Alt text"></p> <p><img src="/assets/img/2018-08-0710.08.33.e073442e.png" alt="Alt text"></p> <ul><li>cookie 与 session的区别</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cookie机制：
+	当用户第一次成功登录的时候，服务器端给浏览器写入一段cookie信息，cookie信息中保存了用户的用户名和密码等认证信息，当用户第二次登录的时候，浏览器就会携带用户的cookie信息进行登录。因此，这样就导致不安全，因为浏览器的cookie信息可能被盗用，使得用户的认证信息被泄露了
+
+session机制：
+	正是由于cookie验证机制的不安全性，因此session机制诞生了
+	session机制其实就是在cookie机制的基础之上，使得cookie的值为一段hash乱码，不再是以前的用户的认证信息了，当用户第一次请求的时候，首先会被settings文件中的'django.contrib.sessions' 这个APP 和 'django.contrib.sessions.middleware.SessionMiddleware'这个中间件所拦截，目的就是检查浏览器携带的sessionID的值是否与在django_session表中存在，如果存在那么取出sessionID在数据库中被加密的值，解密后，获得用户的登录信息，再从users.profile表中查询，如果查询到了，说明用户sessionID是合法的，那么在前端页面可以这样判断{% if request.user.is_authenticated %}，让页面显示用户已经登录的状态。如果浏览器没有携带用户的sessionID,或者与数据库中的sessionID不匹配，那么显示用户未登录状态。
+	当用户第一次登录，点击登录按钮，会发起一个post请求到服务器端，如果登录成功，那么返回登录首页，同时，也会被settings文件中的'django.contrib.sessions' 这个APP 和 'django.contrib.sessions.middleware.SessionMiddleware'这个中间件所拦截，将用户的登录信息加密之后，写入django_session表中，然后返回一个sessionID对应的hash乱码给浏览器端。
+	当用户第二次访问的时候，就会携带这个sessionID对应的hash乱码请求服务器，那么经过浏览器之后，就知道用户是合法用户还是非合法用户了
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>浏览器的cookie值存储如下所示</li></ul> <p><img src="/assets/img/2018-08-0711.16.18.9a59dcf3.png" alt="Alt text"></p> <ul><li>django_session表中存储的cookie值如下所示</li></ul> <p><img src="/assets/img/2018-08-0711.16.35.2eb69c2a.png" alt="Alt text"></p> <h3 id="四十八-首页的注册功能实现"><a href="#四十八-首页的注册功能实现" class="header-anchor">#</a> （四十八）<strong><code>首页的注册功能实现</code></strong></h3> <ul><li>拷贝register.html到template目录, 将css、js等路径修改好, 将form表单的action的值改为/register/， 将index.html的注册的form表单的值也改为/register/</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># register.html
+&lt;form id=&quot;email_register_form&quot; method=&quot;post&quot; action=&quot;{% url 'register' %}&quot; autocomplete=&quot;off&quot;&gt;
+
+# index.html
+&lt;a style=&quot;color:white&quot; class=&quot;fr registerbtn&quot; href=&quot;{% url 'register' %}&quot;&gt;注册&lt;/a&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>编写views.py文件，添加一个出来register的view</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>class RegisterView(View):
+    def get(self,request):
+        return render(request, template_name='register.html', context={})
+
+
+    def post(self,request):
+        pass
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>在urls.py文件里面添加路由处理逻辑</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>from users.views import LoginView, RegisterView
+
+urlpatterns = [
+    url(r'^xadmin/', xadmin.site.urls),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'login/$', LoginView.as_view(), name='login'),
+    url(r'register/', RegisterView.as_view(), name='register'),
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="四十九-url命名空间与static命名空间"><a href="#四十九-url命名空间与static命名空间" class="header-anchor">#</a> （四十九）<strong><code>URL命名空间与static命名空间</code></strong></h3> <ul><li>之前在HTML页面中写URL和静态文件路径的时候，都是直接编写的，以后我们采用Django模板的语法编写</li></ul> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 例如，以前写URL地址是这样写的</span>
+<span class="token operator">&lt;</span>a <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;color:white&quot;</span> <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">&quot;fr registerbtn&quot;</span> <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;/register/&quot;</span><span class="token operator">&gt;</span>注册<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+
+<span class="token comment"># 现在改为这样，使用Django的语法</span>
+<span class="token operator">&lt;</span>a <span class="token assign-left variable">style</span><span class="token operator">=</span><span class="token string">&quot;color:white&quot;</span> <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">&quot;fr registerbtn&quot;</span> <span class="token assign-left variable">href</span><span class="token operator">=</span><span class="token string">&quot;{% url 'register' %}&quot;</span><span class="token operator">&gt;</span>注册<span class="token operator">&lt;</span>/a<span class="token operator">&gt;</span>
+
+<span class="token comment"># 因为在urls.py文件中，给路由指定了一个register的名称空间， 那么{% url 'register' %}就等于/register/</span>
+url<span class="token punctuation">(</span>r<span class="token string">'register/'</span>, RegisterView.as_view<span class="token punctuation">(</span><span class="token punctuation">)</span>, <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">'register'</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>static静态文件的路径也可以有类似写法</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 先加上load staticfiles，才能使用这样的static语法, 这是因为在settings文件中，设置了 STATIC_URL = '/static/'， 那么{% static 'css/reset.css' %}就等于 /static/css/reset.css/
+{% load staticfiles %}
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;{% static 'css/reset.css' %}&quot;&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="五十-django处理图片验证码django-simple-captcha库介绍"><a href="#五十-django处理图片验证码django-simple-captcha库介绍" class="header-anchor">#</a> （五十）<strong><code>Django处理图片验证码django-simple-captcha库介绍</code></strong></h3> <ul><li>安装django-simple-captcha库</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 安装django-simple-captcha 0.4.6版本
+pip install django-simple-captcha==0.4.6
+
+# 将captcha写入settings文件中，加入到INSTALL_APPS中，因为这个库会生成一些表， 用于存储验证码图片的路径地址
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'users',
+    'courses',
+    'organization',
+    'operation',
+    'xadmin',
+    'crispy_forms',
+    'captcha',  # 加入到这里
+]
+
+
+# 设置验证码图片的路由， 需要先导入include
+from django.conf.urls import url, include
+
+urlpatterns = [
+    url(r'^xadmin/', xadmin.site.urls),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'login/$', LoginView.as_view(), name='login'),
+    url(r'register/', RegisterView.as_view(), name='register'),
+    url(r'^captcha/', include('captcha.urls')),  # 加在这里
+]
+
+# 使用pycharm运行migration
+manage.py@Future_Edu ### makemigrations
+manage.py@Future_Edu ### migrate
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><ul><li>修改views.py文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>class RegisterView(View):
+    def get(self,request):
+        register_form = RegisterForm()  # 这是实例化ForgetForm的目的在于在HTML页面中自动生成验证码图片
+        return render(request, template_name='register.html', context={'register_form':register_form})
+
+    def post(self,request):
+        pass
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>修改register.htm文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;div class=&quot;form-group marb8 captcha1 {% if login_form.errors.captcha %} errorput {% endif %} &quot;&gt;
+	&lt;label&gt;验&amp;nbsp;证&amp;nbsp;码&lt;/label&gt;
+    &lt;!-- 使用captcha渲染出带验证码的HTML --&gt;
+    {{ register_form.captcha }}
+&lt;/div&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>这里的 register_form.captcha 会生成如下HTML代码</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;img src=&quot;/captcha/image/d2939093784107ac4a0392b0ddbb0ec3f04ffdbf/&quot; alt=&quot;captcha&quot; class=&quot;captcha&quot;&gt;
+&lt;input id=&quot;id_captcha_0&quot; name=&quot;captcha_0&quot; type=&quot;hidden&quot; value=&quot;d2939093784107ac4a0392b0ddbb0ec3f04ffdbf&quot;&gt;
+&lt;input autocomplete=&quot;off&quot; id=&quot;id_captcha_1&quot; name=&quot;captcha_1&quot; type=&quot;text&quot;&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>在MySQL的captcha_captchastore 表中会生成如下记录, 这样用户form表达提交上来的验证码就可以与数据库中的验证码一一比对，比对成功，说明验证通过_</li></ul> <p><img src="/assets/img/2018-08-096.54.45.2ea1529c.png" alt="Alt text"></p> <ul><li>那么现在在访问注册页面是可以看到验证码图片的</li></ul> <p><img src="/assets/img/2018-08-098.26.11.e162de74.png" alt="Alt text"></p></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/dev/python/deefuture/docs/second/second.html">
+            第二部分
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#一-模块导入的问题" class="sidebar-link reco-side-一-模块导入的问题" data-v-cb1513f6>（一）`模块导入的问题`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二-在django项目中-新建app的方式" class="sidebar-link reco-side-二-在django项目中-新建app的方式" data-v-cb1513f6>（二）`在Django项目中，新建app的方式`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三-在django项目中-给apps设置为sources-root" class="sidebar-link reco-side-三-在django项目中-给apps设置为sources-root" data-v-cb1513f6>（三）`在Django项目中，给apps设置为Sources Root`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四-启动django项目" class="sidebar-link reco-side-四-启动django项目" data-v-cb1513f6>（四）`启动Django项目`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#五-配置django项目使用的数据库" class="sidebar-link reco-side-五-配置django项目使用的数据库" data-v-cb1513f6>（五）`配置Django项目使用的数据库`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#六-生成数据表" class="sidebar-link reco-side-六-生成数据表" data-v-cb1513f6>（六）`生成数据表`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#七-在settings中指定html页面的templates模板" class="sidebar-link reco-side-七-在settings中指定html页面的templates模板" data-v-cb1513f6>（七）`在settings中指定HTML页面的templates模板`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#八-在settings中指定静态文件static的路径-这样就能够直接在template中指定static文件的相对路径" class="sidebar-link reco-side-八-在settings中指定静态文件static的路径-这样就能够直接在template中指定static文件的相对路径" data-v-cb1513f6>（八）`在settings中指定静态文件static的路径, 这样就能够直接在template中指定static文件的相对路径`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#九-django项目的配置过程" class="sidebar-link reco-side-九-django项目的配置过程" data-v-cb1513f6>（九）`Django项目的配置过程`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十-每次创建一个app都需要在settings中将它注册进来-如果不注册进来-那么执行migration的时候就不会生成表" class="sidebar-link reco-side-十-每次创建一个app都需要在settings中将它注册进来-如果不注册进来-那么执行migration的时候就不会生成表" data-v-cb1513f6>（十）`每次创建一个app都需要在settings中将它注册进来, 如果不注册进来，那么执行migration的时候就不会生成表`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十一-django中的post表单提交操作" class="sidebar-link reco-side-十一-django中的post表单提交操作" data-v-cb1513f6>（十一）`Django中的post表单提交操作`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十二-django中的object管理器" class="sidebar-link reco-side-十二-django中的object管理器" data-v-cb1513f6>（十二）`Django中的object管理器`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十三-简单介绍django中template如何获取到view中传递的值" class="sidebar-link reco-side-十三-简单介绍django中template如何获取到view中传递的值" data-v-cb1513f6>（十三）`简单介绍Django中template如何获取到view中传递的值`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十四-简单介绍django中的过滤器" class="sidebar-link reco-side-十四-简单介绍django中的过滤器" data-v-cb1513f6>（十四）`简单介绍Django中的过滤器`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十五-为django自建的user表进行扩展" class="sidebar-link reco-side-十五-为django自建的user表进行扩展" data-v-cb1513f6>（十五）`为Django自建的user表进行扩展`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十六-对django的django-contrib是啥-做出解释" class="sidebar-link reco-side-十六-对django的django-contrib是啥-做出解释" data-v-cb1513f6>（十六）`对Django的Django.contrib是啥？做出解释`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十七-创建了users的app之后-写完users的model之后-每次都需要将app在settings文件中注册-编写的userprofile这个model比较特别-不是直接继承与models-model的-是继承abstractuser这个model-因此还有将这个用户的model在settings文件中重载" class="sidebar-link reco-side-十七-创建了users的app之后-写完users的model之后-每次都需要将app在settings文件中注册-编写的userprofile这个model比较特别-不是直接继承与models-model的-是继承abstractuser这个model-因此还有将这个用户的model在settings文件中重载" data-v-cb1513f6>（十七）`创建了users的app之后，写完users的model之后，每次都需要将app在settings文件中注册，编写的UserProfile这个model比较特别，不是直接继承与models.Model的，是继承AbstractUser这个model，因此还有将这个用户的model在settings文件中重载`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十八-如果是使用的python2-7-那么在每个页面中-最好写上使用utf-8编码" class="sidebar-link reco-side-十八-如果是使用的python2-7-那么在每个页面中-最好写上使用utf-8编码" data-v-cb1513f6>（十八）`如果是使用的Python2.7，那么在每个页面中，最好写上使用utf-8编码`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#十九-如果使用到了django的imagefield这个字段类型的话-需要安装pillow这个库" class="sidebar-link reco-side-十九-如果使用到了django的imagefield这个字段类型的话-需要安装pillow这个库" data-v-cb1513f6>（十九）`如果使用到了Django的ImageField这个字段类型的话，需要安装pillow这个库`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十-说一说django中的循环引用" class="sidebar-link reco-side-二十-说一说django中的循环引用" data-v-cb1513f6>（二十）`说一说Django中的循环引用`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十一-说一说django的imagefield字段" class="sidebar-link reco-side-二十一-说一说django的imagefield字段" data-v-cb1513f6>（二十一）`说一说Django的ImageField字段`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十二-django是如何处理表中多对一和一对多的映射关系的" class="sidebar-link reco-side-二十二-django是如何处理表中多对一和一对多的映射关系的" data-v-cb1513f6>（二十二）`Django是如何处理表中多对一和一对多的映射关系的`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十三-django中使用外键" class="sidebar-link reco-side-二十三-django中使用外键" data-v-cb1513f6>（二十三）`Django中使用外键`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十四-文件上传字段-filefield" class="sidebar-link reco-side-二十四-文件上传字段-filefield" data-v-cb1513f6>（二十四）`文件上传字段 FileField`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十五-如何将django生成的app移动到指定的apps目录中" class="sidebar-link reco-side-二十五-如何将django生成的app移动到指定的apps目录中" data-v-cb1513f6>（二十五）`如何将Django生成的app移动到指定的apps目录中`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十六-命令行启动django项目" class="sidebar-link reco-side-二十六-命令行启动django项目" data-v-cb1513f6>（二十六）`命令行启动Django项目`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十七-创建后台admin的管理用户" class="sidebar-link reco-side-二十七-创建后台admin的管理用户" data-v-cb1513f6>（二十七）`创建后台admin的管理用户`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十七-修改admin后台为中文" class="sidebar-link reco-side-二十七-修改admin后台为中文" data-v-cb1513f6>（二十七）`修改admin后台为中文`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十八-当我们将所有的app拖入到apps的时候-会出现too-many-values-to-unpack的问题" class="sidebar-link reco-side-二十八-当我们将所有的app拖入到apps的时候-会出现too-many-values-to-unpack的问题" data-v-cb1513f6>（二十八）`当我们将所有的app拖入到apps的时候，会出现too many values to unpack的问题`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#二十九-安装xadmin" class="sidebar-link reco-side-二十九-安装xadmin" data-v-cb1513f6>（二十九）`安装xadmin`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十-xadmin源码引入" class="sidebar-link reco-side-三十-xadmin源码引入" data-v-cb1513f6>（三十）`xadmin源码引入`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十一-创建后台超级用户" class="sidebar-link reco-side-三十一-创建后台超级用户" data-v-cb1513f6>（三十一）`创建后台超级用户`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十二-如何设置pycharm自定义的语言模板" class="sidebar-link reco-side-三十二-如何设置pycharm自定义的语言模板" data-v-cb1513f6>（三十二）`如何设置pycharm自定义的语言模板`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十三-将所有的app的model都注册到xadmin中" class="sidebar-link reco-side-三十三-将所有的app的model都注册到xadmin中" data-v-cb1513f6>（三十三）`将所有的APP的model都注册到xadmin中`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十四-在后台给表插入数据-以邮箱验证码为例" class="sidebar-link reco-side-三十四-在后台给表插入数据-以邮箱验证码为例" data-v-cb1513f6>（三十四）`在后台给表插入数据，以邮箱验证码为例`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十五-如何在过滤器中使用外键字段" class="sidebar-link reco-side-三十五-如何在过滤器中使用外键字段" data-v-cb1513f6>（三十五）`如何在过滤器中使用外键字段`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十六-如何让后台显示app的时候显示自定义的中文名称-而不是app本身的英文名" class="sidebar-link reco-side-三十六-如何让后台显示app的时候显示自定义的中文名称-而不是app本身的英文名" data-v-cb1513f6>（三十六）`如何让后台显示app的时候显示自定义的中文名称，而不是app本身的英文名`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十七-如何修改全局样式、主题样式-后台管理系统的标题" class="sidebar-link reco-side-三十七-如何修改全局样式、主题样式-后台管理系统的标题" data-v-cb1513f6>（三十七）`如何修改全局样式、主题样式，后台管理系统的标题`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十八-如何替换xadmin的字体图标" class="sidebar-link reco-side-三十八-如何替换xadmin的字体图标" data-v-cb1513f6>（三十八）`如何替换xadmin的字体图标`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#三十九-在项目根目录下创建static目录-将前端准备好的css、images、img、js-拷贝到static目录中-这一块需要自己能够开发" class="sidebar-link reco-side-三十九-在项目根目录下创建static目录-将前端准备好的css、images、img、js-拷贝到static目录中-这一块需要自己能够开发" data-v-cb1513f6>（三十九）`在项目根目录下创建static目录，将前端准备好的css、images、img、js 拷贝到static目录中（这一块需要自己能够开发）`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十-配置静态文件的查找路径" class="sidebar-link reco-side-四十-配置静态文件的查找路径" data-v-cb1513f6>（四十）`配置静态文件的查找路径`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十一-在django框架中显示第一个页面" class="sidebar-link reco-side-四十一-在django框架中显示第一个页面" data-v-cb1513f6>（四十一）`在Django框架中显示第一个页面`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十二-在views-py文件中-添加登录处理逻辑" class="sidebar-link reco-side-四十二-在views-py文件中-添加登录处理逻辑" data-v-cb1513f6>（四十二）`在views.py文件中，添加登录处理逻辑`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十三-重载django的认证方式-实现自定义的用户名和邮箱验证" class="sidebar-link reco-side-四十三-重载django的认证方式-实现自定义的用户名和邮箱验证" data-v-cb1513f6>（四十三）`重载Django的认证方式，实现自定义的用户名和邮箱验证`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十四-使用django-fbv-function-base-views-方式编写后台逻辑" class="sidebar-link reco-side-四十四-使用django-fbv-function-base-views-方式编写后台逻辑" data-v-cb1513f6>（四十四）`使用Django FBV（function base views）方式编写后台逻辑`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十五-使用django-cbv-class-base-views-方式编写后台逻辑" class="sidebar-link reco-side-四十五-使用django-cbv-class-base-views-方式编写后台逻辑" data-v-cb1513f6>（四十五）`使用Django CBV（class base views）方式编写后台逻辑`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十六-使用django-的form最表单做验证" class="sidebar-link reco-side-四十六-使用django-的form最表单做验证" data-v-cb1513f6>（四十六）`使用Django 的Form最表单做验证`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十七-使用django-的login函数实现session保持的原理" class="sidebar-link reco-side-四十七-使用django-的login函数实现session保持的原理" data-v-cb1513f6>（四十七）`使用Django 的login函数实现session保持的原理`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十八-首页的注册功能实现" class="sidebar-link reco-side-四十八-首页的注册功能实现" data-v-cb1513f6>（四十八）`首页的注册功能实现`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#四十九-url命名空间与static命名空间" class="sidebar-link reco-side-四十九-url命名空间与static命名空间" data-v-cb1513f6>（四十九）`URL命名空间与static命名空间`</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/python/deefuture/docs/first/first.html#五十-django处理图片验证码django-simple-captcha库介绍" class="sidebar-link reco-side-五十-django处理图片验证码django-simple-captcha库介绍" data-v-cb1513f6>（五十）`Django处理图片验证码django-simple-captcha库介绍`</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9a5d1377.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/8.9176dd4b.js" defer></script>
+  </body>
+</html>

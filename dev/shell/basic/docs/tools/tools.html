@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Shell 中的常用工具 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.9a5d1377.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/515.ae2cfef3.js" as="script"><link rel="prefetch" href="/assets/js/10.bf3a4a01.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.77871772.js"><link rel="prefetch" href="/assets/js/103.b1663661.js"><link rel="prefetch" href="/assets/js/104.e2724712.js"><link rel="prefetch" href="/assets/js/105.66d2fca1.js"><link rel="prefetch" href="/assets/js/106.d13147aa.js"><link rel="prefetch" href="/assets/js/107.6c143695.js"><link rel="prefetch" href="/assets/js/108.38baff0a.js"><link rel="prefetch" href="/assets/js/109.b87f3dae.js"><link rel="prefetch" href="/assets/js/11.2d4145aa.js"><link rel="prefetch" href="/assets/js/110.ecd312df.js"><link rel="prefetch" href="/assets/js/111.e86d0cf5.js"><link rel="prefetch" href="/assets/js/112.838e7814.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.90eb6e00.js"><link rel="prefetch" href="/assets/js/115.9086d1d7.js"><link rel="prefetch" href="/assets/js/116.fcaba423.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.11985c3d.js"><link rel="prefetch" href="/assets/js/119.ab560a50.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.25784945.js"><link rel="prefetch" href="/assets/js/121.03b17d23.js"><link rel="prefetch" href="/assets/js/122.dbb3d982.js"><link rel="prefetch" href="/assets/js/123.e04e1de0.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.dc1e889c.js"><link rel="prefetch" href="/assets/js/126.4e0be7c0.js"><link rel="prefetch" href="/assets/js/127.2648dc86.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.ddeea161.js"><link rel="prefetch" href="/assets/js/13.794cb86f.js"><link rel="prefetch" href="/assets/js/130.2f51e053.js"><link rel="prefetch" href="/assets/js/131.50ad10f9.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.952404bc.js"><link rel="prefetch" href="/assets/js/134.319691ce.js"><link rel="prefetch" href="/assets/js/135.358e0553.js"><link rel="prefetch" href="/assets/js/136.a5240b23.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.060a4f8d.js"><link rel="prefetch" href="/assets/js/139.ac0e3354.js"><link rel="prefetch" href="/assets/js/14.8e692555.js"><link rel="prefetch" href="/assets/js/140.d14826df.js"><link rel="prefetch" href="/assets/js/141.855d329f.js"><link rel="prefetch" href="/assets/js/142.707f4edb.js"><link rel="prefetch" href="/assets/js/143.7ac10fb6.js"><link rel="prefetch" href="/assets/js/144.ccbcbe88.js"><link rel="prefetch" href="/assets/js/145.f97912c7.js"><link rel="prefetch" href="/assets/js/146.8564b53a.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.3b03ba9b.js"><link rel="prefetch" href="/assets/js/149.b099e234.js"><link rel="prefetch" href="/assets/js/15.5a69bb7b.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.de07d289.js"><link rel="prefetch" href="/assets/js/153.6ed13d07.js"><link rel="prefetch" href="/assets/js/154.e33f8138.js"><link rel="prefetch" href="/assets/js/155.9514ea65.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.be5d1989.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.7685a5ea.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.b8b2aa7c.js"><link rel="prefetch" href="/assets/js/161.2be5e8ba.js"><link rel="prefetch" href="/assets/js/162.e39ddda0.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.74e47c48.js"><link rel="prefetch" href="/assets/js/166.8d1656c7.js"><link rel="prefetch" href="/assets/js/167.1a8d36d8.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.ad76d2ad.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.86c8539e.js"><link rel="prefetch" href="/assets/js/171.a00bc1de.js"><link rel="prefetch" href="/assets/js/172.4f7cc2b8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.bcbc7ed5.js"><link rel="prefetch" href="/assets/js/175.8c13131f.js"><link rel="prefetch" href="/assets/js/176.a8e0a82f.js"><link rel="prefetch" href="/assets/js/177.cc3e8330.js"><link rel="prefetch" href="/assets/js/178.0f6cf921.js"><link rel="prefetch" href="/assets/js/179.70e295f9.js"><link rel="prefetch" href="/assets/js/18.dfc6a15d.js"><link rel="prefetch" href="/assets/js/180.5e8d67ce.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.0b1bc7fc.js"><link rel="prefetch" href="/assets/js/183.92dd7271.js"><link rel="prefetch" href="/assets/js/184.ce4e0f66.js"><link rel="prefetch" href="/assets/js/185.4b6c844e.js"><link rel="prefetch" href="/assets/js/186.fb4510cf.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.c54c9ff8.js"><link rel="prefetch" href="/assets/js/189.cc525573.js"><link rel="prefetch" href="/assets/js/19.c9a4b6df.js"><link rel="prefetch" href="/assets/js/190.0a0fc517.js"><link rel="prefetch" href="/assets/js/191.c0b20f10.js"><link rel="prefetch" href="/assets/js/192.a401c173.js"><link rel="prefetch" href="/assets/js/193.3884a8c4.js"><link rel="prefetch" href="/assets/js/194.2aecb6b4.js"><link rel="prefetch" href="/assets/js/195.d5b973f4.js"><link rel="prefetch" href="/assets/js/196.e8311196.js"><link rel="prefetch" href="/assets/js/197.49170522.js"><link rel="prefetch" href="/assets/js/198.6a0c43cb.js"><link rel="prefetch" href="/assets/js/199.b20ce791.js"><link rel="prefetch" href="/assets/js/20.531ffaef.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.aca6d71e.js"><link rel="prefetch" href="/assets/js/202.0bf45c68.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.e9703838.js"><link rel="prefetch" href="/assets/js/205.11be8755.js"><link rel="prefetch" href="/assets/js/206.5df53ca7.js"><link rel="prefetch" href="/assets/js/207.7881dce6.js"><link rel="prefetch" href="/assets/js/208.4f9fee3c.js"><link rel="prefetch" href="/assets/js/209.b029372d.js"><link rel="prefetch" href="/assets/js/21.551fce6d.js"><link rel="prefetch" href="/assets/js/210.53655350.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.ce8c9841.js"><link rel="prefetch" href="/assets/js/215.192a0677.js"><link rel="prefetch" href="/assets/js/216.6cd17926.js"><link rel="prefetch" href="/assets/js/217.00ed48ab.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.c56f8cf4.js"><link rel="prefetch" href="/assets/js/22.986fb9e7.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.39b770a4.js"><link rel="prefetch" href="/assets/js/222.9e1df2c8.js"><link rel="prefetch" href="/assets/js/223.5eff1248.js"><link rel="prefetch" href="/assets/js/224.c0cea281.js"><link rel="prefetch" href="/assets/js/225.8ad561aa.js"><link rel="prefetch" href="/assets/js/226.43acb0be.js"><link rel="prefetch" href="/assets/js/227.37ebd361.js"><link rel="prefetch" href="/assets/js/228.ead480ed.js"><link rel="prefetch" href="/assets/js/229.3baad619.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.1af99529.js"><link rel="prefetch" href="/assets/js/231.59879531.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.f21ede1a.js"><link rel="prefetch" href="/assets/js/234.7918e7e4.js"><link rel="prefetch" href="/assets/js/235.300a10a5.js"><link rel="prefetch" href="/assets/js/236.d35b33b7.js"><link rel="prefetch" href="/assets/js/237.96116ee5.js"><link rel="prefetch" href="/assets/js/238.59a35d89.js"><link rel="prefetch" href="/assets/js/239.9dfc4fbc.js"><link rel="prefetch" href="/assets/js/24.8425bd19.js"><link rel="prefetch" href="/assets/js/240.36bac2f9.js"><link rel="prefetch" href="/assets/js/241.ad0d06e7.js"><link rel="prefetch" href="/assets/js/242.9344b5fa.js"><link rel="prefetch" href="/assets/js/243.facc5ec6.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.82a78890.js"><link rel="prefetch" href="/assets/js/246.d274961a.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.8825abef.js"><link rel="prefetch" href="/assets/js/249.5061079a.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.cd3b6c4a.js"><link rel="prefetch" href="/assets/js/251.d218096c.js"><link rel="prefetch" href="/assets/js/252.ac828464.js"><link rel="prefetch" href="/assets/js/253.6030735c.js"><link rel="prefetch" href="/assets/js/254.3534a5fb.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.48ca0db6.js"><link rel="prefetch" href="/assets/js/257.d0ca646c.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.48f6daae.js"><link rel="prefetch" href="/assets/js/26.e0e94a5e.js"><link rel="prefetch" href="/assets/js/260.ce650517.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.b976ff4c.js"><link rel="prefetch" href="/assets/js/263.c1daf4e9.js"><link rel="prefetch" href="/assets/js/264.72936fdc.js"><link rel="prefetch" href="/assets/js/265.16ece61e.js"><link rel="prefetch" href="/assets/js/266.b17f1b64.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.158ff25d.js"><link rel="prefetch" href="/assets/js/27.66fdb8f8.js"><link rel="prefetch" href="/assets/js/270.7446d42b.js"><link rel="prefetch" href="/assets/js/271.68bf6f03.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.81b9b843.js"><link rel="prefetch" href="/assets/js/275.bd55419d.js"><link rel="prefetch" href="/assets/js/276.3b600307.js"><link rel="prefetch" href="/assets/js/277.19eff568.js"><link rel="prefetch" href="/assets/js/278.f34b0bd3.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.93d4f4ab.js"><link rel="prefetch" href="/assets/js/280.3c4ed74e.js"><link rel="prefetch" href="/assets/js/281.f37d360e.js"><link rel="prefetch" href="/assets/js/282.79b14434.js"><link rel="prefetch" href="/assets/js/283.f30f0408.js"><link rel="prefetch" href="/assets/js/284.d8658140.js"><link rel="prefetch" href="/assets/js/285.be71c641.js"><link rel="prefetch" href="/assets/js/286.579ea834.js"><link rel="prefetch" href="/assets/js/287.0badbfd7.js"><link rel="prefetch" href="/assets/js/288.0a4d6ad8.js"><link rel="prefetch" href="/assets/js/289.b35dc3c7.js"><link rel="prefetch" href="/assets/js/29.79b889e1.js"><link rel="prefetch" href="/assets/js/290.9152baa2.js"><link rel="prefetch" href="/assets/js/291.bb638936.js"><link rel="prefetch" href="/assets/js/292.c0d33103.js"><link rel="prefetch" href="/assets/js/293.36991fc2.js"><link rel="prefetch" href="/assets/js/294.31714e68.js"><link rel="prefetch" href="/assets/js/295.cb156d67.js"><link rel="prefetch" href="/assets/js/296.ade170a2.js"><link rel="prefetch" href="/assets/js/297.a54e7f48.js"><link rel="prefetch" href="/assets/js/298.1625bd2a.js"><link rel="prefetch" href="/assets/js/299.32a89505.js"><link rel="prefetch" href="/assets/js/3.4041ad45.js"><link rel="prefetch" href="/assets/js/30.11c1c4a9.js"><link rel="prefetch" href="/assets/js/300.3018c2a8.js"><link rel="prefetch" href="/assets/js/301.de84e79f.js"><link rel="prefetch" href="/assets/js/302.9240eb69.js"><link rel="prefetch" href="/assets/js/303.7d585f45.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.f60f1bce.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.25437db7.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.26c3bcdb.js"><link rel="prefetch" href="/assets/js/313.dc39f08b.js"><link rel="prefetch" href="/assets/js/314.655c6ac0.js"><link rel="prefetch" href="/assets/js/315.e35fac2d.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.8b6a01a8.js"><link rel="prefetch" href="/assets/js/318.b77d87e1.js"><link rel="prefetch" href="/assets/js/319.b2cc794b.js"><link rel="prefetch" href="/assets/js/32.51c932ff.js"><link rel="prefetch" href="/assets/js/320.af5899d0.js"><link rel="prefetch" href="/assets/js/321.2f00f711.js"><link rel="prefetch" href="/assets/js/322.c935286c.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.8a0cfed6.js"><link rel="prefetch" href="/assets/js/325.4afeea42.js"><link rel="prefetch" href="/assets/js/326.8c15ef2e.js"><link rel="prefetch" href="/assets/js/327.8d999cbb.js"><link rel="prefetch" href="/assets/js/328.523585ed.js"><link rel="prefetch" href="/assets/js/329.cbffae2d.js"><link rel="prefetch" href="/assets/js/33.a4a24c5c.js"><link rel="prefetch" href="/assets/js/330.089b8bda.js"><link rel="prefetch" href="/assets/js/331.f62e76ea.js"><link rel="prefetch" href="/assets/js/332.41ac44fb.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.629527a5.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.b4ee5265.js"><link rel="prefetch" href="/assets/js/337.a65084e0.js"><link rel="prefetch" href="/assets/js/338.b8c7f9d4.js"><link rel="prefetch" href="/assets/js/339.32dd2a1f.js"><link rel="prefetch" href="/assets/js/34.d5a4cc1c.js"><link rel="prefetch" href="/assets/js/340.181fbac2.js"><link rel="prefetch" href="/assets/js/341.dfbdcd6a.js"><link rel="prefetch" href="/assets/js/342.7e191cd0.js"><link rel="prefetch" href="/assets/js/343.1fc1aa07.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.d9343bc3.js"><link rel="prefetch" href="/assets/js/346.265f5633.js"><link rel="prefetch" href="/assets/js/347.316afdfc.js"><link rel="prefetch" href="/assets/js/348.5b24302c.js"><link rel="prefetch" href="/assets/js/349.be0ea3c0.js"><link rel="prefetch" href="/assets/js/35.9d8a6e6c.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.50b2e64e.js"><link rel="prefetch" href="/assets/js/353.4cc0f899.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.b7fd8cb7.js"><link rel="prefetch" href="/assets/js/356.c211c1b8.js"><link rel="prefetch" href="/assets/js/357.d16a2d83.js"><link rel="prefetch" href="/assets/js/358.d7237c49.js"><link rel="prefetch" href="/assets/js/359.6734cad1.js"><link rel="prefetch" href="/assets/js/36.4b6cd3a4.js"><link rel="prefetch" href="/assets/js/360.a33983a6.js"><link rel="prefetch" href="/assets/js/361.6ff246f0.js"><link rel="prefetch" href="/assets/js/362.2f864708.js"><link rel="prefetch" href="/assets/js/363.c392c5e8.js"><link rel="prefetch" href="/assets/js/364.22a6b189.js"><link rel="prefetch" href="/assets/js/365.df1dbb8e.js"><link rel="prefetch" href="/assets/js/366.0d2547a8.js"><link rel="prefetch" href="/assets/js/367.34d64bf7.js"><link rel="prefetch" href="/assets/js/368.5a888040.js"><link rel="prefetch" href="/assets/js/369.9e4cf3f4.js"><link rel="prefetch" href="/assets/js/37.9577c26e.js"><link rel="prefetch" href="/assets/js/370.12a47033.js"><link rel="prefetch" href="/assets/js/371.6d43aa3f.js"><link rel="prefetch" href="/assets/js/372.f52d346f.js"><link rel="prefetch" href="/assets/js/373.f47542f8.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.cd11d66c.js"><link rel="prefetch" href="/assets/js/376.938c07c7.js"><link rel="prefetch" href="/assets/js/377.03fe1608.js"><link rel="prefetch" href="/assets/js/378.ed6d6894.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c179026f.js"><link rel="prefetch" href="/assets/js/380.a41a6355.js"><link rel="prefetch" href="/assets/js/381.ae2d3065.js"><link rel="prefetch" href="/assets/js/382.304163b7.js"><link rel="prefetch" href="/assets/js/383.7b17d4a7.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.e359cc49.js"><link rel="prefetch" href="/assets/js/386.63eb6322.js"><link rel="prefetch" href="/assets/js/387.d17554a7.js"><link rel="prefetch" href="/assets/js/388.a81f4ee2.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.147cc35f.js"><link rel="prefetch" href="/assets/js/390.5e754f5e.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.c83337ff.js"><link rel="prefetch" href="/assets/js/393.5d36dd95.js"><link rel="prefetch" href="/assets/js/394.f0167b91.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.e6fea9c1.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.0dd0e255.js"><link rel="prefetch" href="/assets/js/399.f19817b8.js"><link rel="prefetch" href="/assets/js/4.3ac1d119.js"><link rel="prefetch" href="/assets/js/40.39968cf8.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.41cf5537.js"><link rel="prefetch" href="/assets/js/402.89091ee3.js"><link rel="prefetch" href="/assets/js/403.d5d2cbaa.js"><link rel="prefetch" href="/assets/js/404.c7fa04e1.js"><link rel="prefetch" href="/assets/js/405.8f210f6c.js"><link rel="prefetch" href="/assets/js/406.543bb325.js"><link rel="prefetch" href="/assets/js/407.738ee9c2.js"><link rel="prefetch" href="/assets/js/408.e32a6f90.js"><link rel="prefetch" href="/assets/js/409.b73ca551.js"><link rel="prefetch" href="/assets/js/41.1d56c643.js"><link rel="prefetch" href="/assets/js/410.284b9e06.js"><link rel="prefetch" href="/assets/js/411.7cca2664.js"><link rel="prefetch" href="/assets/js/412.f05bbf63.js"><link rel="prefetch" href="/assets/js/413.d0550ac2.js"><link rel="prefetch" href="/assets/js/414.dca9673f.js"><link rel="prefetch" href="/assets/js/415.298c5573.js"><link rel="prefetch" href="/assets/js/416.8dff3a66.js"><link rel="prefetch" href="/assets/js/417.8c1a0a4e.js"><link rel="prefetch" href="/assets/js/418.a6b3d607.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.1b306b17.js"><link rel="prefetch" href="/assets/js/420.e17e772d.js"><link rel="prefetch" href="/assets/js/421.64699486.js"><link rel="prefetch" href="/assets/js/422.3f898a85.js"><link rel="prefetch" href="/assets/js/423.aba3c659.js"><link rel="prefetch" href="/assets/js/424.abbcc73e.js"><link rel="prefetch" href="/assets/js/425.3469bdbd.js"><link rel="prefetch" href="/assets/js/426.deb86b4b.js"><link rel="prefetch" href="/assets/js/427.c6faeccf.js"><link rel="prefetch" href="/assets/js/428.ce2143ba.js"><link rel="prefetch" href="/assets/js/429.f6ac264f.js"><link rel="prefetch" href="/assets/js/43.7aca7037.js"><link rel="prefetch" href="/assets/js/430.c5564c52.js"><link rel="prefetch" href="/assets/js/431.8f223d2d.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.313a2983.js"><link rel="prefetch" href="/assets/js/435.4e75644a.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.8f3290a7.js"><link rel="prefetch" href="/assets/js/439.0d98dc66.js"><link rel="prefetch" href="/assets/js/44.5bb17146.js"><link rel="prefetch" href="/assets/js/440.0555189f.js"><link rel="prefetch" href="/assets/js/441.8583cfc0.js"><link rel="prefetch" href="/assets/js/442.bf7b236d.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.1a388c82.js"><link rel="prefetch" href="/assets/js/445.f0b67036.js"><link rel="prefetch" href="/assets/js/446.8c732c56.js"><link rel="prefetch" href="/assets/js/447.6d1be8d9.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.9e75dd3b.js"><link rel="prefetch" href="/assets/js/452.73b48879.js"><link rel="prefetch" href="/assets/js/453.932fa75e.js"><link rel="prefetch" href="/assets/js/454.14027c6b.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.ee0b078b.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.27022088.js"><link rel="prefetch" href="/assets/js/459.ab2f4695.js"><link rel="prefetch" href="/assets/js/46.471ff9b5.js"><link rel="prefetch" href="/assets/js/460.11e77a24.js"><link rel="prefetch" href="/assets/js/461.194f79d1.js"><link rel="prefetch" href="/assets/js/462.80a34b65.js"><link rel="prefetch" href="/assets/js/463.f66a897c.js"><link rel="prefetch" href="/assets/js/464.45bb7abf.js"><link rel="prefetch" href="/assets/js/465.c38904d3.js"><link rel="prefetch" href="/assets/js/466.0c8a1201.js"><link rel="prefetch" href="/assets/js/467.c8b86791.js"><link rel="prefetch" href="/assets/js/468.70a2a91e.js"><link rel="prefetch" href="/assets/js/469.8bbe4ac4.js"><link rel="prefetch" href="/assets/js/47.5ce5c3c2.js"><link rel="prefetch" href="/assets/js/470.fde0c73c.js"><link rel="prefetch" href="/assets/js/471.0be5c4ef.js"><link rel="prefetch" href="/assets/js/472.7e1c6165.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.29c08fbe.js"><link rel="prefetch" href="/assets/js/475.b85cc5be.js"><link rel="prefetch" href="/assets/js/476.d2472e0d.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.2c8a78ce.js"><link rel="prefetch" href="/assets/js/479.10db54c8.js"><link rel="prefetch" href="/assets/js/48.63747cc1.js"><link rel="prefetch" href="/assets/js/480.abd30718.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.e1b09083.js"><link rel="prefetch" href="/assets/js/484.9b4b5c9c.js"><link rel="prefetch" href="/assets/js/485.36c42239.js"><link rel="prefetch" href="/assets/js/486.73b5ece1.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.5a922985.js"><link rel="prefetch" href="/assets/js/49.c8a3f2ca.js"><link rel="prefetch" href="/assets/js/490.c6845b01.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.b03e4127.js"><link rel="prefetch" href="/assets/js/493.db71ed8b.js"><link rel="prefetch" href="/assets/js/494.9608a92e.js"><link rel="prefetch" href="/assets/js/495.ced07f96.js"><link rel="prefetch" href="/assets/js/496.185decf2.js"><link rel="prefetch" href="/assets/js/497.ddc55f9e.js"><link rel="prefetch" href="/assets/js/498.43397afd.js"><link rel="prefetch" href="/assets/js/499.7320fe31.js"><link rel="prefetch" href="/assets/js/5.3134845c.js"><link rel="prefetch" href="/assets/js/50.68b1ba39.js"><link rel="prefetch" href="/assets/js/500.41912532.js"><link rel="prefetch" href="/assets/js/501.5a2c44ad.js"><link rel="prefetch" href="/assets/js/502.3e92b592.js"><link rel="prefetch" href="/assets/js/503.a909f346.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.ea559644.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.840f1c2d.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.09e693c1.js"><link rel="prefetch" href="/assets/js/514.9ea29f17.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.afd3f56e.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.0e0f3b50.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.91f935f6.js"><link rel="prefetch" href="/assets/js/521.686c1eb6.js"><link rel="prefetch" href="/assets/js/522.554cbfe5.js"><link rel="prefetch" href="/assets/js/523.48e15e4e.js"><link rel="prefetch" href="/assets/js/524.52d7dd1c.js"><link rel="prefetch" href="/assets/js/525.eb2d041a.js"><link rel="prefetch" href="/assets/js/526.18d14b74.js"><link rel="prefetch" href="/assets/js/527.72005be4.js"><link rel="prefetch" href="/assets/js/528.a927bfeb.js"><link rel="prefetch" href="/assets/js/529.577cf1e8.js"><link rel="prefetch" href="/assets/js/53.1fd6d004.js"><link rel="prefetch" href="/assets/js/530.8214546e.js"><link rel="prefetch" href="/assets/js/531.188187ee.js"><link rel="prefetch" href="/assets/js/532.0d33ab06.js"><link rel="prefetch" href="/assets/js/533.713b971d.js"><link rel="prefetch" href="/assets/js/534.4c3f120d.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.19cd9376.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.2e3d2af3.js"><link rel="prefetch" href="/assets/js/539.ced32c6c.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.79472898.js"><link rel="prefetch" href="/assets/js/542.c19e66bf.js"><link rel="prefetch" href="/assets/js/543.8c7ba033.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.990cf62f.js"><link rel="prefetch" href="/assets/js/546.c450bfe9.js"><link rel="prefetch" href="/assets/js/547.5f9d5d3c.js"><link rel="prefetch" href="/assets/js/548.da38e02f.js"><link rel="prefetch" href="/assets/js/549.4e7ef51b.js"><link rel="prefetch" href="/assets/js/55.889a99a0.js"><link rel="prefetch" href="/assets/js/550.fe38cd54.js"><link rel="prefetch" href="/assets/js/551.a962ba39.js"><link rel="prefetch" href="/assets/js/552.ea9b8c68.js"><link rel="prefetch" href="/assets/js/553.bb05d44b.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.b9c01360.js"><link rel="prefetch" href="/assets/js/556.90c1efbd.js"><link rel="prefetch" href="/assets/js/557.e91bab69.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.ffc1daab.js"><link rel="prefetch" href="/assets/js/56.0d815a94.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.58ef4b9a.js"><link rel="prefetch" href="/assets/js/562.2aea2b58.js"><link rel="prefetch" href="/assets/js/563.9fa5d88a.js"><link rel="prefetch" href="/assets/js/564.9009c1a9.js"><link rel="prefetch" href="/assets/js/565.cc151c74.js"><link rel="prefetch" href="/assets/js/566.6d1dc45c.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.dce9b1bc.js"><link rel="prefetch" href="/assets/js/569.47798dcf.js"><link rel="prefetch" href="/assets/js/57.4af72b89.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.271e5add.js"><link rel="prefetch" href="/assets/js/572.948d49fb.js"><link rel="prefetch" href="/assets/js/573.eede7803.js"><link rel="prefetch" href="/assets/js/574.040dcefc.js"><link rel="prefetch" href="/assets/js/575.d6c8a336.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.1a6bf5b8.js"><link rel="prefetch" href="/assets/js/58.df984a43.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.c149fae7.js"><link rel="prefetch" href="/assets/js/582.55545a35.js"><link rel="prefetch" href="/assets/js/583.a31c53bf.js"><link rel="prefetch" href="/assets/js/584.36626d3d.js"><link rel="prefetch" href="/assets/js/585.fd277c61.js"><link rel="prefetch" href="/assets/js/586.52204405.js"><link rel="prefetch" href="/assets/js/587.99335ca1.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.c65322cc.js"><link rel="prefetch" href="/assets/js/590.08417ac3.js"><link rel="prefetch" href="/assets/js/591.9cb3207b.js"><link rel="prefetch" href="/assets/js/592.8595a9f4.js"><link rel="prefetch" href="/assets/js/593.605c39df.js"><link rel="prefetch" href="/assets/js/594.cc98eb1f.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.b34683c2.js"><link rel="prefetch" href="/assets/js/597.ce917673.js"><link rel="prefetch" href="/assets/js/598.1b31cbf3.js"><link rel="prefetch" href="/assets/js/599.11899b1a.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.36a408d5.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.502d8c92.js"><link rel="prefetch" href="/assets/js/604.e660e01e.js"><link rel="prefetch" href="/assets/js/605.2403db7a.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.9c6f2afe.js"><link rel="prefetch" href="/assets/js/608.734afab0.js"><link rel="prefetch" href="/assets/js/609.4c1a6347.js"><link rel="prefetch" href="/assets/js/61.2d4e6a1a.js"><link rel="prefetch" href="/assets/js/610.312082cc.js"><link rel="prefetch" href="/assets/js/611.117258e3.js"><link rel="prefetch" href="/assets/js/612.dbff59f2.js"><link rel="prefetch" href="/assets/js/613.07f207a5.js"><link rel="prefetch" href="/assets/js/614.7690add3.js"><link rel="prefetch" href="/assets/js/615.18c81803.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.15209f2e.js"><link rel="prefetch" href="/assets/js/618.4a9d5e62.js"><link rel="prefetch" href="/assets/js/619.4507e3c7.js"><link rel="prefetch" href="/assets/js/62.45203677.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.d08dbba4.js"><link rel="prefetch" href="/assets/js/622.a46d6f6c.js"><link rel="prefetch" href="/assets/js/623.9820d99d.js"><link rel="prefetch" href="/assets/js/624.60571315.js"><link rel="prefetch" href="/assets/js/625.da6f7154.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.d2296bee.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.77bcb425.js"><link rel="prefetch" href="/assets/js/630.82ed32d5.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.92997d70.js"><link rel="prefetch" href="/assets/js/633.e66c3cbc.js"><link rel="prefetch" href="/assets/js/634.b314ab80.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.5e41c48d.js"><link rel="prefetch" href="/assets/js/637.45799a46.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.48a44ac7.js"><link rel="prefetch" href="/assets/js/640.b538e6a5.js"><link rel="prefetch" href="/assets/js/641.291cd95e.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.6a4e5909.js"><link rel="prefetch" href="/assets/js/644.395e1509.js"><link rel="prefetch" href="/assets/js/645.df897a52.js"><link rel="prefetch" href="/assets/js/646.07bb34ad.js"><link rel="prefetch" href="/assets/js/647.40581df6.js"><link rel="prefetch" href="/assets/js/648.cc78ed85.js"><link rel="prefetch" href="/assets/js/649.6c9bfe91.js"><link rel="prefetch" href="/assets/js/65.594d727c.js"><link rel="prefetch" href="/assets/js/650.6a7966d1.js"><link rel="prefetch" href="/assets/js/651.cdbe3a61.js"><link rel="prefetch" href="/assets/js/66.697e3989.js"><link rel="prefetch" href="/assets/js/67.a3eb57a2.js"><link rel="prefetch" href="/assets/js/68.e0579512.js"><link rel="prefetch" href="/assets/js/69.c53a8af2.js"><link rel="prefetch" href="/assets/js/70.1af2e395.js"><link rel="prefetch" href="/assets/js/71.47eb643b.js"><link rel="prefetch" href="/assets/js/72.5262f104.js"><link rel="prefetch" href="/assets/js/73.d07f6ff2.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.69ac6b6c.js"><link rel="prefetch" href="/assets/js/76.c05cd6a7.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.c188f8e3.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.c0771c09.js"><link rel="prefetch" href="/assets/js/81.5893998e.js"><link rel="prefetch" href="/assets/js/82.6d490909.js"><link rel="prefetch" href="/assets/js/83.9bd41235.js"><link rel="prefetch" href="/assets/js/84.8f0298e2.js"><link rel="prefetch" href="/assets/js/85.150db05f.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.07e03e84.js"><link rel="prefetch" href="/assets/js/88.2cc7eabb.js"><link rel="prefetch" href="/assets/js/89.001203fd.js"><link rel="prefetch" href="/assets/js/9.420da603.js"><link rel="prefetch" href="/assets/js/90.4ae35882.js"><link rel="prefetch" href="/assets/js/91.3da12e9b.js"><link rel="prefetch" href="/assets/js/92.d58a0bce.js"><link rel="prefetch" href="/assets/js/93.b354f9d1.js"><link rel="prefetch" href="/assets/js/94.d41623fe.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.d23892fd.js"><link rel="prefetch" href="/assets/js/97.914b3374.js"><link rel="prefetch" href="/assets/js/98.957d1e13.js"><link rel="prefetch" href="/assets/js/99.c9c3f20a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link router-link-active"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/shell/basic/docs/basic/basic.html" class="sidebar-link">Shell 基础</a></li><li><a href="/dev/shell/basic/docs/if/if.html" class="sidebar-link">Shell 中if判断</a></li><li><a href="/dev/shell/basic/docs/array/array.html" class="sidebar-link">Shell 中 循环 与 数组</a></li><li><a href="/dev/shell/basic/docs/var/var.html" class="sidebar-link">Shell 中变量替换、命令替换、申明变量类型、数学整数计算、浮点数计算</a></li><li><a href="/dev/shell/basic/docs/function/function.html" class="sidebar-link">Shell 中函数的高级用法</a></li><li><a href="/dev/shell/basic/docs/tools/tools.html" aria-current="page" class="active sidebar-link">Shell 中的常用工具（top、find、rsync、locate、whereis、which）</a></li><li><a href="/dev/shell/basic/docs/grep/grep.html" class="sidebar-link">Shell 中grep的使用</a></li><li><a href="/dev/shell/basic/docs/sed/sed.html" class="sidebar-link">Shell 中sed的使用</a></li><li><a href="/dev/shell/basic/docs/awk/awk.html" class="sidebar-link">Shell 中awk的使用</a></li><li><a href="/dev/shell/basic/docs/database/database.html" class="sidebar-link">Shell 中数据库操作</a></li><li><a href="/dev/shell/basic/docs/vim/vim.html" class="sidebar-link">Vim 的使用</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Shell 中的常用工具</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">Shell 中的常用工具</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2020/7/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h3 id="一-命令查看当前进程活动的线程"><a href="#一-命令查看当前进程活动的线程" class="header-anchor">#</a> 一：命令查看当前进程活动的线程</h3> <ul><li>例如进程PID为3497使用Top命令查看</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>top -H p 3497
+
+top - 19:33:52 up 10 days, 23:21,  1 user,  load average: 0.50, 0.32, 0.28
+Threads:  26 total,   0 running,  26 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.0 us,  0.7 sy,  0.0 ni, 98.0 id,  0.2 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 16267060 total, 10750904 free,  1180464 used,  4335692 buff/cache
+KiB Swap:        0 total,        0 free,        0 used. 14420560 avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
+ 3556 root      20   0  501020 347396  41208 S  1.0  2.1 310:25.00 kube-apiserver
+11730 root      20   0  501020 347396  41208 S  1.0  2.1  40:16.75 kube-apiserver
+ 3885 root      20   0  501020 347396  41208 S  0.7  2.1  70:03.48 kube-apiserver
+ 3887 root      20   0  501020 347396  41208 S  0.7  2.1  69:03.80 kube-apiserver
+ 2714 root      20   0  501020 347396  41208 S  0.7  2.1  48:15.50 kube-apiserver
+ 3557 root      20   0  501020 347396  41208 S  0.3  2.1  66:09.79 kube-apiserver
+ 3558 root      20   0  501020 347396  41208 S  0.3  2.1  61:42.05 kube-apiserver
+ 3686 root      20   0  501020 347396  41208 S  0.3  2.1  58:54.66 kube-apiserver
+ 3691 root      20   0  501020 347396  41208 S  0.3  2.1  67:32.06 kube-apiserver
+ 3772 root      20   0  501020 347396  41208 S  0.3  2.1  66:51.08 kube-apiserver
+ 3886 root      20   0  501020 347396  41208 S  0.3  2.1  58:25.87 kube-apiserver
+ 3893 root      20   0  501020 347396  41208 S  0.3  2.1  56:45.43 kube-apiserver
+ 3896 root      20   0  501020 347396  41208 S  0.3  2.1  59:57.29 kube-apiserver
+ 3497 root      20   0  501020 347396  41208 S  0.0  2.1   0:00.13 kube-apiserver
+ 3559 root      20   0  501020 347396  41208 S  0.0  2.1  51:13.75 kube-apiserver
+ 3685 root      20   0  501020 347396  41208 S  0.0  2.1   0:00.00 kube-apiserver
+ 3687 root      20   0  501020 347396  41208 S  0.0  2.1  65:27.79 kube-apiserver
+ 3771 root      20   0  501020 347396  41208 S  0.0  2.1  13:34.54 kube-apiserver
+ 3775 root      20   0  501020 347396  41208 S  0.0  2.1   0:00.00 kube-apiserver
+ 3776 root      20   0  501020 347396  41208 S  0.0  2.1  52:18.98 kube-apiserver
+ 3884 root      20   0  501020 347396  41208 S  0.0  2.1  59:58.05 kube-apiserver
+ 3888 root      20   0  501020 347396  41208 S  0.0  2.1  70:06.28 kube-apiserver
+ 3892 root      20   0  501020 347396  41208 S  0.0  2.1  65:57.78 kube-apiserver
+31843 root      20   0  501020 347396  41208 S  0.0  2.1  67:32.26 kube-apiserver
+11729 root      20   0  501020 347396  41208 S  0.0  2.1  55:04.16 kube-apiserver
+ 2715 root      20   0  501020 347396  41208 S  0.0  2.1   0:00.00 kube-apiserver
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><ul><li>例如进程PID为3497使用ps命令查看</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 查看进程3497的所有线程
+ps huH p 3497
+
+# 查看线程个数
+ps huH p 3497 | wc -l
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="二-find-命令"><a href="#二-find-命令" class="header-anchor">#</a> 二：find 命令</h3> <blockquote><p><code>(一)：基本语法格式</code></p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>find [路径] [选项] [操作]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>find的选项</li></ul> <table><thead><tr><th style="text-align:center;">选项</th> <th style="text-align:center;">含义</th></tr></thead> <tbody><tr><td style="text-align:center;">-name</td> <td style="text-align:center;">根据文件名称查找</td></tr> <tr><td style="text-align:center;">-perm</td> <td style="text-align:center;">根据文件权限查找</td></tr> <tr><td style="text-align:center;">-prune</td> <td style="text-align:center;">该选项可以排除某些查找目录</td></tr> <tr><td style="text-align:center;">-user</td> <td style="text-align:center;">根据文件属主查找</td></tr> <tr><td style="text-align:center;">-group</td> <td style="text-align:center;">根据文件属组查找</td></tr> <tr><td style="text-align:center;">-mtime -n | +n</td> <td style="text-align:center;">根据文件更改时间查找</td></tr> <tr><td style="text-align:center;">-nogroup</td> <td style="text-align:center;">查找无有效属组的文件</td></tr> <tr><td style="text-align:center;">-nouser</td> <td style="text-align:center;">查找无有效属主的文件</td></tr> <tr><td style="text-align:center;">-newer file1 ! file2</td> <td style="text-align:center;">查找更改时间比file1新但是比file2旧</td></tr> <tr><td style="text-align:center;">-type</td> <td style="text-align:center;">按文件类型查找</td></tr> <tr><td style="text-align:center;">-size -n +n</td> <td style="text-align:center;">按文件大小查找</td></tr> <tr><td style="text-align:center;">-mindepth n</td> <td style="text-align:center;">从n级子目录开始搜索</td></tr> <tr><td style="text-align:center;">-maxdepth n</td> <td style="text-align:center;">最多搜索到n级子目录</td></tr></tbody></table> <ul><li>示例</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 搜索以.conf结尾的文件
+find /etc -name &quot;*.conf&quot;
+
+# 指定文件类型搜索
+find /etc -type f 
+
+# 指定文件大小查找, 大于1M
+find /etc -size +1M
+
+# 指定文件大小查找, 小于1M
+find /etc -size -1M
+
+# 指定修改时间查找，3天以内修改的文件
+find /etc -mtime -3
+
+# 指定修改时间查找，3天之前修改的文件
+# 如果修改文件内容，mtime和ctime都会改变，如果修改文件权限，mtime不变，而ctime会改变
+find /etc -mtime +3
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>手动删除API server的日志</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>du --max-depth=1 -h  # 找出哪个目录日志最多
+
+sudo find ./ -name 'livetv-channel-info-201806*' -type f -exec rm -f {} \;  # 批量删除
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="三-rsync-命令"><a href="#三-rsync-命令" class="header-anchor">#</a> 三：rsync 命令</h3> <blockquote><p><code>(一)：基本语法格式</code></p></blockquote> <ul><li>概念介绍</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：增量备份
+	rsync是可以实现增量备份的工具，配合inotify或sersync，可以实现触发式的实时同步
+
+2：远程拷贝
+	rsync可以实现scp的远程拷贝(rsync不支持远程到远程的拷贝，但scp支持)、cp的本地拷贝、rm删除和&quot;ls -l&quot;显示文件列表等功能。但需要注意的是，rsync的最终目的或者说其原始目的是实现两端主机的文件同步，因此实现的scp/cp/rm等功能仅仅只是同步的辅助手段
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>rsync同步说明</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	rsync的目的是实现本地主机和远程主机上的文件同步(有推拉两种方式)，也可以实现本地不同路径下文件的同步，但不能实现远程路径1到远程路径2之间的同步(scp可以实现)。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>rsync三种工作方式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>(1) 本地文件系统上实现同步
+	rsync [OPTION...] SRC... [DEST]
+
+(2) 本地主机使用远程shell和远程主机通信
+	Pull: rsync [OPTION...] [USER@]HOST:SRC... [DEST]
+	Push: rsync [OPTION...] SRC... [USER@]HOST:DEST
+
+(3) 本地主机通过网络套接字连接远程主机上的rsync daemon
+	Pull: rsync [OPTION...] [USER@]HOST::SRC... [DEST]
+          rsync [OPTION...] rsync://[USER@]HOST[:PORT]/SRC... [DEST]
+    Push: rsync [OPTION...] SRC... [USER@]HOST::DEST
+          rsync [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/DEST
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>简单的rsync同步示例</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>rsync /etc/fstab /tmp                # 在本地同步
+
+rsync -r /etc 172.16.10.5:/tmp       # 将本地/etc目录拷贝到远程主机的/tmp下，以保证远程/tmp目录和本地/etc保持同步
+
+rsync -r 172.16.10.5:/etc /tmp       # 将远程主机的/etc目录拷贝到本地/tmp下，以保证本地/tmp目录和远程/etc保持同步
+
+rsync /etc/                          # 列出本地/etc/目录下的文件列表
+
+rsync 172.16.10.5:/tmp/              # 列出远程主机上/tmp/目录下的文件列表
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>注意点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>使用rsync一定要注意的一点是，源路径如果是一个目录的话，带上尾随斜线和不带尾随斜线是不一样的，不带尾随斜线表示的是整个目录包括目录本身，带上尾随斜线表示的是目录中的文件，不包括目录本身
+
+rsync -a /etc /tmp
+rsync -a /etc/ /tmp
+
+第一个命令会在/tmp目录下创建etc目录，而第二个命令不会在/tmp目录下创建etc目录，源路径/etc/中的所有文件都直接放在/tmp目录下
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><blockquote><p><code>(二)：选项说明和示例</code></p></blockquote> <ul><li>rsync选项说明(虽然选项非常多，但最常用的选项组合是&quot;avz&quot;，即压缩和显示部分信息，并以归档模式传输)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-v：显示rsync过程中详细信息。可以使用&quot;-vvvv&quot;获取更详细信息。
+-P：显示文件传输的进度信息。(实际上&quot;-P&quot;=&quot;--partial --progress&quot;，其中的&quot;--progress&quot;才是显示进度信息的)。
+-n --dry-run  ：仅测试传输，而不实际传输。常和&quot;-vvvv&quot;配合使用来查看rsync是如何工作的。
+-a --archive  ：归档模式，表示递归传输并保持文件属性。等同于&quot;-rtopgDl&quot;。
+-r --recursive：递归到目录中去。
+-t --times：保持mtime属性。强烈建议任何时候都加上&quot;-t&quot;，否则目标文件mtime会设置为系统时间，导致下次更新
+          ：检查出mtime不同从而导致增量传输无效。
+-o --owner：保持owner属性(属主)。
+-g --group：保持group属性(属组)。
+-p --perms：保持perms属性(权限，不包括特殊权限)。
+-D        ：是&quot;--device --specials&quot;选项的组合，即也拷贝设备文件和特殊文件。
+-l --links：如果文件是软链接文件，则拷贝软链接本身而非软链接所指向的对象。
+-z        ：传输时进行压缩提高效率。
+-R --relative：使用相对路径。意味着将命令行中指定的全路径而非路径最尾部的文件名发送给服务端，包括它们的属性。用法见下文示例。
+--size-only ：默认算法是检查文件大小和mtime不同的文件，使用此选项将只检查文件大小。
+-u --update ：仅在源mtime比目标已存在文件的mtime新时才拷贝。注意，该选项是接收端判断的，不会影响删除行为。
+-d --dirs   ：以不递归的方式拷贝目录本身。默认递归时，如果源为&quot;dir1/file1&quot;，则不会拷贝dir1目录，使用该选项将拷贝dir1但不拷贝file1。
+--max-size  ：限制rsync传输的最大文件大小。可以使用单位后缀，还可以是一个小数值(例如：&quot;--max-size=1.5m&quot;)
+--min-size  ：限制rsync传输的最小文件大小。这可以用于禁止传输小文件或那些垃圾文件。
+--exclude   ：指定排除规则来排除不需要传输的文件。
+--delete    ：以SRC为主，对DEST进行同步。多则删之，少则补之。注意&quot;--delete&quot;是在接收端执行的，所以它是在
+            ：exclude/include规则生效之后才执行的。
+-b --backup ：对目标上已存在的文件做一个备份，备份的文件名后默认使用&quot;~&quot;做后缀。
+--backup-dir：指定备份文件的保存路径。不指定时默认和待备份文件保存在同一目录下。
+-e          ：指定所要使用的远程shell程序，默认为ssh。
+--port      ：连接daemon时使用的端口号，默认为873端口。
+--password-file：daemon模式时的密码文件，可以从中读取密码实现非交互式。注意，这不是远程shell认证的密码，而是rsync模块认证的密码。
+-W --whole-file：rsync将不再使用增量传输，而是全量传输。在网络带宽高于磁盘带宽时，该选项比增量传输更高效。
+--existing  ：要求只更新目标端已存在的文件，目标端还不存在的文件不传输。注意，使用相对路径时如果上层目录不存在也不会传输。
+--ignore-existing：要求只更新目标端不存在的文件。和&quot;--existing&quot;结合使用有特殊功能，见下文示例。
+--remove-source-files：要求删除源端已经成功传输的文件。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><ul><li>拷贝本地文件到远程指定的目录</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>rsync -e &quot;ssh -p 22 -o StrictHostKeyChecking=no&quot; /etc/fstab 172.16.10.5:/tmp
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>使用&quot;<code>--existing</code>&quot;选项，只更新目标端已存在的文件（只更新/tmp/a/目录和/tmp/b目录都有的文件）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>rsync -r -v --existing /tmp/a/ /tmp/b 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>使用&quot;<code>--ignore-existing</code>&quot;选项，只更新目标端不存在的文件（只更新/tmp/a/目录下有，而/tmp/b目录下没有的文件）</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>rsync -r -v --ignore-existing /tmp/a/ /tmp/b
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>使用<code>--exclude</code>排除规则</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>当前目录结构
+root@jenkins:~# tree
+├── audit
+│   └── test.txt
+├── log
+│   └── test.sh
+
+
+①：将audit、log目录下的文件拷贝到/tmp目录下，且不拷贝所有的以.txt结尾的文件
+root@jenkins:~# rsync -avz --exclude=&quot;*.txt&quot; /root/log /root/audit /tmp
+sending incremental file list
+audit/
+log/
+log/test.sh
+
+sent 1,495 bytes  received 43 bytes  3,076.00 bytes/sec
+total size is 3,178  speedup is 2.07
+
+
+②：如果不拷贝以.txt和.sh结尾的文件
+root@jenkins:~# rsync -avz --exclude=&quot;*.txt&quot; --exclude=&quot;*.sh&quot; log audit /tmp
+sending incremental file list
+audit/
+log/
+
+sent 84 bytes  received 20 bytes  208.00 bytes/sec
+total size is 0  speedup is 0.00
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>关于rsync规则的理解</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>关于规则，最重要的一点是它的作用时间。
+	当发送端敲出rsync命令后，rsync将立即扫描命令行中给定的文件和目录(扫描过程中还会按照目录进行排序，将同一个目录的文件放在相邻的位置)，这称为拷贝树(copy tree)，扫描完成后将待传输的文件或目录记录到文件列表中，然后将文件列表传输给接收端。而筛选规则的作用时刻是在扫描拷贝树时，所以会根据规则来匹配并决定文件是否记录到文件列表中(严格地说是会记录到文件列表中的，只不过排除的文件会被标记为hide隐藏起来)，只有记录到了文件列表中的文件或目录才是真正需要传输的内容。换句话说，筛选规则的生效时间在rsync整个同步过程中是非常靠前的，它会影响很多选项的操作对象，最典型的如&quot;--delete&quot;。也许，你看完这一整篇文章都没感觉到这一点的重要性，但如果你阅读rsync的man文档或者学习rsync的原理，你一定会深有体会。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>在写rsync的匹配规则的时候，可以先使用<code>dry run</code>模式先测试，其中<code>-n</code>表示dry run，<code>-i</code> 表示输出文件传输的路径</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+root@jenkins:~# rsync -nr -i --exclude='*.sh'  log audit gitlab:/tmp/
+cd+++++++++ audit/
+&lt;f+++++++++ audit/test.txt
+cd+++++++++ log/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>使用<code>--delete</code>完成<code>多则删之，少则补之</code>的同步策略，也就是<code>无差异同步</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>root@jenkins:~# rsync -avz --delete audit gitlab:/root/
+sending incremental file list
+deleting audit/monitor.txt
+audit/
+
+sent 92 bytes  received 41 bytes  266.00 bytes/sec
+total size is 115  speedup is 0.86
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>将<code>--delete</code>与<code>--exclude</code>一起使用，被排除的文件不会删除, 这里的linux.txt文件不会被删除</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>root@jenkins:~# rsync -avz --delete --exclude='linux.txt'  audit gitlab:/root/
+sending incremental file list
+deleting audit/monitor.txt
+audit/
+
+sent 107 bytes  received 41 bytes  98.67 bytes/sec
+total size is 115  speedup is 0.78
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><blockquote><p><code>(三)：rsync daemon</code>通信方式</p></blockquote> <ul><li>rsync daemon的通信方式和传输通道与远程shell不同</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	远程shell连接的两端是通过管道完成通信和数据传输的，即使连接的一端是远程主机，当连接到目标端时，将在目标端上根据远程shell进程fork出rsync进程使其成为rsync server。而rsync daemon是事先在server端上运行好的rsync后台进程(根据启动选项，也可以设置为非后台进程)，它监听套接字等待client端的连接，连接建立后所有通信方式都是通过套接字完成的。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li><p>默认<code>rsync --daemon</code>读取的配置文件为/etc/rsyncd.conf，有些版本的系统上可能该文件默认不存在。rsyncd.conf的配置见man rsyncd.conf</p></li> <li><p>/etc/rsyncd.conf配置如下</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cat /etc/rsyncd.conf
+# /etc/rsyncd: configuration file for rsync daemon mode
+ 
+# See rsyncd.conf man page for more options.
+ 
+# configuration example:
+ 
+# uid = nobody
+# gid = nobody
+# use chroot = yes
+# max connections = 4
+# pid file = /var/run/rsyncd.pid
+# exclude = lost+found/
+# transfer logging = yes
+# timeout = 900
+# ignore nonreadable = yes
+# dont compress   = *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2
+ 
+# [ftp1]
+#        path = /home/ftp
+#        comment = ftp export area
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><ul><li>对配置基本解释说明</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>	在上述示例配置文件中，先定义了一些全局选项，然后定义了[ftp1]，这个用中括号包围的&quot;[ftp1]&quot;就是rsync中所谓的模块，ftp1为模块ID，必须保证唯一，每个模块中必须定义一项&quot;path&quot;，path定义的是该模块代表的路径，例如此示例文件中，如果想请求ftp1模块，则在客户端使用&quot;rsync user@host::ftp1&quot;，这表示访问user@host上的/home/ftp目录，如果要访问/home/ftp目录下的子目录www，则&quot;rsync user@host::ftp1/www&quot;。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>基本配置示例</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>####### 全局配置参数 ##########
+port=888    # 指定rsync端口。默认873
+uid = rsync # rsync服务的运行用户，默认是nobody，文件传输成功后属主将是这个uid
+gid = rsync # rsync服务的运行组，默认是nobody，文件传输成功后属组将是这个gid
+use chroot = no # rsync daemon在传输前是否切换到指定的path目录下，并将其监禁在内
+max connections = 200 # 指定最大连接数量，0表示没有限制
+timeout = 300         # 确保rsync服务器不会永远等待一个崩溃的客户端，0表示永远等待
+motd file = /var/rsyncd/rsync.motd   # 客户端连接过来显示的消息
+pid file = /var/run/rsyncd.pid       # 指定rsync daemon的pid文件
+lock file = /var/run/rsync.lock      # 指定锁文件
+log file = /var/log/rsyncd.log       # 指定rsync的日志文件，而不把日志发送给syslog
+dont compress = *.gz *.tgz *.zip *.z *.Z *.rpm *.deb *.bz2  # 指定哪些文件不用进行压缩传输
+ 
+###########下面指定模块，并设定模块配置参数，可以创建多个模块###########
+[longshuai]        # 模块ID
+path = /longshuai/ # 指定该模块的路径，该参数必须指定。启动rsync服务前该目录必须存在。rsync请求访问模块本质就是访问该路径。
+ignore errors      # 忽略某些IO错误信息
+read only = false  # 指定该模块是否可读写，即能否上传文件，false表示可读写，true表示可读不可写。所有模块默认不可上传
+write only = false # 指定该模式是否支持下载，设置为true表示客户端不能下载。所有模块默认可下载
+list = false       # 客户端请求显示模块列表时，该模块是否显示出来，设置为false则该模块为隐藏模块。默认true
+hosts allow = 10.0.0.0/24 # 指定允许连接到该模块的机器，多个ip用空格隔开或者设置区间
+hosts deny = 0.0.0.0/32   # 指定不允许连接到该模块的机器
+auth users = rsync_backup # 指定连接到该模块的用户列表，只有列表里的用户才能连接到模块，用户名和对应密码保存在secrts file中，
+                          # 这里使用的不是系统用户，而是虚拟用户。不设置时，默认所有用户都能连接，但使用的是匿名连接
+secrets file = /etc/rsyncd.passwd # 保存auth users用户列表的用户名和密码，每行包含一个username:passwd。由于&quot;strict modes&quot;
+                                  # 默认为true，所以此文件要求非rsync daemon用户不可读写。只有启用了auth users该选项才有效。
+[xiaofang]    # 以下定义的是第二个模块
+path=/xiaofang/
+read only = false
+ignore errors
+comment = anyone can access
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/shell/basic/docs/function/function.html" class="prev">
+            Shell 中函数的高级用法
+          </a></span> <span class="next"><a href="/dev/shell/basic/docs/grep/grep.html">
+            Shell 中grep的使用
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/dev/shell/basic/docs/tools/tools.html#一-命令查看当前进程活动的线程" class="sidebar-link reco-side-一-命令查看当前进程活动的线程" data-v-cb1513f6>一：命令查看当前进程活动的线程</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/shell/basic/docs/tools/tools.html#二-find-命令" class="sidebar-link reco-side-二-find-命令" data-v-cb1513f6>二：find 命令</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/shell/basic/docs/tools/tools.html#三-rsync-命令" class="sidebar-link reco-side-三-rsync-命令" data-v-cb1513f6>三：rsync 命令</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9a5d1377.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/515.ae2cfef3.js" defer></script>
+  </body>
+</html>

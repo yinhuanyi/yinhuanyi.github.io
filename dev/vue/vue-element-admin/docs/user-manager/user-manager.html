@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>实现用户管理业务模块 | Robby·爱编程</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?e5c9806c714901413f461d5df50f2512";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+    <meta name="description" content=" ">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.793b538b.css" as="style"><link rel="preload" href="/assets/js/app.9a5d1377.js" as="script"><link rel="preload" href="/assets/js/7.c49e7131.js" as="script"><link rel="preload" href="/assets/js/1.d009776b.js" as="script"><link rel="preload" href="/assets/js/293.36991fc2.js" as="script"><link rel="prefetch" href="/assets/js/10.bf3a4a01.js"><link rel="prefetch" href="/assets/js/100.183e29a7.js"><link rel="prefetch" href="/assets/js/101.199d8e46.js"><link rel="prefetch" href="/assets/js/102.77871772.js"><link rel="prefetch" href="/assets/js/103.b1663661.js"><link rel="prefetch" href="/assets/js/104.e2724712.js"><link rel="prefetch" href="/assets/js/105.66d2fca1.js"><link rel="prefetch" href="/assets/js/106.d13147aa.js"><link rel="prefetch" href="/assets/js/107.6c143695.js"><link rel="prefetch" href="/assets/js/108.38baff0a.js"><link rel="prefetch" href="/assets/js/109.b87f3dae.js"><link rel="prefetch" href="/assets/js/11.2d4145aa.js"><link rel="prefetch" href="/assets/js/110.ecd312df.js"><link rel="prefetch" href="/assets/js/111.e86d0cf5.js"><link rel="prefetch" href="/assets/js/112.838e7814.js"><link rel="prefetch" href="/assets/js/113.ef756b43.js"><link rel="prefetch" href="/assets/js/114.90eb6e00.js"><link rel="prefetch" href="/assets/js/115.9086d1d7.js"><link rel="prefetch" href="/assets/js/116.fcaba423.js"><link rel="prefetch" href="/assets/js/117.1913339f.js"><link rel="prefetch" href="/assets/js/118.11985c3d.js"><link rel="prefetch" href="/assets/js/119.ab560a50.js"><link rel="prefetch" href="/assets/js/12.7bb0c6eb.js"><link rel="prefetch" href="/assets/js/120.25784945.js"><link rel="prefetch" href="/assets/js/121.03b17d23.js"><link rel="prefetch" href="/assets/js/122.dbb3d982.js"><link rel="prefetch" href="/assets/js/123.e04e1de0.js"><link rel="prefetch" href="/assets/js/124.c19c22e8.js"><link rel="prefetch" href="/assets/js/125.dc1e889c.js"><link rel="prefetch" href="/assets/js/126.4e0be7c0.js"><link rel="prefetch" href="/assets/js/127.2648dc86.js"><link rel="prefetch" href="/assets/js/128.a036f05c.js"><link rel="prefetch" href="/assets/js/129.ddeea161.js"><link rel="prefetch" href="/assets/js/13.794cb86f.js"><link rel="prefetch" href="/assets/js/130.2f51e053.js"><link rel="prefetch" href="/assets/js/131.50ad10f9.js"><link rel="prefetch" href="/assets/js/132.fcf72314.js"><link rel="prefetch" href="/assets/js/133.952404bc.js"><link rel="prefetch" href="/assets/js/134.319691ce.js"><link rel="prefetch" href="/assets/js/135.358e0553.js"><link rel="prefetch" href="/assets/js/136.a5240b23.js"><link rel="prefetch" href="/assets/js/137.a1acadf1.js"><link rel="prefetch" href="/assets/js/138.060a4f8d.js"><link rel="prefetch" href="/assets/js/139.ac0e3354.js"><link rel="prefetch" href="/assets/js/14.8e692555.js"><link rel="prefetch" href="/assets/js/140.d14826df.js"><link rel="prefetch" href="/assets/js/141.855d329f.js"><link rel="prefetch" href="/assets/js/142.707f4edb.js"><link rel="prefetch" href="/assets/js/143.7ac10fb6.js"><link rel="prefetch" href="/assets/js/144.ccbcbe88.js"><link rel="prefetch" href="/assets/js/145.f97912c7.js"><link rel="prefetch" href="/assets/js/146.8564b53a.js"><link rel="prefetch" href="/assets/js/147.65727197.js"><link rel="prefetch" href="/assets/js/148.3b03ba9b.js"><link rel="prefetch" href="/assets/js/149.b099e234.js"><link rel="prefetch" href="/assets/js/15.5a69bb7b.js"><link rel="prefetch" href="/assets/js/150.e2dac6a4.js"><link rel="prefetch" href="/assets/js/151.20292438.js"><link rel="prefetch" href="/assets/js/152.de07d289.js"><link rel="prefetch" href="/assets/js/153.6ed13d07.js"><link rel="prefetch" href="/assets/js/154.e33f8138.js"><link rel="prefetch" href="/assets/js/155.9514ea65.js"><link rel="prefetch" href="/assets/js/156.365860d6.js"><link rel="prefetch" href="/assets/js/157.be5d1989.js"><link rel="prefetch" href="/assets/js/158.d809568d.js"><link rel="prefetch" href="/assets/js/159.7685a5ea.js"><link rel="prefetch" href="/assets/js/16.39276800.js"><link rel="prefetch" href="/assets/js/160.b8b2aa7c.js"><link rel="prefetch" href="/assets/js/161.2be5e8ba.js"><link rel="prefetch" href="/assets/js/162.e39ddda0.js"><link rel="prefetch" href="/assets/js/163.cd59e69c.js"><link rel="prefetch" href="/assets/js/164.f439c6b3.js"><link rel="prefetch" href="/assets/js/165.74e47c48.js"><link rel="prefetch" href="/assets/js/166.8d1656c7.js"><link rel="prefetch" href="/assets/js/167.1a8d36d8.js"><link rel="prefetch" href="/assets/js/168.c09992d2.js"><link rel="prefetch" href="/assets/js/169.ad76d2ad.js"><link rel="prefetch" href="/assets/js/17.f6207881.js"><link rel="prefetch" href="/assets/js/170.86c8539e.js"><link rel="prefetch" href="/assets/js/171.a00bc1de.js"><link rel="prefetch" href="/assets/js/172.4f7cc2b8.js"><link rel="prefetch" href="/assets/js/173.e8417345.js"><link rel="prefetch" href="/assets/js/174.bcbc7ed5.js"><link rel="prefetch" href="/assets/js/175.8c13131f.js"><link rel="prefetch" href="/assets/js/176.a8e0a82f.js"><link rel="prefetch" href="/assets/js/177.cc3e8330.js"><link rel="prefetch" href="/assets/js/178.0f6cf921.js"><link rel="prefetch" href="/assets/js/179.70e295f9.js"><link rel="prefetch" href="/assets/js/18.dfc6a15d.js"><link rel="prefetch" href="/assets/js/180.5e8d67ce.js"><link rel="prefetch" href="/assets/js/181.a5136d64.js"><link rel="prefetch" href="/assets/js/182.0b1bc7fc.js"><link rel="prefetch" href="/assets/js/183.92dd7271.js"><link rel="prefetch" href="/assets/js/184.ce4e0f66.js"><link rel="prefetch" href="/assets/js/185.4b6c844e.js"><link rel="prefetch" href="/assets/js/186.fb4510cf.js"><link rel="prefetch" href="/assets/js/187.88fa2b8f.js"><link rel="prefetch" href="/assets/js/188.c54c9ff8.js"><link rel="prefetch" href="/assets/js/189.cc525573.js"><link rel="prefetch" href="/assets/js/19.c9a4b6df.js"><link rel="prefetch" href="/assets/js/190.0a0fc517.js"><link rel="prefetch" href="/assets/js/191.c0b20f10.js"><link rel="prefetch" href="/assets/js/192.a401c173.js"><link rel="prefetch" href="/assets/js/193.3884a8c4.js"><link rel="prefetch" href="/assets/js/194.2aecb6b4.js"><link rel="prefetch" href="/assets/js/195.d5b973f4.js"><link rel="prefetch" href="/assets/js/196.e8311196.js"><link rel="prefetch" href="/assets/js/197.49170522.js"><link rel="prefetch" href="/assets/js/198.6a0c43cb.js"><link rel="prefetch" href="/assets/js/199.b20ce791.js"><link rel="prefetch" href="/assets/js/20.531ffaef.js"><link rel="prefetch" href="/assets/js/200.f772507e.js"><link rel="prefetch" href="/assets/js/201.aca6d71e.js"><link rel="prefetch" href="/assets/js/202.0bf45c68.js"><link rel="prefetch" href="/assets/js/203.125a1a52.js"><link rel="prefetch" href="/assets/js/204.e9703838.js"><link rel="prefetch" href="/assets/js/205.11be8755.js"><link rel="prefetch" href="/assets/js/206.5df53ca7.js"><link rel="prefetch" href="/assets/js/207.7881dce6.js"><link rel="prefetch" href="/assets/js/208.4f9fee3c.js"><link rel="prefetch" href="/assets/js/209.b029372d.js"><link rel="prefetch" href="/assets/js/21.551fce6d.js"><link rel="prefetch" href="/assets/js/210.53655350.js"><link rel="prefetch" href="/assets/js/211.c0b9c70f.js"><link rel="prefetch" href="/assets/js/212.26c1ebdf.js"><link rel="prefetch" href="/assets/js/213.ef52073b.js"><link rel="prefetch" href="/assets/js/214.ce8c9841.js"><link rel="prefetch" href="/assets/js/215.192a0677.js"><link rel="prefetch" href="/assets/js/216.6cd17926.js"><link rel="prefetch" href="/assets/js/217.00ed48ab.js"><link rel="prefetch" href="/assets/js/218.781c8b07.js"><link rel="prefetch" href="/assets/js/219.c56f8cf4.js"><link rel="prefetch" href="/assets/js/22.986fb9e7.js"><link rel="prefetch" href="/assets/js/220.dc918507.js"><link rel="prefetch" href="/assets/js/221.39b770a4.js"><link rel="prefetch" href="/assets/js/222.9e1df2c8.js"><link rel="prefetch" href="/assets/js/223.5eff1248.js"><link rel="prefetch" href="/assets/js/224.c0cea281.js"><link rel="prefetch" href="/assets/js/225.8ad561aa.js"><link rel="prefetch" href="/assets/js/226.43acb0be.js"><link rel="prefetch" href="/assets/js/227.37ebd361.js"><link rel="prefetch" href="/assets/js/228.ead480ed.js"><link rel="prefetch" href="/assets/js/229.3baad619.js"><link rel="prefetch" href="/assets/js/23.ad800700.js"><link rel="prefetch" href="/assets/js/230.1af99529.js"><link rel="prefetch" href="/assets/js/231.59879531.js"><link rel="prefetch" href="/assets/js/232.3de50670.js"><link rel="prefetch" href="/assets/js/233.f21ede1a.js"><link rel="prefetch" href="/assets/js/234.7918e7e4.js"><link rel="prefetch" href="/assets/js/235.300a10a5.js"><link rel="prefetch" href="/assets/js/236.d35b33b7.js"><link rel="prefetch" href="/assets/js/237.96116ee5.js"><link rel="prefetch" href="/assets/js/238.59a35d89.js"><link rel="prefetch" href="/assets/js/239.9dfc4fbc.js"><link rel="prefetch" href="/assets/js/24.8425bd19.js"><link rel="prefetch" href="/assets/js/240.36bac2f9.js"><link rel="prefetch" href="/assets/js/241.ad0d06e7.js"><link rel="prefetch" href="/assets/js/242.9344b5fa.js"><link rel="prefetch" href="/assets/js/243.facc5ec6.js"><link rel="prefetch" href="/assets/js/244.71a48ed2.js"><link rel="prefetch" href="/assets/js/245.82a78890.js"><link rel="prefetch" href="/assets/js/246.d274961a.js"><link rel="prefetch" href="/assets/js/247.ee9d9380.js"><link rel="prefetch" href="/assets/js/248.8825abef.js"><link rel="prefetch" href="/assets/js/249.5061079a.js"><link rel="prefetch" href="/assets/js/25.ebd0fb73.js"><link rel="prefetch" href="/assets/js/250.cd3b6c4a.js"><link rel="prefetch" href="/assets/js/251.d218096c.js"><link rel="prefetch" href="/assets/js/252.ac828464.js"><link rel="prefetch" href="/assets/js/253.6030735c.js"><link rel="prefetch" href="/assets/js/254.3534a5fb.js"><link rel="prefetch" href="/assets/js/255.36b98bd1.js"><link rel="prefetch" href="/assets/js/256.48ca0db6.js"><link rel="prefetch" href="/assets/js/257.d0ca646c.js"><link rel="prefetch" href="/assets/js/258.781f4f39.js"><link rel="prefetch" href="/assets/js/259.48f6daae.js"><link rel="prefetch" href="/assets/js/26.e0e94a5e.js"><link rel="prefetch" href="/assets/js/260.ce650517.js"><link rel="prefetch" href="/assets/js/261.824eccad.js"><link rel="prefetch" href="/assets/js/262.b976ff4c.js"><link rel="prefetch" href="/assets/js/263.c1daf4e9.js"><link rel="prefetch" href="/assets/js/264.72936fdc.js"><link rel="prefetch" href="/assets/js/265.16ece61e.js"><link rel="prefetch" href="/assets/js/266.b17f1b64.js"><link rel="prefetch" href="/assets/js/267.14e0a079.js"><link rel="prefetch" href="/assets/js/268.9ea7c90f.js"><link rel="prefetch" href="/assets/js/269.158ff25d.js"><link rel="prefetch" href="/assets/js/27.66fdb8f8.js"><link rel="prefetch" href="/assets/js/270.7446d42b.js"><link rel="prefetch" href="/assets/js/271.68bf6f03.js"><link rel="prefetch" href="/assets/js/272.4d27d446.js"><link rel="prefetch" href="/assets/js/273.9c6efddc.js"><link rel="prefetch" href="/assets/js/274.81b9b843.js"><link rel="prefetch" href="/assets/js/275.bd55419d.js"><link rel="prefetch" href="/assets/js/276.3b600307.js"><link rel="prefetch" href="/assets/js/277.19eff568.js"><link rel="prefetch" href="/assets/js/278.f34b0bd3.js"><link rel="prefetch" href="/assets/js/279.8ac0e1dc.js"><link rel="prefetch" href="/assets/js/28.93d4f4ab.js"><link rel="prefetch" href="/assets/js/280.3c4ed74e.js"><link rel="prefetch" href="/assets/js/281.f37d360e.js"><link rel="prefetch" href="/assets/js/282.79b14434.js"><link rel="prefetch" href="/assets/js/283.f30f0408.js"><link rel="prefetch" href="/assets/js/284.d8658140.js"><link rel="prefetch" href="/assets/js/285.be71c641.js"><link rel="prefetch" href="/assets/js/286.579ea834.js"><link rel="prefetch" href="/assets/js/287.0badbfd7.js"><link rel="prefetch" href="/assets/js/288.0a4d6ad8.js"><link rel="prefetch" href="/assets/js/289.b35dc3c7.js"><link rel="prefetch" href="/assets/js/29.79b889e1.js"><link rel="prefetch" href="/assets/js/290.9152baa2.js"><link rel="prefetch" href="/assets/js/291.bb638936.js"><link rel="prefetch" href="/assets/js/292.c0d33103.js"><link rel="prefetch" href="/assets/js/294.31714e68.js"><link rel="prefetch" href="/assets/js/295.cb156d67.js"><link rel="prefetch" href="/assets/js/296.ade170a2.js"><link rel="prefetch" href="/assets/js/297.a54e7f48.js"><link rel="prefetch" href="/assets/js/298.1625bd2a.js"><link rel="prefetch" href="/assets/js/299.32a89505.js"><link rel="prefetch" href="/assets/js/3.4041ad45.js"><link rel="prefetch" href="/assets/js/30.11c1c4a9.js"><link rel="prefetch" href="/assets/js/300.3018c2a8.js"><link rel="prefetch" href="/assets/js/301.de84e79f.js"><link rel="prefetch" href="/assets/js/302.9240eb69.js"><link rel="prefetch" href="/assets/js/303.7d585f45.js"><link rel="prefetch" href="/assets/js/304.ba1906c2.js"><link rel="prefetch" href="/assets/js/305.f60f1bce.js"><link rel="prefetch" href="/assets/js/306.4393c939.js"><link rel="prefetch" href="/assets/js/307.8368fb0a.js"><link rel="prefetch" href="/assets/js/308.3115a540.js"><link rel="prefetch" href="/assets/js/309.25437db7.js"><link rel="prefetch" href="/assets/js/31.38b56d14.js"><link rel="prefetch" href="/assets/js/310.53dcfa26.js"><link rel="prefetch" href="/assets/js/311.78c0bfab.js"><link rel="prefetch" href="/assets/js/312.26c3bcdb.js"><link rel="prefetch" href="/assets/js/313.dc39f08b.js"><link rel="prefetch" href="/assets/js/314.655c6ac0.js"><link rel="prefetch" href="/assets/js/315.e35fac2d.js"><link rel="prefetch" href="/assets/js/316.a9f25bd7.js"><link rel="prefetch" href="/assets/js/317.8b6a01a8.js"><link rel="prefetch" href="/assets/js/318.b77d87e1.js"><link rel="prefetch" href="/assets/js/319.b2cc794b.js"><link rel="prefetch" href="/assets/js/32.51c932ff.js"><link rel="prefetch" href="/assets/js/320.af5899d0.js"><link rel="prefetch" href="/assets/js/321.2f00f711.js"><link rel="prefetch" href="/assets/js/322.c935286c.js"><link rel="prefetch" href="/assets/js/323.9518f075.js"><link rel="prefetch" href="/assets/js/324.8a0cfed6.js"><link rel="prefetch" href="/assets/js/325.4afeea42.js"><link rel="prefetch" href="/assets/js/326.8c15ef2e.js"><link rel="prefetch" href="/assets/js/327.8d999cbb.js"><link rel="prefetch" href="/assets/js/328.523585ed.js"><link rel="prefetch" href="/assets/js/329.cbffae2d.js"><link rel="prefetch" href="/assets/js/33.a4a24c5c.js"><link rel="prefetch" href="/assets/js/330.089b8bda.js"><link rel="prefetch" href="/assets/js/331.f62e76ea.js"><link rel="prefetch" href="/assets/js/332.41ac44fb.js"><link rel="prefetch" href="/assets/js/333.81689199.js"><link rel="prefetch" href="/assets/js/334.629527a5.js"><link rel="prefetch" href="/assets/js/335.51f4a3fd.js"><link rel="prefetch" href="/assets/js/336.b4ee5265.js"><link rel="prefetch" href="/assets/js/337.a65084e0.js"><link rel="prefetch" href="/assets/js/338.b8c7f9d4.js"><link rel="prefetch" href="/assets/js/339.32dd2a1f.js"><link rel="prefetch" href="/assets/js/34.d5a4cc1c.js"><link rel="prefetch" href="/assets/js/340.181fbac2.js"><link rel="prefetch" href="/assets/js/341.dfbdcd6a.js"><link rel="prefetch" href="/assets/js/342.7e191cd0.js"><link rel="prefetch" href="/assets/js/343.1fc1aa07.js"><link rel="prefetch" href="/assets/js/344.4da6841e.js"><link rel="prefetch" href="/assets/js/345.d9343bc3.js"><link rel="prefetch" href="/assets/js/346.265f5633.js"><link rel="prefetch" href="/assets/js/347.316afdfc.js"><link rel="prefetch" href="/assets/js/348.5b24302c.js"><link rel="prefetch" href="/assets/js/349.be0ea3c0.js"><link rel="prefetch" href="/assets/js/35.9d8a6e6c.js"><link rel="prefetch" href="/assets/js/350.1f5e32d7.js"><link rel="prefetch" href="/assets/js/351.4a655e93.js"><link rel="prefetch" href="/assets/js/352.50b2e64e.js"><link rel="prefetch" href="/assets/js/353.4cc0f899.js"><link rel="prefetch" href="/assets/js/354.8fffb5f9.js"><link rel="prefetch" href="/assets/js/355.b7fd8cb7.js"><link rel="prefetch" href="/assets/js/356.c211c1b8.js"><link rel="prefetch" href="/assets/js/357.d16a2d83.js"><link rel="prefetch" href="/assets/js/358.d7237c49.js"><link rel="prefetch" href="/assets/js/359.6734cad1.js"><link rel="prefetch" href="/assets/js/36.4b6cd3a4.js"><link rel="prefetch" href="/assets/js/360.a33983a6.js"><link rel="prefetch" href="/assets/js/361.6ff246f0.js"><link rel="prefetch" href="/assets/js/362.2f864708.js"><link rel="prefetch" href="/assets/js/363.c392c5e8.js"><link rel="prefetch" href="/assets/js/364.22a6b189.js"><link rel="prefetch" href="/assets/js/365.df1dbb8e.js"><link rel="prefetch" href="/assets/js/366.0d2547a8.js"><link rel="prefetch" href="/assets/js/367.34d64bf7.js"><link rel="prefetch" href="/assets/js/368.5a888040.js"><link rel="prefetch" href="/assets/js/369.9e4cf3f4.js"><link rel="prefetch" href="/assets/js/37.9577c26e.js"><link rel="prefetch" href="/assets/js/370.12a47033.js"><link rel="prefetch" href="/assets/js/371.6d43aa3f.js"><link rel="prefetch" href="/assets/js/372.f52d346f.js"><link rel="prefetch" href="/assets/js/373.f47542f8.js"><link rel="prefetch" href="/assets/js/374.d466d79e.js"><link rel="prefetch" href="/assets/js/375.cd11d66c.js"><link rel="prefetch" href="/assets/js/376.938c07c7.js"><link rel="prefetch" href="/assets/js/377.03fe1608.js"><link rel="prefetch" href="/assets/js/378.ed6d6894.js"><link rel="prefetch" href="/assets/js/379.bfe54af9.js"><link rel="prefetch" href="/assets/js/38.c179026f.js"><link rel="prefetch" href="/assets/js/380.a41a6355.js"><link rel="prefetch" href="/assets/js/381.ae2d3065.js"><link rel="prefetch" href="/assets/js/382.304163b7.js"><link rel="prefetch" href="/assets/js/383.7b17d4a7.js"><link rel="prefetch" href="/assets/js/384.6cfe10eb.js"><link rel="prefetch" href="/assets/js/385.e359cc49.js"><link rel="prefetch" href="/assets/js/386.63eb6322.js"><link rel="prefetch" href="/assets/js/387.d17554a7.js"><link rel="prefetch" href="/assets/js/388.a81f4ee2.js"><link rel="prefetch" href="/assets/js/389.cb8229cf.js"><link rel="prefetch" href="/assets/js/39.147cc35f.js"><link rel="prefetch" href="/assets/js/390.5e754f5e.js"><link rel="prefetch" href="/assets/js/391.956c8e39.js"><link rel="prefetch" href="/assets/js/392.c83337ff.js"><link rel="prefetch" href="/assets/js/393.5d36dd95.js"><link rel="prefetch" href="/assets/js/394.f0167b91.js"><link rel="prefetch" href="/assets/js/395.8478f3f6.js"><link rel="prefetch" href="/assets/js/396.e6fea9c1.js"><link rel="prefetch" href="/assets/js/397.0a467034.js"><link rel="prefetch" href="/assets/js/398.0dd0e255.js"><link rel="prefetch" href="/assets/js/399.f19817b8.js"><link rel="prefetch" href="/assets/js/4.3ac1d119.js"><link rel="prefetch" href="/assets/js/40.39968cf8.js"><link rel="prefetch" href="/assets/js/400.567a684b.js"><link rel="prefetch" href="/assets/js/401.41cf5537.js"><link rel="prefetch" href="/assets/js/402.89091ee3.js"><link rel="prefetch" href="/assets/js/403.d5d2cbaa.js"><link rel="prefetch" href="/assets/js/404.c7fa04e1.js"><link rel="prefetch" href="/assets/js/405.8f210f6c.js"><link rel="prefetch" href="/assets/js/406.543bb325.js"><link rel="prefetch" href="/assets/js/407.738ee9c2.js"><link rel="prefetch" href="/assets/js/408.e32a6f90.js"><link rel="prefetch" href="/assets/js/409.b73ca551.js"><link rel="prefetch" href="/assets/js/41.1d56c643.js"><link rel="prefetch" href="/assets/js/410.284b9e06.js"><link rel="prefetch" href="/assets/js/411.7cca2664.js"><link rel="prefetch" href="/assets/js/412.f05bbf63.js"><link rel="prefetch" href="/assets/js/413.d0550ac2.js"><link rel="prefetch" href="/assets/js/414.dca9673f.js"><link rel="prefetch" href="/assets/js/415.298c5573.js"><link rel="prefetch" href="/assets/js/416.8dff3a66.js"><link rel="prefetch" href="/assets/js/417.8c1a0a4e.js"><link rel="prefetch" href="/assets/js/418.a6b3d607.js"><link rel="prefetch" href="/assets/js/419.a7880b08.js"><link rel="prefetch" href="/assets/js/42.1b306b17.js"><link rel="prefetch" href="/assets/js/420.e17e772d.js"><link rel="prefetch" href="/assets/js/421.64699486.js"><link rel="prefetch" href="/assets/js/422.3f898a85.js"><link rel="prefetch" href="/assets/js/423.aba3c659.js"><link rel="prefetch" href="/assets/js/424.abbcc73e.js"><link rel="prefetch" href="/assets/js/425.3469bdbd.js"><link rel="prefetch" href="/assets/js/426.deb86b4b.js"><link rel="prefetch" href="/assets/js/427.c6faeccf.js"><link rel="prefetch" href="/assets/js/428.ce2143ba.js"><link rel="prefetch" href="/assets/js/429.f6ac264f.js"><link rel="prefetch" href="/assets/js/43.7aca7037.js"><link rel="prefetch" href="/assets/js/430.c5564c52.js"><link rel="prefetch" href="/assets/js/431.8f223d2d.js"><link rel="prefetch" href="/assets/js/432.ba138351.js"><link rel="prefetch" href="/assets/js/433.17cccc55.js"><link rel="prefetch" href="/assets/js/434.313a2983.js"><link rel="prefetch" href="/assets/js/435.4e75644a.js"><link rel="prefetch" href="/assets/js/436.ddd5bc6a.js"><link rel="prefetch" href="/assets/js/437.7fc374a2.js"><link rel="prefetch" href="/assets/js/438.8f3290a7.js"><link rel="prefetch" href="/assets/js/439.0d98dc66.js"><link rel="prefetch" href="/assets/js/44.5bb17146.js"><link rel="prefetch" href="/assets/js/440.0555189f.js"><link rel="prefetch" href="/assets/js/441.8583cfc0.js"><link rel="prefetch" href="/assets/js/442.bf7b236d.js"><link rel="prefetch" href="/assets/js/443.b9c86fb4.js"><link rel="prefetch" href="/assets/js/444.1a388c82.js"><link rel="prefetch" href="/assets/js/445.f0b67036.js"><link rel="prefetch" href="/assets/js/446.8c732c56.js"><link rel="prefetch" href="/assets/js/447.6d1be8d9.js"><link rel="prefetch" href="/assets/js/448.3757ac1c.js"><link rel="prefetch" href="/assets/js/449.a62b518b.js"><link rel="prefetch" href="/assets/js/45.8cb3fc60.js"><link rel="prefetch" href="/assets/js/450.88b22b7d.js"><link rel="prefetch" href="/assets/js/451.9e75dd3b.js"><link rel="prefetch" href="/assets/js/452.73b48879.js"><link rel="prefetch" href="/assets/js/453.932fa75e.js"><link rel="prefetch" href="/assets/js/454.14027c6b.js"><link rel="prefetch" href="/assets/js/455.4be47b6a.js"><link rel="prefetch" href="/assets/js/456.ee0b078b.js"><link rel="prefetch" href="/assets/js/457.f0bac5b8.js"><link rel="prefetch" href="/assets/js/458.27022088.js"><link rel="prefetch" href="/assets/js/459.ab2f4695.js"><link rel="prefetch" href="/assets/js/46.471ff9b5.js"><link rel="prefetch" href="/assets/js/460.11e77a24.js"><link rel="prefetch" href="/assets/js/461.194f79d1.js"><link rel="prefetch" href="/assets/js/462.80a34b65.js"><link rel="prefetch" href="/assets/js/463.f66a897c.js"><link rel="prefetch" href="/assets/js/464.45bb7abf.js"><link rel="prefetch" href="/assets/js/465.c38904d3.js"><link rel="prefetch" href="/assets/js/466.0c8a1201.js"><link rel="prefetch" href="/assets/js/467.c8b86791.js"><link rel="prefetch" href="/assets/js/468.70a2a91e.js"><link rel="prefetch" href="/assets/js/469.8bbe4ac4.js"><link rel="prefetch" href="/assets/js/47.5ce5c3c2.js"><link rel="prefetch" href="/assets/js/470.fde0c73c.js"><link rel="prefetch" href="/assets/js/471.0be5c4ef.js"><link rel="prefetch" href="/assets/js/472.7e1c6165.js"><link rel="prefetch" href="/assets/js/473.39c8df5e.js"><link rel="prefetch" href="/assets/js/474.29c08fbe.js"><link rel="prefetch" href="/assets/js/475.b85cc5be.js"><link rel="prefetch" href="/assets/js/476.d2472e0d.js"><link rel="prefetch" href="/assets/js/477.5c6cbe44.js"><link rel="prefetch" href="/assets/js/478.2c8a78ce.js"><link rel="prefetch" href="/assets/js/479.10db54c8.js"><link rel="prefetch" href="/assets/js/48.63747cc1.js"><link rel="prefetch" href="/assets/js/480.abd30718.js"><link rel="prefetch" href="/assets/js/481.c15ba6c9.js"><link rel="prefetch" href="/assets/js/482.e930790a.js"><link rel="prefetch" href="/assets/js/483.e1b09083.js"><link rel="prefetch" href="/assets/js/484.9b4b5c9c.js"><link rel="prefetch" href="/assets/js/485.36c42239.js"><link rel="prefetch" href="/assets/js/486.73b5ece1.js"><link rel="prefetch" href="/assets/js/487.39c3b9b4.js"><link rel="prefetch" href="/assets/js/488.50f3044f.js"><link rel="prefetch" href="/assets/js/489.5a922985.js"><link rel="prefetch" href="/assets/js/49.c8a3f2ca.js"><link rel="prefetch" href="/assets/js/490.c6845b01.js"><link rel="prefetch" href="/assets/js/491.2863d479.js"><link rel="prefetch" href="/assets/js/492.b03e4127.js"><link rel="prefetch" href="/assets/js/493.db71ed8b.js"><link rel="prefetch" href="/assets/js/494.9608a92e.js"><link rel="prefetch" href="/assets/js/495.ced07f96.js"><link rel="prefetch" href="/assets/js/496.185decf2.js"><link rel="prefetch" href="/assets/js/497.ddc55f9e.js"><link rel="prefetch" href="/assets/js/498.43397afd.js"><link rel="prefetch" href="/assets/js/499.7320fe31.js"><link rel="prefetch" href="/assets/js/5.3134845c.js"><link rel="prefetch" href="/assets/js/50.68b1ba39.js"><link rel="prefetch" href="/assets/js/500.41912532.js"><link rel="prefetch" href="/assets/js/501.5a2c44ad.js"><link rel="prefetch" href="/assets/js/502.3e92b592.js"><link rel="prefetch" href="/assets/js/503.a909f346.js"><link rel="prefetch" href="/assets/js/504.1677e8f8.js"><link rel="prefetch" href="/assets/js/505.ea1a1845.js"><link rel="prefetch" href="/assets/js/506.ea559644.js"><link rel="prefetch" href="/assets/js/507.757d384a.js"><link rel="prefetch" href="/assets/js/508.3233323c.js"><link rel="prefetch" href="/assets/js/509.cd881c95.js"><link rel="prefetch" href="/assets/js/51.840f1c2d.js"><link rel="prefetch" href="/assets/js/510.693e3154.js"><link rel="prefetch" href="/assets/js/511.0726668e.js"><link rel="prefetch" href="/assets/js/512.544f9351.js"><link rel="prefetch" href="/assets/js/513.09e693c1.js"><link rel="prefetch" href="/assets/js/514.9ea29f17.js"><link rel="prefetch" href="/assets/js/515.ae2cfef3.js"><link rel="prefetch" href="/assets/js/516.332ac4f7.js"><link rel="prefetch" href="/assets/js/517.afd3f56e.js"><link rel="prefetch" href="/assets/js/518.925058af.js"><link rel="prefetch" href="/assets/js/519.0e0f3b50.js"><link rel="prefetch" href="/assets/js/52.037d8e07.js"><link rel="prefetch" href="/assets/js/520.91f935f6.js"><link rel="prefetch" href="/assets/js/521.686c1eb6.js"><link rel="prefetch" href="/assets/js/522.554cbfe5.js"><link rel="prefetch" href="/assets/js/523.48e15e4e.js"><link rel="prefetch" href="/assets/js/524.52d7dd1c.js"><link rel="prefetch" href="/assets/js/525.eb2d041a.js"><link rel="prefetch" href="/assets/js/526.18d14b74.js"><link rel="prefetch" href="/assets/js/527.72005be4.js"><link rel="prefetch" href="/assets/js/528.a927bfeb.js"><link rel="prefetch" href="/assets/js/529.577cf1e8.js"><link rel="prefetch" href="/assets/js/53.1fd6d004.js"><link rel="prefetch" href="/assets/js/530.8214546e.js"><link rel="prefetch" href="/assets/js/531.188187ee.js"><link rel="prefetch" href="/assets/js/532.0d33ab06.js"><link rel="prefetch" href="/assets/js/533.713b971d.js"><link rel="prefetch" href="/assets/js/534.4c3f120d.js"><link rel="prefetch" href="/assets/js/535.f75b00e3.js"><link rel="prefetch" href="/assets/js/536.19cd9376.js"><link rel="prefetch" href="/assets/js/537.c578cfb6.js"><link rel="prefetch" href="/assets/js/538.2e3d2af3.js"><link rel="prefetch" href="/assets/js/539.ced32c6c.js"><link rel="prefetch" href="/assets/js/54.16da8f26.js"><link rel="prefetch" href="/assets/js/540.1cdaa436.js"><link rel="prefetch" href="/assets/js/541.79472898.js"><link rel="prefetch" href="/assets/js/542.c19e66bf.js"><link rel="prefetch" href="/assets/js/543.8c7ba033.js"><link rel="prefetch" href="/assets/js/544.e4d63122.js"><link rel="prefetch" href="/assets/js/545.990cf62f.js"><link rel="prefetch" href="/assets/js/546.c450bfe9.js"><link rel="prefetch" href="/assets/js/547.5f9d5d3c.js"><link rel="prefetch" href="/assets/js/548.da38e02f.js"><link rel="prefetch" href="/assets/js/549.4e7ef51b.js"><link rel="prefetch" href="/assets/js/55.889a99a0.js"><link rel="prefetch" href="/assets/js/550.fe38cd54.js"><link rel="prefetch" href="/assets/js/551.a962ba39.js"><link rel="prefetch" href="/assets/js/552.ea9b8c68.js"><link rel="prefetch" href="/assets/js/553.bb05d44b.js"><link rel="prefetch" href="/assets/js/554.0058fb25.js"><link rel="prefetch" href="/assets/js/555.b9c01360.js"><link rel="prefetch" href="/assets/js/556.90c1efbd.js"><link rel="prefetch" href="/assets/js/557.e91bab69.js"><link rel="prefetch" href="/assets/js/558.117e05db.js"><link rel="prefetch" href="/assets/js/559.ffc1daab.js"><link rel="prefetch" href="/assets/js/56.0d815a94.js"><link rel="prefetch" href="/assets/js/560.f1afe080.js"><link rel="prefetch" href="/assets/js/561.58ef4b9a.js"><link rel="prefetch" href="/assets/js/562.2aea2b58.js"><link rel="prefetch" href="/assets/js/563.9fa5d88a.js"><link rel="prefetch" href="/assets/js/564.9009c1a9.js"><link rel="prefetch" href="/assets/js/565.cc151c74.js"><link rel="prefetch" href="/assets/js/566.6d1dc45c.js"><link rel="prefetch" href="/assets/js/567.72cd3a82.js"><link rel="prefetch" href="/assets/js/568.dce9b1bc.js"><link rel="prefetch" href="/assets/js/569.47798dcf.js"><link rel="prefetch" href="/assets/js/57.4af72b89.js"><link rel="prefetch" href="/assets/js/570.c076c67b.js"><link rel="prefetch" href="/assets/js/571.271e5add.js"><link rel="prefetch" href="/assets/js/572.948d49fb.js"><link rel="prefetch" href="/assets/js/573.eede7803.js"><link rel="prefetch" href="/assets/js/574.040dcefc.js"><link rel="prefetch" href="/assets/js/575.d6c8a336.js"><link rel="prefetch" href="/assets/js/576.cb9de798.js"><link rel="prefetch" href="/assets/js/577.c6c660be.js"><link rel="prefetch" href="/assets/js/578.22177af2.js"><link rel="prefetch" href="/assets/js/579.1a6bf5b8.js"><link rel="prefetch" href="/assets/js/58.df984a43.js"><link rel="prefetch" href="/assets/js/580.7e4d3cb7.js"><link rel="prefetch" href="/assets/js/581.c149fae7.js"><link rel="prefetch" href="/assets/js/582.55545a35.js"><link rel="prefetch" href="/assets/js/583.a31c53bf.js"><link rel="prefetch" href="/assets/js/584.36626d3d.js"><link rel="prefetch" href="/assets/js/585.fd277c61.js"><link rel="prefetch" href="/assets/js/586.52204405.js"><link rel="prefetch" href="/assets/js/587.99335ca1.js"><link rel="prefetch" href="/assets/js/588.c1f2b2fa.js"><link rel="prefetch" href="/assets/js/589.7feb7eb3.js"><link rel="prefetch" href="/assets/js/59.c65322cc.js"><link rel="prefetch" href="/assets/js/590.08417ac3.js"><link rel="prefetch" href="/assets/js/591.9cb3207b.js"><link rel="prefetch" href="/assets/js/592.8595a9f4.js"><link rel="prefetch" href="/assets/js/593.605c39df.js"><link rel="prefetch" href="/assets/js/594.cc98eb1f.js"><link rel="prefetch" href="/assets/js/595.8ae0a32e.js"><link rel="prefetch" href="/assets/js/596.b34683c2.js"><link rel="prefetch" href="/assets/js/597.ce917673.js"><link rel="prefetch" href="/assets/js/598.1b31cbf3.js"><link rel="prefetch" href="/assets/js/599.11899b1a.js"><link rel="prefetch" href="/assets/js/6.0c96ad77.js"><link rel="prefetch" href="/assets/js/60.77f5b873.js"><link rel="prefetch" href="/assets/js/600.36a408d5.js"><link rel="prefetch" href="/assets/js/601.23dcd251.js"><link rel="prefetch" href="/assets/js/602.64cf1e80.js"><link rel="prefetch" href="/assets/js/603.502d8c92.js"><link rel="prefetch" href="/assets/js/604.e660e01e.js"><link rel="prefetch" href="/assets/js/605.2403db7a.js"><link rel="prefetch" href="/assets/js/606.fad28edc.js"><link rel="prefetch" href="/assets/js/607.9c6f2afe.js"><link rel="prefetch" href="/assets/js/608.734afab0.js"><link rel="prefetch" href="/assets/js/609.4c1a6347.js"><link rel="prefetch" href="/assets/js/61.2d4e6a1a.js"><link rel="prefetch" href="/assets/js/610.312082cc.js"><link rel="prefetch" href="/assets/js/611.117258e3.js"><link rel="prefetch" href="/assets/js/612.dbff59f2.js"><link rel="prefetch" href="/assets/js/613.07f207a5.js"><link rel="prefetch" href="/assets/js/614.7690add3.js"><link rel="prefetch" href="/assets/js/615.18c81803.js"><link rel="prefetch" href="/assets/js/616.f6f1bae0.js"><link rel="prefetch" href="/assets/js/617.15209f2e.js"><link rel="prefetch" href="/assets/js/618.4a9d5e62.js"><link rel="prefetch" href="/assets/js/619.4507e3c7.js"><link rel="prefetch" href="/assets/js/62.45203677.js"><link rel="prefetch" href="/assets/js/620.3ccbca1a.js"><link rel="prefetch" href="/assets/js/621.d08dbba4.js"><link rel="prefetch" href="/assets/js/622.a46d6f6c.js"><link rel="prefetch" href="/assets/js/623.9820d99d.js"><link rel="prefetch" href="/assets/js/624.60571315.js"><link rel="prefetch" href="/assets/js/625.da6f7154.js"><link rel="prefetch" href="/assets/js/626.73701a4d.js"><link rel="prefetch" href="/assets/js/627.aa3ae061.js"><link rel="prefetch" href="/assets/js/628.d2296bee.js"><link rel="prefetch" href="/assets/js/629.db9ed29f.js"><link rel="prefetch" href="/assets/js/63.77bcb425.js"><link rel="prefetch" href="/assets/js/630.82ed32d5.js"><link rel="prefetch" href="/assets/js/631.e9b80c2c.js"><link rel="prefetch" href="/assets/js/632.92997d70.js"><link rel="prefetch" href="/assets/js/633.e66c3cbc.js"><link rel="prefetch" href="/assets/js/634.b314ab80.js"><link rel="prefetch" href="/assets/js/635.cae0b43a.js"><link rel="prefetch" href="/assets/js/636.5e41c48d.js"><link rel="prefetch" href="/assets/js/637.45799a46.js"><link rel="prefetch" href="/assets/js/638.8dbb86f2.js"><link rel="prefetch" href="/assets/js/639.f3dc3d54.js"><link rel="prefetch" href="/assets/js/64.48a44ac7.js"><link rel="prefetch" href="/assets/js/640.b538e6a5.js"><link rel="prefetch" href="/assets/js/641.291cd95e.js"><link rel="prefetch" href="/assets/js/642.caab5dfd.js"><link rel="prefetch" href="/assets/js/643.6a4e5909.js"><link rel="prefetch" href="/assets/js/644.395e1509.js"><link rel="prefetch" href="/assets/js/645.df897a52.js"><link rel="prefetch" href="/assets/js/646.07bb34ad.js"><link rel="prefetch" href="/assets/js/647.40581df6.js"><link rel="prefetch" href="/assets/js/648.cc78ed85.js"><link rel="prefetch" href="/assets/js/649.6c9bfe91.js"><link rel="prefetch" href="/assets/js/65.594d727c.js"><link rel="prefetch" href="/assets/js/650.6a7966d1.js"><link rel="prefetch" href="/assets/js/651.cdbe3a61.js"><link rel="prefetch" href="/assets/js/66.697e3989.js"><link rel="prefetch" href="/assets/js/67.a3eb57a2.js"><link rel="prefetch" href="/assets/js/68.e0579512.js"><link rel="prefetch" href="/assets/js/69.c53a8af2.js"><link rel="prefetch" href="/assets/js/70.1af2e395.js"><link rel="prefetch" href="/assets/js/71.47eb643b.js"><link rel="prefetch" href="/assets/js/72.5262f104.js"><link rel="prefetch" href="/assets/js/73.d07f6ff2.js"><link rel="prefetch" href="/assets/js/74.00d2de22.js"><link rel="prefetch" href="/assets/js/75.69ac6b6c.js"><link rel="prefetch" href="/assets/js/76.c05cd6a7.js"><link rel="prefetch" href="/assets/js/77.d5222458.js"><link rel="prefetch" href="/assets/js/78.630fb592.js"><link rel="prefetch" href="/assets/js/79.c188f8e3.js"><link rel="prefetch" href="/assets/js/8.9176dd4b.js"><link rel="prefetch" href="/assets/js/80.c0771c09.js"><link rel="prefetch" href="/assets/js/81.5893998e.js"><link rel="prefetch" href="/assets/js/82.6d490909.js"><link rel="prefetch" href="/assets/js/83.9bd41235.js"><link rel="prefetch" href="/assets/js/84.8f0298e2.js"><link rel="prefetch" href="/assets/js/85.150db05f.js"><link rel="prefetch" href="/assets/js/86.af375a15.js"><link rel="prefetch" href="/assets/js/87.07e03e84.js"><link rel="prefetch" href="/assets/js/88.2cc7eabb.js"><link rel="prefetch" href="/assets/js/89.001203fd.js"><link rel="prefetch" href="/assets/js/9.420da603.js"><link rel="prefetch" href="/assets/js/90.4ae35882.js"><link rel="prefetch" href="/assets/js/91.3da12e9b.js"><link rel="prefetch" href="/assets/js/92.d58a0bce.js"><link rel="prefetch" href="/assets/js/93.b354f9d1.js"><link rel="prefetch" href="/assets/js/94.d41623fe.js"><link rel="prefetch" href="/assets/js/95.8b4907f1.js"><link rel="prefetch" href="/assets/js/96.d23892fd.js"><link rel="prefetch" href="/assets/js/97.914b3374.js"><link rel="prefetch" href="/assets/js/98.957d1e13.js"><link rel="prefetch" href="/assets/js/99.c9c3f20a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.793b538b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>Robby·爱编程</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2> </p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/nav-logo.png" alt="Robby·爱编程" class="logo"> <span class="site-name">Robby·爱编程</span></a> <div class="links"><!----> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><img src="/img/user-profile.jpeg" alt="author-avatar" class="personal-img" data-v-39576ba9> <h3 class="name" data-v-39576ba9>
+    尹欢一的技术博客
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>641</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-menu"></i>
+      计算机理论
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/theory/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法与数据结构(Golang版本)
+</a></li><li class="dropdown-item"><!----> <a href="/theory/algorithmic-thought/" class="nav-link"><i class="undefined"></i>
+  算法思想分类
+</a></li><li class="dropdown-item"><!----> <a href="/theory/network/" class="nav-link"><i class="undefined"></i>
+  计算机网络
+</a></li><li class="dropdown-item"><!----> <a href="/theory/system/" class="nav-link"><i class="undefined"></i>
+  操作系统
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-document"></i>
+      编程开发
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>Python开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/python/basic/" class="nav-link"><i class="undefined"></i>
+  Python开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/python/machine-leaning/" class="nav-link"><i class="undefined"></i>
+  Python机器学习
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third-lib/" class="nav-link"><i class="undefined"></i>
+  Python第三方库
+</a></li><li class="dropdown-subitem"><a href="/dev/python/scrapy/" class="nav-link"><i class="undefined"></i>
+  Python爬虫
+</a></li><li class="dropdown-subitem"><a href="/dev/python/deefuture/" class="nav-link"><i class="undefined"></i>
+  Python Deefuture教育平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/shop/" class="nav-link"><i class="undefined"></i>
+  Python电商平台
+</a></li><li class="dropdown-subitem"><a href="/dev/python/coroutine/" class="nav-link"><i class="undefined"></i>
+  Python协程开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/tornado/" class="nav-link"><i class="undefined"></i>
+  Python Tornado开发
+</a></li><li class="dropdown-subitem"><a href="/dev/python/third/" class="nav-link"><i class="undefined"></i>
+  Python第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/python/sqlalchemy/" class="nav-link"><i class="undefined"></i>
+  Python SQLAlchemy
+</a></li></ul></li><li class="dropdown-item"><h4>Golang开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/golang/basic/" class="nav-link"><i class="undefined"></i>
+  Golang开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/package/" class="nav-link"><i class="undefined"></i>
+  Golang第三方包
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/source/" class="nav-link"><i class="undefined"></i>
+  Golang源码分析
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/kill/" class="nav-link"><i class="undefined"></i>
+  Golang秒杀系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/task/" class="nav-link"><i class="undefined"></i>
+  Golang任务系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/post/" class="nav-link"><i class="undefined"></i>
+  Golang帖子系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/network/" class="nav-link"><i class="undefined"></i>
+  Golang网关系统
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/advance/" class="nav-link"><i class="undefined"></i>
+  Golang进阶开发
+</a></li><li class="dropdown-subitem"><a href="/dev/golang/problem/" class="nav-link"><i class="undefined"></i>
+  Golang问题集合
+</a></li></ul></li><li class="dropdown-item"><h4>Shell开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/shell/basic/" class="nav-link"><i class="undefined"></i>
+  Shell开发基础
+</a></li></ul></li><li class="dropdown-item"><h4>Vue开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/vue/layui/" class="nav-link"><i class="undefined"></i>
+  Layui开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/official/" class="nav-link"><i class="undefined"></i>
+  Vue2.x官方文档
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/ebook/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电子书系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/monitor/" class="nav-link"><i class="undefined"></i>
+  Vue2.x监控系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/sell/" class="nav-link"><i class="undefined"></i>
+  Vue2.x电商系统
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vue-element-admin/" class="nav-link router-link-active"><i class="undefined"></i>
+  Vue3.x vue-element-admin开发
+</a></li><li class="dropdown-subitem"><a href="/dev/vue/vuepress/" class="nav-link"><i class="undefined"></i>
+  VuePress安装配置与发布
+</a></li></ul></li><li class="dropdown-item"><h4>Java开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/java/basic/" class="nav-link"><i class="undefined"></i>
+  Java开发基础
+</a></li><li class="dropdown-subitem"><a href="/dev/java/web/" class="nav-link"><i class="undefined"></i>
+  Java Web开发
+</a></li></ul></li><li class="dropdown-item"><h4>Scala开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/scala/basic/" class="nav-link"><i class="undefined"></i>
+  Scala开发基础
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-home"></i>
+      SRE
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>数据库系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/database/sql/" class="nav-link"><i class="undefined"></i>
+  SQL语言
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-theory/" class="nav-link"><i class="undefined"></i>
+  MySQL理论
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-basic/" class="nav-link"><i class="undefined"></i>
+  MySQL基础
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mysql-high/" class="nav-link"><i class="undefined"></i>
+  MySQL高可用
+</a></li><li class="dropdown-subitem"><a href="/sre/database/redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-subitem"><a href="/sre/database/elasticsearch/" class="nav-link"><i class="undefined"></i>
+  Elasticsearch
+</a></li><li class="dropdown-subitem"><a href="/sre/database/mongodb/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li></ul></li><li class="dropdown-item"><h4>接入层系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/interface/nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li></ul></li><li class="dropdown-item"><h4>监控系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/monitor/zabbix/" class="nav-link"><i class="undefined"></i>
+  Zabbix
+</a></li><li class="dropdown-subitem"><a href="/sre/monitor/grafana/" class="nav-link"><i class="undefined"></i>
+  Prometheus、Influxdb、Grafana
+</a></li></ul></li><li class="dropdown-item"><h4>日志系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/log/elk/" class="nav-link"><i class="undefined"></i>
+  ELK
+</a></li><li class="dropdown-subitem"><a href="/sre/log/elastalert/" class="nav-link"><i class="undefined"></i>
+  ElastAlert
+</a></li></ul></li><li class="dropdown-item"><h4>发布系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/deploy/ansible/" class="nav-link"><i class="undefined"></i>
+  Ansible
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/exec-engine/" class="nav-link"><i class="undefined"></i>
+  Exec-Engine
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/gitlab-ci/" class="nav-link"><i class="undefined"></i>
+  Gitlab-CI
+</a></li><li class="dropdown-subitem"><a href="/sre/deploy/git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li></ul></li><li class="dropdown-item"><h4>虚拟化系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/virtual/docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-subitem"><a href="/sre/virtual/k8s/" class="nav-link"><i class="undefined"></i>
+  K8S
+</a></li></ul></li><li class="dropdown-item"><h4>数据处理系统</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/data/spark/" class="nav-link"><i class="undefined"></i>
+  Spark
+</a></li><li class="dropdown-subitem"><a href="/sre/data/flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-subitem"><a href="/sre/data/pyflink/" class="nav-link"><i class="undefined"></i>
+  PyFlink
+</a></li></ul></li><li class="dropdown-item"><h4>消息队列</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/sre/queue/rabbitmq/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-subitem"><a href="/sre/queue/kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-suggestion"></i>
+      系统架构
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/arch/micro/grpc/" class="nav-link"><i class="undefined"></i>
+  gRPC微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/micro/thrift/" class="nav-link"><i class="undefined"></i>
+  Thrift微服务
+</a></li><li class="dropdown-item"><!----> <a href="/arch/sso/oauth2/" class="nav-link"><i class="undefined"></i>
+  SSO单点登录系统
+</a></li></ul></div></div><div class="nav-item"><a href="/me/" class="nav-link"><i class="iconfont reco-user"></i>
+  关于
+</a></div> <!----></nav> <ul class="sidebar-links"><li><a href="/dev/vue/vue-element-admin/docs/eslint/eslint.html" class="sidebar-link">ESLint 和 GitHooks</a></li><li><a href="/dev/vue/vue-element-admin/docs/config/config.html" class="sidebar-link">管理后台的前端项目架构</a></li><li><a href="/dev/vue/vue-element-admin/docs/layout/layout.html" class="sidebar-link">搭建Layout架构</a></li><li><a href="/dev/vue/vue-element-admin/docs/common/common.html" class="sidebar-link">通用功能开发</a></li><li><a href="/dev/vue/vue-element-admin/docs/profile/profile.html" class="sidebar-link">实现个人中心业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html" aria-current="page" class="active sidebar-link">实现用户管理业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/user/user.html" class="sidebar-link">实现用户、角色、权限业务模块</a></li><li><a href="/dev/vue/vue-element-admin/docs/table/table.html" class="sidebar-link">表格动态列和表格拖动排序解决方案</a></li><li><a href="/dev/vue/vue-element-admin/docs/md/md.html" class="sidebar-link">富文本与markdown解决方案</a></li><li><a href="/dev/vue/vue-element-admin/docs/deploy/deploy.html" class="sidebar-link">项目部署</a></li><li><a href="/dev/vue/vue-element-admin/docs/summary/summary.html" class="sidebar-link">总结</a></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>实现用户管理业务模块</h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>尹欢一的技术博客</span>
+            
+          <span data-v-25ba6db2>2016 - </span>
+          2023
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">实现用户管理业务模块</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>尹欢一的技术博客</span></i> <i class="iconfont reco-date" data-v-f875f3fc><span data-v-f875f3fc>2021/8/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="一-用户管理业务模块实现"><a href="#一-用户管理业务模块实现" class="header-anchor">#</a> 一：用户管理业务模块实现</h2> <h3 id="一-主要工作"><a href="#一-主要工作" class="header-anchor">#</a> （一）主要工作</h3> <ul><li>整个用户相关的模块分为三部分</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：员工管理
+
+2：角色列表
+
+3：权限列表
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>整个 员工管理 模块可以分为以下功能</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：用户列表分页展示
+
+2：excel 导入用户
+
+3：用户列表导出为 excel
+
+4：用户详情的表格展示
+
+5：用户详情表格打印
+
+6：用户删除
+
+7：用户角色分配（需要在完成角色列表之后处理）
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="二-用户列表分页展示开发"><a href="#二-用户列表分页展示开发" class="header-anchor">#</a> （二）用户列表分页展示开发</h3> <ul><li>整个功能大体可以分为两步</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：获取分页数据
+
+2：利用 el-table 和 el-pagination 渲染数据
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>创建src/api/user-manager.js文件，添加getUserManageList请求接口</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import request from '@/utils/request'
+
+export function getUserManageList(data) {
+  return request({
+    url: '/user-manager/list',
+    method: 'GET',
+    params: data
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>编辑views/user-manage/index.vue组件，组件分为两个部分：按钮部分和表格和分页部分</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;user-manage-container&quot;&gt;
+    &lt;!--  按钮部分  --&gt;
+    &lt;el-card class=&quot;header&quot;&gt;
+      &lt;div&gt;
+        &lt;el-button type=&quot;primary&quot;&gt;
+          {{ $t('msg.excel.importExcel') }}
+        &lt;/el-button&gt;
+        &lt;el-button type=&quot;success&quot;&gt;
+          {{ $t('msg.excel.exportExcel') }}
+        &lt;/el-button&gt;
+      &lt;/div&gt;
+    &lt;/el-card&gt;
+
+    &lt;!--  表格和分页部分  --&gt;
+    &lt;el-card&gt;
+      &lt;!--  表格  --&gt;
+      &lt;el-table :data=&quot;tableData&quot; border style=&quot;width: 100%&quot;&gt;
+        &lt;!-- 索引 --&gt;
+        &lt;el-table-column label=&quot;#&quot; type=&quot;index&quot; /&gt;
+        &lt;!-- 姓名 --&gt;
+        &lt;el-table-column prop=&quot;username&quot; :label=&quot;$t('msg.excel.name')&quot; /&gt;
+        &lt;!-- 电话 --&gt;
+        &lt;el-table-column prop=&quot;mobile&quot; :label=&quot;$t('msg.excel.mobile')&quot; /&gt;
+        &lt;!-- 头像 --&gt;
+        &lt;el-table-column :label=&quot;$t('msg.excel.avatar')&quot; align=&quot;center&quot;&gt;
+          &lt;template v-slot=&quot;{ row }&quot;&gt;
+            &lt;el-image
+              class=&quot;avatar&quot;
+              :src=&quot;row.avatar&quot;
+              :preview-src-list=&quot;[row.avatar]&quot;
+            &gt;&lt;/el-image&gt;
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+        &lt;!--  角色  --&gt;
+        &lt;el-table-column :label=&quot;$t('msg.excel.role')&quot;&gt;
+          &lt;template #default=&quot;{ row }&quot;&gt;
+            &lt;!--  如果角色存在  --&gt;
+            &lt;div v-if=&quot;row.role &amp;&amp; row.role.length &gt; 0&quot;&gt;
+              &lt;el-tag v-for=&quot;item in row.role&quot; :key=&quot;item.id&quot; size=&quot;mini&quot;&gt;{{
+                item.title
+              }}&lt;/el-tag&gt;
+            &lt;/div&gt;
+            &lt;div v-else&gt;
+              &lt;el-tag size=&quot;mini&quot;&gt;{{ $t('msg.excel.defaultRole') }}&lt;/el-tag&gt;
+            &lt;/div&gt;
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+        &lt;!--  开通时间  --&gt;
+        &lt;el-table-column prop=&quot;openTime&quot; :label=&quot;$t('msg.excel.openTime')&quot; /&gt;
+        &lt;!--  操作  --&gt;
+        &lt;el-table-column
+          :label=&quot;$t('msg.excel.action')&quot;
+          fixed=&quot;right&quot;
+          width=&quot;260&quot;
+        &gt;
+          &lt;template #default&gt;
+            &lt;!-- 查看 --&gt;
+            &lt;el-button type=&quot;primary&quot; size=&quot;mini&quot;&gt;{{
+              $t('msg.excel.show')
+            }}&lt;/el-button&gt;
+            &lt;!-- 角色 --&gt;
+            &lt;el-button type=&quot;info&quot; size=&quot;mini&quot;&gt;{{
+              $t('msg.excel.showRole')
+            }}&lt;/el-button&gt;
+            &lt;!-- 删除 --&gt;
+            &lt;el-button type=&quot;danger&quot; size=&quot;mini&quot;&gt;{{
+              $t('msg.excel.remove')
+            }}&lt;/el-button&gt;
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+      &lt;/el-table&gt;
+      &lt;!-- 分页 --&gt;
+      &lt;el-pagination
+        class=&quot;pagination&quot;
+        @size-change=&quot;handleSizeChange&quot;
+        @current-change=&quot;handleCurrentChange&quot;
+        :current-page=&quot;page&quot;
+        :page-sizes=&quot;[2, 5, 10, 20]&quot;
+        :page-size=&quot;size&quot;
+        layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+        :total=&quot;total&quot;
+      &gt;
+      &lt;/el-pagination&gt;
+    &lt;/el-card&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+import { getUserManageList } from '@/api/user-manager'
+import { watchSwitchLang } from '@/components/HeaderSearch/watchLanguage'
+
+const tableData = ref([])
+const total = ref(0)
+const page = ref(1)
+const size = ref(2)
+
+// 获取数据的方法
+const getListData = async () =&gt; {
+  const result = await getUserManageList({
+    page: page.value,
+    size: size.value
+  })
+  tableData.value = result.data.list
+  total.value = result.data.total
+  console.log(result.data)
+}
+
+getListData()
+watchSwitchLang(getListData)
+
+// 当pagination的sise条数变化的时候调用
+const handleSizeChange = (currentSize) =&gt; {
+  size.value = currentSize
+  getListData()
+}
+
+// 当pagination的page页码变化的时候调用
+const handleCurrentChange = (currentPage) =&gt; {
+  page.value = currentPage
+  getListData()
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.user-manage-container {
+  .header {
+    margin-bottom: 22px;
+    text-align: right;
+  }
+  ::v-deep .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  ::v-deep .el-tag {
+    margin-right: 6px;
+  }
+
+  .pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br></div></div><h3 id="三-基于全局属性-处理时间戳显示的问题"><a href="#三-基于全局属性-处理时间戳显示的问题" class="header-anchor">#</a> （三）基于全局属性，处理时间戳显示的问题</h3> <ul><li><p>处理时间戳显示的问题，后台返回的是字符串时间戳，需要将其转换为对应时间字符串。<code>vue2中可以使用过滤器处理，但是vue3中移除了过滤器</code>，在 vue3 中可以通过 全局属性 替代实现。</p></li> <li><p>安装Day.js依赖，用于处理时间显示</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm i dayjs
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>创建 src/filter/index.js，定义全局属性作为全局过滤器来使用</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import dayjs from 'dayjs'
+
+// 格式化方法
+const dateFilter = (val, format = 'YYYY-MM-DD') =&gt; {
+  // 如果不是数值类型，先转换为数值类型
+  if (!isNaN(val)) {
+    val = parseInt(val)
+  }
+
+  // 通过dayjs，进行格式化
+  return dayjs(val).format(format)
+}
+
+export default (app) =&gt; {
+  // $filters是key
+  app.config.globalProperties.$filters = {
+    dateFilter
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>在main.js中，将这个全局属性加入到vue实例中</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+import installFilter from '@/filter' // 添加全局属性
+
+// ...
+installFilter(app)
+
+// ...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>编辑views/user-manage/index.vue组件，在<code>开通时间</code>这一列中，引入全局属性<code>$filters</code>，获取dateFilter函数，通过dateFilter函数处理时间戳字符串，返回一个时间字符串</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+        &lt;!--  ...  --&gt;
+        &lt;!--  开通时间  --&gt;
+        &lt;el-table-column prop=&quot;openTime&quot; :label=&quot;$t('msg.excel.openTime')&quot;&gt;
+          &lt;template #default=&quot;{ row }&quot;&gt;
+            {{ $filters.dateFilter(row.openTime) }}
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+        &lt;!--  ...  --&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="四-excel导入功能实现"><a href="#四-excel导入功能实现" class="header-anchor">#</a> （四）Excel导入功能实现</h3> <ul><li>Excel导入流程</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：创建 excel 导入页面
+
+2：点击 excel 导入按钮，进入该页面
+
+3：该页面提供两种文件导入形式
+
+4：选中文件之后，解析 excel 数据（核心）
+
+5：上传解析之后的数据
+
+6：返回 员工管理（用户列表） 页面
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>在views/user-manage/index.vue组件中，给【导入】按钮添加click事件，调用onImportExcelClick，跳转路由到/user/import</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+		&lt;!--  ...  --&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onImportExcelClick&quot;&gt;
+          {{ $t('msg.excel.importExcel') }}
+        &lt;/el-button&gt;
+        &lt;!--  ...  --&gt;
+&lt;/template&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>创建components/UploadExcel/index.vue组件，作为导入组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;upload-excel&quot;&gt;
+    &lt;div class=&quot;btn-upload&quot;&gt;
+      &lt;el-button :loading=&quot;loading&quot; type=&quot;primary&quot; @click=&quot;handleUpload&quot;&gt;
+        {{ $t('msg.uploadExcel.upload') }}
+      &lt;/el-button&gt;
+    &lt;/div&gt;
+    
+    &lt;!--被隐藏--&gt;
+    &lt;input
+      ref=&quot;excelUploadInput&quot;
+      class=&quot;excel-upload-input&quot;
+      type=&quot;file&quot;
+      accept=&quot;.xlsx, .xls&quot;
+      @change=&quot;handleChange&quot;
+    /&gt;
+
+    &lt;!-- https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API --&gt;
+    &lt;div
+      class=&quot;drop&quot;
+      @drop.stop.prevent=&quot;handleDrop&quot;
+      @dragover.stop.prevent=&quot;handleDragover&quot;
+      @dragenter.stop.prevent=&quot;handleDragover&quot;
+    &gt;
+      &lt;i class=&quot;el-icon-upload&quot; /&gt;
+      &lt;span&gt;{{ $t('msg.uploadExcel.drop') }}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+
+const loading = ref(false)
+const excelUploadInput = ref(null)
+
+// 点击上传按钮的时候调用
+const handleUpload = () =&gt; {}
+
+const handleChange = () =&gt; {}
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.upload-excel {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  .excel-upload-input {
+    display: none;
+    z-index: -9999;
+  }
+  .btn-upload,
+  .drop {
+    border: 1px dashed #bbb;
+    width: 350px;
+    height: 160px;
+    text-align: center;
+    line-height: 160px;
+  }
+  .drop {
+    line-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #bbb;
+    i {
+      font-size: 60px;
+      display: block;
+    }
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br></div></div><ul><li>在views/import/index.vue组件中导入UploadExcel组件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;upload-excel /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import {} from 'vue'
+import UploadExcel from '@/components/UploadExcel'
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>安装xlsx依赖，用于处理Excel文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm i xlsx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>创建components/UploadExcel/utils.js文件，添加Excel字段头部解析函数</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>import XLSX from 'xlsx'
+/**
+ * 获取表头（通用方式）不需要看懂
+ */
+export const getHeaderRow = (sheet) =&gt; {
+  const headers = []
+  const range = XLSX.utils.decode_range(sheet['!ref'])
+  let C
+  const R = range.s.r
+  /* start in the first row */
+  for (C = range.s.c; C &lt;= range.e.c; ++C) {
+    /* walk every column in the range */
+    const cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })]
+    /* find the cell in the first row */
+    let hdr = 'UNKNOWN ' + C // &lt;-- replace with your desired default
+    if (cell &amp;&amp; cell.t) hdr = XLSX.utils.format_cell(cell)
+    headers.push(hdr)
+  }
+  return headers
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><ul><li>编辑components/UploadExcel/index.vue组件，<code>在组件中导入xlsx库和getHeaderRow函数，并且接收两个父组件传递的回调函数。当用户点击导入按钮的时候，调用handleUpload方法，handleUpload方法里面触发input组件的click事件，然后用户选择本地文件上传，此时会触发input的handleChange方法，在handleChange方法中获取到用户上传的文件，调用upload方法，upload调用readerData方法对文件进行解析，解析的过程是异步过程，因此使用了promise对象封装解析逻辑，最后解析的Excel文档内容会传递给父组件的回调函数onSuccess</code>(这里示范了如何使用按钮触发input的上传事件)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+import { ref, defineProps } from 'vue'
+import XLSX from 'xlsx'
+import { getHeaderRow } from '@/components/UploadExcel/utils'
+
+const props = defineProps({
+  // 上传之前的回调
+  beforeUpload: Function,
+  // 上传成功的回调
+  onSuccess: Function
+})
+
+const loading = ref(false)
+const excelUploadInput = ref(null)
+
+// 点击上传按钮的时候调用
+const handleUpload = () =&gt; {
+  // 触发input的click事件
+  excelUploadInput.value.click()
+}
+
+// 基于解析后的Excel数据（包含表头和标体）
+const generateData = (excelData) =&gt; {
+  // 将数据通过onSuccess上传到后台
+  props.onSuccess &amp;&amp; props.onSuccess(excelData)
+}
+
+// 解析Excel中的数据
+const readerData = (rawFile) =&gt; {
+  loading.value = true
+  // promise对象是异步操作
+  return new Promise((resolve, reject) =&gt; {
+    // FileReader 文件读取的类
+    const reader = new FileReader()
+
+    // 当读取操作完成时候触发
+    reader.onload = (e) =&gt; {
+      // 1. 获取文件中的原始数据
+      const data = e.target.result
+      // 2. 利用 XLSX 对原始数据进行解析
+      const workbook = XLSX.read(data, { type: 'array' })
+      // 3. 获取第一张表格(工作簿)名称
+      const firstSheetName = workbook.SheetNames[0]
+      // 4. 只读取 Sheet1（第一张表格）的数据, 这是表格数据
+      const worksheet = workbook.Sheets[firstSheetName]
+      // 5. 解析数据表头
+      const header = getHeaderRow(worksheet)
+      // 6. 解析数据体
+      const results = XLSX.utils.sheet_to_json(worksheet)
+      // 7. 传入解析之后的数据
+      generateData({ header, results })
+      // 8. loading 处理
+      loading.value = false
+      // 9. 异步完成
+      resolve()
+    }
+
+    reader.readAsArrayBuffer(rawFile)
+  })
+}
+
+// 获取上传的文件
+const upload = (rawFile) =&gt; {
+  // 清理input缓存的文件
+  excelUploadInput.value.value = null
+
+  // 如果没有指定上传前回调的话，直接解析文件
+  if (!props.beforeUpload) {
+    readerData(rawFile)
+    return
+  }
+  // 如果用户指定了上传前的回调，那么只有返回true的时候，才会执行对应的后续操作
+  const before = props.beforeUpload(rawFile)
+  // 如果为true, 解析文件
+  if (before) {
+    readerData(rawFile)
+  }
+}
+
+// 当input触发click时候调用
+const handleChange = (event) =&gt; {
+  // 从event中获取选中的文件
+  const files = event.target.files
+  // 只获取第一个选中的文件
+  const rawFile = files[0]
+  // 如果文件不存在，直接return
+  if (!rawFile) return
+  upload(rawFile)
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br></div></div><h3 id="五-文件拖拽的数据解析处理"><a href="#五-文件拖拽的数据解析处理" class="header-anchor">#</a> （五）文件拖拽的数据解析处理</h3> <ul><li>HTML 拖放 API 事件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：drop：当元素或选中的文本在可释放目标上被释放时触发
+
+2：dragover：当元素或选中的文本被拖到一个可释放目标上时触发
+
+3：dragenter：当拖拽元素或选中的文本到一个可释放目标时触发
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在components/UploadExcel/utils.js文件中，添加判断文件类型的函数</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+// 判断文件是否是xlsx|xls|csv
+export const isExcel = (file) =&gt; {
+  return /\.(xlsx|xls|csv)$/.test(file.name)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在components/UploadExcel/index.vue组件中，处理拖拽handleDragover和文件释放handleDrop的动作</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getHeaderRow<span class="token punctuation">,</span> isExcel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/components/UploadExcel/utils'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ElMessage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'element-plus'</span>
+<span class="token comment">// ...</span>
+
+<span class="token comment">// 文件释放的时候触发</span>
+<span class="token keyword">const</span> <span class="token function-variable function">handleDrop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 如果正在按钮上传，那么拖拽先return</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>loading<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  <span class="token keyword">const</span> files <span class="token operator">=</span> e<span class="token punctuation">.</span>dataTransfer<span class="token punctuation">.</span>files
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>files<span class="token punctuation">.</span>length <span class="token operator">!==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">ElMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'必须拖拽一个文件'</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+      duration<span class="token operator">:</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">1000</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// 只获取第一个选中的文件</span>
+  <span class="token keyword">const</span> rawFile <span class="token operator">=</span> files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  <span class="token comment">// 对文件类型进行判断</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isExcel</span><span class="token punctuation">(</span>rawFile<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">ElMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      message<span class="token operator">:</span> <span class="token string">'必须是.xlsx, .xls, .csv文件格式'</span><span class="token punctuation">,</span>
+      type<span class="token operator">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+      duration<span class="token operator">:</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">1000</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">upload</span><span class="token punctuation">(</span>rawFile<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 拖到目标位置触发</span>
+<span class="token keyword">const</span> <span class="token function-variable function">handleDragover</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 生成拖拽资源的副本。然后文件释放的时候会调用handleDrop方法</span>
+  e<span class="token punctuation">.</span>dataTransfer<span class="token punctuation">.</span>dropEffect <span class="token operator">=</span> <span class="token string">'copy'</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h3 id="六-给后台传递解析后的excel数据"><a href="#六-给后台传递解析后的excel数据" class="header-anchor">#</a> （六）给后台传递解析后的Excel数据</h3> <ul><li>在api/user-manager.js文件中，添加userBatchImport请求方法</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// Excel文件解析后，批量上传到服务器端
+export function userBatchImport(data) {
+  return request({
+    url: '/user-manage/batch/import',
+    method: 'POST',
+    data: data
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>后台批量用户上传的Body格式为如下，因此需要对Excel解析后的数据进行处理</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        &quot;username&quot;:&quot;刘备&quot;,
+        &quot;mobile&quot;:15500000000,
+        &quot;role&quot;:[
+            &quot;管理员&quot;,
+            &quot;员工&quot;
+        ],
+        &quot;openTime&quot;:&quot;2021-08-12&quot;
+    },
+    {
+        &quot;username&quot;:&quot;曹操&quot;,
+        &quot;mobile&quot;:13974678903,
+        &quot;role&quot;:[
+            &quot;管理员&quot;,
+            &quot;员工&quot;
+        ],
+        &quot;openTime&quot;:&quot;2021-08-12&quot;
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><ul><li>创建views/import/utils.js文件，创建USER_RELATIONS对象，将Excel字段的中文转换为英文</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// Excel字段的中英文对应
+export const USER_RELATIONS = {
+  姓名: 'username',
+  联系方式: 'mobile',
+  角色: 'role',
+  开通时间: 'openTime'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>编辑views/import/index.vue组件，将Excel数据转换为后台规定的数据格式，然后调用上传接口完成数据的上传</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { ElMessage } from 'element-plus'
+import { userBatchImport } from '@/api/user-manager'
+import { USER_RELATIONS } from '@/views/import/utils'
+// ...
+
+const i18n = useI18n()
+const router = useRouter()
+// 获取Excel表格的内容数据
+const onSuccess = async ({ results }) =&gt; {
+  const uploadData = generateData(results)
+  await userBatchImport(uploadData)
+  ElMessage({
+    message: results.length + i18n.t('msg.excel.importSuccess'),
+    type: 'success',
+    duration: 2 * 1000
+  })
+  router.push('/user/manage')
+}
+
+// 生成后台需要的批量导入的数据格式
+const generateData = (results) =&gt; {
+  const arr = []
+  results.forEach((item) =&gt; {
+    const userInfo = {}
+    // 将key从中文转换为英文
+    Object.keys(item).forEach((key) =&gt; {
+      userInfo[USER_RELATIONS[key]] = item[key]
+    })
+    arr.push(userInfo)
+  })
+  return arr
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><ul><li>在views/import/utils.js文件中，添加formatDate函数，将Excel中的时间解析为对应的字符串格式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>export const formatDate = (numb) =&gt; {
+  const time = new Date((numb - 1) * 24 * 3600000 + 1)
+  time.setYear(time.getFullYear() - 70)
+  const year = time.getFullYear() + ''
+  const month = time.getMonth() + 1 + ''
+  const date = time.getDate() - 1 + ''
+  return (
+    year +
+    '-' +
+    (month &lt; 10 ? '0' + month : month) +
+    '-' +
+    (date &lt; 10 ? '0' + date : date)
+  )
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>在views/import/index.vue组件中的generateData方法里面，将对openTime字段的数据进行格式转换</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token comment">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> formatDate<span class="token punctuation">,</span> <span class="token constant">USER_RELATIONS</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/views/import/utils'</span>
+<span class="token comment">// ...</span>
+
+<span class="token comment">// 生成后台需要的批量导入的数据格式</span>
+<span class="token keyword">const</span> <span class="token function-variable function">generateData</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">results</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  results<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> userInfo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token comment">// 将key从中文转换为英文</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 如果是openTime字段，那么将时间转换一下</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">USER_RELATIONS</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'openTime'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        userInfo<span class="token punctuation">[</span><span class="token constant">USER_RELATIONS</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">formatDate</span><span class="token punctuation">(</span>item<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+      <span class="token punctuation">}</span>
+      userInfo<span class="token punctuation">[</span><span class="token constant">USER_RELATIONS</span><span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> item<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>userInfo<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> arr
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>此时数据导入成功，路由跳转了之后页面不会刷新，是因为router-view使用了keep-alive缓存，那么当路由跳转的时候希望表格数据重新刷新，那么需要使用keep-alive的onActivated函数。编辑views/user-manage/index.vue组件，当进入到组件页面的时候，调用onActivated回调函数，让表格数据重新刷新</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+import { ref, onActivated } from 'vue'
+// ...
+
+onActivated(getListData)
+
+// ...
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="七-删除用户数据"><a href="#七-删除用户数据" class="header-anchor">#</a> （七）删除用户数据</h3> <ul><li>在api/user-manager.js中，添加deleteUser删除用户接口</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+
+// 删除用户数据
+export function deleteUser(id) {
+  return request({
+    url: `/user-manage/detele/${id}`,
+    method: 'GET'
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>在views/user-manage/index.vue组件中，给删除按钮绑定点击事件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+&lt;!-- ... --&gt;
+        &lt;!--  操作  --&gt;
+        &lt;el-table-column
+          :label=&quot;$t('msg.excel.action')&quot;
+          fixed=&quot;right&quot;
+          width=&quot;260&quot;
+        &gt;
+          &lt;template v-slot=&quot;{ row }&quot;&gt;
+            &lt;!-- 查看 --&gt;
+            &lt;el-button type=&quot;primary&quot; size=&quot;mini&quot;&gt;{{
+              $t('msg.excel.show')
+            }}&lt;/el-button&gt;
+            &lt;!-- 角色 --&gt;
+            &lt;el-button type=&quot;info&quot; size=&quot;mini&quot;&gt;{{
+              $t('msg.excel.showRole')
+            }}&lt;/el-button&gt;
+            &lt;!-- 删除 --&gt;
+            &lt;el-button type=&quot;danger&quot; size=&quot;mini&quot; @click=&quot;onRemoveClick(row)&quot;&gt;{{
+              $t('msg.excel.remove')
+            }}&lt;/el-button&gt;
+          &lt;/template&gt;
+        &lt;/el-table-column&gt;
+&lt;!-- ... --&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ElMessageBox, ElMessage } from 'element-plus'
+import { getUserManageList, deleteUser } from '@/api/user-manager'
+
+// ...
+
+const i18n = useI18n()
+
+// 点击删除按钮的时候调用
+const onRemoveClick = async (row) =&gt; {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') +
+      row.username +
+      i18n.t('msg.excel.dialogTitle2'),
+    'Warning',
+    {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning'
+    }
+  ).then(async () =&gt; {
+    await deleteUser(row._id)
+    ElMessage({
+      message: i18n.t('msg.excel.removeSuccess'),
+      type: 'success',
+      duration: 2 * 1000
+    })
+    // 重新获取表格数据
+    await getListData()
+  })
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><h3 id="八-用户数据导出原理与实现"><a href="#八-用户数据导出原理与实现" class="header-anchor">#</a> （八）用户数据导出原理与实现</h3> <ul><li>导出用户的业务逻辑</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：点击 excel 导出按钮
+
+2：展示 dialog 弹出层
+
+3：确定导出的 excel 文件名称
+
+4：点击导出按钮
+
+5：获取 所有用户列表数据
+
+6：将 json 结构数据转化为 excel 数据，并下载
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>创建views/user-manage/components/ExportToExcel.vue组件，作为导出Excel的弹出层</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;el-dialog
+    :title=&quot;$t('msg.excel.title')&quot;
+    :model-value=&quot;modelValue&quot;
+    @close=&quot;closed&quot;
+    width=&quot;30%&quot;
+  &gt;
+    &lt;!-- 填写Excel对应的名称 --&gt;
+    &lt;el-input :placeholder=&quot;$t('msg.excel.placeholder')&quot;&gt;&lt;/el-input&gt;
+    &lt;!-- 底部的两个按钮 --&gt;
+    &lt;template #footer&gt;
+      &lt;div class=&quot;dialog-footer&quot;&gt;
+        &lt;el-button @click=&quot;closed&quot;&gt;{{ $t('msg.excel.close') }}&lt;/el-button&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onConfirm&quot;&gt;{{
+          $t('msg.excel.confirm')
+        }}&lt;/el-button&gt;
+      &lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/el-dialog&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineProps, defineEmits } from 'vue'
+
+defineProps({
+  // 让父组件决定dialog是否显示
+  modelValue: {
+    type: Boolean,
+    required: true
+  }
+})
+
+// 定义事件
+const emits = defineEmits(['update:modelValue'])
+
+// 点击关闭按钮调用
+const closed = () =&gt; {
+  // 将事件抛出去，让父组件的v-model捕获到，然后设置modelValue的值，让dialog隐藏
+  emits('update:modelValue', false)
+}
+
+// 点击确定按钮调用
+const onConfirm = () =&gt; {
+  closed()
+}
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div><ul><li>在views/user-manage/index.vue组件中，导入ExportToExcel组件。<code>这里与换肤的逻辑一样，使用了v-model语法糖控制dialog的的显示与隐藏</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+	&lt;!-- ... --&gt;
+	    &lt;el-button type=&quot;success&quot; @click=&quot;onToExcelClick&quot;&gt;
+          {{ $t('msg.excel.exportExcel') }}
+        &lt;/el-button&gt;	
+    &lt;!-- ... --&gt;
+
+	&lt;!-- ... --&gt;
+	&lt;!-- 导出数据到Excel的弹出层 --&gt;
+    &lt;export-to-excel v-model=&quot;exportToExcelVisible&quot; /&gt;
+    &lt;!-- ... --&gt;
+&lt;/template&gt;
+
+
+&lt;script setup&gt;
+import ExportToExcel from '@/views/user-manage/components/ExportToExcel'
+// ...
+
+
+// 控制dialog显示的变量
+const exportToExcelVisible = ref(false)
+
+// 点击导出按钮调用
+const onToExcelClick = () =&gt; {
+  exportToExcelVisible.value = true
+}
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>给views/user-manage/components/ExportToExcel.vue组件的input设置默认值，当语言前后的时候，可以国际化为对应的英文</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+    &lt;!-- ... --&gt;
+    &lt;!-- 填写Excel对应的名称 --&gt;
+    &lt;el-input
+      v-model=&quot;excelName&quot;
+      :placeholder=&quot;$t('msg.excel.placeholder')&quot;
+    &gt;&lt;/el-input&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useI18n } from 'vue-i18n'
+import { ref, defineProps, defineEmits } from 'vue'
+import { watchSwitchLang } from '@/components/HeaderSearch/watchLanguage'
+
+
+// ...
+const excelName = ref('')
+const i18n = useI18n()
+let exportDefaultName = i18n.t('msg.excel.defaultName')
+excelName.value = exportDefaultName
+// 当语言切换的时候，执行回调，更换input的默认值
+watchSwitchLang(() =&gt; {
+  exportDefaultName = i18n.t('msg.excel.defaultName')
+  excelName.value = exportDefaultName
+})
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><ul><li>编辑api/user-manager.js文件，添加getUserManageAllList请求接口，获取所有员工列表的数据</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+// 获取所有员工列表的数据
+export function getUserManageAllList() {
+  return request({
+    url: '/user-manage/all-list',
+    method: 'GET'
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>编辑views/user-manage/components/ExportToExcel.vue组件，给确定按钮绑定onConfirm方法和loading属性，当点击按钮的时候调用接口</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+		&lt;!-- ... --&gt;
+        &lt;el-button type=&quot;primary&quot; @click=&quot;onConfirm&quot; :loading=&quot;loading&quot;&gt;{{
+          $t('msg.excel.confirm')
+        }}&lt;/el-button&gt;
+        &lt;!-- ... --&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { getUserManageAllList } from '@/api/user-manager'
+// ...
+
+const loading = ref(false)
+// 点击确定按钮调用
+const onConfirm = async () =&gt; {
+  loading.value = true
+  // 获取所有员工列表
+  const allUserList = (await getUserManageAllList()).data.list
+  console.log({ allUserList })
+  closed()
+}
+
+// ...
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>创建utils/Export2Excel.js文件，用于将json数据转换为Excel文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>/* eslint-disable */
+import { saveAs } from 'file-saver'
+import XLSX from 'xlsx'
+
+function datenum(v, date1904) {
+  if (date1904) v += 1462
+  var epoch = Date.parse(v)
+  return (epoch - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000)
+}
+
+function sheet_from_array_of_arrays(data, opts) {
+  var ws = {}
+  var range = {
+    s: {
+      c: 10000000,
+      r: 10000000
+    },
+    e: {
+      c: 0,
+      r: 0
+    }
+  }
+  for (var R = 0; R != data.length; ++R) {
+    for (var C = 0; C != data[R].length; ++C) {
+      if (range.s.r &gt; R) range.s.r = R
+      if (range.s.c &gt; C) range.s.c = C
+      if (range.e.r &lt; R) range.e.r = R
+      if (range.e.c &lt; C) range.e.c = C
+      var cell = {
+        v: data[R][C]
+      }
+      if (cell.v == null) continue
+      var cell_ref = XLSX.utils.encode_cell({
+        c: C,
+        r: R
+      })
+
+      if (typeof cell.v === 'number') cell.t = 'n'
+      else if (typeof cell.v === 'boolean') cell.t = 'b'
+      else if (cell.v instanceof Date) {
+        cell.t = 'n'
+        cell.z = XLSX.SSF._table[14]
+        cell.v = datenum(cell.v)
+      } else cell.t = 's'
+
+      ws[cell_ref] = cell
+    }
+  }
+  if (range.s.c &lt; 10000000) ws['!ref'] = XLSX.utils.encode_range(range)
+  return ws
+}
+
+function Workbook() {
+  if (!(this instanceof Workbook)) return new Workbook()
+  this.SheetNames = []
+  this.Sheets = {}
+}
+
+function s2ab(s) {
+  var buf = new ArrayBuffer(s.length)
+  var view = new Uint8Array(buf)
+  for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) &amp; 0xff
+  return buf
+}
+
+export const export_json_to_excel = ({
+  multiHeader = [],
+  header,
+  data,
+  filename,
+  merges = [],
+  autoWidth = true,
+  bookType = 'xlsx'
+} = {}) =&gt; {
+  // 1. 设置文件名称
+  filename = filename || 'excel-list'
+  // 2. 把数据解析为数组，并把表头添加到数组的头部
+  data = [...data]
+  data.unshift(header)
+  // 3. 解析多表头，把多表头的数据添加到数组头部（二维数组）
+  for (let i = multiHeader.length - 1; i &gt; -1; i--) {
+    data.unshift(multiHeader[i])
+  }
+  // 4. 设置 Excel 表工作簿（第一张表格）名称
+  var ws_name = 'SheetJS'
+  // 5. 生成工作簿对象
+  var wb = new Workbook()
+  // 6. 将 data 数组（json格式）转化为 Excel 数据格式
+  var ws = sheet_from_array_of_arrays(data)
+  // 7. 合并单元格相关（['A1:A2', 'B1:D1', 'E1:E2']）
+  if (merges.length &gt; 0) {
+    if (!ws['!merges']) ws['!merges'] = []
+    merges.forEach((item) =&gt; {
+      ws['!merges'].push(XLSX.utils.decode_range(item))
+    })
+  }
+  // 8. 单元格宽度相关
+  if (autoWidth) {
+    /*设置 worksheet 每列的最大宽度*/
+    const colWidth = data.map((row) =&gt;
+      row.map((val) =&gt; {
+        /*先判断是否为null/undefined*/
+        if (val == null) {
+          return {
+            wch: 10
+          }
+        } else if (val.toString().charCodeAt(0) &gt; 255) {
+          /*再判断是否为中文*/
+          return {
+            wch: val.toString().length * 2
+          }
+        } else {
+          return {
+            wch: val.toString().length
+          }
+        }
+      })
+    )
+    /*以第一行为初始值*/
+    let result = colWidth[0]
+    for (let i = 1; i &lt; colWidth.length; i++) {
+      for (let j = 0; j &lt; colWidth[i].length; j++) {
+        if (result[j]['wch'] &lt; colWidth[i][j]['wch']) {
+          result[j]['wch'] = colWidth[i][j]['wch']
+        }
+      }
+    }
+    ws['!cols'] = result
+  }
+
+  // 9. 添加工作表（解析后的 excel 数据）到工作簿
+  wb.SheetNames.push(ws_name)
+  wb.Sheets[ws_name] = ws
+  // 10. 写入数据
+  var wbout = XLSX.write(wb, {
+    bookType: bookType,
+    bookSST: false,
+    type: 'binary'
+  })
+  // 11. 下载数据
+  saveAs(
+    new Blob([s2ab(wbout)], {
+      type: 'application/octet-stream'
+    }),
+    `${filename}.${bookType}`
+  )
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br></div></div><ul><li>安装两个依赖：xlsx(已经安装过了)和file-saver</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm i file-saver
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>编辑views/user-manage/components/ExportToExcel.vue组件，动态导入Export2Excel函数包</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token comment">// 点击确定按钮调用</span>
+<span class="token keyword">const</span> <span class="token function-variable function">onConfirm</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+	<span class="token comment">// ...</span>
+	<span class="token comment">// 导入工具包</span>
+	<span class="token keyword">const</span> excel <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/utils/Export2Excel'</span><span class="token punctuation">)</span>
+	<span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>创建user-manage/components/Export2ExcelConstants.js文件，设置一个字段名称中英文对照表</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>export const USER_RELATIONS = {
+  姓名: 'username',
+  联系方式: 'mobile',
+  角色: 'role',
+  开通时间: 'openTime'
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>需要创建一个formatJson函数，将后台的json数据转换为二维数组，在formatJson函数多次用到了数组的map高阶函数对元素进行过滤，并且如果字段是role，那么需要将js数组进行JSON化</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">USER_RELATIONS</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/views/user-manage/components/Export2ExcelConstants'</span>
+<span class="token comment">// ...</span>
+
+
+<span class="token keyword">const</span> loading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token comment">// 点击确定按钮调用</span>
+<span class="token keyword">const</span> <span class="token function-variable function">onConfirm</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// 获取所有员工列表</span>
+  <span class="token keyword">const</span> allUserList <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">await</span> <span class="token function">getUserManageAllList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>data<span class="token punctuation">.</span>list
+  <span class="token comment">// 将员工列表转换为二维数组</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token function">formatJson</span><span class="token punctuation">(</span><span class="token constant">USER_RELATIONS</span><span class="token punctuation">,</span> allUserList<span class="token punctuation">)</span>
+  <span class="token comment">// 导入工具包</span>
+  <span class="token keyword">const</span> excel <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'@/utils/Export2Excel'</span><span class="token punctuation">)</span>
+  <span class="token comment">// 生成Excel文档</span>
+  excel<span class="token punctuation">.</span><span class="token function">export_json_to_excel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// 1：Excel表头，直接获取数组即可</span>
+    header<span class="token operator">:</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token constant">USER_RELATIONS</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token comment">// 2：Excel 数据</span>
+    data<span class="token operator">:</span> data<span class="token punctuation">,</span>
+    <span class="token comment">// 3：文件名称</span>
+    filename<span class="token operator">:</span> excelName<span class="token punctuation">.</span>value <span class="token operator">||</span> exportDefaultName<span class="token punctuation">,</span>
+    <span class="token comment">// 4：是否自动列宽</span>
+    autoWidth<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 5：文件类型</span>
+    bookType<span class="token operator">:</span> <span class="token string">'xlsx'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+  <span class="token function">closed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 当使用export_json_to_excel的时候，data必须是二维数组</span>
+<span class="token keyword">const</span> <span class="token function-variable function">formatJson</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">headers<span class="token punctuation">,</span> rows</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> rows<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>headers<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 角色需要特殊处理，是role字段的时候，将数组</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>headers<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'role'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 获取到角色数据</span>
+        <span class="token keyword">const</span> roles <span class="token operator">=</span> item<span class="token punctuation">[</span>headers<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span>
+        <span class="token comment">// 将数组转换为json</span>
+        <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>roles<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">role</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> role<span class="token punctuation">.</span>title<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> item<span class="token punctuation">[</span>headers<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div></div><ul><li>在filter/index.js中，将dateFilter函数导出，用于将时间戳转换为时间格式的字符串</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+export const dateFilter = (val, format = 'YYYY-MM-DD') =&gt; {
+  // 如果不是数值类型，先转换为数值类型
+  if (!isNaN(val)) {
+    val = parseInt(val)
+  }
+
+  // 通过dayjs，进行格式化
+  return dayjs(val).format(format)
+}
+
+// ...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>在views/user-manage/components/ExportToExcel.vue组件中的formatJson函数中使用dateFilter函数</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;script setup&gt;
+// ...
+
+const formatJson = (headers, rows) =&gt; {
+  return rows.map((item) =&gt; {
+    return Object.keys(headers).map((key) =&gt; {
+      // 角色需要特殊处理，是role字段的时候，将数组
+      if (headers[key] === 'role') {
+        // 获取到角色数据
+        const roles = item[headers[key]]
+        // 将数组转换为json
+        return JSON.stringify(roles.map((role) =&gt; role.title))
+      }
+      // openTime字段需要将时间戳转换为时间字符串格式
+      if (headers[key] === 'openTime') {
+        return dateFilter(item[headers[key]])
+      }
+      return item[headers[key]]
+    })
+  })
+}
+// ...
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h3 id="九-员工详情打印原理和实现"><a href="#九-员工详情打印原理和实现" class="header-anchor">#</a> （九）员工详情打印原理和实现</h3> <ul><li>员工详情的打印逻辑分为两部分</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：以表格的形式展示员工详情
+
+2：打印详情表格
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>实现方案如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1：获取员工详情数据
+
+2：在员工详情页面渲染详情数据
+
+3：利用 vue-print-nb 进行局部打印
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在api/user-manager.js文件中，添加getUserDetail接口方法，获取用户详情</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+export function getUserDetail(id) {
+  return request({
+    url: `/user-manage/detail/${id}`,
+    method: 'GET'
+  })
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>创建views/user-info/index.vue组件，接收id这个prop，同时请求getUserDetail获取用户详情数据</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;&quot;&gt;用户详情&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { getUserDetail } from '@/api/user-manager'
+import { ref, defineProps } from 'vue'
+import { watchSwitchLang } from '@/components/HeaderSearch/watchLanguage'
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  }
+})
+
+const detailData = ref({})
+const getUserDetailData = async () =&gt; {
+  detailData.value = await getUserDetail(props.id)
+  console.log(detailData.value)
+}
+
+getUserDetailData()
+watchSwitchLang(getUserDetailData)
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><ul><li>在给查看按钮绑定点击事件，并且传递当前行的row._id值</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+&lt;!-- ... --&gt;
+            &lt;!-- 查看 --&gt;
+            &lt;el-button
+              type=&quot;primary&quot;
+              size=&quot;mini&quot;
+              @click=&quot;onShowClick(row._id)&quot;
+              &gt;{{ $t('msg.excel.show') }}&lt;/el-button
+            &gt;
+&lt;!-- ... --&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+// ...
+
+// 点击查看按钮调用
+const onShowClick = async (id) =&gt; {
+  // 跳转路由
+  router.push(`/user/info/${id}`)
+}
+
+// ...
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>在views/user-info/index.vue组件中，<code>id是通过props来接收的，无论是使用页面跳转的形式展示用户的详情信息，还是以dialog弹窗的形式展示用户的详情信息，都需要通过props来接收</code>。这里使用路由跳转的的形式来接收用户的详情信息，那么在<code>router/index.js中</code>，需要将这个路由配置一个props属性，设置为true</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+      {
+        path: '/user/info/:id', // 这里是动态路径，在组件的js中可以通过route获取到id的值
+        name: 'userInfo',
+        component: () =&gt; import('@/views/user-info'),
+        props: true,
+        meta: {
+          title: 'userInfo'
+        }
+      },
+      
+// ...
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="十-用户详情页面渲染"><a href="#十-用户详情页面渲染" class="header-anchor">#</a> （十）用户详情页面渲染</h3> <ul><li>渲染用户详情使用 el-descriptions 组件，页面布局如下</li></ul> <p><img src="/assets/img/2021-12-158.37.33.4db7ef1c.png" alt="Alt text"></p> <ul><li>在views/user-info/index.vue组件中，基于数据进行渲染</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div class=&quot;user-info-container&quot;&gt;
+    &lt;el-card class=&quot;print-box&quot;&gt;
+      &lt;el-button type=&quot;primary&quot;&gt;{{ $t('msg.userInfo.print') }}&lt;/el-button&gt;
+    &lt;/el-card&gt;
+    &lt;el-card&gt;
+      &lt;div class=&quot;user-info-box&quot;&gt;
+        &lt;!-- 第一部分：标题 --&gt;
+        &lt;h2 class=&quot;title&quot;&gt;{{ $t('msg.userInfo.title') }}&lt;/h2&gt;
+        &lt;!-- 第二部分的描述：表格+img图片 --&gt;
+        &lt;div class=&quot;header&quot;&gt;
+          &lt;!-- 头部渲染表格 --&gt;
+          &lt;el-descriptions :column=&quot;2&quot; border&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.name')&quot;
+              &gt;{{ detailData.username }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.sex')&quot;
+              &gt;{{ detailData.gender }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.nation')&quot;
+              &gt;{{ detailData.nationality }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.mobile')&quot;
+              &gt;{{ detailData.mobile }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.province')&quot;
+              &gt;{{ detailData.province }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.date')&quot;
+              &gt;{{ $filters.dateFilter(detailData.openTime) }}
+            &lt;/el-descriptions-item&gt;
+            &lt;!-- :span=&quot;2&quot;表示独占一行    --&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.remark')&quot; :span=&quot;2&quot;&gt;
+              &lt;el-tag
+                class=&quot;remark&quot;
+                size=&quot;small&quot;
+                v-for=&quot;(item, index) in detailData.remark&quot;
+                :key=&quot;index&quot;
+                &gt;{{ item }}
+              &lt;/el-tag&gt;
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.address')&quot; :span=&quot;2&quot;
+              &gt;{{ detailData.address }}
+            &lt;/el-descriptions-item&gt;
+          &lt;/el-descriptions&gt;
+          &lt;!-- 头像渲染 --&gt;
+          &lt;el-image
+            class=&quot;avatar&quot;
+            :src=&quot;detailData.avatar&quot;
+            :preview-src-list=&quot;[detailData.avatar]&quot;
+          &gt;&lt;/el-image&gt;
+        &lt;/div&gt;
+        &lt;!-- 第三部分的描述：表格 --&gt;
+        &lt;div class=&quot;body&quot;&gt;
+          &lt;!-- 内容渲染表格：direction=&quot;vertical&quot; 文本竖行排列 :column=&quot;1&quot;表示每一行只有一列 --&gt;
+          &lt;el-descriptions direction=&quot;vertical&quot; :column=&quot;1&quot; border&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.experience')&quot;&gt;
+              &lt;ul&gt;
+                &lt;li v-for=&quot;(item, index) in detailData.experience&quot; :key=&quot;index&quot;&gt;
+                  &lt;span&gt;
+                    {{ $filters.dateFilter(item.startTime, 'YYYY/MM') }}
+                    ----
+                    {{ $filters.dateFilter(item.endTime, 'YYYY/MM') }}
+                  &lt;/span&gt;
+                  &lt;span&gt;{{ item.title }}&lt;/span&gt;
+                  &lt;span&gt;{{ item.desc }}&lt;/span&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.major')&quot;&gt;
+              {{ detailData.major }}
+            &lt;/el-descriptions-item&gt;
+            &lt;el-descriptions-item :label=&quot;$t('msg.userInfo.glory')&quot;&gt;
+              {{ detailData.glory }}
+            &lt;/el-descriptions-item&gt;
+          &lt;/el-descriptions&gt;
+        &lt;/div&gt;
+        &lt;!-- 第四部分：尾部签名 --&gt;
+        &lt;div class=&quot;foot&quot;&gt;{{ $t('msg.userInfo.foot') }}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/el-card&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { getUserDetail } from '@/api/user-manager'
+import { ref, defineProps } from 'vue'
+import { watchSwitchLang } from '@/components/HeaderSearch/watchLanguage'
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true
+  }
+})
+
+const detailData = ref({})
+const getUserDetailData = async () =&gt; {
+  detailData.value = (await getUserDetail(props.id)).data
+  console.log(detailData.value)
+}
+
+getUserDetailData()
+watchSwitchLang(getUserDetailData)
+&lt;/script&gt;
+
+&lt;style lang=&quot;scss&quot; scoped&gt;
+.print-box {
+  margin-bottom: 20px;
+  text-align: right;
+}
+.user-info-box {
+  width: 1024px;
+  margin: 0 auto;
+  .title {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .header {
+    display: flex;
+    ::v-deep .el-descriptions {
+      flex-grow: 1;
+    }
+    .avatar {
+      width: 187px;
+      box-sizing: border-box;
+      padding: 30px 20px;
+      border: 1px solid #ebeef5;
+      border-left: none;
+    }
+    .remark {
+      margin-right: 12px;
+    }
+  }
+  .body {
+    ul {
+      list-style: none;
+      li {
+        span {
+          margin-right: 62px;
+        }
+      }
+    }
+  }
+  .foot {
+    margin-top: 42px;
+    text-align: right;
+  }
+}
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br></div></div><h3 id="十一-用户详情页面的局部打印"><a href="#十一-用户详情页面的局部打印" class="header-anchor">#</a> （十一）用户详情页面的局部打印</h3> <ul><li>安装依赖</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm install vue3-print-nb -S
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>创建src/directives/index.js文件，导出一个函数，用于全局注册print</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>
+import print from 'vue3-print-nb'
+
+// 以导出方法的显示，完成全局的注册
+export default (app) =&gt; {
+  app.use(print)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>在main.js中导入这个函数</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>// ...
+import installDirective from '@/directives' // 注册全局指令
+
+// ...
+installDirective(app)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>在views/user-info/index.vue组件中，创建打印对象，在打印按钮，绑定v-print指令</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+	&lt;!-- ... --&gt;
+    &lt;el-card class=&quot;print-box&quot;&gt;
+      &lt;el-button type=&quot;primary&quot; :loading=&quot;loading&quot; v-print=&quot;printObj&quot;&gt;{{
+        $t('msg.userInfo.print')
+      }}&lt;/el-button&gt;
+    &lt;/el-card&gt;
+    &lt;!-- ... --&gt;
+    &lt;el-card&gt;
+      &lt;div class=&quot;user-info-box&quot; id=&quot;userInfoBox&quot;&gt;
+	      &lt;!-- ... --&gt;
+      &lt;/div&gt;
+    &lt;/el-card&gt; 
+&lt;/template&gt;
+
+&lt;script setup&gt;
+// ...
+
+const loading = ref(false)
+// 创建打印对象
+const printObj = {
+  // 指定打印区域，id为userInfoBox的DOM
+  id: 'userInfoBox',
+  // 打印标题
+  popTitle: 'vue-element-admin',
+  // 打印前执行的回调
+  beforeOpenCallback(vue) {
+    loading.value = true
+  },
+  // 执行打印执行的回调
+  openCallback(vue) {
+    loading.value = false
+  }
+}
+
+// ...
+&lt;/script&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2022/3/12 下午5:47:29</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/dev/vue/vue-element-admin/docs/profile/profile.html" class="prev">
+            实现个人中心业务模块
+          </a></span> <span class="next"><a href="/dev/vue/vue-element-admin/docs/user/user.html">
+            实现用户、角色、权限业务模块
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#一-用户管理业务模块实现" class="sidebar-link reco-side-一-用户管理业务模块实现" data-v-cb1513f6>一：用户管理业务模块实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#一-主要工作" class="sidebar-link reco-side-一-主要工作" data-v-cb1513f6>（一）主要工作</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#二-用户列表分页展示开发" class="sidebar-link reco-side-二-用户列表分页展示开发" data-v-cb1513f6>（二）用户列表分页展示开发</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#三-基于全局属性-处理时间戳显示的问题" class="sidebar-link reco-side-三-基于全局属性-处理时间戳显示的问题" data-v-cb1513f6>（三）基于全局属性，处理时间戳显示的问题</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#四-excel导入功能实现" class="sidebar-link reco-side-四-excel导入功能实现" data-v-cb1513f6>（四）Excel导入功能实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#五-文件拖拽的数据解析处理" class="sidebar-link reco-side-五-文件拖拽的数据解析处理" data-v-cb1513f6>（五）文件拖拽的数据解析处理</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#六-给后台传递解析后的excel数据" class="sidebar-link reco-side-六-给后台传递解析后的excel数据" data-v-cb1513f6>（六）给后台传递解析后的Excel数据</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#七-删除用户数据" class="sidebar-link reco-side-七-删除用户数据" data-v-cb1513f6>（七）删除用户数据</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#八-用户数据导出原理与实现" class="sidebar-link reco-side-八-用户数据导出原理与实现" data-v-cb1513f6>（八）用户数据导出原理与实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#九-员工详情打印原理和实现" class="sidebar-link reco-side-九-员工详情打印原理和实现" data-v-cb1513f6>（九）员工详情打印原理和实现</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#十-用户详情页面渲染" class="sidebar-link reco-side-十-用户详情页面渲染" data-v-cb1513f6>（十）用户详情页面渲染</a></li><li class="level-3" data-v-cb1513f6><a href="/dev/vue/vue-element-admin/docs/user-manager/user-manager.html#十一-用户详情页面的局部打印" class="sidebar-link reco-side-十一-用户详情页面的局部打印" data-v-cb1513f6>（十一）用户详情页面的局部打印</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.9a5d1377.js" defer></script><script src="/assets/js/7.c49e7131.js" defer></script><script src="/assets/js/1.d009776b.js" defer></script><script src="/assets/js/293.36991fc2.js" defer></script>
+  </body>
+</html>
